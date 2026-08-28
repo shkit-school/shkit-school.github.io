@@ -55,24 +55,33 @@
                 border: none !important;
             }
             
+            /* СКРЫВАЕМ "ЛИСТАЙ" НА МОБИЛЬНЫХ */
+            .hero-scroll {
+                display: none !important;
+            }
+            
             /* Кнопка на первой странице и в "Первом шаге" */
             .hero-btn-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 5px;
-        margin: 5px 0 0 0;
-    }
-    .hero-btn-wrapper .btn--lg {
-        padding: 10px 24px !important;
-        font-size: 16px !important;
-        margin: 0 !important;
-    }
-    .hero-scroll {
-        margin-top: 50px !important;
-        display: inline-block;
-    }
-}
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 70px;
+                margin: 5px 0 0 0;
+            }
+            .hero-btn-wrapper .btn--lg {
+                padding: 10px 24px !important;
+                font-size: 16px !important;
+                margin: 0 !important;
+            }
+            .doubt-cta .hero-btn-wrapper {
+                min-height: 60px;
+            }
+            .doubt-cta .hero-btn-wrapper .btn--lg {
+                padding: 10px 24px !important;
+                font-size: 16px !important;
+                margin: 0 !important;
+            }
+        }
     </style>
     <script type="application/ld+json">
         {
@@ -114,12 +123,14 @@
             <img src="assets/img/logo-sm.png" alt="Логотип школы кино и театра ШКИТ" width="48" height="44">
             <span><b>ШКИТ</b><span>Школа кино и театра</span></span>
         </a>
+        <!-- ===== ДЕСКТОПНОЕ МЕНЮ ===== -->
         <nav class="nav" aria-label="Основная навигация">
             <a href="#about">О нас</a>
             <a href="#kursy">Курсы</a>
             <a href="#proekty">Проекты</a>
             <a href="#otzyvy">Отзывы</a>
             <a href="#afisha">Афиша</a>
+            <a href="#afisha#abajur">Театр</a>
             <a href="#contacts">Контакты</a>
             <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
             <span class="m-cta"><a class="btn btn--sm" href="#zapis">Записаться</a></span>
@@ -390,8 +401,8 @@
                 <p class="afisha-hint">Афиша обновляется. Билеты — на <a href="https://abajur.timepad.ru/events/" target="_blank" rel="noopener" style="color:var(--coral-ink);font-weight:700">Timepad</a> и в нашей <a href="https://vk.com/shkit74" target="_blank" rel="noopener" style="color:var(--coral-ink);font-weight:700">группе ВКонтакте</a>.</p>
             </div>
 
-            <!-- 12. Абажур -->
-            <div class="abajur anim">
+            <!-- 12. Абажур (якорь abajur) -->
+            <div class="abajur anim" id="abajur">
                 <div class="abajur-media"><img src="assets/img/gal100.jpg" alt="Перформанс плейбэк-театра «Абажур»" loading="lazy"></div>
                 <div class="abajur-body">
                     <span class="kicker">Наши друзья плейбэк театр "АБАЖУР"</span>
@@ -399,10 +410,10 @@
                     <p>В «Абажуре» не играют выученных пьес. Здесь играют саму жизнь — ту, что прямо сейчас пульсирует в сердцах зрителей. Вы рассказываете историю, ведущий помогает оформить чувство, а актёры и музыкант тут же, без единой репетиции, воплощают её на сцене.</p>
                     <p>Под мягким, уютным светом — словно под абажуром старинной лампы — здесь смеялись и плакали, находили ответы и просто грелись душой. Приходите на огонёк. Новые события театра всегда в нашей афише.</p>
                    <div>
-    <a class="btn btn--on-dark btn--ghost" href="https://vk.ru/teatr_abajur" target="_blank" rel="noopener noreferrer">
-        Подробнее о театре
-    </a>
-</div>
+                        <a class="btn btn--on-dark btn--ghost" href="https://vk.ru/teatr_abajur" target="_blank" rel="noopener noreferrer">
+                            Подробнее о театре
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -493,7 +504,9 @@
             <div class="footer-cols">
                 <div class="footer-col"><b>Разделы</b>
                     <a href="#about">О нас</a><a href="#kursy">Курсы</a><a href="#proekty">Проекты</a>
-                    <a href="#otzyvy">Отзывы</a><a href="#afisha">Афиша</a><a href="#contacts">Контакты</a>
+                    <a href="#otzyvy">Отзывы</a><a href="#afisha">Афиша</a>
+                    <a href="#afisha#abajur">Театр</a>
+                    <a href="#contacts">Контакты</a>
                 </div>
                 <div class="footer-col"><b>Контакты</b>
                     <a href="tel:+79194040123">+7 (919) 404-01-23</a>
