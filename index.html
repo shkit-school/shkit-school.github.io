@@ -27,13 +27,13 @@
         .form-card--webask {
             display: flex;
             flex-direction: column;
-            height: 100%; /* Растягиваем на всю высоту родителя */
+            height: 100%;
             background: transparent !important;
             box-shadow: none !important;
             padding: 0 !important;
         }
         .form-card--webask iframe {
-            flex-grow: 1; /* Занимает всё свободное место */
+            flex-grow: 1;
             min-height: 500px;
             border-radius: 12px;
         }
@@ -41,6 +41,14 @@
             .form-card--webask iframe {
                 min-height: 550px;
             }
+        }
+        /* Исправление для кнопки в мобильном меню */
+        .m-cta .btn {
+            color: #fff !important;
+            background: var(--coral-ink) !important;
+            padding: 8px 16px !important;
+            border-radius: 4px !important;
+            display: inline-block !important;
         }
     </style>
     <script type="application/ld+json">
@@ -91,7 +99,7 @@
             <a href="#afisha">Афиша</a>
             <a href="#contacts">Контакты</a>
             <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
-            <span class="m-cta"><a class="btn btn--sm" href="#zapis">Записаться</a></span>
+            <span class="m-cta"><a class="btn btn--sm" href="#zapis" style="color: #fff !important;">Записаться</a></span>
         </nav>
         <a class="header-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
         <span class="header-cta"><a class="btn btn--sm" href="#zapis">Записаться</a></span>
@@ -108,7 +116,7 @@
             <span class="hero-tag anim">Челябинск · с 2009 года</span>
             <h1 class="anim" data-delay="120">Актёрское мастерство для жизни</h1>
             <p class="hero-sub anim" data-delay="240">Более 15 лет раскрываем таланты детей и взрослых — для сцены и повседневных побед. Без пафоса, зато с душой.</p>
-            <div class="anim" data-delay="360"><a class="btn btn--lg" href="#zapis">Записаться на пробное занятие</a></div>
+            <div class="anim" data-delay="360"><a class="btn btn--lg" href="#zapis">Записаться</a></div>
         </div>
         <a class="hero-scroll" href="#about" aria-label="Листай вниз">Листай</a>
     </section>
