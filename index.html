@@ -23,6 +23,11 @@
     <script>document.documentElement.className+=" js";</script>
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
+        /* Компенсация для якорей при фиксированной шапке */
+        html {
+            scroll-padding-top: 80px; /* Отступ сверху при прокрутке к якорю (подберите под вашу шапку) */
+        }
+
         /* Стиль для выравнивания карточки формы */
         .form-card--webask {
             display: flex;
@@ -130,7 +135,7 @@
             <a href="#proekty">Проекты</a>
             <a href="#otzyvy">Отзывы</a>
             <a href="#afisha">Афиша</a>
-            <a href="#afisha#abajur">Театр</a>
+            <a href="#abajur">Театр</a>
             <a href="#contacts">Контакты</a>
             <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
             <span class="m-cta"><a class="btn btn--sm" href="#zapis">Записаться</a></span>
@@ -505,7 +510,7 @@
                 <div class="footer-col"><b>Разделы</b>
                     <a href="#about">О нас</a><a href="#kursy">Курсы</a><a href="#proekty">Проекты</a>
                     <a href="#otzyvy">Отзывы</a><a href="#afisha">Афиша</a>
-                    <a href="#afisha#abajur">Театр</a>
+                    <a href="#abajur">Театр</a>
                     <a href="#contacts">Контакты</a>
                 </div>
                 <div class="footer-col"><b>Контакты</b>
