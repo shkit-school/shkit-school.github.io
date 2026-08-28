@@ -23,9 +23,10 @@
     <script>document.documentElement.className+=" js";</script>
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        /* Компенсация для якорей при фиксированной шапке */
+        /* ===== ИСПРАВЛЕНИЯ ДЛЯ ПРОКРУТКИ ===== */
         html {
-            scroll-padding-top: -40px; /* Отступ сверху при прокрутке к якорю (подберите под вашу шапку) */
+            scroll-behavior: smooth; /* Плавная прокрутка */
+            scroll-padding-top: 0px; /* Убираем лишний отступ */
         }
 
         /* Стиль для выравнивания карточки формы */
@@ -648,5 +649,29 @@
 <!-- ============ СКРИПТЫ ============ -->
 <!-- Основной скрипт -->
 <script src="assets/js/main.js" defer></script>
+
+<!-- Управление прокруткой для точного позиционирования -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Проверяем, есть ли у ссылок с якорями своё поведение
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                // Корректируем положение: 0 = без смещения, можно поменять на нужное число
+                const offset = 0; 
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
