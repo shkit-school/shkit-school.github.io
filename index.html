@@ -76,57 +76,45 @@
             }
         }
 
-        /* ===== КАРУСЕЛЬ ОТЗЫВОВ (ИСПРАВЛЕННАЯ) ===== */
-        .reviews-slider-container {
+        /* ===== СЛАЙДЕР ОТЗЫВОВ (С ЧЕРЕДОВАНИЕМ ФОНОВ) ===== */
+        .reviews-slider-wrap {
             position: relative;
             overflow: hidden;
             margin: 0 -16px;
             padding: 0 16px;
         }
-        .reviews-slider-wrapper {
+        .reviews-slider-track {
             display: flex;
             transition: transform 0.5s ease;
             gap: 0;
         }
         .reviews-slide {
             flex: 0 0 100%;
-            display: grid;
-            gap: 20px;
             padding: 0 4px;
             box-sizing: border-box;
         }
-        @media (min-width: 769px) {
-            .reviews-slide {
-                flex: 0 0 50%;
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            .reviews-slide {
-                flex: 0 0 100%;
-                grid-template-columns: 1fr;
-            }
-        }
-
         .reviews-slide .review {
-            background: var(--dark);
             border-radius: 16px;
-            padding: 24px 28px;
+            padding: 28px 30px;
             color: #fff;
             display: flex;
             flex-direction: column;
-            box-sizing: border-box;
-            height: 100%;
             min-height: 280px;
+            position: relative;
+        }
+        .reviews-slide .review--dark {
+            background: var(--dark);
         }
         .reviews-slide .review--coral {
             background: var(--coral-ink);
         }
         .reviews-slide .review .quote-mark {
-            font-size: 32px;
-            line-height: 1;
-            color: rgba(255,255,255,0.3);
-            margin-bottom: 8px;
+            font-size: 64px;
+            line-height: 0.8;
+            color: rgba(255,255,255,0.15);
+            margin-bottom: 4px;
+            font-family: Georgia, serif;
+            display: block;
         }
         .reviews-slide .review p {
             font-size: 15px;
@@ -190,6 +178,8 @@
         .slider-dots {
             display: flex;
             gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .slider-dot {
             width: 10px;
@@ -212,8 +202,14 @@
 
         @media (max-width: 768px) {
             .reviews-slide .review {
-                min-height: 240px;
+                min-height: 220px;
                 padding: 20px;
+            }
+            .reviews-slide .review p {
+                font-size: 14px;
+            }
+            .reviews-slide .review .quote-mark {
+                font-size: 48px;
             }
         }
     </style>
@@ -440,115 +436,143 @@
         </div>
     </section>
 
-    <!-- ============ 9. ОТЗЫВЫ (КАРУСЕЛЬ) ============ -->
+    <!-- ============ 9. ОТЗЫВЫ (СЛАЙДЕР) ============ -->
     <section class="section bg-white" id="otzyvy">
         <div class="wrap">
             <span class="kicker anim">Отзывы</span>
             <h2 class="sec-title anim">Что о нас говорят<span class="aside">Честно, без цензуры и причёсывания.</span></h2>
 
-            <div class="reviews-slider-container">
-                <div class="reviews-slider-wrapper" id="reviewsSlider">
+            <div class="reviews-slider-wrap">
+                <div class="reviews-slider-track" id="reviewsSlider">
 
-                    <!-- СЛАЙД 1 -->
+                    <!-- СЛАЙД 1 (тёмный) -->
                     <div class="reviews-slide">
                         <div class="review review--dark">
-                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <span class="quote-mark">”</span>
                             <p>«Участие в проекте «Давай сыграем жизнь» — это гигантский шаг. Через три месяца друзья сказали: «Это просто АХ!» Я ждала каждую репетицию. Атмосфера, коллектив, люди, которые хотят показать себя на сцене, — это бесценно. Проект помогает даже в работе: появились «театральные» паузы в переговорах!»</p>
                             <div class="review-author"><div class="review-ava">У</div><div class="review-who"><b>Участница проекта</b><span>«Давай сыграем жизнь»</span></div></div>
                         </div>
+                    </div>
+
+                    <!-- СЛАЙД 2 (коралловый) -->
+                    <div class="reviews-slide">
                         <div class="review review--coral">
-                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <span class="quote-mark">”</span>
                             <p>«Участие в «Давай сыграем жизнь» — как открыть новую мышцу внутри. Учишься не играть, а быть. Исследуешь себя, примеряешь роль — и вдруг понимаешь боль героя, она звучит в тебе. Это настоящая терапия Души. Спасибо за этот путь!»</p>
                             <div class="review-author"><div class="review-ava">О</div><div class="review-who"><b>Ольга З., 49 лет</b><span>«Давай сыграем жизнь»</span></div></div>
                         </div>
                     </div>
 
-                    <!-- СЛАЙД 2 -->
+                    <!-- СЛАЙД 3 (тёмный) -->
                     <div class="reviews-slide">
                         <div class="review review--dark">
-                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <span class="quote-mark">”</span>
                             <p>«В 17 лет я мечтала об актёрской карьере, но не верила, что это возможно. В 40 — я играю на главной сцене Камерного театра, и моё лицо на афишах. ШКИТ сделал мечту реальностью. Спасибо!»</p>
                             <div class="review-author"><div class="review-ava">Н</div><div class="review-who"><b>Наталья С., 43 года</b><span>«Давай сыграем жизнь»</span></div></div>
                         </div>
+                    </div>
+
+                    <!-- СЛАЙД 4 (коралловый) -->
+                    <div class="reviews-slide">
                         <div class="review review--coral">
-                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <span class="quote-mark">”</span>
                             <p>«Всего за три месяца мы, непрофессиональные актёры, поставили спектакль «Сердцебиение». Мы не играем — мы проживаем свои роли. Проект помог мне раскрыться и позволить себе больше, чем я думала. Доверьтесь, откройтесь, не бойтесь быть собой — это про настоящую жизнь!»</p>
                             <div class="review-author"><div class="review-ava">С</div><div class="review-who"><b>Светлана Б., 48 лет</b><span>«Давай сыграем жизнь»</span></div></div>
                         </div>
                     </div>
 
-                    <!-- СЛАЙД 3 -->
+                    <!-- СЛАЙД 5 (тёмный) -->
                     <div class="reviews-slide">
                         <div class="review review--dark">
-                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <span class="quote-mark">”</span>
                             <p>«За 3,5 месяца мы, незнакомые люди, создали спектакль с нуля. Пьеса родилась в нас, каждая роль — главная. Уже к концу третьего часа мы дышали как единый организм. Спасибо за эту возможность!»</p>
                             <div class="review-author"><div class="review-ava">М</div><div class="review-who"><b>Мария М.</b><span>«Давай сыграем жизнь»</span></div></div>
                         </div>
+                    </div>
+
+                    <!-- СЛАЙД 6 (коралловый) -->
+                    <div class="reviews-slide">
                         <div class="review review--coral">
-                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <span class="quote-mark">”</span>
                             <p>«Я всегда была Боссом. И тут мне дают роль… жены Босса. Спектакль «13 оттенков одиночества» показал: за маской безупречности часто прячется одиночество. Если хочешь посмотреть на свою жизнь под другим углом — иди в проект «Давай сыграем жизнь». Здесь твои скелеты перестают пугать и начинают танцевать.»</p>
                             <div class="review-author"><div class="review-ava">Т</div><div class="review-who"><b>Татьяна В.</b><span>«Давай сыграем жизнь»</span></div></div>
                         </div>
                     </div>
 
-                    <!-- СЛАЙД 4 -->
+                    <!-- СЛАЙД 7 (тёмный) -->
                     <div class="reviews-slide">
                         <div class="review review--dark">
-                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <span class="quote-mark">”</span>
                             <p>«Я так давно не хохотала! Так бывает, когда находишь СВОИХ людей. Когда творчество зажигает, а общее дело сближает до глубины души. Спасибо вам за этот вечер, за тепло, за то, что мы встретились. Вы — моя команда!»</p>
                             <div class="review-author"><div class="review-ava">М</div><div class="review-who"><b>Мария М.</b><span>«Давай сыграем жизнь»</span></div></div>
                         </div>
+                    </div>
+
+                    <!-- СЛАЙД 8 (коралловый) -->
+                    <div class="reviews-slide">
                         <div class="review review--coral">
-                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <span class="quote-mark">”</span>
                             <p>«Это был волнительный финал, который превзошёл все ожидания: Гран-при! 🎉 В этот раз роль была сложной, но пара фраз режиссёра перед выходом изменили всё. Самая большая магия театра — проживать чужую жизнь как свою.»</p>
                             <div class="review-author"><div class="review-ava">А</div><div class="review-who"><b>Алена И., 44 года</b><span>«Магия слова»</span></div></div>
                         </div>
                     </div>
 
-                    <!-- СЛАЙД 5 -->
+                    <!-- СЛАЙД 9 (тёмный) -->
                     <div class="reviews-slide">
                         <div class="review review--dark">
-                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <span class="quote-mark">”</span>
                             <p>«Сначала ты не понимаешь, но именно путь — самое ценное. А результат превзошёл все ожидания: ГРАН-ПРИ — наше! Лучшее случается, когда совсем не ждёшь. Магия слов — это действительно волшебство!»</p>
                             <div class="review-author"><div class="review-ava">Е</div><div class="review-who"><b>Елена П., 35 лет</b><span>«Магия слова»</span></div></div>
                         </div>
+                    </div>
+
+                    <!-- СЛАЙД 10 (коралловый) -->
+                    <div class="reviews-slide">
                         <div class="review review--coral">
-                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <span class="quote-mark">”</span>
                             <p>«Пришла на репетицию с дрожащими руками — и сыграла премьеру. Думала, это будет красивый эпизод. А это стала эпоха. История растёт вместе с нами: спустя год — новый партнёр, обновлённый сценарий, снова аншлаг. Счастлива пригласить вас на новые главы.»</p>
                             <div class="review-author"><div class="review-ava">Т</div><div class="review-who"><b>Татьяна М.</b><span>«Мой бенефис»</span></div></div>
                         </div>
                     </div>
 
-                    <!-- СЛАЙД 6 -->
+                    <!-- СЛАЙД 11 (тёмный) -->
                     <div class="reviews-slide">
                         <div class="review review--dark">
-                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <span class="quote-mark">”</span>
                             <p>«Четыре года назад я впервые попала на перформанс «Абажура» — и поняла: это моё. Каждый спектакль уникален, рождается из историй зрителей. После каждой встречи выходишь обновлённой, с лёгкостью внутри. Огромная благодарность актёрам за это волшебство!»</p>
                             <div class="review-author"><div class="review-ava">С</div><div class="review-who"><b>Светлана К., 65 лет</b><span>зрительница «Абажур»</span></div></div>
                         </div>
+                    </div>
+
+                    <!-- СЛАЙД 12 (коралловый) -->
+                    <div class="reviews-slide">
                         <div class="review review--coral">
-                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <span class="quote-mark">”</span>
                             <p>«Этой весной посчастливилось побывать на спектакле «Абажур» — театра, где зрительские истории оживают на сцене. Актеры ловко отражали не только события, но и настроение, и чувства рассказчиков. Весь зал был в восторге! Это была не просто игра — настоящая магия с терапевтическим эффектом.»</p>
                             <div class="review-author"><div class="review-ava">П</div><div class="review-who"><b>Семья Портновых</b><span>зрители «Абажур»</span></div></div>
                         </div>
                     </div>
 
-                    <!-- СЛАЙД 7 -->
+                    <!-- СЛАЙД 13 (тёмный) -->
                     <div class="reviews-slide">
                         <div class="review review--dark">
-                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <span class="quote-mark">”</span>
                             <p>«Дочь удивила всех — на сцене с полным залом пришлось импровизировать, когда партнёр не успел переодеться. Зал был в восторге! Педагоги сказали: «Растёт настоящая артистка». Это уже третья большая сцена города, и она справляется всё увереннее. ШКИТ даёт ей возможность проявляться, доверяет сложные роли, учит не бояться и находить выход из любой ситуации. Горжусь и бесконечно благодарна!»</p>
                             <div class="review-author"><div class="review-ava">И</div><div class="review-who"><b>Ирина Портнова</b><span>мама Веры, 9 лет</span></div></div>
                         </div>
+                    </div>
+
+                    <!-- СЛАЙД 14 (коралловый) -->
+                    <div class="reviews-slide">
                         <div class="review review--coral">
-                            <span class="quote-mark" aria-hidden="true">”</span>
-                            <p>«ШКИТ научил меня чувствовать себя, уверенно говорить и общаться. Здесь я найду вторую семью и получила базу, которая работает до сих пор. Каждое занятие — эмоции, каждый день — рост. Я счастлива, что этот дом был в моей жизни!»</p>
+                            <span class="quote-mark">”</span>
+                            <p>«ШКИТ научил меня чувствовать себя, уверенно говорить и общаться. Здесь я нашла вторую семью и получила базу, которая работает до сих пор. Каждое занятие — эмоции, каждый день — рост. Я счастлива, что этот дом был в моей жизни!»</p>
                             <div class="review-author"><div class="review-ava">Д</div><div class="review-who"><b>Дарья М., выпускница</b><span>Школа кино и театра</span></div></div>
                         </div>
                     </div>
 
-                </div><!-- /reviews-slider-wrapper -->
-            </div><!-- /reviews-slider-container -->
+                </div><!-- /reviews-slider-track -->
+            </div><!-- /reviews-slider-wrap -->
 
             <div class="slider-controls">
                 <button class="slider-btn" id="prevSlide" aria-label="Предыдущий отзыв">‹</button>
@@ -696,7 +720,7 @@
                     </div>
                 </div>
 
-                <!-- ПРАВАЯ КОЛОНКА: Только форма (весь лишний текст удалён) -->
+                <!-- ПРАВАЯ КОЛОНКА: Только форма -->
                 <div class="form-card form-card--webask anim" id="zapis">
                     <iframe 
                         width="100%" 
@@ -892,20 +916,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- Карусель отзывов (исправленная) ---
-    const slider = document.getElementById('reviewsSlider');
+    // --- Слайдер отзывов ---
+    const track = document.getElementById('reviewsSlider');
     const prevBtn = document.getElementById('prevSlide');
     const nextBtn = document.getElementById('nextSlide');
     const dotsContainer = document.getElementById('sliderDots');
-    if (!slider) return;
+    if (!track) return;
 
-    const slides = slider.querySelectorAll('.reviews-slide');
+    const slides = track.querySelectorAll('.reviews-slide');
     const totalSlides = slides.length;
     let currentIndex = 0;
-    let autoSlideInterval;
-    let isTransitioning = false;
+    let startX = 0;
+    let isDragging = false;
 
-    // Создаем точки
+    // Точки
     for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement('button');
         dot.classList.add('slider-dot');
@@ -918,76 +942,56 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateDots() {
-        const dots = dotsContainer.querySelectorAll('.slider-dot');
-        dots.forEach((dot, i) => {
+        document.querySelectorAll('.slider-dot').forEach((dot, i) => {
             dot.classList.toggle('active', i === currentIndex);
         });
     }
 
     function goToSlide(index) {
-        if (isTransitioning) return;
         if (index < 0) index = totalSlides - 1;
         if (index >= totalSlides) index = 0;
         if (index === currentIndex) return;
-        isTransitioning = true;
         currentIndex = index;
-        const offset = -index * 100;
-        slider.style.transform = `translateX(${offset}%)`;
+        track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
         updateDots();
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 500);
     }
 
-    function nextSlide() {
-        goToSlide(currentIndex + 1);
-    }
+    function nextSlide() { goToSlide(currentIndex + 1); }
+    function prevSlide() { goToSlide(currentIndex - 1); }
 
-    function prevSlide() {
-        goToSlide(currentIndex - 1);
-    }
+    // Стрелки
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
 
-    prevBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        prevSlide();
-        resetAutoSlide();
-    });
+    // --- Тач-свайп для мобильных ---
+    const wrap = document.querySelector('.reviews-slider-wrap');
+    wrap.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+    }, { passive: true });
 
-    nextBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        nextSlide();
-        resetAutoSlide();
-    });
+    wrap.addEventListener('touchmove', function(e) {
+        if (!isDragging) return;
+        const diff = startX - e.touches[0].clientX;
+        if (Math.abs(diff) > 30) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+            isDragging = false;
+        }
+    }, { passive: true });
 
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(nextSlide, 6000);
-    }
-
-    function resetAutoSlide() {
-        clearInterval(autoSlideInterval);
-        startAutoSlide();
-    }
-
-    const sliderContainer = document.querySelector('.reviews-slider-container');
-    sliderContainer.addEventListener('mouseenter', function() {
-        clearInterval(autoSlideInterval);
-    });
-    sliderContainer.addEventListener('mouseleave', function() {
-        startAutoSlide();
-    });
+    wrap.addEventListener('touchend', function() {
+        isDragging = false;
+    }, { passive: true });
 
     // Адаптация при ресайзе
-    let resizeTimeout;
     window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function() {
-            // Пересчитываем ширину слайдов
-            slider.style.transform = `translateX(${-currentIndex * 100}%)`;
-        }, 300);
+        track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
     });
-
-    startAutoSlide();
 });
 </script>
 </body>
-</html>
+</htm
