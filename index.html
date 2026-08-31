@@ -144,6 +144,13 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             flex-shrink: 0;
+            font-family: inherit;
+            font-weight: 400;
+            padding: 0;
+            text-align: center;
+            vertical-align: middle;
+            -webkit-appearance: none;
+            appearance: none;
         }
         
         .slider-btn:hover {
@@ -154,6 +161,10 @@
         .slider-btn:focus {
             outline: 3px solid #ffb3b3;
             outline-offset: 2px;
+        }
+        
+        .slider-btn:active {
+            transform: scale(0.95);
         }
         
         /* Пагинация */
@@ -173,6 +184,8 @@
             transition: all 0.3s ease;
             border: none;
             padding: 0;
+            -webkit-appearance: none;
+            appearance: none;
         }
         
         .slider-dots .dot.active {
@@ -201,6 +214,8 @@
             .reviews-slider {
                 padding: 0;
                 margin: 30px 0;
+                /* Убираем горизонтальный скролл, чтобы карточка была на всю ширину */
+                width: 100%;
             }
             
             .slider-nav {
@@ -210,11 +225,14 @@
             .review-slide {
                 min-width: 100%;
                 padding: 0;
+                width: 100%;
             }
             
             .review-slide .review {
                 min-height: auto;
                 padding: 25px 20px;
+                width: 100%;
+                border-radius: 12px;
             }
             
             .review-slide .review p {
@@ -891,13 +909,17 @@ document.addEventListener('DOMContentLoaded', function() {
             if (target) {
                 e.preventDefault();
                 const isMobile = window.innerWidth <= 768;
-                let offset = isMobile ? 80 : 0;
-                if (targetId === '#zapis') {
-                    offset = isMobile ? 100 : 20;
+                let offset = 0;
+                
+                if (isMobile) {
+                    // На мобильных: минимальный отступ для всех, кроме Театра и Записаться
+                    if (targetId === '#abajur' || targetId === '#zapis') {
+                        offset = 0; // Театр и Записаться — не трогаем
+                    } else {
+                        offset = 20; // Небольшой отступ для остальных пунктов меню
+                    }
                 }
-                if (targetId === '#abajur') {
-                    offset = isMobile ? 120 : 40;
-                }
+                
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
                 window.scrollTo({
                     top: targetPosition,
