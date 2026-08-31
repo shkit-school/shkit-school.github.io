@@ -86,6 +86,7 @@
             overflow: hidden;
             padding: 0;
             margin: 40px 0;
+            width: 100%;
         }
         
         .reviews-track {
@@ -93,6 +94,7 @@
             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             touch-action: pan-y;
             cursor: grab;
+            width: 100%;
         }
         
         .reviews-track:active {
@@ -100,10 +102,13 @@
         }
         
         .review-slide {
+            flex: 0 0 100%;
             min-width: 100%;
-            padding: 0 10px;
+            max-width: 100%;
+            padding: 0;
             box-sizing: border-box;
             display: flex;
+            width: 100%;
         }
         
         .review-slide .review {
@@ -196,7 +201,9 @@
         /* Десктоп: 2 карточки */
         @media (min-width: 769px) {
             .review-slide {
+                flex: 0 0 50%;
                 min-width: 50%;
+                max-width: 50%;
                 padding: 0 15px;
             }
             
@@ -209,12 +216,16 @@
             }
         }
         
-        /* Мобильная версия: без стрелок, свайп */
+        /* Мобильная версия */
         @media (max-width: 768px) {
             .reviews-slider {
                 padding: 0;
                 margin: 30px 0;
-                /* Убираем горизонтальный скролл, чтобы карточка была на всю ширину */
+                width: 100%;
+                overflow: hidden;
+            }
+            
+            .reviews-track {
                 width: 100%;
             }
             
@@ -223,7 +234,9 @@
             }
             
             .review-slide {
+                flex: 0 0 100%;
                 min-width: 100%;
+                max-width: 100%;
                 padding: 0;
                 width: 100%;
             }
@@ -233,6 +246,7 @@
                 padding: 25px 20px;
                 width: 100%;
                 border-radius: 12px;
+                margin: 0;
             }
             
             .review-slide .review p {
@@ -912,11 +926,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 let offset = 0;
                 
                 if (isMobile) {
-                    // На мобильных: минимальный отступ для всех, кроме Театра и Записаться
-                    if (targetId === '#abajur' || targetId === '#zapis') {
-                        offset = 0; // Театр и Записаться — не трогаем
+                    // Мобильная версия
+                    if (targetId === '#abajur') {
+                        offset = 60; // Театр: видно верх блока с фото
+                    } else if (targetId === '#zapis') {
+                        offset = 20; // Записаться: как Контакты
                     } else {
-                        offset = 20; // Небольшой отступ для остальных пунктов меню
+                        offset = 20; // Все остальные пункты
+                    }
+                } else {
+                    // Десктоп
+                    if (targetId === '#abajur') {
+                        offset = 40; // Театр: видно верх тёмно-серого блока
+                    } else if (targetId === '#zapis') {
+                        offset = 20; // Записаться: как Контакты
                     }
                 }
                 
