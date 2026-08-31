@@ -42,23 +42,53 @@
         }
         
         /* ===== ЯКОРЯ: ИСПРАВЛЕНИЯ ===== */
-        /* Убираем двойной offset: CSS scroll-margin-top уже есть для section[id] и #zapis */
-        /* Для #abajur — отдельный отступ, чтобы был виден верх тёмного блока */
-        #abajur {
-            scroll-margin-top: 120px;
+        /* Уменьшаем scroll-margin-top, чтобы тексты были ближе к шапке */
+        section[id] {
+            scroll-margin-top: 10px;
         }
         
-        /* Для #zapis — как у Контактов */
         #zapis {
             scroll-margin-top: calc(var(--header-h) + 10px);
         }
         
+        /* Театр — не трогаем, оставляем как было */
+        #abajur {
+            scroll-margin-top: 120px;
+        }
+        
         @media (max-width: 768px) {
+            section[id] {
+                scroll-margin-top: 5px;
+            }
+            
+            #zapis {
+                scroll-margin-top: calc(var(--header-h) + 10px);
+            }
+            
             #abajur {
                 scroll-margin-top: 80px;
             }
-            #zapis {
-                scroll-margin-top: calc(var(--header-h) + 10px);
+        }
+        
+        /* ===== КНОПКА ЗАПИСАТЬСЯ В МОБИЛЬНОМ МЕНЮ ===== */
+        @media (max-width: 880px) {
+            .nav.is-open .m-cta .btn {
+                background: var(--coral-dark, #D13434);
+                color: #fff !important;
+                border: 2px solid var(--coral-dark, #D13434);
+                border-radius: var(--radius-btn, 11px);
+                padding: 15px 30px;
+                font-weight: 700;
+                font-size: 16px;
+                width: 100%;
+                text-align: center;
+                display: block;
+                box-shadow: 0 8px 22px -10px rgba(209,52,52,.8);
+            }
+            
+            .nav.is-open .m-cta .btn:hover {
+                background: #fff;
+                color: var(--coral-ink, #BC3636) !important;
             }
         }
         
@@ -98,7 +128,7 @@
             flex-direction: column;
             width: 100%;
             height: 100%;
-            min-height: 320px;
+            min-height: 384px; /* 320px + 20% = 384px */
             box-sizing: border-box;
         }
         
@@ -190,7 +220,7 @@
             }
             
             .review-slide .review {
-                min-height: 280px;
+                min-height: 336px; /* 280px + 20% = 336px */
             }
             
             .slider-nav {
@@ -223,10 +253,9 @@
                 width: 100%;
             }
             
-            /* ПЕРЕОПРЕДЕЛЯЕМ flex: 0 0 84% из style.css (max-width: 560px) */
             .review-slide .review {
                 flex: 0 0 100% !important;
-                min-height: auto;
+                min-height: 336px; /* Увеличенная высота и на мобильных */
                 padding: 25px 20px;
                 width: 100% !important;
                 max-width: 100% !important;
@@ -252,13 +281,14 @@
             }
         }
         
-        /* Дополнительное переопределение для маленьких экранов (max-width: 560px) */
+        /* Дополнительное переопределение для маленьких экранов */
         @media (max-width: 560px) {
             .review-slide .review {
                 flex: 0 0 100% !important;
                 scroll-snap-align: none !important;
                 width: 100% !important;
                 max-width: 100% !important;
+                min-height: 336px !important;
             }
             
             .review-slide {
@@ -489,7 +519,6 @@
             <h2 class="sec-title anim">Что о нас говорят<span class="aside">Честно, без цензуры и причёсывания.</span></h2>
             
             <div class="reviews-slider anim" data-stagger="90">
-                <!-- Контейнер для слайдов -->
                 <div class="reviews-track">
                     
                     <!-- Отзыв 1 -->
@@ -943,12 +972,10 @@ document.addEventListener('DOMContentLoaded', function() {
             this.prevBtn.addEventListener('click', () => this.prev());
             this.nextBtn.addEventListener('click', () => this.next());
             
-            // Touch события
             this.track.addEventListener('touchstart', (e) => this.touchStart(e), {passive: true});
             this.track.addEventListener('touchmove', (e) => this.touchMove(e), {passive: true});
             this.track.addEventListener('touchend', () => this.touchEnd());
             
-            // Mouse события
             this.track.addEventListener('mousedown', (e) => this.touchStart(e));
             this.track.addEventListener('mousemove', (e) => this.touchMove(e));
             this.track.addEventListener('mouseup', () => this.touchEnd());
@@ -1043,7 +1070,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Инициализация карусели
     const sliders = document.querySelectorAll('.reviews-slider');
     sliders.forEach(slider => new ReviewsSlider(slider));
 });
