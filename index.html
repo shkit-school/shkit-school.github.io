@@ -119,11 +119,16 @@
             flex-grow: 1;
         }
         
-        /* Кнопки навигации (только десктоп) */
+        /* Кнопки навигации */
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
         .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -136,14 +141,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            flex-shrink: 0;
         }
         
         .slider-btn:hover {
             background: #ff5252;
-            transform: translateY(-50%) scale(1.1);
+            transform: scale(1.1);
         }
         
         .slider-btn:focus {
@@ -151,20 +156,12 @@
             outline-offset: 2px;
         }
         
-        .slider-btn--prev {
-            left: -20px;
-        }
-        
-        .slider-btn--next {
-            right: -20px;
-        }
-        
         /* Пагинация */
         .slider-dots {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-top: 25px;
+            flex-wrap: wrap;
         }
         
         .slider-dots .dot {
@@ -191,7 +188,11 @@
             }
             
             .review-slide .review {
-                min-height: 300px;
+                min-height: 280px;
+            }
+            
+            .slider-nav {
+                margin-top: 30px;
             }
         }
         
@@ -202,17 +203,24 @@
                 margin: 30px 0;
             }
             
-            .slider-btn {
-                display: none !important;
+            .slider-nav {
+                display: none;
             }
             
             .review-slide {
                 min-width: 100%;
-                padding: 0 5px;
+                padding: 0;
             }
             
             .review-slide .review {
-                min-height: 280px;
+                min-height: auto;
+                padding: 25px 20px;
+            }
+            
+            .review-slide .review p {
+                font-size: 14px;
+                line-height: 1.5;
+                margin-bottom: 15px;
             }
             
             .slider-dots {
@@ -446,10 +454,6 @@
             <h2 class="sec-title anim">Что о нас говорят<span class="aside">Честно, без цензуры и причёсывания.</span></h2>
             
             <div class="reviews-slider anim" data-stagger="90">
-                <!-- Кнопки навигации (только десктоп) -->
-                <button class="slider-btn slider-btn--prev" aria-label="Предыдущие отзывы">‹</button>
-                <button class="slider-btn slider-btn--next" aria-label="Следующие отзывы">›</button>
-                
                 <!-- Контейнер для слайдов -->
                 <div class="reviews-track">
                     
@@ -563,8 +567,12 @@
                     
                 </div>
                 
-                <!-- Пагинация -->
-                <div class="slider-dots" aria-hidden="true"></div>
+                <!-- Кнопки навигации (только десктоп) -->
+                <div class="slider-nav">
+                    <button class="slider-btn" data-direction="prev" aria-label="Предыдущие отзывы">‹</button>
+                    <div class="slider-dots" aria-hidden="true"></div>
+                    <button class="slider-btn" data-direction="next" aria-label="Следующие отзывы">›</button>
+                </div>
             </div>
             
             <p class="reviews-foot anim">Это не всё. Мы могли бы заполнить отзывами весь сайт — но лучше вы придёте и напишете свой.</p>
@@ -872,7 +880,6 @@
 <!-- ============ СКРИПТЫ ============ -->
 <script src="assets/js/main.js" defer></script>
 
-<!-- Управление прокруткой и карусель отзывов -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Прокрутка к якорям
@@ -906,8 +913,8 @@ document.addEventListener('DOMContentLoaded', function() {
             this.slider = container;
             this.track = container.querySelector('.reviews-track');
             this.slides = container.querySelectorAll('.review-slide');
-            this.prevBtn = container.querySelector('.slider-btn--prev');
-            this.nextBtn = container.querySelector('.slider-btn--next');
+            this.prevBtn = container.querySelector('[data-direction="prev"]');
+            this.nextBtn = container.querySelector('[data-direction="next"]');
             this.dotsContainer = container.querySelector('.slider-dots');
             
             this.currentIndex = 0;
@@ -977,7 +984,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         prev() {
-            // Зацикленная навигация
+            // Стрелка ВЛЕВО - показываем ПРЕДЫДУЩИЕ отзывы
             this.currentIndex -= this.slidesPerView;
             if (this.currentIndex < 0) {
                 this.currentIndex = this.slides.length - this.slidesPerView;
@@ -986,7 +993,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         next() {
-            // Зацикленная навигация
+            // Стрелка ВПРАВО - показываем СЛЕДУЮЩИЕ отзывы
             this.currentIndex += this.slidesPerView;
             if (this.currentIndex >= this.slides.length) {
                 this.currentIndex = 0;
@@ -1017,9 +1024,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const slideWidth = this.track.clientWidth / this.slidesPerView;
             const movedBy = this.currentTranslate - this.prevTranslate;
             
+            // Свайп ВЛЕВО - следующие отзывы
             if (movedBy < -50) {
                 this.next();
-            } else if (movedBy > 50) {
+            }
+            // Свайп ВПРАВО - предыдущие отзывы
+            else if (movedBy > 50) {
                 this.prev();
             }
             
