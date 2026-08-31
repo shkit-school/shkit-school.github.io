@@ -40,43 +40,25 @@
             min-height: 500px;
             border-radius: 12px;
         }
+        
+        /* ===== ЯКОРЯ: ИСПРАВЛЕНИЯ ===== */
+        /* Убираем двойной offset: CSS scroll-margin-top уже есть для section[id] и #zapis */
+        /* Для #abajur — отдельный отступ, чтобы был виден верх тёмного блока */
+        #abajur {
+            scroll-margin-top: 120px;
+        }
+        
+        /* Для #zapis — как у Контактов */
+        #zapis {
+            scroll-margin-top: calc(var(--header-h) + 10px);
+        }
+        
         @media (max-width: 768px) {
-            .form-card--webask iframe {
-                min-height: 550px;
+            #abajur {
+                scroll-margin-top: 80px;
             }
-            .m-cta .btn {
-                color: #fff !important;
-                background: var(--coral-ink) !important;
-                padding: 6px 14px !important;
-                border-radius: 30px !important;
-                font-size: 14px !important;
-                display: inline-block !important;
-                margin-top: -6px !important;
-                line-height: 1.4 !important;
-                border: none !important;
-            }
-            .hero-scroll {
-                display: none !important;
-            }
-            .hero-btn-wrapper {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: 70px;
-                margin: 5px 0 0 0;
-            }
-            .hero-btn-wrapper .btn--lg {
-                padding: 10px 24px !important;
-                font-size: 16px !important;
-                margin: 0 !important;
-            }
-            .doubt-cta .hero-btn-wrapper {
-                min-height: 60px;
-            }
-            .doubt-cta .hero-btn-wrapper .btn--lg {
-                padding: 10px 24px !important;
-                font-size: 16px !important;
-                margin: 0 !important;
+            #zapis {
+                scroll-margin-top: calc(var(--header-h) + 10px);
             }
         }
         
@@ -137,7 +119,7 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: var(--coral-ink, #ff6b6b);
+            background: var(--coral-ink, #BC3636);
             color: #fff;
             border: none;
             cursor: pointer;
@@ -159,7 +141,7 @@
         }
         
         .slider-btn:hover {
-            background: #ff5252;
+            background: var(--coral-dark, #D13434);
             transform: scale(1.1);
         }
         
@@ -194,7 +176,7 @@
         }
         
         .slider-dots .dot.active {
-            background: var(--coral-ink, #ff6b6b);
+            background: var(--coral-ink, #BC3636);
             transform: scale(1.3);
         }
         
@@ -241,12 +223,16 @@
                 width: 100%;
             }
             
+            /* ПЕРЕОПРЕДЕЛЯЕМ flex: 0 0 84% из style.css (max-width: 560px) */
             .review-slide .review {
+                flex: 0 0 100% !important;
                 min-height: auto;
                 padding: 25px 20px;
-                width: 100%;
+                width: 100% !important;
+                max-width: 100% !important;
                 border-radius: 12px;
                 margin: 0;
+                scroll-snap-align: none !important;
             }
             
             .review-slide .review p {
@@ -263,6 +249,23 @@
             .slider-dots .dot {
                 width: 8px;
                 height: 8px;
+            }
+        }
+        
+        /* Дополнительное переопределение для маленьких экранов (max-width: 560px) */
+        @media (max-width: 560px) {
+            .review-slide .review {
+                flex: 0 0 100% !important;
+                scroll-snap-align: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .review-slide {
+                flex: 0 0 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+                width: 100% !important;
             }
         }
     </style>
@@ -914,44 +917,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Прокрутка к якорям
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            const target = document.querySelector(targetId);
-            if (target) {
-                e.preventDefault();
-                const isMobile = window.innerWidth <= 768;
-                let offset = 0;
-                
-                if (isMobile) {
-                    // Мобильная версия
-                    if (targetId === '#abajur') {
-                        offset = 60; // Театр: видно верх блока с фото
-                    } else if (targetId === '#zapis') {
-                        offset = 20; // Записаться: как Контакты
-                    } else {
-                        offset = 20; // Все остальные пункты
-                    }
-                } else {
-                    // Десктоп
-                    if (targetId === '#abajur') {
-                        offset = 40; // Театр: видно верх тёмно-серого блока
-                    } else if (targetId === '#zapis') {
-                        offset = 20; // Записаться: как Контакты
-                    }
-                }
-                
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
     // ============ КАРУСЕЛЬ ОТЗЫВОВ ============
     class ReviewsSlider {
         constructor(container) {
@@ -1029,7 +994,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         prev() {
-            // Стрелка ВЛЕВО - показываем ПРЕДЫДУЩИЕ отзывы
             this.currentIndex -= this.slidesPerView;
             if (this.currentIndex < 0) {
                 this.currentIndex = this.slides.length - this.slidesPerView;
@@ -1038,7 +1002,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         next() {
-            // Стрелка ВПРАВО - показываем СЛЕДУЮЩИЕ отзывы
             this.currentIndex += this.slidesPerView;
             if (this.currentIndex >= this.slides.length) {
                 this.currentIndex = 0;
@@ -1069,12 +1032,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const slideWidth = this.track.clientWidth / this.slidesPerView;
             const movedBy = this.currentTranslate - this.prevTranslate;
             
-            // Свайп ВЛЕВО - следующие отзывы
             if (movedBy < -50) {
                 this.next();
-            }
-            // Свайп ВПРАВО - предыдущие отзывы
-            else if (movedBy > 50) {
+            } else if (movedBy > 50) {
                 this.prev();
             }
             
