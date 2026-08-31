@@ -41,32 +41,35 @@
             border-radius: 12px;
         }
         
-        /* ===== ЯКОРЯ: ИСПРАВЛЕНИЯ ===== */
-        /* Уменьшаем scroll-margin-top, чтобы тексты были ближе к шапке */
+        /* ===== ЯКОРЯ: ТОЧНАЯ ПОДКРУТКА ===== */
         section[id] {
-            scroll-margin-top: 10px;
+            scroll-margin-top: 15px; /* Десктоп: чуть подтянут вверх, но не прижат */
         }
         
         #zapis {
-            scroll-margin-top: calc(var(--header-h) + 10px);
+            scroll-margin-top: calc(var(--header-h) + 10px); /* Не трогаем */
         }
         
-        /* Театр — не трогаем, оставляем как было */
         #abajur {
-            scroll-margin-top: 120px;
+            scroll-margin-top: 120px; /* Не трогаем */
         }
         
         @media (max-width: 768px) {
             section[id] {
-                scroll-margin-top: 5px;
+                scroll-margin-top: 20px; /* Мобильная: чуть больше отступа */
             }
             
             #zapis {
-                scroll-margin-top: calc(var(--header-h) + 10px);
+                scroll-margin-top: calc(var(--header-h) + 10px); /* Не трогаем */
             }
             
             #abajur {
-                scroll-margin-top: 80px;
+                scroll-margin-top: 80px; /* Не трогаем */
+            }
+            
+            /* Убираем "Листай" на мобильной */
+            .hero-scroll {
+                display: none !important;
             }
         }
         
@@ -128,7 +131,7 @@
             flex-direction: column;
             width: 100%;
             height: 100%;
-            min-height: 384px; /* 320px + 20% = 384px */
+            min-height: 384px;
             box-sizing: border-box;
         }
         
@@ -220,7 +223,7 @@
             }
             
             .review-slide .review {
-                min-height: 336px; /* 280px + 20% = 336px */
+                min-height: 336px;
             }
             
             .slider-nav {
@@ -255,7 +258,7 @@
             
             .review-slide .review {
                 flex: 0 0 100% !important;
-                min-height: 336px; /* Увеличенная высота и на мобильных */
+                min-height: 336px;
                 padding: 25px 20px;
                 width: 100% !important;
                 max-width: 100% !important;
