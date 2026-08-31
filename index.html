@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Актёрское мастерство для детей и взрослых в Челябинске — школа кино и театра ШКИТ</title>
 
-     <!-- ===== МЕТА-ТЕГИ ДЛЯ ПОДТВЕРЖДЕНИЯ В ПОИСКОВЫХ СИСТЕМАХ ===== -->
+    <!-- ===== МЕТА-ТЕГИ ДЛЯ ПОДТВЕРЖДЕНИЯ В ПОИСКОВЫХ СИСТЕМАХ ===== -->
     <meta name="google-site-verification" content="Fy5LMNzqYVgNrT6crFQ84-LidP4Kx18Z36VZ2JIsDSQ" />
-  <meta name="yandex-verification" content="124bcf5dccd41779" />
+    <meta name="yandex-verification" content="124bcf5dccd41779" />
     <meta name="description" content="Школа кино и театра «ШКИТ», Челябинск. 15+ лет раскрываем таланты детей и взрослых для сцены и жизни. Курсы для детей, подростков и взрослых, спектакли на профессиональной сцене. Пробное занятие — по заявке.">
     <meta name="theme-color" content="#2D2D2D">
     <link rel="canonical" href="https://shkit-school.github.io/">
@@ -24,12 +23,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
-    <!-- Исправлен preload: теперь ссылается на существующее изображение -->
     <link rel="preload" as="image" href="assets/img/gal125.jpg" fetchpriority="high">
     <script>document.documentElement.className+=" js";</script>
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        /* Стиль для выравнивания карточки формы */
         .form-card--webask {
             display: flex;
             flex-direction: column;
@@ -47,8 +44,6 @@
             .form-card--webask iframe {
                 min-height: 550px;
             }
-            
-            /* ===== МОБИЛЬНЫЕ КНОПКИ: ИСПРАВЛЕНИЯ ===== */
             .m-cta .btn {
                 color: #fff !important;
                 background: var(--coral-ink) !important;
@@ -60,13 +55,9 @@
                 line-height: 1.4 !important;
                 border: none !important;
             }
-            
-            /* СКРЫВАЕМ "ЛИСТАЙ" НА МОБИЛЬНЫХ */
             .hero-scroll {
                 display: none !important;
             }
-            
-            /* Кнопка на первой странице и в "Первом шаге" */
             .hero-btn-wrapper {
                 display: flex;
                 justify-content: center;
@@ -86,6 +77,105 @@
                 padding: 10px 24px !important;
                 font-size: 16px !important;
                 margin: 0 !important;
+            }
+        }
+        
+        /* ===== КАРУСЕЛЬ ОТЗЫВОВ ===== */
+        .reviews-slider {
+            position: relative;
+            overflow: hidden;
+            padding: 0 40px;
+        }
+        .reviews-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            touch-action: pan-y;
+        }
+        .review-slide {
+            min-width: 100%;
+            padding: 0 5px;
+            box-sizing: border-box;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--coral-ink, #ff6b6b);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .slider-btn:hover {
+            background: #ff5252;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .slider-btn:focus {
+            outline: 3px solid #ffb3b3;
+            outline-offset: 2px;
+        }
+        .slider-btn--prev {
+            left: -5px;
+        }
+        .slider-btn--next {
+            right: -5px;
+        }
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+        }
+        .slider-dots .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            padding: 0;
+        }
+        .slider-dots .dot.active {
+            background: var(--coral-ink, #ff6b6b);
+            transform: scale(1.3);
+        }
+        @media (max-width: 768px) {
+            .reviews-slider {
+                padding: 0;
+            }
+            .slider-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 18px;
+                top: 35%;
+            }
+            .slider-btn--prev {
+                left: -3px;
+            }
+            .slider-btn--next {
+                right: -3px;
+            }
+            .review-slide {
+                padding: 0 3px;
+            }
+            .slider-dots {
+                gap: 8px;
+                margin-top: 20px;
+            }
+            .slider-dots .dot {
+                width: 8px;
+                height: 8px;
             }
         }
     </style>
@@ -150,7 +240,6 @@
 
     <!-- ============ 1. ПЕРВЫЙ ЭКРАН ============ -->
     <section class="hero" id="hero">
-        <!-- Исправлен src: теперь ссылается на существующее изображение -->
         <div class="hero-bg"><img src="assets/img/gal125.jpg" alt="Ученики школы ШКИТ на сцене за секунду до выхода" width="1280" height="854" fetchpriority="high"></div>
         <div class="wrap">
             <span class="hero-tag anim">Челябинск · с 2009 года</span>
@@ -209,8 +298,6 @@
             <span class="kicker anim">Курсы</span>
             <h2 class="sec-title anim">Курсы актерского мастерства<span class="aside">Выход на сцену - начало больших перемен, ключ к смелости, поступлению и новым победам.</span></h2>
             <div class="cards cards--2" data-stagger="110">
-
-                <!-- Блок 4 — Дети -->
                 <article class="card">
                     <div class="card-media"><span class="card-tag">Дети · 5–11 лет</span>
                         <img src="assets/img/gallery-15.jpg" alt="Дети на отчётном спектакле школы ШКИТ" loading="lazy"></div>
@@ -230,8 +317,6 @@
                         <div class="card-actions"><button class="btn btn--block" data-popup="pop-kids">Подробнее</button></div>
                     </div>
                 </article>
-
-                <!-- Блок 5 — Подростки -->
                 <article class="card">
                     <div class="card-media"><span class="card-tag">Подростки · 12–17 лет</span>
                         <img src="assets/img/gal124.jpg" alt="Подростковый спектакль учеников школы ШКИТ" loading="lazy"></div>
@@ -261,8 +346,6 @@
             <span class="kicker anim">Проекты</span>
             <h2 class="sec-title anim">Театральные проекты для взрослых<span class="aside">Вспомнить, каково это — выходить на сцену.</span></h2>
             <div class="cards cards--3" data-stagger="100">
-
-                <!-- Блок 7 — Давай сыграем жизнь -->
                 <article class="card">
                     <div class="card-media"><span class="card-tag">Взрослые</span>
                         <img src="assets/img/gal104.jpg" alt="Взрослый спектакль-проект школы ШКИТ" loading="lazy"></div>
@@ -277,8 +360,6 @@
                         <div class="card-actions"><button class="btn btn--block" data-popup="pop-adults">Подробнее</button></div>
                     </div>
                 </article>
-
-                <!-- Блок 8 — Магия слова -->
                 <article class="card">
                     <div class="card-media"><span class="card-tag">Поэзия</span>
                         <img src="assets/img/gal105.jpg" alt="Поэтический спектакль мастерской «Магия слова»" loading="lazy"></div>
@@ -293,8 +374,6 @@
                         <div class="card-actions"><button class="btn btn--block" data-popup="pop-poetry">Подробнее</button></div>
                     </div>
                 </article>
-
-                <!-- Блок «Мой бенефис» — ВИП -->
                 <article class="card">
                     <div class="card-media"><span class="card-tag card-tag--excl">Эксклюзив</span>
                         <img src="assets/img/adults.jpg" alt="Индивидуальный спектакль-бенефис в школе ШКИТ" loading="lazy"></div>
@@ -313,33 +392,98 @@
         </div>
     </section>
 
-    <!-- ============ 9. ОТЗЫВЫ ============ -->
+    <!-- ============ 9. ОТЗЫВЫ (КАРУСЕЛЬ) ============ -->
     <section class="section bg-white" id="otzyvy">
         <div class="wrap">
             <span class="kicker anim">Отзывы</span>
             <h2 class="sec-title anim">Что о нас говорят<span class="aside">Честно, без цензуры и причёсывания.</span></h2>
-            <div class="reviews" data-stagger="90">
-                <div class="review review--dark">
-                    <span class="quote-mark" aria-hidden="true">”</span>
-                    <p>Пришла с мыслью «ну попробую, хуже не будет». Ушла с главной ролью в спектакле и пониманием, что театр — это моё. Педагоги — огонь. Местами жёстко, но именно это и работает. Без соплей, зато с результатом.</p>
-                    <div class="review-author"><div class="review-ava">А</div><div class="review-who"><b>Анна, 28 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
+            
+            <div class="reviews-slider anim" data-stagger="90">
+                <!-- Кнопки навигации -->
+                <button class="slider-btn slider-btn--prev" aria-label="Предыдущий отзыв">‹</button>
+                <button class="slider-btn slider-btn--next" aria-label="Следующий отзыв">›</button>
+                
+                <!-- Контейнер для слайдов -->
+                <div class="reviews-track">
+                    
+                    <!-- Отзыв 1 -->
+                    <div class="review-slide">
+                        <div class="review review--dark">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Пришла с мыслью «ну попробую, хуже не будет». Ушла с главной ролью в спектакле и пониманием, что театр — это моё. Педагоги — огонь. Местами жёстко, но именно это и работает. Без соплей, зато с результатом.</p>
+                            <div class="review-author"><div class="review-ava">А</div><div class="review-who"><b>Анна, 28 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 2 -->
+                    <div class="review-slide">
+                        <div class="review review--coral">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Сын стеснялся даже в магазине спросить, где хлеб. Через полгода сам вызвался читать стихи на школьном конкурсе. Я чуть не упала. Спасибо, ШКИТ, вы делаете магию.</p>
+                            <div class="review-author"><div class="review-ava">О</div><div class="review-who"><b>Ольга</b><span>мама Артёма, 7 лет</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 3 -->
+                    <div class="review-slide">
+                        <div class="review review--coral">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Готовился к поступлению в театральный. Боялся — не то слово. Здесь меня не просто натаскали по программе, а реально вложили в голову, что я смогу. Поступил на бюджет. До сих пор не верю, но факт.</p>
+                            <div class="review-author"><div class="review-ava">К</div><div class="review-who"><b>Кирилл, 17 лет</b><span>выпускник</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 4 -->
+                    <div class="review-slide">
+                        <div class="review review--dark">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Думал, в 40 лет поздно начинать. Друзья крутили у виска. А я взял и сделал. «Мой бенефис» — опыт, который не сравнить ни с чем. Пьеса под меня, афиша с моим лицом, зал, аплодисменты. Легальный способ почувствовать себя звездой.</p>
+                            <div class="review-author"><div class="review-ava">И</div><div class="review-who"><b>Игорь, 42 года</b><span>проект «Мой бенефис»</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 5 -->
+                    <div class="review-slide">
+                        <div class="review review--dark">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Дочка три года занималась в другом месте — ходила без огня. Здесь она впервые попросила «мама, можно я ещё на один курс останусь?». Это дорогого стоит. Педагоги нашли подход с первого занятия.</p>
+                            <div class="review-author"><div class="review-ava">М</div><div class="review-who"><b>Марина</b><span>мама Лизы, 12 лет</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 6 -->
+                    <div class="review-slide">
+                        <div class="review review--coral">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Боялась публичных выступлений до дрожи в коленках. Сейчас веду совещания на 50 человек спокойно. Актёрское мастерство реально работает в жизни, не только на сцене. Спасибо за смелость, которой не было.</p>
+                            <div class="review-author"><div class="review-ava">Е</div><div class="review-who"><b>Елена, 35 лет</b><span>проект «Магия слова»</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 7 -->
+                    <div class="review-slide">
+                        <div class="review review--dark">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Ходим всей семьёй! Я на «Давай сыграем», муж на «Магию слова», дочка в детскую группу. Нашли своё место силы. Теперь дома обсуждаем не сериалы, а сцены и образы. Это сблизило нас по-настоящему.</p>
+                            <div class="review-author"><div class="review-ava">Т</div><div class="review-who"><b>Татьяна</b><span>проект «Давай сыграем жизнь»</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 8 -->
+                    <div class="review-slide">
+                        <div class="review review--coral">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Перед первым занятием переживал, что буду выглядеть глупо. Вокруг все «серьёзные взрослые», а тут я в дурацкой шляпе изображаю ветер. Но именно это и раскрепощает. Смеялся как ребёнок. Теперь не пропускаю ни одного занятия.</p>
+                            <div class="review-author"><div class="review-ava">Д</div><div class="review-who"><b>Дмитрий, 45 лет</b><span>проект «Мой бенефис»</span></div></div>
+                        </div>
+                    </div>
+                    
                 </div>
-                <div class="review review--coral">
-                    <span class="quote-mark" aria-hidden="true">”</span>
-                    <p>Сын стеснялся даже в магазине спросить, где хлеб. Через полгода сам вызвался читать стихи на школьном конкурсе. Я чуть не упала. Спасибо, ШКИТ, вы делаете магию.</p>
-                    <div class="review-author"><div class="review-ava">О</div><div class="review-who"><b>Ольга</b><span>мама Артёма, 7 лет</span></div></div>
-                </div>
-                <div class="review review--coral">
-                    <span class="quote-mark" aria-hidden="true">”</span>
-                    <p>Готовился к поступлению в театральный. Боялся — не то слово. Здесь меня не просто натаскали по программе, а реально вложили в голову, что я смогу. Поступил на бюджет. До сих пор не верю, но факт.</p>
-                    <div class="review-author"><div class="review-ava">К</div><div class="review-who"><b>Кирилл, 17 лет</b><span>выпускник</span></div></div>
-                </div>
-                <div class="review review--dark">
-                    <span class="quote-mark" aria-hidden="true">”</span>
-                    <p>Думал, в 40 лет поздно начинать. Друзья крутили у виска. А я взял и сделал. «Мой бенефис» — опыт, который не сравнить ни с чем. Пьеса под меня, афиша с моим лицом, зал, аплодисменты. Легальный способ почувствовать себя звездой.</p>
-                    <div class="review-author"><div class="review-ava">И</div><div class="review-who"><b>Игорь, 42 года</b><span>проект «Мой бенефис»</span></div></div>
-                </div>
+                
+                <!-- Пагинация -->
+                <div class="slider-dots" aria-hidden="true"></div>
             </div>
+            
             <p class="reviews-foot anim">Это не всё. Мы могли бы заполнить отзывами весь сайт — но лучше вы придёте и напишете свой.</p>
         </div>
     </section>
@@ -388,9 +532,9 @@
                             <img src="assets/img/gal107.jpg" alt="Постер детского спектакля" loading="lazy"></div>
                         <div class="event-body">
                             <h3>«Рыбки учатся дышать»</h3>
-                            <div class="e-meta">7 июня, 19:00 · НХТ</div>
+                            <div class="e-meta">5 октября, 19:00 · НХТ</div>
                             <div class="e-short">Проект завершен. Скоро появится афиша нового сезона.</div>
-                            <a class="btn btn--sm btn--block" href="https://abajur.timepad.ru/events/" target="_blank" rel="noopener" disabled>Купить билет</a>
+                            <a class="btn btn--sm btn--block btn--disabled" aria-disabled="true">Скоро в продаже</a>
                         </div>
                     </article>
                     <article class="event">
@@ -411,11 +555,11 @@
             <div class="abajur anim" id="abajur">
                 <div class="abajur-media"><img src="assets/img/gal100.jpg" alt="Перформанс плейбэк-театра «Абажур»" loading="lazy"></div>
                 <div class="abajur-body">
-                    <span class="kicker">Наши друзья плейбэк театр "АБАЖУР"</span>
+                    <span class="kicker">Наши друзья — плейбэк-театр «Абажур»</span>
                     <h3>Театр, где ваши истории обретают свет</h3>
                     <p>В «Абажуре» не играют выученных пьес. Здесь играют саму жизнь — ту, что прямо сейчас пульсирует в сердцах зрителей. Вы рассказываете историю, ведущий помогает оформить чувство, а актёры и музыкант тут же, без единой репетиции, воплощают её на сцене.</p>
                     <p>Под мягким, уютным светом — словно под абажуром старинной лампы — здесь смеялись и плакали, находили ответы и просто грелись душой. Приходите на огонёк. Новые события театра всегда в нашей афише.</p>
-                   <div>
+                    <div>
                         <a class="btn btn--on-dark btn--ghost" href="https://vk.ru/teatr_abajur" target="_blank" rel="noopener noreferrer">
                             Подробнее о театре
                         </a>
@@ -453,7 +597,6 @@
             <span class="kicker anim">Контакты</span>
             <h2 class="sec-title anim">Как к нам попасть?</h2>
             <div class="contacts-grid">
-                <!-- ЛЕВАЯ КОЛОНКА: Контакты и карта -->
                 <div class="contact-info anim">
                     <div class="contact-rows">
                         <div class="row"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 22s8-5.5 8-12a8 8 0 10-16 0c0 6.5 8 12 8 12z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -470,7 +613,6 @@
                             <svg viewBox="0 0 24 24"><path d="M3 20V4h3.2l5 8 5-8H21v16h-3V9.5l-4.8 7.5h-.4L8 9.5V20z"/></svg>MAX</a>
                     </div>
                     <div class="map-wrap" style="margin-top:22px">
-                        <!-- Исправлен iframe: удалён устаревший атрибут allowfullscreen -->
                         <iframe title="Карта: Школа кино и театра ШКИТ, вход с ул. Тернопольской" 
                             loading="lazy" 
                             src="https://yandex.ru/map-widget/v1/?ll=61.371311%2C55.158862&z=17&pt=61.371311%2C55.158862" 
@@ -481,9 +623,7 @@
                     </div>
                 </div>
 
-                <!-- ПРАВАЯ КОЛОНКА: Только форма (весь лишний текст удалён) -->
                 <div class="form-card form-card--webask anim" id="zapis">
-                    <!-- Здесь только iframe с формой WebAsk -->
                     <iframe 
                         width="100%" 
                         height="100%" 
@@ -493,8 +633,6 @@
                         allow="fullscreen; autoplay; encrypted-media; clipboard-write; picture-in-picture; payment">
                     </iframe>
                 </div>
-                <!-- ====== КОНЕЦ ФОРМЫ ====== -->
-                
             </div>
         </div>
     </section>
@@ -667,7 +805,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     offset = isMobile ? 100 : 20;
                 }
                 if (targetId === '#abajur') {
-                    offset = isMobile ? 120 : 40; // ИСПРАВЛЕНИЕ ДЛЯ ТЕАТРА
+                    offset = isMobile ? 120 : 40;
                 }
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
                 window.scrollTo({
@@ -677,6 +815,152 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // ============ КАРУСЕЛЬ ОТЗЫВОВ ============
+    class ReviewsSlider {
+        constructor(container) {
+            this.slider = container;
+            this.track = container.querySelector('.reviews-track');
+            this.slides = container.querySelectorAll('.review-slide');
+            this.prevBtn = container.querySelector('.slider-btn--prev');
+            this.nextBtn = container.querySelector('.slider-btn--next');
+            this.dotsContainer = container.querySelector('.slider-dots');
+            
+            this.currentIndex = 0;
+            this.slidesPerView = 1;
+            this.isDragging = false;
+            this.startX = 0;
+            this.currentTranslate = 0;
+            this.prevTranslate = 0;
+            
+            this.init();
+        }
+        
+        init() {
+            this.checkViewport();
+            this.createDots();
+            
+            this.prevBtn.addEventListener('click', () => this.prev());
+            this.nextBtn.addEventListener('click', () => this.next());
+            
+            // Touch события
+            this.track.addEventListener('touchstart', (e) => this.touchStart(e), {passive: true});
+            this.track.addEventListener('touchmove', (e) => this.touchMove(e), {passive: true});
+            this.track.addEventListener('touchend', () => this.touchEnd());
+            
+            // Mouse события
+            this.track.addEventListener('mousedown', (e) => this.touchStart(e));
+            this.track.addEventListener('mousemove', (e) => this.touchMove(e));
+            this.track.addEventListener('mouseup', () => this.touchEnd());
+            this.track.addEventListener('mouseleave', () => this.touchEnd());
+            
+            window.addEventListener('resize', () => this.checkViewport());
+            
+            this.updateSlider();
+        }
+        
+        checkViewport() {
+            if (window.innerWidth > 768) {
+                this.slidesPerView = 2;
+            } else {
+                this.slidesPerView = 1;
+            }
+            this.maxIndex = Math.max(0, this.slides.length - this.slidesPerView);
+            if (this.currentIndex > this.maxIndex) {
+                this.currentIndex = this.maxIndex;
+            }
+            this.createDots();
+            this.updateSlider();
+        }
+        
+        createDots() {
+            if (!this.dotsContainer) return;
+            this.dotsContainer.innerHTML = '';
+            
+            const dotsCount = this.slides.length - this.slidesPerView + 1;
+            for (let i = 0; i < dotsCount; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('dot');
+                dot.setAttribute('aria-label', 'Перейти к отзыву ' + (i + 1));
+                dot.addEventListener('click', () => {
+                    this.currentIndex = i;
+                    this.updateSlider();
+                });
+                this.dotsContainer.appendChild(dot);
+            }
+        }
+        
+        updateSlider() {
+            const slideWidth = this.track.clientWidth / this.slidesPerView;
+            this.track.style.transform = 'translateX(-' + (this.currentIndex * slideWidth) + 'px)';
+            
+            const dots = this.dotsContainer.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === this.currentIndex);
+            });
+            
+            this.prevBtn.disabled = this.currentIndex === 0;
+            this.nextBtn.disabled = this.currentIndex === this.maxIndex;
+            
+            this.prevBtn.style.opacity = this.currentIndex === 0 ? '0.5' : '1';
+            this.nextBtn.style.opacity = this.currentIndex === this.maxIndex ? '0.5' : '1';
+        }
+        
+        prev() {
+            if (this.currentIndex > 0) {
+                this.currentIndex--;
+                this.updateSlider();
+            }
+        }
+        
+        next() {
+            if (this.currentIndex < this.maxIndex) {
+                this.currentIndex++;
+                this.updateSlider();
+            }
+        }
+        
+        touchStart(e) {
+            this.isDragging = true;
+            this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+            this.track.style.transition = 'none';
+        }
+        
+        touchMove(e) {
+            if (!this.isDragging) return;
+            const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+            const diff = currentX - this.startX;
+            this.currentTranslate = this.prevTranslate + diff;
+            
+            const maxTranslate = 0;
+            const minTranslate = -(this.slides.length - this.slidesPerView) * (this.track.clientWidth / this.slidesPerView);
+            this.currentTranslate = Math.max(Math.min(this.currentTranslate, maxTranslate), minTranslate);
+            
+            this.track.style.transform = 'translateX(' + this.currentTranslate + 'px)';
+        }
+        
+        touchEnd() {
+            if (!this.isDragging) return;
+            this.isDragging = false;
+            this.track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            
+            const slideWidth = this.track.clientWidth / this.slidesPerView;
+            const movedBy = this.currentTranslate - this.prevTranslate;
+            
+            if (movedBy < -100 && this.currentIndex < this.maxIndex) {
+                this.currentIndex++;
+            } else if (movedBy > 100 && this.currentIndex > 0) {
+                this.currentIndex--;
+            }
+            
+            this.prevTranslate = -this.currentIndex * slideWidth;
+            this.updateSlider();
+        }
+    }
+    
+    // Инициализация карусели
+    const sliders = document.querySelectorAll('.reviews-slider');
+    sliders.forEach(slider => new ReviewsSlider(slider));
 });
 </script>
 </body>
