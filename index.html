@@ -43,31 +43,30 @@
         
         /* ===== ЯКОРЯ: ТОЧНАЯ ПОДКРУТКА ===== */
         section[id] {
-            scroll-margin-top: 15px; /* Десктоп: чуть подтянут вверх, но не прижат */
+            scroll-margin-top: 15px;
         }
         
         #zapis {
-            scroll-margin-top: calc(var(--header-h) + 10px); /* Не трогаем */
+            scroll-margin-top: calc(var(--header-h) + 10px);
         }
         
         #abajur {
-            scroll-margin-top: 120px; /* Не трогаем */
+            scroll-margin-top: 120px;
         }
         
         @media (max-width: 768px) {
             section[id] {
-                scroll-margin-top: 20px; /* Мобильная: чуть больше отступа */
+                scroll-margin-top: 20px;
             }
             
             #zapis {
-                scroll-margin-top: calc(var(--header-h) + 10px); /* Не трогаем */
+                scroll-margin-top: calc(var(--header-h) + 10px);
             }
             
             #abajur {
-                scroll-margin-top: 80px; /* Не трогаем */
+                scroll-margin-top: 80px;
             }
             
-            /* Убираем "Листай" на мобильной */
             .hero-scroll {
                 display: none !important;
             }
@@ -107,9 +106,10 @@
         .reviews-track {
             display: flex;
             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            touch-action: pan-y;
             cursor: grab;
             width: 100%;
+            /* ИСПРАВЛЕНИЕ: убираем pan-y, разрешаем горизонтальный свайп */
+            touch-action: pan-x pan-y;
         }
         
         .reviews-track:active {
@@ -133,6 +133,9 @@
             height: 100%;
             min-height: 384px;
             box-sizing: border-box;
+            /* ИСПРАВЛЕНИЕ: убираем scroll-snap */
+            scroll-snap-align: none !important;
+            scroll-snap-stop: normal !important;
         }
         
         .review-slide .review p {
@@ -242,6 +245,7 @@
             
             .reviews-track {
                 width: 100%;
+                touch-action: pan-x pan-y; /* Разрешаем горизонтальный свайп */
             }
             
             .slider-nav {
@@ -249,11 +253,11 @@
             }
             
             .review-slide {
-                flex: 0 0 100%;
-                min-width: 100%;
-                max-width: 100%;
+                flex: 0 0 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
                 padding: 0;
-                width: 100%;
+                width: 100% !important;
             }
             
             .review-slide .review {
@@ -265,6 +269,7 @@
                 border-radius: 12px;
                 margin: 0;
                 scroll-snap-align: none !important;
+                scroll-snap-stop: normal !important;
             }
             
             .review-slide .review p {
@@ -289,6 +294,7 @@
             .review-slide .review {
                 flex: 0 0 100% !important;
                 scroll-snap-align: none !important;
+                scroll-snap-stop: normal !important;
                 width: 100% !important;
                 max-width: 100% !important;
                 min-height: 336px !important;
@@ -975,10 +981,12 @@ document.addEventListener('DOMContentLoaded', function() {
             this.prevBtn.addEventListener('click', () => this.prev());
             this.nextBtn.addEventListener('click', () => this.next());
             
+            // Touch события (с passive: false для preventDefault)
             this.track.addEventListener('touchstart', (e) => this.touchStart(e), {passive: true});
-            this.track.addEventListener('touchmove', (e) => this.touchMove(e), {passive: true});
+            this.track.addEventListener('touchmove', (e) => this.touchMove(e), {passive: false});
             this.track.addEventListener('touchend', () => this.touchEnd());
             
+            // Mouse события
             this.track.addEventListener('mousedown', (e) => this.touchStart(e));
             this.track.addEventListener('mousemove', (e) => this.touchMove(e));
             this.track.addEventListener('mouseup', () => this.touchEnd());
