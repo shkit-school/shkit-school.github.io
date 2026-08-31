@@ -84,24 +84,48 @@
         .reviews-slider {
             position: relative;
             overflow: hidden;
-            padding: 0 40px;
+            padding: 0;
+            margin: 40px 0;
         }
+        
         .reviews-track {
             display: flex;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             touch-action: pan-y;
+            cursor: grab;
         }
+        
+        .reviews-track:active {
+            cursor: grabbing;
+        }
+        
         .review-slide {
             min-width: 100%;
-            padding: 0 5px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            display: flex;
+        }
+        
+        .review-slide .review {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
             box-sizing: border-box;
         }
+        
+        .review-slide .review p {
+            flex-grow: 1;
+        }
+        
+        /* Кнопки навигации (только десктоп) */
         .slider-btn {
             position: absolute;
-            top: 40%;
+            top: 50%;
             transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: var(--coral-ink, #ff6b6b);
             color: #fff;
@@ -116,26 +140,33 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
+        
         .slider-btn:hover {
             background: #ff5252;
             transform: translateY(-50%) scale(1.1);
         }
+        
         .slider-btn:focus {
             outline: 3px solid #ffb3b3;
             outline-offset: 2px;
         }
+        
         .slider-btn--prev {
-            left: -5px;
+            left: -20px;
         }
+        
         .slider-btn--next {
-            right: -5px;
+            right: -20px;
         }
+        
+        /* Пагинация */
         .slider-dots {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin-top: 25px;
         }
+        
         .slider-dots .dot {
             width: 10px;
             height: 10px;
@@ -146,33 +177,49 @@
             border: none;
             padding: 0;
         }
+        
         .slider-dots .dot.active {
             background: var(--coral-ink, #ff6b6b);
             transform: scale(1.3);
         }
+        
+        /* Десктоп: 2 карточки */
+        @media (min-width: 769px) {
+            .review-slide {
+                min-width: 50%;
+                padding: 0 15px;
+            }
+            
+            .review-slide .review {
+                min-height: 300px;
+            }
+        }
+        
+        /* Мобильная версия: без стрелок, свайп */
         @media (max-width: 768px) {
             .reviews-slider {
                 padding: 0;
+                margin: 30px 0;
             }
+            
             .slider-btn {
-                width: 32px;
-                height: 32px;
-                font-size: 18px;
-                top: 35%;
+                display: none !important;
             }
-            .slider-btn--prev {
-                left: -3px;
-            }
-            .slider-btn--next {
-                right: -3px;
-            }
+            
             .review-slide {
-                padding: 0 3px;
+                min-width: 100%;
+                padding: 0 5px;
             }
+            
+            .review-slide .review {
+                min-height: 280px;
+            }
+            
             .slider-dots {
                 gap: 8px;
                 margin-top: 20px;
             }
+            
             .slider-dots .dot {
                 width: 8px;
                 height: 8px;
@@ -399,9 +446,9 @@
             <h2 class="sec-title anim">Что о нас говорят<span class="aside">Честно, без цензуры и причёсывания.</span></h2>
             
             <div class="reviews-slider anim" data-stagger="90">
-                <!-- Кнопки навигации -->
-                <button class="slider-btn slider-btn--prev" aria-label="Предыдущий отзыв">‹</button>
-                <button class="slider-btn slider-btn--next" aria-label="Следующий отзыв">›</button>
+                <!-- Кнопки навигации (только десктоп) -->
+                <button class="slider-btn slider-btn--prev" aria-label="Предыдущие отзывы">‹</button>
+                <button class="slider-btn slider-btn--next" aria-label="Следующие отзывы">›</button>
                 
                 <!-- Контейнер для слайдов -->
                 <div class="reviews-track">
@@ -475,6 +522,42 @@
                             <span class="quote-mark" aria-hidden="true">”</span>
                             <p>Перед первым занятием переживал, что буду выглядеть глупо. Вокруг все «серьёзные взрослые», а тут я в дурацкой шляпе изображаю ветер. Но именно это и раскрепощает. Смеялся как ребёнок. Теперь не пропускаю ни одного занятия.</p>
                             <div class="review-author"><div class="review-ava">Д</div><div class="review-who"><b>Дмитрий, 45 лет</b><span>проект «Мой бенефис»</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 9 -->
+                    <div class="review-slide">
+                        <div class="review review--dark">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Пришла по рекомендации подруги, когда поняла, что боюсь выступать на работе. Через месяц почувствовала, как зажимы уходят. Ещё через месяц провела презентацию без дрожи в голосе. Коллеги заметили перемены.</p>
+                            <div class="review-author"><div class="review-ava">Н</div><div class="review-who"><b>Наталья, 31 год</b><span>проект «Магия слова»</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 10 -->
+                    <div class="review-slide">
+                        <div class="review review--coral">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Мой сын всегда был одиночкой, а в ШКИТ нашёл друзей. Теперь после занятий они гуляют вместе, репетируют дома по видеосвязи. Это не просто кружок — это настоящая дружба и поддержка.</p>
+                            <div class="review-author"><div class="review-ava">С</div><div class="review-who"><b>Светлана</b><span>мама Миши, 10 лет</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 11 -->
+                    <div class="review-slide">
+                        <div class="review review--dark">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Я пришла за компанию с мужем, а осталась ради себя. Театр оказался терапией лучше любого психолога. Час на сцене заменяет неделю отпуска. Теперь это моё личное время, которое я не променяю ни на что.</p>
+                            <div class="review-author"><div class="review-ava">В</div><div class="review-who"><b>Виктория, 38 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 12 -->
+                    <div class="review-slide">
+                        <div class="review review--coral">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Дочь готовилась к поступлению в театральный колледж. Педагоги ШКИТ не просто дали программу — они научили думать, чувствовать текст, жить в образе. Поступила с первого раза. Огромная благодарность за профессионализм.</p>
+                            <div class="review-author"><div class="review-ava">Л</div><div class="review-who"><b>Людмила</b><span>мама Алисы, 16 лет</span></div></div>
                         </div>
                     </div>
                     
@@ -789,9 +872,10 @@
 <!-- ============ СКРИПТЫ ============ -->
 <script src="assets/js/main.js" defer></script>
 
-<!-- Управление прокруткой для точного позиционирования -->
+<!-- Управление прокруткой и карусель отзывов -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Прокрутка к якорям
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
@@ -827,7 +911,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.dotsContainer = container.querySelector('.slider-dots');
             
             this.currentIndex = 0;
-            this.slidesPerView = 1;
+            this.slidesPerView = window.innerWidth > 768 ? 2 : 1;
             this.isDragging = false;
             this.startX = 0;
             this.currentTranslate = 0;
@@ -837,7 +921,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         init() {
-            this.checkViewport();
             this.createDots();
             
             this.prevBtn.addEventListener('click', () => this.prev());
@@ -860,15 +943,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         checkViewport() {
-            if (window.innerWidth > 768) {
-                this.slidesPerView = 2;
-            } else {
-                this.slidesPerView = 1;
-            }
-            this.maxIndex = Math.max(0, this.slides.length - this.slidesPerView);
-            if (this.currentIndex > this.maxIndex) {
-                this.currentIndex = this.maxIndex;
-            }
+            this.slidesPerView = window.innerWidth > 768 ? 2 : 1;
             this.createDots();
             this.updateSlider();
         }
@@ -877,13 +952,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!this.dotsContainer) return;
             this.dotsContainer.innerHTML = '';
             
-            const dotsCount = this.slides.length - this.slidesPerView + 1;
+            const dotsCount = Math.ceil(this.slides.length / this.slidesPerView);
             for (let i = 0; i < dotsCount; i++) {
                 const dot = document.createElement('button');
                 dot.classList.add('dot');
-                dot.setAttribute('aria-label', 'Перейти к отзыву ' + (i + 1));
+                dot.setAttribute('aria-label', 'Перейти к отзывам ' + (i * this.slidesPerView + 1) + '-' + Math.min((i + 1) * this.slidesPerView, this.slides.length));
                 dot.addEventListener('click', () => {
-                    this.currentIndex = i;
+                    this.currentIndex = i * this.slidesPerView;
                     this.updateSlider();
                 });
                 this.dotsContainer.appendChild(dot);
@@ -895,29 +970,28 @@ document.addEventListener('DOMContentLoaded', function() {
             this.track.style.transform = 'translateX(-' + (this.currentIndex * slideWidth) + 'px)';
             
             const dots = this.dotsContainer.querySelectorAll('.dot');
+            const activeDotIndex = Math.floor(this.currentIndex / this.slidesPerView);
             dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === this.currentIndex);
+                dot.classList.toggle('active', i === activeDotIndex);
             });
-            
-            this.prevBtn.disabled = this.currentIndex === 0;
-            this.nextBtn.disabled = this.currentIndex === this.maxIndex;
-            
-            this.prevBtn.style.opacity = this.currentIndex === 0 ? '0.5' : '1';
-            this.nextBtn.style.opacity = this.currentIndex === this.maxIndex ? '0.5' : '1';
         }
         
         prev() {
-            if (this.currentIndex > 0) {
-                this.currentIndex--;
-                this.updateSlider();
+            // Зацикленная навигация
+            this.currentIndex -= this.slidesPerView;
+            if (this.currentIndex < 0) {
+                this.currentIndex = this.slides.length - this.slidesPerView;
             }
+            this.updateSlider();
         }
         
         next() {
-            if (this.currentIndex < this.maxIndex) {
-                this.currentIndex++;
-                this.updateSlider();
+            // Зацикленная навигация
+            this.currentIndex += this.slidesPerView;
+            if (this.currentIndex >= this.slides.length) {
+                this.currentIndex = 0;
             }
+            this.updateSlider();
         }
         
         touchStart(e) {
@@ -928,29 +1002,25 @@ document.addEventListener('DOMContentLoaded', function() {
         
         touchMove(e) {
             if (!this.isDragging) return;
+            e.preventDefault();
             const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
             const diff = currentX - this.startX;
             this.currentTranslate = this.prevTranslate + diff;
-            
-            const maxTranslate = 0;
-            const minTranslate = -(this.slides.length - this.slidesPerView) * (this.track.clientWidth / this.slidesPerView);
-            this.currentTranslate = Math.max(Math.min(this.currentTranslate, maxTranslate), minTranslate);
-            
             this.track.style.transform = 'translateX(' + this.currentTranslate + 'px)';
         }
         
         touchEnd() {
             if (!this.isDragging) return;
             this.isDragging = false;
-            this.track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            this.track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             
             const slideWidth = this.track.clientWidth / this.slidesPerView;
             const movedBy = this.currentTranslate - this.prevTranslate;
             
-            if (movedBy < -100 && this.currentIndex < this.maxIndex) {
-                this.currentIndex++;
-            } else if (movedBy > 100 && this.currentIndex > 0) {
-                this.currentIndex--;
+            if (movedBy < -50) {
+                this.next();
+            } else if (movedBy > 50) {
+                this.prev();
             }
             
             this.prevTranslate = -this.currentIndex * slideWidth;
