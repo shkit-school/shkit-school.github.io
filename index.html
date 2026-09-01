@@ -56,11 +56,9 @@
             section[id] {
                 scroll-margin-top: 20px;
             }
-            /* Исправление для Театра — отступ вверх */
             #abajur {
                 scroll-margin-top: 60px;
             }
-            /* Исправление для Записаться — отступ вверх */
             #zapis {
                 scroll-margin-top: 80px;
             }
@@ -231,13 +229,17 @@
                 width: 100%;
                 overflow: hidden;
             }
+            
             .reviews-track {
                 width: 100%;
                 touch-action: pan-x pan-y;
+                overflow: hidden !important;
             }
+            
             .slider-nav {
                 display: none;
             }
+            
             .review-slide {
                 flex: 0 0 100% !important;
                 min-width: 100% !important;
@@ -245,6 +247,7 @@
                 padding: 0;
                 width: 100% !important;
             }
+            
             .review-slide .review {
                 flex: 0 0 100% !important;
                 min-height: 336px;
@@ -256,16 +259,19 @@
                 scroll-snap-align: none !important;
                 scroll-snap-stop: normal !important;
             }
+            
             .review-slide .review p {
                 font-size: 14px;
                 line-height: 1.5;
                 margin-bottom: 15px;
                 font-style: italic;
             }
+            
             .slider-dots {
                 gap: 8px;
                 margin-top: 20px;
             }
+            
             .slider-dots .dot {
                 width: 8px;
                 height: 8px;
@@ -273,6 +279,20 @@
         }
         
         @media (max-width: 560px) {
+            .reviews-slider,
+            .reviews-slider .reviews-track,
+            .reviews-slider .review-slide,
+            .reviews-slider .review-slide .review {
+                scroll-snap-type: none !important;
+                scroll-snap-align: none !important;
+                scroll-snap-stop: normal !important;
+                overscroll-behavior: auto !important;
+            }
+            
+            .reviews-slider .reviews-track {
+                overflow: hidden !important;
+            }
+            
             .reviews-slider .review-slide .review {
                 flex: 0 0 100% !important;
                 scroll-snap-align: none !important;
@@ -282,15 +302,12 @@
                 min-height: 336px !important;
                 margin: 0 !important;
             }
+            
             .reviews-slider .review-slide {
                 flex: 0 0 100% !important;
                 min-width: 100% !important;
                 max-width: 100% !important;
                 width: 100% !important;
-            }
-            .reviews-slider .reviews-track {
-                overflow: hidden !important;
-                scroll-snap-type: none !important;
             }
         }
         
@@ -957,7 +974,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // ============ КАРУСЕЛЬ ОТЗЫВОВ ============
+    // ============ КАРУСЕЛЬ ОТЗЫВОВ (РАБОЧАЯ ВЕРСИЯ) ============
     class ReviewsSlider {
         constructor(container) {
             this.slider = container;
@@ -980,20 +997,72 @@ document.addEventListener('DOMContentLoaded', function() {
         init() {
             this.createDots();
             
-            this.prevBtn.addEventListener('click', () => this.prev());
-            this.nextBtn.addEventListener('click', () => this.next());
+            if (this.prevBtn) this.prevBtn.addEventListener('click', () => this.prev());
+            if (this.nextBtn) this.nextBtn.addEventListener('click', () => this.next());
             
-            this.track.addEventListener('touchstart', (e) => this.touchStart(e), {passive: true});
-            this.track.addEventListener('touchmove', (e) => this.touchMove(e), {passive: false});
-            this.track.addEventListener('touchend', () => this.touchEnd());
+            // Touch-события
+            this.track.addEventListener('touchstart', (e) => {
+                this.isDragging = true;
+                this.startX = e.touches[0].pageX;
+                this.prevTranslate = -this.currentIndex * (this.track.clientWidth / this.slidesPerView);
+                this.track.style.transition = 'none';
+            }, {passive: true});
             
-            this.track.addEventListener('mousedown', (e) => this.touchStart(e));
-            this.track.addEventListener('mousemove', (e) => this.touchMove(e));
-            this.track.addEventListener('mouseup', () => this.touchEnd());
-            this.track.addEventListener('mouseleave', () => this.touchEnd());
+            this.track.addEventListener('touchmove', (e) => {
+                if (!this.isDragging) return;
+                e.preventDefault();
+                const diff = e.touches[0].pageX - this.startX;
+                this.currentTranslate = this.prevTranslate + diff;
+                this.track.style.transform = 'translateX(' + this.currentTranslate + 'px)';
+            }, {passive: false});
+            
+            this.track.addEventListener('touchend', () => {
+                if (!this.isDragging) return;
+                this.isDragging = false;
+                this.track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                
+                const slideWidth = this.track.clientWidth / this.slidesPerView;
+                const movedBy = this.currentTranslate - this.prevTranslate;
+                
+                if (movedBy < -50) {
+                    this.next();
+                } else if (movedBy > 50) {
+                    this.prev();
+                } else {
+                    this.updateSlider();
+                }
+            });
+            
+            // Mouse-события (для десктопа)
+            this.track.addEventListener('mousedown', (e) => {
+                this.isDragging = true;
+                this.startX = e.pageX;
+                this.prevTranslate = -this.currentIndex * (this.track.clientWidth / this.slidesPerView);
+                this.track.style.transition = 'none';
+            });
+            this.track.addEventListener('mousemove', (e) => {
+                if (!this.isDragging) return;
+                const diff = e.pageX - this.startX;
+                this.currentTranslate = this.prevTranslate + diff;
+                this.track.style.transform = 'translateX(' + this.currentTranslate + 'px)';
+            });
+            this.track.addEventListener('mouseup', () => {
+                if (!this.isDragging) return;
+                this.isDragging = false;
+                this.track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                const movedBy = this.currentTranslate - this.prevTranslate;
+                if (movedBy < -50) this.next();
+                else if (movedBy > 50) this.prev();
+                else this.updateSlider();
+            });
+            this.track.addEventListener('mouseleave', () => {
+                if (this.isDragging) {
+                    this.isDragging = false;
+                    this.updateSlider();
+                }
+            });
             
             window.addEventListener('resize', () => this.checkViewport());
-            
             this.updateSlider();
         }
         
@@ -1006,12 +1075,11 @@ document.addEventListener('DOMContentLoaded', function() {
         createDots() {
             if (!this.dotsContainer) return;
             this.dotsContainer.innerHTML = '';
-            
             const dotsCount = Math.ceil(this.slides.length / this.slidesPerView);
             for (let i = 0; i < dotsCount; i++) {
                 const dot = document.createElement('button');
                 dot.classList.add('dot');
-                dot.setAttribute('aria-label', 'Перейти к отзывам ' + (i * this.slidesPerView + 1) + '-' + Math.min((i + 1) * this.slidesPerView, this.slides.length));
+                dot.setAttribute('aria-label', 'Перейти к отзывам ' + (i * this.slidesPerView + 1));
                 dot.addEventListener('click', () => {
                     this.currentIndex = i * this.slidesPerView;
                     this.updateSlider();
@@ -1022,7 +1090,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         updateSlider() {
             const slideWidth = this.track.clientWidth / this.slidesPerView;
+            this.track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             this.track.style.transform = 'translateX(-' + (this.currentIndex * slideWidth) + 'px)';
+            this.prevTranslate = -this.currentIndex * slideWidth;
             
             const dots = this.dotsContainer.querySelectorAll('.dot');
             const activeDotIndex = Math.floor(this.currentIndex / this.slidesPerView);
@@ -1044,39 +1114,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (this.currentIndex >= this.slides.length) {
                 this.currentIndex = 0;
             }
-            this.updateSlider();
-        }
-        
-        touchStart(e) {
-            this.isDragging = true;
-            this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-            this.track.style.transition = 'none';
-        }
-        
-        touchMove(e) {
-            if (!this.isDragging) return;
-            e.preventDefault();
-            const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-            const diff = currentX - this.startX;
-            this.currentTranslate = this.prevTranslate + diff;
-            this.track.style.transform = 'translateX(' + this.currentTranslate + 'px)';
-        }
-        
-        touchEnd() {
-            if (!this.isDragging) return;
-            this.isDragging = false;
-            this.track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            
-            const slideWidth = this.track.clientWidth / this.slidesPerView;
-            const movedBy = this.currentTranslate - this.prevTranslate;
-            
-            if (movedBy < -50) {
-                this.next();
-            } else if (movedBy > 50) {
-                this.prev();
-            }
-            
-            this.prevTranslate = -this.currentIndex * slideWidth;
             this.updateSlider();
         }
     }
