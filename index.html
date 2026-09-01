@@ -41,15 +41,13 @@
             border-radius: 12px;
         }
         
-        /* ===== ЯКОРЯ: ТОЧНАЯ ПОДКРУТКА ===== */
+        /* ===== ЯКОРЯ ===== */
         section[id] {
             scroll-margin-top: 15px;
         }
-        
         #zapis {
             scroll-margin-top: calc(var(--header-h) + 10px);
         }
-        
         #abajur {
             scroll-margin-top: 120px;
         }
@@ -58,21 +56,18 @@
             section[id] {
                 scroll-margin-top: 20px;
             }
-            
             #zapis {
                 scroll-margin-top: calc(var(--header-h) + 10px);
             }
-            
             #abajur {
                 scroll-margin-top: 80px;
             }
-            
             .hero-scroll {
                 display: none !important;
             }
         }
         
-        /* ===== КНОПКА ЗАПИСАТЬСЯ В МОБИЛЬНОМ МЕНЮ ===== */
+        /* ===== КНОПКА В МОБИЛЬНОМ МЕНЮ ===== */
         @media (max-width: 880px) {
             .nav.is-open .m-cta .btn {
                 background: var(--coral-dark, #D13434);
@@ -87,11 +82,15 @@
                 display: block;
                 box-shadow: 0 8px 22px -10px rgba(209,52,52,.8);
             }
-            
             .nav.is-open .m-cta .btn:hover {
                 background: #fff;
                 color: var(--coral-ink, #BC3636) !important;
             }
+        }
+        
+        /* ===== БЛОКИРОВКА ПРОКРУТКИ ПОД МЕНЮ ===== */
+        body.menu-open {
+            overflow: hidden !important;
         }
         
         /* ===== КАРУСЕЛЬ ОТЗЫВОВ ===== */
@@ -108,7 +107,6 @@
             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: grab;
             width: 100%;
-            /* ИСПРАВЛЕНИЕ: убираем pan-y, разрешаем горизонтальный свайп */
             touch-action: pan-x pan-y;
         }
         
@@ -133,16 +131,16 @@
             height: 100%;
             min-height: 384px;
             box-sizing: border-box;
-            /* ИСПРАВЛЕНИЕ: убираем scroll-snap */
             scroll-snap-align: none !important;
             scroll-snap-stop: normal !important;
         }
         
+        /* Курсив для текста отзывов */
         .review-slide .review p {
             flex-grow: 1;
+            font-style: italic;
         }
         
-        /* Кнопки навигации */
         .slider-nav {
             display: flex;
             justify-content: center;
@@ -190,7 +188,6 @@
             transform: scale(0.95);
         }
         
-        /* Пагинация */
         .slider-dots {
             display: flex;
             justify-content: center;
@@ -216,7 +213,6 @@
             transform: scale(1.3);
         }
         
-        /* Десктоп: 2 карточки */
         @media (min-width: 769px) {
             .review-slide {
                 flex: 0 0 50%;
@@ -224,17 +220,14 @@
                 max-width: 50%;
                 padding: 0 15px;
             }
-            
             .review-slide .review {
                 min-height: 336px;
             }
-            
             .slider-nav {
                 margin-top: 30px;
             }
         }
         
-        /* Мобильная версия */
         @media (max-width: 768px) {
             .reviews-slider {
                 padding: 0;
@@ -242,16 +235,13 @@
                 width: 100%;
                 overflow: hidden;
             }
-            
             .reviews-track {
                 width: 100%;
-                touch-action: pan-x pan-y; /* Разрешаем горизонтальный свайп */
+                touch-action: pan-x pan-y;
             }
-            
             .slider-nav {
                 display: none;
             }
-            
             .review-slide {
                 flex: 0 0 100% !important;
                 min-width: 100% !important;
@@ -259,7 +249,6 @@
                 padding: 0;
                 width: 100% !important;
             }
-            
             .review-slide .review {
                 flex: 0 0 100% !important;
                 min-height: 336px;
@@ -271,41 +260,49 @@
                 scroll-snap-align: none !important;
                 scroll-snap-stop: normal !important;
             }
-            
             .review-slide .review p {
                 font-size: 14px;
                 line-height: 1.5;
                 margin-bottom: 15px;
+                font-style: italic;
             }
-            
             .slider-dots {
                 gap: 8px;
                 margin-top: 20px;
             }
-            
             .slider-dots .dot {
                 width: 8px;
                 height: 8px;
             }
         }
         
-        /* Дополнительное переопределение для маленьких экранов */
         @media (max-width: 560px) {
-            .review-slide .review {
+            .reviews-slider .review-slide .review {
                 flex: 0 0 100% !important;
                 scroll-snap-align: none !important;
                 scroll-snap-stop: normal !important;
                 width: 100% !important;
                 max-width: 100% !important;
                 min-height: 336px !important;
+                margin: 0 !important;
             }
-            
-            .review-slide {
+            .reviews-slider .review-slide {
                 flex: 0 0 100% !important;
                 min-width: 100% !important;
                 max-width: 100% !important;
                 width: 100% !important;
             }
+            .reviews-slider .reviews-track {
+                overflow: hidden !important;
+                scroll-snap-type: none !important;
+            }
+        }
+        
+        /* ===== КНОПКА "СКОРО В ПРОДАЖЕ" (неактивная) ===== */
+        .btn--disabled {
+            pointer-events: none !important;
+            cursor: default !important;
+            opacity: 0.6 !important;
         }
     </style>
     <script type="application/ld+json">
@@ -491,14 +488,14 @@
                 </article>
                 <article class="card">
                     <div class="card-media"><span class="card-tag">Поэзия</span>
-                        <img src="assets/img/gal105.jpg" alt="Поэтический спектакль мастерской «Магия слова»" loading="lazy"></div>
+                        <img src="assets/img/gal105.jpg" alt="Поэтический спектакль мастерской «Магия слов»" loading="lazy"></div>
                     <div class="card-body">
-                        <h3>«Магия слова»</h3>
+                        <h3>«Магия слов»</h3>
                         <div class="card-sub">Твой голос, живые стихи и камерная сцена</div>
                         <p class="card-text">Для тех, кто чувствует поэзию кожей. Не читаем с листа — создаём миры. Разбираем текст до атомов, ищем личный отклик, превращаем слово в образ и действие.</p>
                         <div class="card-meta">
                             <div class="card-format">1 раз в неделю по 3 ч<br>проект 5–6 месяцев</div>
-                            <div class="card-price">5 500 ₽<small>в месяц</small></div>
+                            <div class="card-price">5 600 ₽<small>в месяц</small></div>
                         </div>
                         <div class="card-actions"><button class="btn btn--block" data-popup="pop-poetry">Подробнее</button></div>
                     </div>
@@ -530,111 +527,120 @@
             <div class="reviews-slider anim" data-stagger="90">
                 <div class="reviews-track">
                     
-                    <!-- Отзыв 1 -->
+                    <!-- Отзыв 1 — Дети -->
                     <div class="review-slide">
                         <div class="review review--dark">
                             <span class="quote-mark" aria-hidden="true">”</span>
-                            <p>Пришла с мыслью «ну попробую, хуже не будет». Ушла с главной ролью в спектакле и пониманием, что театр — это моё. Педагоги — огонь. Местами жёстко, но именно это и работает. Без соплей, зато с результатом.</p>
-                            <div class="review-author"><div class="review-ava">А</div><div class="review-who"><b>Анна, 28 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
+                            <p>Дочь удивила всех — на сцене с полным залом пришлось импровизировать, когда партнёр не успел переодеться. Зал был в восторге! Педагоги сказали: «Растёт настоящая артистка». Это уже третья большая сцена города — и она справляется всё увереннее. ШКИТ даёт ей возможность проявляться, доверяет сложные роли, учит не бояться и находить выход из любой ситуации. Горжусь и бесконечно благодарна!</p>
+                            <div class="review-author"><div class="review-ava">И</div><div class="review-who"><b>Ирина П</b><span>мама Веи, 10 лет</span></div></div>
                         </div>
                     </div>
                     
-                    <!-- Отзыв 2 -->
+                    <!-- Отзыв 2 — Дети -->
                     <div class="review-slide">
                         <div class="review review--coral">
                             <span class="quote-mark" aria-hidden="true">”</span>
                             <p>Сын стеснялся даже в магазине спросить, где хлеб. Через полгода сам вызвался читать стихи на школьном конкурсе. Я чуть не упала. Спасибо, ШКИТ, вы делаете магию.</p>
-                            <div class="review-author"><div class="review-ava">О</div><div class="review-who"><b>Ольга</b><span>мама Артёма, 7 лет</span></div></div>
+                            <div class="review-author"><div class="review-ava">О</div><div class="review-who"><b>Ольга А</b><span>мама Артёма, 7 лет</span></div></div>
                         </div>
                     </div>
                     
-                    <!-- Отзыв 3 -->
+                    <!-- Отзыв 3 — Выпускники -->
                     <div class="review-slide">
-                        <div class="review review--coral">
+                        <div class="review review--dark">
                             <span class="quote-mark" aria-hidden="true">”</span>
                             <p>Готовился к поступлению в театральный. Боялся — не то слово. Здесь меня не просто натаскали по программе, а реально вложили в голову, что я смогу. Поступил на бюджет. До сих пор не верю, но факт.</p>
-                            <div class="review-author"><div class="review-ava">К</div><div class="review-who"><b>Кирилл, 17 лет</b><span>выпускник</span></div></div>
+                            <div class="review-author"><div class="review-ava">В</div><div class="review-who"><b>Василий К</b><span>выпускник ШКИТ</span></div></div>
                         </div>
                     </div>
                     
-                    <!-- Отзыв 4 -->
-                    <div class="review-slide">
-                        <div class="review review--dark">
-                            <span class="quote-mark" aria-hidden="true">”</span>
-                            <p>Думал, в 40 лет поздно начинать. Друзья крутили у виска. А я взял и сделал. «Мой бенефис» — опыт, который не сравнить ни с чем. Пьеса под меня, афиша с моим лицом, зал, аплодисменты. Легальный способ почувствовать себя звездой.</p>
-                            <div class="review-author"><div class="review-ava">И</div><div class="review-who"><b>Игорь, 42 года</b><span>проект «Мой бенефис»</span></div></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Отзыв 5 -->
-                    <div class="review-slide">
-                        <div class="review review--dark">
-                            <span class="quote-mark" aria-hidden="true">”</span>
-                            <p>Дочка три года занималась в другом месте — ходила без огня. Здесь она впервые попросила «мама, можно я ещё на один курс останусь?». Это дорогого стоит. Педагоги нашли подход с первого занятия.</p>
-                            <div class="review-author"><div class="review-ava">М</div><div class="review-who"><b>Марина</b><span>мама Лизы, 12 лет</span></div></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Отзыв 6 -->
+                    <!-- Отзыв 4 — Выпускники -->
                     <div class="review-slide">
                         <div class="review review--coral">
                             <span class="quote-mark" aria-hidden="true">”</span>
-                            <p>Боялась публичных выступлений до дрожи в коленках. Сейчас веду совещания на 50 человек спокойно. Актёрское мастерство реально работает в жизни, не только на сцене. Спасибо за смелость, которой не было.</p>
-                            <div class="review-author"><div class="review-ava">Е</div><div class="review-who"><b>Елена, 35 лет</b><span>проект «Магия слова»</span></div></div>
+                            <p>ШКИТ дал мне базу, которую я использую до сих пор: грамотную речь, уверенность в общении и умение проявлять эмоции. Здесь я нашла вторую семью — людей, которые всегда поддержат. Каждое занятие — новые эмоции и опыт. Я пришла в ШКИТ, когда моя личность только формировалась, и школа стала для меня домом. До сих пор я применяю всё, чему научилась — в жизни, в общении, в профессии. Я люблю ШКИТ и счастлива, что он был в моей жизни!</p>
+                            <div class="review-author"><div class="review-ava">Д</div><div class="review-who"><b>Дарья М</b><span>выпускница ШКИТ</span></div></div>
                         </div>
                     </div>
                     
-                    <!-- Отзыв 7 -->
+                    <!-- Отзыв 5 — Давай сыграем жизнь -->
                     <div class="review-slide">
                         <div class="review review--dark">
                             <span class="quote-mark" aria-hidden="true">”</span>
-                            <p>Ходим всей семьёй! Я на «Давай сыграем», муж на «Магию слова», дочка в детскую группу. Нашли своё место силы. Теперь дома обсуждаем не сериалы, а сцены и образы. Это сблизило нас по-настоящему.</p>
-                            <div class="review-author"><div class="review-ava">Т</div><div class="review-who"><b>Татьяна</b><span>проект «Давай сыграем жизнь»</span></div></div>
+                            <p>Участие в проекте — это гигантский шаг! Через три месяца друзья сказали: «Это просто АХ!» Я ждала каждую репетицию. Атмосфера, коллектив, люди, которые хотят показать себя на сцене, — это бесценно. Проект помогает даже в работе: появились «театральные» паузы в переговорах!</p>
+                            <div class="review-author"><div class="review-ava">А</div><div class="review-who"><b>Анна В, 28 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
                         </div>
                     </div>
                     
-                    <!-- Отзыв 8 -->
+                    <!-- Отзыв 6 — Давай сыграем жизнь -->
                     <div class="review-slide">
                         <div class="review review--coral">
                             <span class="quote-mark" aria-hidden="true">”</span>
-                            <p>Перед первым занятием переживал, что буду выглядеть глупо. Вокруг все «серьёзные взрослые», а тут я в дурацкой шляпе изображаю ветер. Но именно это и раскрепощает. Смеялся как ребёнок. Теперь не пропускаю ни одного занятия.</p>
-                            <div class="review-author"><div class="review-ava">Д</div><div class="review-who"><b>Дмитрий, 45 лет</b><span>проект «Мой бенефис»</span></div></div>
+                            <p>Участие в проекте — как открыть новую мышцу внутри. Учишься не играть, а быть. Исследуешь себя, примеряешь роль — и вдруг понимаешь боль героя, она звучит в тебе. Это настоящая терапия Души.</p>
+                            <div class="review-author"><div class="review-ava">О</div><div class="review-who"><b>Ольга З, 39 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
                         </div>
                     </div>
                     
-                    <!-- Отзыв 9 -->
+                    <!-- Отзыв 7 — Давай сыграем жизнь -->
                     <div class="review-slide">
                         <div class="review review--dark">
                             <span class="quote-mark" aria-hidden="true">”</span>
-                            <p>Пришла по рекомендации подруги, когда поняла, что боюсь выступать на работе. Через месяц почувствовала, как зажимы уходят. Ещё через месяц провела презентацию без дрожи в голосе. Коллеги заметили перемены.</p>
-                            <div class="review-author"><div class="review-ava">Н</div><div class="review-who"><b>Наталья, 31 год</b><span>проект «Магия слова»</span></div></div>
+                            <p>Премьера — это не про «всё должно быть идеально». Это про «всё идёт как идёт, а мы держимся и играем». А тем, кто всё ещё думает: «Я точно не смогу», спешу обрадовать: сможете! Мы ведь это сделали!</p>
+                            <div class="review-author"><div class="review-ava">Т</div><div class="review-who"><b>Татьяна В, 53 года</b><span>проект «Давай сыграем жизнь»</span></div></div>
                         </div>
                     </div>
                     
-                    <!-- Отзыв 10 -->
+                    <!-- Отзыв 8 — Давай сыграем жизнь -->
                     <div class="review-slide">
                         <div class="review review--coral">
                             <span class="quote-mark" aria-hidden="true">”</span>
-                            <p>Мой сын всегда был одиночкой, а в ШКИТ нашёл друзей. Теперь после занятий они гуляют вместе, репетируют дома по видеосвязи. Это не просто кружок — это настоящая дружба и поддержка.</p>
-                            <div class="review-author"><div class="review-ava">С</div><div class="review-who"><b>Светлана</b><span>мама Миши, 10 лет</span></div></div>
+                            <p>Мы не играем — мы проживаем свои роли. Проект помог мне раскрыться и позволить себе больше, чем я думала. Доверьтесь, откройтесь, не бойтесь быть собой — это про настоящую жизнь!</p>
+                            <div class="review-author"><div class="review-ava">С</div><div class="review-who"><b>Светлана Б, 48 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
                         </div>
                     </div>
                     
-                    <!-- Отзыв 11 -->
+                    <!-- Отзыв 9 — Магия слов -->
                     <div class="review-slide">
                         <div class="review review--dark">
                             <span class="quote-mark" aria-hidden="true">”</span>
-                            <p>Я пришла за компанию с мужем, а осталась ради себя. Театр оказался терапией лучше любого психолога. Час на сцене заменяет неделю отпуска. Теперь это моё личное время, которое я не променяю ни на что.</p>
-                            <div class="review-author"><div class="review-ava">В</div><div class="review-who"><b>Виктория, 38 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
+                            <p>Это был волнительный финал, который превзошёл все ожидания: Гран-при! 🎉 Роль была сложной, но пара фраз режиссёра перед выходом изменили всё. Самая большая магия театра — проживать чужую жизнь как свою. Перестать контролировать, забыть о себе. Спектакль получился сложным, насыщенным, поэтичным.</p>
+                            <div class="review-author"><div class="review-ava">А</div><div class="review-who"><b>Алена И, 44 года</b><span>проект «Магия слов»</span></div></div>
                         </div>
                     </div>
                     
-                    <!-- Отзыв 12 -->
+                    <!-- Отзыв 10 — Магия слов -->
                     <div class="review-slide">
                         <div class="review review--coral">
                             <span class="quote-mark" aria-hidden="true">”</span>
-                            <p>Дочь готовилась к поступлению в театральный колледж. Педагоги ШКИТ не просто дали программу — они научили думать, чувствовать текст, жить в образе. Поступила с первого раза. Огромная благодарность за профессионализм.</p>
-                            <div class="review-author"><div class="review-ava">Л</div><div class="review-who"><b>Людмила</b><span>мама Алисы, 16 лет</span></div></div>
+                            <p>Сначала ты не понимаешь, но именно путь — самое ценное. А результат превзошёл все ожидания: ГРАН-ПРИ — наше! Лучшее случается, когда совсем не ждёшь. Магия слов — это действительно волшебство!</p>
+                            <div class="review-author"><div class="review-ava">Е</div><div class="review-who"><b>Елена П, 35 лет</b><span>проект «Магия слов»</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 11 — Абажур -->
+                    <div class="review-slide">
+                        <div class="review review--dark">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Театр плейбэк «Абажур» — это не классический вечер за просмотром спектакля, а живое и непосредственное участие, где зритель — главный герой. Актеры разыгрывают истории так, как они им представляются, без подготовки. Удивительно, но получается ансамбль. Все зрители остались очень довольны и получили новое понимание происходящего.</p>
+                            <div class="review-author"><div class="review-ava">С</div><div class="review-who"><b>Светлана М</b><span>перформанс плейбэк-театра</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 12 — Абажур -->
+                    <div class="review-slide">
+                        <div class="review review--coral">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Четыре года назад я впервые попала на перформанс «Абажура» — и поняла: это моё. Каждый спектакль уникален, рождается из историй зрителей. После каждой встречи выходишь обновлённой, с лёгкостью внутри. Огромная благодарность актёрам за это волшебство!</p>
+                            <div class="review-author"><div class="review-ava">С</div><div class="review-who"><b>Светлана К</b><span>зритель перформанса</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 13 — Мой бенефис -->
+                    <div class="review-slide">
+                        <div class="review review--dark">
+                            <span class="quote-mark" aria-hidden="true">”</span>
+                            <p>Пришла на репетицию с дрожащими руками — и сыграла премьеру. Думала, это будет красивый эпизод. А это стала эпоха. История растёт вместе с нами: спустя год — новый партнёр, обновлённый сценарий, снова аншлаг. Счастлива пригласить вас на новые главы.</p>
+                            <div class="review-author"><div class="review-ava">Т</div><div class="review-who"><b>Татьяна М</b><span>проект «Мой бенефис»</span></div></div>
                         </div>
                     </div>
                     
@@ -698,7 +704,7 @@
                             <h3>«Рыбки учатся дышать»</h3>
                             <div class="e-meta">5 октября, 19:00 · НХТ</div>
                             <div class="e-short">Проект завершен. Скоро появится афиша нового сезона.</div>
-                            <a class="btn btn--sm btn--block btn--disabled" aria-disabled="true">Скоро в продаже</a>
+                            <a class="btn btn--sm btn--block btn--disabled" aria-disabled="true">Купить билет</a>
                         </div>
                     </article>
                     <article class="event">
@@ -898,11 +904,11 @@
     </div>
 </div>
 
-<!-- Магия слова -->
+<!-- Магия слов -->
 <div class="popup-overlay" id="pop-poetry" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pt-poetry">
     <div class="popup">
         <button class="popup-close" data-close aria-label="Закрыть">✕</button>
-        <div class="popup-head"><span class="p-kicker">Проект · поэзия</span><h3 id="pt-poetry">«Магия слова»</h3><div class="p-sub">Как мы оживляем стихи и превращаем их в спектакль</div></div>
+        <div class="popup-head"><span class="p-kicker">Проект · поэзия</span><h3 id="pt-poetry">«Магия слов»</h3><div class="p-sub">Как мы оживляем стихи и превращаем их в спектакль</div></div>
         <div class="popup-body">
             <h4>Для кого это</h4>
             <p>Для тех, кто читает стихи про себя и чувствует, как внутри что-то отзывается. Для тех, кто хочет выйти и произнести — но не знает как. Для тех, кто пробовал «читать с выражением» и понимал, что это не то.</p>
@@ -915,7 +921,7 @@
             <h4>Особенность формата</h4>
             <p>Камерный зал — это когда зритель в трёх метрах от вас. Никакой «четвёртой стены». Вы смотрите в глаза и дышите одним воздухом. Требует предельной честности — но и даёт энергию, несравнимую с большим спектаклем. Один на один. Вы и зритель.</p>
         </div>
-        <div class="popup-foot"><button class="btn" data-goto="#zapis">Записаться на пробное</button><span style="color:var(--grey);font-size:13px;font-weight:600">1 р/нед × 3 ч · 5–6 мес · 5 500 ₽/мес</span></div>
+        <div class="popup-foot"><button class="btn" data-goto="#zapis">Записаться на пробное</button><span style="color:var(--grey);font-size:13px;font-weight:600">1 р/нед × 3 ч · 5–6 мес · 5 600 ₽/мес</span></div>
     </div>
 </div>
 
@@ -955,6 +961,38 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // ============ БЛОКИРОВКА ПРОКРУТКИ ПОД МОБИЛЬНЫМ МЕНЮ ============
+    var burger = document.querySelector('.burger');
+    var nav = document.querySelector('.nav');
+    if (burger && nav) {
+        var setMenu = function(open) {
+            nav.classList.toggle('is-open', open);
+            burger.classList.toggle('is-open', open);
+            burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            document.body.classList.toggle('menu-open', open);
+        };
+        burger.addEventListener('click', function() {
+            setMenu(!nav.classList.contains('is-open'));
+        });
+        nav.addEventListener('click', function(e) {
+            if (e.target.closest('a')) setMenu(false);
+        });
+        document.addEventListener('click', function(e) {
+            if (!nav.classList.contains('is-open')) return;
+            if (e.target.closest('.nav') || e.target.closest('.burger')) return;
+            setMenu(false);
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+                setMenu(false);
+                burger.focus();
+            }
+        });
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 880 && nav.classList.contains('is-open')) setMenu(false);
+        });
+    }
+
     // ============ КАРУСЕЛЬ ОТЗЫВОВ ============
     class ReviewsSlider {
         constructor(container) {
@@ -981,12 +1019,10 @@ document.addEventListener('DOMContentLoaded', function() {
             this.prevBtn.addEventListener('click', () => this.prev());
             this.nextBtn.addEventListener('click', () => this.next());
             
-            // Touch события (с passive: false для preventDefault)
             this.track.addEventListener('touchstart', (e) => this.touchStart(e), {passive: true});
             this.track.addEventListener('touchmove', (e) => this.touchMove(e), {passive: false});
             this.track.addEventListener('touchend', () => this.touchEnd());
             
-            // Mouse события
             this.track.addEventListener('mousedown', (e) => this.touchStart(e));
             this.track.addEventListener('mousemove', (e) => this.touchMove(e));
             this.track.addEventListener('mouseup', () => this.touchEnd());
