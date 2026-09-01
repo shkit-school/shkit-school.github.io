@@ -88,7 +88,7 @@
             }
         }
         
-        /* ===== КАРУСЕЛЬ ОТЗЫВОВ ===== */
+        /* ===== КАРУСЕЛЬ ОТЗЫВОВ — ДЕСКТОП ===== */
         .reviews-slider {
             position: relative;
             overflow: hidden;
@@ -102,11 +102,6 @@
             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: grab;
             width: 100%;
-            touch-action: pan-x pan-y;
-        }
-        
-        .reviews-track:active {
-            cursor: grabbing;
         }
         
         .review-slide {
@@ -173,11 +168,6 @@
             transform: scale(1.1);
         }
         
-        .slider-btn:focus {
-            outline: 3px solid #ffb3b3;
-            outline-offset: 2px;
-        }
-        
         .slider-btn:active {
             transform: scale(0.95);
         }
@@ -207,6 +197,7 @@
             transform: scale(1.3);
         }
         
+        /* Десктоп: 2 карточки */
         @media (min-width: 769px) {
             .review-slide {
                 flex: 0 0 50%;
@@ -222,30 +213,35 @@
             }
         }
         
+        /* ===== МОБИЛЬНАЯ ВЕРСИЯ: НАТИВНЫЙ СКРОЛЛ ===== */
         @media (max-width: 768px) {
             .reviews-slider {
-                padding: 0;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                scroll-snap-type: x mandatory !important;
+                -webkit-overflow-scrolling: touch !important;
                 margin: 30px 0;
+                padding: 0;
                 width: 100%;
-                overflow: hidden;
             }
             
             .reviews-track {
-                width: 100%;
-                touch-action: pan-x pan-y;
-                overflow: hidden !important;
-            }
-            
-            .slider-nav {
-                display: none;
+                overflow: visible !important;
+                transform: none !important;
+                transition: none !important;
+                cursor: default !important;
+                width: auto !important;
+                min-width: 100% !important;
             }
             
             .review-slide {
                 flex: 0 0 100% !important;
                 min-width: 100% !important;
                 max-width: 100% !important;
-                padding: 0;
                 width: 100% !important;
+                padding: 0;
+                scroll-snap-align: start !important;
+                scroll-snap-stop: normal !important;
             }
             
             .review-slide .review {
@@ -256,7 +252,7 @@
                 max-width: 100% !important;
                 border-radius: 12px;
                 margin: 0;
-                scroll-snap-align: none !important;
+                scroll-snap-align: start !important;
                 scroll-snap-stop: normal !important;
             }
             
@@ -267,6 +263,10 @@
                 font-style: italic;
             }
             
+            .slider-nav {
+                display: none;
+            }
+            
             .slider-dots {
                 gap: 8px;
                 margin-top: 20px;
@@ -275,39 +275,6 @@
             .slider-dots .dot {
                 width: 8px;
                 height: 8px;
-            }
-        }
-        
-        @media (max-width: 560px) {
-            .reviews-slider,
-            .reviews-slider .reviews-track,
-            .reviews-slider .review-slide,
-            .reviews-slider .review-slide .review {
-                scroll-snap-type: none !important;
-                scroll-snap-align: none !important;
-                scroll-snap-stop: normal !important;
-                overscroll-behavior: auto !important;
-            }
-            
-            .reviews-slider .reviews-track {
-                overflow: hidden !important;
-            }
-            
-            .reviews-slider .review-slide .review {
-                flex: 0 0 100% !important;
-                scroll-snap-align: none !important;
-                scroll-snap-stop: normal !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                min-height: 336px !important;
-                margin: 0 !important;
-            }
-            
-            .reviews-slider .review-slide {
-                flex: 0 0 100% !important;
-                min-width: 100% !important;
-                max-width: 100% !important;
-                width: 100% !important;
             }
         }
         
@@ -537,8 +504,8 @@
             <span class="kicker anim">Отзывы</span>
             <h2 class="sec-title anim">Что о нас говорят<span class="aside">Честно, без цензуры и причёсывания.</span></h2>
             
-            <div class="reviews-slider anim" data-stagger="90">
-                <div class="reviews-track">
+            <div class="reviews-slider anim" data-stagger="90" id="reviews-slider">
+                <div class="reviews-track" id="reviews-track">
                     
                     <!-- Отзыв 1 — Дети -->
                     <div class="review-slide">
@@ -660,7 +627,7 @@
                 </div>
                 
                 <!-- Кнопки навигации (только десктоп) -->
-                <div class="slider-nav">
+                <div class="slider-nav" id="slider-nav">
                     <button class="slider-btn" data-direction="prev" aria-label="Предыдущие отзывы">‹</button>
                     <div class="slider-dots" aria-hidden="true"></div>
                     <button class="slider-btn" data-direction="next" aria-label="Следующие отзывы">›</button>
@@ -974,152 +941,74 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // ============ КАРУСЕЛЬ ОТЗЫВОВ (РАБОЧАЯ ВЕРСИЯ) ============
-    class ReviewsSlider {
-        constructor(container) {
-            this.slider = container;
-            this.track = container.querySelector('.reviews-track');
-            this.slides = container.querySelectorAll('.review-slide');
-            this.prevBtn = container.querySelector('[data-direction="prev"]');
-            this.nextBtn = container.querySelector('[data-direction="next"]');
-            this.dotsContainer = container.querySelector('.slider-dots');
-            
-            this.currentIndex = 0;
-            this.slidesPerView = window.innerWidth > 768 ? 2 : 1;
-            this.isDragging = false;
-            this.startX = 0;
-            this.currentTranslate = 0;
-            this.prevTranslate = 0;
-            
-            this.init();
-        }
+    // ============ КАРУСЕЛЬ ОТЗЫВОВ (ДЕСКТОП) ============
+    // На мобильной версии (до 768px) работает НАТИВНЫЙ scroll-snap,
+    // JavaScript используется ТОЛЬКО для десктопа (стрелки и точки)
+    
+    var slider = document.getElementById('reviews-slider');
+    var track = document.getElementById('reviews-track');
+    var prevBtn = document.querySelector('[data-direction="prev"]');
+    var nextBtn = document.querySelector('[data-direction="next"]');
+    var dotsContainer = document.querySelector('.slider-dots');
+    var slides = document.querySelectorAll('.review-slide');
+    
+    if (slider && track && prevBtn && nextBtn && dotsContainer && slides.length) {
+        var currentIndex = 0;
+        var slidesPerView = window.innerWidth > 768 ? 2 : 1;
         
-        init() {
-            this.createDots();
-            
-            if (this.prevBtn) this.prevBtn.addEventListener('click', () => this.prev());
-            if (this.nextBtn) this.nextBtn.addEventListener('click', () => this.next());
-            
-            // Touch-события
-            this.track.addEventListener('touchstart', (e) => {
-                this.isDragging = true;
-                this.startX = e.touches[0].pageX;
-                this.prevTranslate = -this.currentIndex * (this.track.clientWidth / this.slidesPerView);
-                this.track.style.transition = 'none';
-            }, {passive: true});
-            
-            this.track.addEventListener('touchmove', (e) => {
-                if (!this.isDragging) return;
-                e.preventDefault();
-                const diff = e.touches[0].pageX - this.startX;
-                this.currentTranslate = this.prevTranslate + diff;
-                this.track.style.transform = 'translateX(' + this.currentTranslate + 'px)';
-            }, {passive: false});
-            
-            this.track.addEventListener('touchend', () => {
-                if (!this.isDragging) return;
-                this.isDragging = false;
-                this.track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                
-                const slideWidth = this.track.clientWidth / this.slidesPerView;
-                const movedBy = this.currentTranslate - this.prevTranslate;
-                
-                if (movedBy < -50) {
-                    this.next();
-                } else if (movedBy > 50) {
-                    this.prev();
-                } else {
-                    this.updateSlider();
-                }
-            });
-            
-            // Mouse-события (для десктопа)
-            this.track.addEventListener('mousedown', (e) => {
-                this.isDragging = true;
-                this.startX = e.pageX;
-                this.prevTranslate = -this.currentIndex * (this.track.clientWidth / this.slidesPerView);
-                this.track.style.transition = 'none';
-            });
-            this.track.addEventListener('mousemove', (e) => {
-                if (!this.isDragging) return;
-                const diff = e.pageX - this.startX;
-                this.currentTranslate = this.prevTranslate + diff;
-                this.track.style.transform = 'translateX(' + this.currentTranslate + 'px)';
-            });
-            this.track.addEventListener('mouseup', () => {
-                if (!this.isDragging) return;
-                this.isDragging = false;
-                this.track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                const movedBy = this.currentTranslate - this.prevTranslate;
-                if (movedBy < -50) this.next();
-                else if (movedBy > 50) this.prev();
-                else this.updateSlider();
-            });
-            this.track.addEventListener('mouseleave', () => {
-                if (this.isDragging) {
-                    this.isDragging = false;
-                    this.updateSlider();
-                }
-            });
-            
-            window.addEventListener('resize', () => this.checkViewport());
-            this.updateSlider();
-        }
-        
-        checkViewport() {
-            this.slidesPerView = window.innerWidth > 768 ? 2 : 1;
-            this.createDots();
-            this.updateSlider();
-        }
-        
-        createDots() {
-            if (!this.dotsContainer) return;
-            this.dotsContainer.innerHTML = '';
-            const dotsCount = Math.ceil(this.slides.length / this.slidesPerView);
-            for (let i = 0; i < dotsCount; i++) {
-                const dot = document.createElement('button');
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            var dotsCount = Math.ceil(slides.length / slidesPerView);
+            for (var i = 0; i < dotsCount; i++) {
+                var dot = document.createElement('button');
                 dot.classList.add('dot');
-                dot.setAttribute('aria-label', 'Перейти к отзывам ' + (i * this.slidesPerView + 1));
-                dot.addEventListener('click', () => {
-                    this.currentIndex = i * this.slidesPerView;
-                    this.updateSlider();
-                });
-                this.dotsContainer.appendChild(dot);
+                dot.setAttribute('aria-label', 'Перейти к отзыву ' + (i * slidesPerView + 1));
+                (function(index) {
+                    dot.addEventListener('click', function() {
+                        currentIndex = index * slidesPerView;
+                        updateSlider();
+                    });
+                })(i);
+                dotsContainer.appendChild(dot);
             }
         }
         
-        updateSlider() {
-            const slideWidth = this.track.clientWidth / this.slidesPerView;
-            this.track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            this.track.style.transform = 'translateX(-' + (this.currentIndex * slideWidth) + 'px)';
-            this.prevTranslate = -this.currentIndex * slideWidth;
+        function updateSlider() {
+            if (window.innerWidth <= 768) return; // На мобильной — нативный скролл
+            var slideWidth = track.clientWidth / slidesPerView;
+            track.style.transform = 'translateX(-' + (currentIndex * slideWidth) + 'px)';
             
-            const dots = this.dotsContainer.querySelectorAll('.dot');
-            const activeDotIndex = Math.floor(this.currentIndex / this.slidesPerView);
-            dots.forEach((dot, i) => {
+            var dots = dotsContainer.querySelectorAll('.dot');
+            var activeDotIndex = Math.floor(currentIndex / slidesPerView);
+            dots.forEach(function(dot, i) {
                 dot.classList.toggle('active', i === activeDotIndex);
             });
         }
         
-        prev() {
-            this.currentIndex -= this.slidesPerView;
-            if (this.currentIndex < 0) {
-                this.currentIndex = this.slides.length - this.slidesPerView;
-            }
-            this.updateSlider();
+        function prev() {
+            currentIndex -= slidesPerView;
+            if (currentIndex < 0) currentIndex = slides.length - slidesPerView;
+            updateSlider();
         }
         
-        next() {
-            this.currentIndex += this.slidesPerView;
-            if (this.currentIndex >= this.slides.length) {
-                this.currentIndex = 0;
-            }
-            this.updateSlider();
+        function next() {
+            currentIndex += slidesPerView;
+            if (currentIndex >= slides.length) currentIndex = 0;
+            updateSlider();
         }
+        
+        prevBtn.addEventListener('click', prev);
+        nextBtn.addEventListener('click', next);
+        
+        window.addEventListener('resize', function() {
+            slidesPerView = window.innerWidth > 768 ? 2 : 1;
+            createDots();
+            updateSlider();
+        });
+        
+        createDots();
+        updateSlider();
     }
-    
-    const sliders = document.querySelectorAll('.reviews-slider');
-    sliders.forEach(slider => new ReviewsSlider(slider));
 });
 </script>
 </body>
