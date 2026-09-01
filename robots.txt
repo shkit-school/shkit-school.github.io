@@ -1,4 +1,5 @@
+text
 User-agent: *
 Allow: /
 
-Sitemap: https://shkit.ru/sitemap.xml
+Sitemap: https://shkit-school.github.io/sitemap.xml
