@@ -135,7 +135,6 @@
             scroll-snap-stop: normal !important;
         }
         
-        /* Курсив для текста отзывов */
         .review-slide .review p {
             flex-grow: 1;
             font-style: italic;
@@ -298,7 +297,7 @@
             }
         }
         
-        /* ===== КНОПКА "СКОРО В ПРОДАЖЕ" (неактивная) ===== */
+        /* ===== КНОПКА "КУПИТЬ БИЛЕТ" (неактивная) ===== */
         .btn--disabled {
             pointer-events: none !important;
             cursor: default !important;
@@ -962,35 +961,17 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // ============ БЛОКИРОВКА ПРОКРУТКИ ПОД МОБИЛЬНЫМ МЕНЮ ============
+    // Используем MutationObserver — НЕ переопределяем setMenu из main.js
     var burger = document.querySelector('.burger');
     var nav = document.querySelector('.nav');
+    
     if (burger && nav) {
-        var setMenu = function(open) {
-            nav.classList.toggle('is-open', open);
-            burger.classList.toggle('is-open', open);
-            burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-            document.body.classList.toggle('menu-open', open);
-        };
-        burger.addEventListener('click', function() {
-            setMenu(!nav.classList.contains('is-open'));
+        var observer = new MutationObserver(function() {
+            document.body.classList.toggle('menu-open', nav.classList.contains('is-open'));
         });
-        nav.addEventListener('click', function(e) {
-            if (e.target.closest('a')) setMenu(false);
-        });
-        document.addEventListener('click', function(e) {
-            if (!nav.classList.contains('is-open')) return;
-            if (e.target.closest('.nav') || e.target.closest('.burger')) return;
-            setMenu(false);
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && nav.classList.contains('is-open')) {
-                setMenu(false);
-                burger.focus();
-            }
-        });
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 880 && nav.classList.contains('is-open')) setMenu(false);
-        });
+        observer.observe(nav, { attributes: true, attributeFilter: ['class'] });
+        
+        document.body.classList.toggle('menu-open', nav.classList.contains('is-open'));
     }
 
     // ============ КАРУСЕЛЬ ОТЗЫВОВ ============
@@ -1009,6 +990,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.startX = 0;
             this.currentTranslate = 0;
             this.prevTranslate = 0;
+            this.slideWidth = 0;
             
             this.init();
         }
@@ -1030,11 +1012,25 @@ document.addEventListener('DOMContentLoaded', function() {
             
             window.addEventListener('resize', () => this.checkViewport());
             
+            window.addEventListener('load', () => {
+                this.updateSlideWidth();
+                this.updateSlider();
+            });
+            
+            this.updateSlideWidth();
             this.updateSlider();
+        }
+        
+        updateSlideWidth() {
+            this.slideWidth = this.track.clientWidth / this.slidesPerView;
+            if (!this.slideWidth || this.slideWidth === 0) {
+                this.slideWidth = this.slides[0] ? this.slides[0].clientWidth : 1;
+            }
         }
         
         checkViewport() {
             this.slidesPerView = window.innerWidth > 768 ? 2 : 1;
+            this.updateSlideWidth();
             this.createDots();
             this.updateSlider();
         }
@@ -1057,8 +1053,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         updateSlider() {
-            const slideWidth = this.track.clientWidth / this.slidesPerView;
-            this.track.style.transform = 'translateX(-' + (this.currentIndex * slideWidth) + 'px)';
+            this.updateSlideWidth();
+            this.track.style.transform = 'translateX(-' + (this.currentIndex * this.slideWidth) + 'px)';
+            this.prevTranslate = -this.currentIndex * this.slideWidth;
             
             const dots = this.dotsContainer.querySelectorAll('.dot');
             const activeDotIndex = Math.floor(this.currentIndex / this.slidesPerView);
@@ -1087,6 +1084,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.isDragging = true;
             this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
             this.track.style.transition = 'none';
+            this.updateSlideWidth();
         }
         
         touchMove(e) {
@@ -1103,17 +1101,15 @@ document.addEventListener('DOMContentLoaded', function() {
             this.isDragging = false;
             this.track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             
-            const slideWidth = this.track.clientWidth / this.slidesPerView;
             const movedBy = this.currentTranslate - this.prevTranslate;
             
             if (movedBy < -50) {
                 this.next();
             } else if (movedBy > 50) {
                 this.prev();
+            } else {
+                this.updateSlider();
             }
-            
-            this.prevTranslate = -this.currentIndex * slideWidth;
-            this.updateSlider();
         }
     }
     
