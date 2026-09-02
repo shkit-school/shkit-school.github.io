@@ -286,6 +286,19 @@
             cursor: default !important;
             opacity: 0.6 !important;
         }
+             /* ===== ФИНАЛЬНЫЙ ФИКС: СКРЫВАЕМ КНОПКИ И ТОЧКИ НА МОБИЛЬНОЙ ===== */
+        @media (max-width: 768px) {
+            .slider-nav,
+            .slider-nav *,
+            .slider-btn,
+            .slider-dots,
+            .slider-dots * {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
+        }
     </style>
     <script type="application/ld+json">
         {
