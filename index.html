@@ -299,6 +299,11 @@
                 pointer-events: none !important;
             }
         }
+             @media (max-width: 768px) {
+            .reviews-scroll-hint {
+                display: block !important;
+            }
+        }
     </style>
     <script type="application/ld+json">
         {
@@ -518,7 +523,11 @@
         <div class="wrap">
             <span class="kicker anim">Отзывы</span>
             <h2 class="sec-title anim">Что о нас говорят<span class="aside">Честно, без цензуры и причёсывания.</span></h2>
-            
+            <!-- Индикатор «Листай» для отзывов (только мобильная версия) -->
+<div class="reviews-scroll-hint" style="text-align:center; margin: 24px 0 0; color: var(--grey); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; display: none;">
+    Листай
+    <span style="display:block; width: 40px; height: 2px; background: var(--coral); margin: 8px auto 0;"></span>
+</div>
             <div class="reviews-slider anim" data-stagger="90" id="reviews-slider">
                 <div class="reviews-track" id="reviews-track">
                     
