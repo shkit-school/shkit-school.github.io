@@ -363,10 +363,18 @@
                 gap: 24px;
             }
             .founder-media {
-                aspect-ratio: 4/5;
-                max-height: 500px;
+                aspect-ratio: 4/5 !important;
+                max-height: none !important;
                 width: 85%;
                 margin: 0 auto;
+                min-height: auto !important;
+            }
+            .founder-media img {
+                position: relative !important;
+                width: 100% !important;
+                height: auto !important;
+                aspect-ratio: 4/5 !important;
+                object-fit: cover !important;
             }
             .founder-quote {
                 font-size: 16px;
