@@ -28,8 +28,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         * {
-    -webkit-tap-highlight-color: transparent;
-}
+            -webkit-tap-highlight-color: transparent;
+        }
         .form-card--webask {
             display: flex;
             flex-direction: column;
@@ -44,7 +44,7 @@
             border-radius: 12px;
         }
         
-       /* ===== ЯКОРЯ ===== */
+        /* ===== ЯКОРЯ ===== */
         section[id] {
             scroll-margin-top: 15px;
         }
@@ -235,7 +235,8 @@
                 cursor: default !important;
                 width: auto !important;
                 min-width: 100% !important;
-          
+            }
+            
             .review-slide {
                 flex: 0 0 100% !important;
                 min-width: 100% !important;
@@ -286,7 +287,8 @@
             cursor: default !important;
             opacity: 0.6 !important;
         }
-             /* ===== ФИНАЛЬНЫЙ ФИКС: СКРЫВАЕМ КНОПКИ И ТОЧКИ НА МОБИЛЬНОЙ ===== */
+        
+        /* ===== ФИНАЛЬНЫЙ ФИКС: СКРЫВАЕМ КНОПКИ И ТОЧКИ НА МОБИЛЬНОЙ ===== */
         @media (max-width: 768px) {
             .slider-nav,
             .slider-nav *,
@@ -299,9 +301,74 @@
                 pointer-events: none !important;
             }
         }
-             @media (max-width: 768px) {
+        
+        @media (max-width: 768px) {
             .reviews-scroll-hint {
                 display: block !important;
+            }
+        }
+        
+        /* ===== РУКОВОДИТЕЛЬ ===== */
+        .founder {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .founder-media {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--line);
+        }
+        
+        .founder-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: var(--photo);
+        }
+        
+        .founder-body p {
+            margin-bottom: 16px;
+            color: var(--grey);
+            font-size: 17px;
+            line-height: 1.6;
+        }
+        
+        .founder-body p strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+        
+        .founder-quote {
+            margin-top: 24px;
+            padding: 20px 24px;
+            border-left: 4px solid var(--coral);
+            background: var(--paper);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.5;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .founder {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .founder-media {
+                aspect-ratio: 16/10;
+                max-height: 420px;
+            }
+            .founder-quote {
+                font-size: 16px;
+                padding: 16px 18px;
             }
         }
     </style>
@@ -418,6 +485,27 @@
         </div>
     </section>
 
+    <!-- ============ РУКОВОДИТЕЛЬ ============ -->
+    <section class="section bg-white" id="founder">
+        <div class="wrap">
+            <div class="founder">
+                <div class="founder-media">
+                    <img src="assets/img/founder.jpg" alt="Пашнин Глеб Анатольевич — руководитель Школы кино и театра ШКИТ" loading="lazy">
+                </div>
+                <div class="founder-body">
+                    <span class="kicker anim">Руководитель</span>
+                    <h2 class="sec-title anim">Пашнин Глеб Анатольевич<span class="aside">Путь от преподавателя ВУЗа до руководителя частной школы.</span></h2>
+                    <p>Больше 20 лет он помогает детям и взрослым раскрываться — сначала как преподаватель ВУЗа, теперь как руководитель собственной школы.</p>
+                    <p>Под его началом ученики ШКИТ выпустили <strong>более 500 учебных кино- и телеработ</strong>, брали призовые места, получали Гран-при. Он знает, как провести человека от первого неуверенного шага до выхода на сцену или поступления в театральный.</p>
+                    <p>Именно Глеб Анатольевич — режиссёр проектов <strong>«Давай сыграем жизнь»</strong>, <strong>«Магия слов»</strong> и <strong>«Мой бенефис»</strong>, где взрослые люди впервые в жизни играют на профессиональной сцене.</p>
+                    <blockquote class="founder-quote">
+                        «Я создавал ШКИТ не для того, чтобы растить звёзд. А для того, чтобы каждый — ребёнок или взрослый — почувствовал: у него получится. Остальное приложится».
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ============ 3. КУРСЫ ДЛЯ ДЕТЕЙ И ПОДРОСТКОВ ============ -->
     <section class="section bg-dark" id="kursy">
         <div class="wrap">
@@ -524,10 +612,10 @@
             <span class="kicker anim">Отзывы</span>
             <h2 class="sec-title anim">Что о нас говорят<span class="aside">Честно, без цензуры и причёсывания.</span></h2>
             <!-- Индикатор «Листай» для отзывов (только мобильная версия) -->
-<div class="reviews-scroll-hint" style="text-align:center; margin: 24px 0 0; color: var(--grey); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; display: none;">
-    Листай
-    <span style="display:block; width: 40px; height: 2px; background: var(--coral); margin: 8px auto 0;"></span>
-</div>
+            <div class="reviews-scroll-hint" style="text-align:center; margin: 24px 0 0; color: var(--grey); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; display: none;">
+                Листай
+                <span style="display:block; width: 40px; height: 2px; background: var(--coral); margin: 8px auto 0;"></span>
+            </div>
             <div class="reviews-slider anim" data-stagger="90" id="reviews-slider">
                 <div class="reviews-track" id="reviews-track">
                     
@@ -966,9 +1054,6 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // ============ КАРУСЕЛЬ ОТЗЫВОВ (ДЕСКТОП) ============
-    // На мобильной версии (до 768px) работает НАТИВНЫЙ scroll-snap,
-    // JavaScript используется ТОЛЬКО для десктопа (стрелки и точки)
-    
     var slider = document.getElementById('reviews-slider');
     var track = document.getElementById('reviews-track');
     var prevBtn = document.querySelector('[data-direction="prev"]');
@@ -998,7 +1083,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         function updateSlider() {
-            if (window.innerWidth <= 768) return; // На мобильной — нативный скролл
+            if (window.innerWidth <= 768) return;
             var slideWidth = track.clientWidth / slidesPerView;
             track.style.transform = 'translateX(-' + (currentIndex * slideWidth) + 'px)';
             
