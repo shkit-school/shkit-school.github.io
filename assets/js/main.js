@@ -128,12 +128,12 @@
   document.addEventListener('visibilitychange', revealGuard);
 
   /* ---------- Активный пункт меню при прокрутке ---------- */
-  var navLinks = document.querySelectorAll('.nav a[href^="#"]');
+var navLinks = document.querySelectorAll('.nav a[href^="#"]');
   if (navLinks.length && 'IntersectionObserver' in window) {
     var map = {};
     navLinks.forEach(function (a) {
       var id = a.getAttribute('href').slice(1);
-      if (id) map[id] = a;
+      if (id && id !== 'abajur') map[id] = a; // «Театр» исключаем из авто-подсветки
     });
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -147,6 +147,15 @@
       var sec = document.getElementById(id);
       if (sec) spy.observe(sec);
     });
+
+    // Подсветка «Театра» только при клике
+    var theaterLink = document.querySelector('.nav a[href="#abajur"]');
+    if (theaterLink) {
+      theaterLink.addEventListener('click', function () {
+        navLinks.forEach(function (a) { a.classList.remove('is-active'); });
+        theaterLink.classList.add('is-active');
+      });
+    }
   }
 
   /* ---------- Попапы «Подробнее» ---------- */
