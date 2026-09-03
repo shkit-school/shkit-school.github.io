@@ -137,6 +137,14 @@ var navLinks = document.querySelectorAll('.nav a[href^="#"]');
     });
   });
 
+  // Сброс подсветки при клике на логотип
+  var logo = document.querySelector('.logo');
+  if (logo) {
+    logo.addEventListener('click', function () {
+      navLinks.forEach(function (a) { a.classList.remove('is-active'); });
+    });
+  }
+
   /* ---------- Попапы «Подробнее» ---------- */
   var lastFocused = null;
   function openPopup(id) {
