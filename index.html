@@ -1185,10 +1185,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  activator.addEventListener('click', function () {
+ var sleepTimer = null;
+
+  function sleepMap() {
+    if (!isMobile()) return;
+    iframe.style.pointerEvents = 'none';
+    activator.style.display = 'block';
+  }
+
+  function wakeMap() {
+    if (!isMobile()) return;
     iframe.style.pointerEvents = 'auto';
     activator.style.display = 'none';
-  });
+    clearTimeout(sleepTimer);
+    sleepTimer = setTimeout(sleepMap, 5000);
+  }
+
+  activator.addEventListener('click', wakeMap);
 
   setMapState();
   window.addEventListener('resize', setMapState);
