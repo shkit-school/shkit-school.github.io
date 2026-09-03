@@ -912,15 +912,19 @@
                         <a class="social" href="https://max.ru/join/wwVKZRo3fOoAb85xAT8HO9Vy_4fCZkXA1MDKTJIJ_RQ" target="_blank" rel="noopener" aria-label="MAX">
                             <svg viewBox="0 0 24 24"><path d="M3 20V4h3.2l5 8 5-8H21v16h-3V9.5l-4.8 7.5h-.4L8 9.5V20z"/></svg>MAX</a>
                     </div>
-                    <div class="map-wrap" style="margin-top:22px; position:relative; overflow:hidden; border-radius:12px;">
-    <iframe title="Карта: Школа кино и театра ШКИТ, вход с ул. Тернопольской" 
+                    <div class="map-wrap" id="map-wrap" style="margin-top:22px; position:relative; overflow:hidden; border-radius:12px;">
+    <iframe 
+        id="map-iframe"
+        title="Карта: Школа кино и театра ШКИТ, вход с ул. Тернопольской" 
         loading="lazy" 
         src="https://yandex.ru/map-widget/v1/?ll=61.371311%2C55.158862&z=17&pt=61.371311%2C55.158862&scroll=false"
-        style="width:100%; height:350px; border:0; border-radius:12px; pointer-events:none;"
+        style="width:100%; height:350px; border:0; border-radius:12px; pointer-events:auto;"
         frameborder="0" 
         allow="fullscreen; autoplay; encrypted-media; clipboard-write; picture-in-picture; payment">
     </iframe>
+    <button id="map-activator" style="display:none; position:absolute; inset:0; background:transparent; border:none; cursor:pointer; z-index:2;" aria-label="Активировать карту"></button>
 </div>
+
                 </div>
 
                 <div class="form-card form-card--webask anim" id="zapis">
