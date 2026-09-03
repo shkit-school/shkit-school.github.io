@@ -1155,8 +1155,40 @@ document.addEventListener('DOMContentLoaded', function() {
         
         createDots();
         updateSlider();
-    }
+     }
 });
+</script>
+
+<script>
+(function () {
+  var wrap = document.getElementById('map-wrap');
+  var iframe = document.getElementById('map-iframe');
+  var activator = document.getElementById('map-activator');
+
+  if (!wrap || !iframe || !activator) return;
+
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
+
+  function setMapState() {
+    if (isMobile()) {
+      iframe.style.pointerEvents = 'none';
+      activator.style.display = 'block';
+    } else {
+      iframe.style.pointerEvents = 'auto';
+      activator.style.display = 'none';
+    }
+  }
+
+  activator.addEventListener('click', function () {
+    iframe.style.pointerEvents = 'auto';
+    activator.style.display = 'none';
+  });
+
+  setMapState();
+  window.addEventListener('resize', setMapState);
+})();
 </script>
 </body>
 </html>
