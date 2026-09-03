@@ -136,25 +136,19 @@ var navLinks = document.querySelectorAll('.nav a[href^="#"]');
       if (id) map[id] = a;
     });
 
+    // Исключаем «Театр» из автоматической подсветки,
+    // чтобы он не перебивал «Афишу»
+    delete map['abajur'];
+
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) {
-          var id = en.target.id;
-          if (!map[id]) return;
+        if (!en.isIntersecting) return;
 
-          // «Абажур» не должен гасить подсветку «Афиши»
-          if (id === 'abajur') {
-            var afishaLink = map['afisha'];
-            if (afishaLink) {
-              navLinks.forEach(function (a) { a.classList.remove('is-active'); });
-              afishaLink.classList.add('is-active');
-            }
-            return;
-          }
+        var id = en.target.id;
+        if (!map[id]) return;
 
-          navLinks.forEach(function (a) { a.classList.remove('is-active'); });
-          map[id].classList.add('is-active');
-        }
+        navLinks.forEach(function (a) { a.classList.remove('is-active'); });
+        map[id].classList.add('is-active');
       });
     }, { rootMargin: '-40% 0px -55% 0px' });
 
@@ -162,6 +156,15 @@ var navLinks = document.querySelectorAll('.nav a[href^="#"]');
       var sec = document.getElementById(id);
       if (sec) spy.observe(sec);
     });
+
+    // Подсветка «Театра» только при клике
+    var theaterLink = document.querySelector('.nav a[href="#abajur"]');
+    if (theaterLink) {
+      theaterLink.addEventListener('click', function () {
+        navLinks.forEach(function (a) { a.classList.remove('is-active'); });
+        theaterLink.classList.add('is-active');
+      });
+    }
   }
 
   /* ---------- Попапы «Подробнее» ---------- */
