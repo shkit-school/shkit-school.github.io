@@ -80,9 +80,26 @@
                 color: var(--coral-ink, #BC3636) !important;
             }
         }
-    </style>
-</head>
-<body>
+        @media (max-width: 880px) {
+            .nav.is-open .m-cta .btn {
+                background: var(--coral-dark, #D13434);
+                color: #fff !important;
+                border: 2px solid var(--coral-dark, #D13434);
+                border-radius: var(--radius-btn, 11px);
+                padding: 12px 24px;
+                font-weight: 700;
+                font-size: 15px;
+                width: 100%;
+                text-align: center;
+                display: block;
+                box-shadow: 0 8px 22px -10px rgba(209,52,52,.8);
+            }
+            .nav.is-open .m-cta .btn:hover {
+                background: #fff;
+                color: var(--coral-ink, #BC3636) !important;
+            }
+        }
+ 
     </style>
 </head>
 <body>
