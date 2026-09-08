@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог — Школа кино и театра ШКИТ</title>
+    <meta name="description" content="Полезные статьи от ШКИТ: как помочь ребёнку не бояться сцены, развить речь, общаться с подростком и взрослому вернуть уверенность.">
+    <link rel="canonical" href="https://shkit-school.github.io/blog/">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        * { -webkit-tap-highlight-color: transparent; }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 40px;
+        }
+        .blog-card {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--line);
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+        .blog-card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .blog-card-date {
+            font-size: 12px;
+            color: var(--grey);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .blog-card h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+        .blog-card a {
+            margin-top: auto;
+            color: var(--coral-ink);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .blog-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main">К основному содержимому</a>
+
+<header class="header">
+    <div class="wrap header-inner">
+        <a class="logo" href="../index.html">
+            <img src="../assets/img/logo-sm.png" alt="Логотип ШКИТ" width="48" height="44">
+            <span><b>ШКИТ</b><span>Школа кино и театра</span></span>
+        </a>
+        <nav class="nav">
+            <a href="../index.html#about">О нас</a>
+            <a href="../index.html#kursy">Курсы</a>
+            <a href="../index.html#proekty">Проекты</a>
+            <a href="../index.html#otzyvy">Отзывы</a>
+            <a href="../index.html#afisha">Афиша</a>
+            <a href="../index.html#contacts">Контакты</a>
+            <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
+            <span class="m-cta"><a class="btn btn--sm" href="../index.html#zapis">Записаться</a></span>
+        </nav>
+        <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<main id="main" tabindex="-1">
+    <section class="page-hero">
+        <div class="wrap">
+            <div class="crumbs"><a href="../index.html">Главная</a> / Блог</div>
+            <h1>Полезное от ШКИТ</h1>
+            <p>Статьи, которые помогают не только на сцене.</p>
+        </div>
+    </section>
+
+    <section class="section bg-white">
+        <div class="wrap">
+            <div class="blog-grid">
+                <!-- Карточки статей добавятся позже -->
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="wrap">
+        <div class="footer-bottom">
+            <span>© <span id="year">2026</span> Школа кино и театра «ШКИТ» · </span>
+            <span><a href="../policy.html">Политика конфиденциальности</a></span>
+        </div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
