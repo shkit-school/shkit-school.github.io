@@ -407,6 +407,84 @@
             margin-bottom: -56px;
             z-index: 10;
         }
+        /* ===== БЛОГ НА ГЛАВНОЙ ===== */
+.blog-slider {
+    margin-top: 40px;
+}
+
+.blog-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.blog-card {
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    filter: var(--photo);
+}
+
+.blog-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.blog-card-date {
+    font-size: 12px;
+    color: var(--grey);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.blog-card h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.blog-card a {
+    margin-top: auto;
+    color: var(--coral-ink);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .blog-slider {
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        margin-left: -16px;
+        margin-right: -16px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .blog-track {
+        display: flex;
+        gap: 14px;
+        width: max-content;
+    }
+
+    .blog-card {
+        flex: 0 0 85%;
+        scroll-snap-align: start;
+    }
+}
     </style>
     <script type="application/ld+json">
         {
@@ -898,6 +976,50 @@
         </div>
     </section>
 
+    <!-- ============ БЛОГ ============ -->
+<section class="section bg-white" id="blog">
+    <div class="wrap">
+        <span class="kicker anim">Блог</span>
+        <h2 class="sec-title anim">Полезное от ШКИТ<span class="aside">Статьи, которые помогают не только на сцене.</span></h2>
+
+        <div class="blog-slider anim" data-stagger="90">
+            <div class="blog-track">
+                
+                <article class="blog-card">
+                    <img src="assets/img/gallery-05.jpg" alt="Ребёнок стесняется сцены" loading="lazy">
+                    <div class="blog-card-body">
+                        <div class="blog-card-date">05.09.2026</div>
+                        <h3>Ребёнок стесняется и боится сцены: что делать родителю</h3>
+                        <a href="statya-1.html">Читать →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <img src="assets/img/gallery-06.jpg" alt="Подростки на сцене ШКИТ" loading="lazy">
+                    <div class="blog-card-body">
+                        <div class="blog-card-date">12.09.2026</div>
+                        <h3>Подросток молчит и закрывается: как театр помогает вернуть голос</h3>
+                        <a href="statya-2.html">Читать →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <img src="assets/img/gal104.jpg" alt="Взрослые на сцене ШКИТ" loading="lazy">
+                    <div class="blog-card-body">
+                        <div class="blog-card-date">19.09.2026</div>
+                        <h3>Можно ли начать заниматься театром в 35, 40, 50 лет</h3>
+                        <a href="statya-3.html">Читать →</a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <div style="text-align:center; margin-top:30px;">
+            <a class="btn btn--ghost" href="blog.html">Все статьи</a>
+        </div>
+    </div>
+</section>
     <!-- ============ 14. КОНТАКТЫ ============ -->
     <section class="section bg-white" id="contacts">
         <div class="wrap">
