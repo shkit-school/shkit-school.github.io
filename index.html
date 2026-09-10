@@ -527,7 +527,17 @@
                 scroll-margin-top: 120px;
             }
         }
-    /* ===== ОТСТУП ПЕРЕД ТЕАТРОМ ===== */
+     /* ===== ОТСТУП ПЕРЕД ТЕАТРОМ КАК У СЕКЦИЙ ===== */
+        .section-inner {
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .section-inner {
+                margin-top: 50px;
+            }
+        }
+
         #abajur {
             scroll-margin-top: 120px;
         }
@@ -536,7 +546,7 @@
             #abajur {
                 scroll-margin-top: 100px;
             }
-        }
+        }   
     </style>
     <script type="application/ld+json">
         {
@@ -988,11 +998,13 @@
                 <p class="afisha-hint">Афиша обновляется. Больше информации в нашей <a href="https://vk.com/shkit74" target="_blank" rel="noopener" style="color:var(--coral-ink);font-weight:700">группе ВКонтакте</a>.</p>
             </div>
 
-          <!-- 12. Абажур (якорь abajur) -->
-            <span class="kicker anim">Театр</span>
-            <h2 class="sec-title anim">Наши друзья — плейбэк-театр «Абажур»<span class="aside">Театр, где ваши истории обретают свет и тепло.</span></h2>
+         <!-- 12. Театр (якорь abajur) -->
+            <div class="section-inner" id="abajur">
+                <span class="kicker anim">Театр</span>
+                <h2 class="sec-title anim">Наши друзья — плейбэк-театр «Абажур»<span class="aside">Театр, где ваши истории обретают свет и тепло.</span></h2>
+            </div>
 
-            <div class="abajur anim" id="abajur">
+            <div class="abajur anim">
                 <div class="abajur-media"><img src="assets/img/gal100.jpg" alt="Перформанс плейбэк-театра «Абажур»" loading="lazy"></div>
                 <div class="abajur-body">
                     <p>Театр импровизации. В «Абажуре» не играют выученных пьес. Здесь играют саму жизнь — ту, что прямо сейчас пульсирует в сердцах зрителей. Вы рассказываете историю, ведущий помогает оформить чувство, а актёры и музыкант тут же, без единой репетиции, воплощают её на сцене.</p>
