@@ -478,12 +478,16 @@
         width: 100%;
     }
 
-     .blog-card {
+       .blog-card {
         flex: 0 0 100%;
         scroll-snap-align: start;
         scroll-snap-stop: normal;
-        padding: 0 5px;
+        padding: 0;
         box-sizing: border-box;
+     }
+
+     .blog-card:not(:last-child) {
+        margin-right: 10px;
     }
 }
     /* Убираем большой отступ между блогом и контактами */
