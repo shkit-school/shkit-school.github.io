@@ -28,8 +28,16 @@
         }
         .blog-card img {
             width: 100%;
-            aspect-ratio: 16/9;
+            height: 220px;
             object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .blog-card img {
+                height: auto;
+                aspect-ratio: 16/9;
+            }
         }
         .blog-card-body {
             padding: 20px;
