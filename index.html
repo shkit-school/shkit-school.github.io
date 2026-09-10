@@ -472,16 +472,17 @@
         margin: 0;
     }
 
-  .blog-track {
+ .blog-track {
         display: flex;
-        gap: 12px;
-        width: max-content;
+        gap: 0;
+        width: 100%;
     }
 
      .blog-card {
-        flex: 0 0 calc(100% - 12px);
+        flex: 0 0 100%;
         scroll-snap-align: start;
         scroll-snap-stop: normal;
+        padding: 0 5px;
         box-sizing: border-box;
     }
 }
