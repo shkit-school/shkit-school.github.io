@@ -490,7 +490,13 @@
         margin-right: 10px;
     }
 }
-    /* Убираем большой отступ между блогом и контактами */
+   /* ===== УМЕНЬШАЕМ ЛИШНЮЮ ПУСТОТУ ===== */
+        .section {
+            padding-top: clamp(40px, 6vw, 80px) !important;
+            padding-bottom: clamp(40px, 6vw, 80px) !important;
+        }
+
+        /* Убираем большой отступ между блогом и контактами */
         #blog {
             padding-bottom: 10px !important;
         }
@@ -505,12 +511,6 @@
                 scroll-margin-top: 40px !important;
             }
         }
-         /* ===== УМЕНЬШАЕМ ЛИШНЮЮ ПУСТОТУ ===== */
-        .section {
-            padding-top: clamp(40px, 6vw, 80px) !important;
-            padding-bottom: clamp(40px, 6vw, 80px) !important;
-        }
-
         .afisha-board {
             margin-top: 24px !important;
         }
