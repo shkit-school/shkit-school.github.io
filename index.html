@@ -510,41 +510,26 @@
         }
 
         /* Кнопка "Читать" и "Все статьи" в карточке (мобильная) */
-        .blog-card-actions {
+      .blog-card-actions {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: auto;
             gap: 10px;
-            flex-wrap: wrap;
         }
         .blog-card-actions .read-link {
             color: var(--coral-ink);
             font-weight: 700;
             font-size: 14px;
         }
-        .blog-more-btn {
-            padding: 8px 16px;
-            font-size: 13px;
+        .blog-card-actions .all-link {
+            color: var(--ink);
             font-weight: 700;
-            border-radius: var(--radius-btn);
-            background: var(--coral-dark);
-            color: #fff;
-            text-align: center;
-            text-decoration: none;
-            transition: background .25s var(--ease), color .25s var(--ease);
-            box-shadow: 0 6px 18px -8px rgba(209,52,52,.8);
-            display: none;
+            font-size: 14px;
         }
-        .blog-more-btn:hover {
-            background: #fff;
+        .blog-card-actions .all-link:hover {
             color: var(--coral-ink);
-        }
-        @media (max-width: 768px) {
-            .blog-more-btn {
-                display: inline-block;
-            }
-        }
+                   }
 
         /* ===== О НАС: ИКОНКА И ЗАГОЛОВОК В ОДНУ СТРОКУ (мобильная) ===== */
         @media (max-width: 768px) {
