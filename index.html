@@ -44,13 +44,13 @@
             border-radius: 12px;
         }
 
-        /* ===== ПЕРВЫЙ ЭКРАН: ПЛАШКА ВЫШЕ ===== */
+        /* ===== ШАПКА: ПЛАШКА ВЫШЕ ===== */
         .hero-tag {
             margin-top: -30px;
         }
         @media (max-width: 768px) {
             .hero-tag {
-                margin-top: -10px;
+                margin-top: -50px;
             }
         }
 
@@ -80,16 +80,21 @@
             }
         }
 
-        /* ===== КНОПКА В МОБИЛЬНОМ МЕНЮ ===== */
+        /* ===== КНОПКА "ЗАПИСАТЬСЯ" В ШАПКЕ ===== */
+        .header-cta .btn {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
         @media (max-width: 880px) {
             .nav.is-open .m-cta .btn {
                 background: var(--coral-dark, #D13434);
                 color: #fff !important;
                 border: 2px solid var(--coral-dark, #D13434);
                 border-radius: var(--radius-btn, 11px);
-                padding: 15px 30px;
+                padding: 8px 16px;
                 font-weight: 700;
-                font-size: 16px;
+                font-size: 15px;
+                line-height: 1.2;
                 width: 100%;
                 text-align: center;
                 display: block;
@@ -98,32 +103,6 @@
             .nav.is-open .m-cta .btn:hover {
                 background: #fff;
                 color: var(--coral-ink, #BC3636) !important;
-            }
-        }
-
-        /* ===== КНОПКИ КАК "ПОДРОБНЕЕ В КУРСАХ" ===== */
-        /* Кнопка в шапке (десктоп) */
-        .header-cta .btn,
-        .hero-btn-wrapper .btn,
-        .doubt-cta .btn,
-        .blog-more-wrap .btn {
-            padding: 15px 30px;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: var(--radius-btn);
-            width: auto;
-            display: inline-flex;
-        }
-
-        .hero-btn-wrapper {
-            display: flex;
-            justify-content: center;
-        }
-        @media (max-width: 560px) {
-            .hero-btn-wrapper .btn,
-            .doubt-cta .btn {
-                width: auto;
-                min-width: 200px;
             }
         }
 
@@ -236,7 +215,6 @@
             transform: scale(1.3);
         }
 
-        /* Десктоп: 2 карточки */
         @media (min-width: 769px) {
             .review-slide {
                 flex: 0 0 50%;
@@ -252,7 +230,6 @@
             }
         }
 
-        /* ===== МОБИЛЬНАЯ ВЕРСИЯ: НАТИВНЫЙ СКРОЛЛ ===== */
         @media (max-width: 768px) {
             .reviews-slider {
                 overflow-x: auto !important;
@@ -263,7 +240,6 @@
                 padding: 0;
                 width: 100%;
             }
-
             .reviews-track {
                 overflow: visible !important;
                 transform: none !important;
@@ -272,7 +248,6 @@
                 width: auto !important;
                 min-width: 100% !important;
             }
-
             .review-slide {
                 flex: 0 0 100% !important;
                 min-width: 100% !important;
@@ -282,7 +257,6 @@
                 scroll-snap-align: start !important;
                 scroll-snap-stop: normal !important;
             }
-
             .review-slide .review {
                 flex: 0 0 100% !important;
                 min-height: 336px;
@@ -294,26 +268,70 @@
                 scroll-snap-align: start !important;
                 scroll-snap-stop: normal !important;
             }
-
             .review-slide .review p {
                 font-size: 14px;
                 line-height: 1.5;
                 margin-bottom: 15px;
                 font-style: italic;
             }
-
             .slider-nav {
                 display: none !important;
             }
-
             .slider-dots {
                 gap: 8px;
                 margin-top: 20px;
             }
-
             .slider-dots .dot {
                 width: 8px;
                 height: 8px;
+            }
+        }
+
+        /* Индикатор «Листай» — как было в отзывах */
+        .reviews-scroll-hint {
+            text-align: center;
+            margin: 24px 0 0;
+            color: var(--grey);
+            font-size: 11px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: none;
+        }
+        .reviews-scroll-hint span {
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--coral);
+            margin: 8px auto 0;
+        }
+        @media (max-width: 768px) {
+            .reviews-scroll-hint {
+                display: block !important;
+            }
+        }
+
+        /* Индикатор «Листай» в блоге — с отступом перед фото */
+        .blog-scroll-hint {
+            text-align: center;
+            margin: 20px 0 40px;
+            color: var(--grey);
+            font-size: 11px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: none;
+        }
+        .blog-scroll-hint span {
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--coral);
+            margin: 8px auto 0;
+        }
+        @media (max-width: 768px) {
+            .blog-scroll-hint {
+                display: block !important;
             }
         }
 
@@ -324,70 +342,13 @@
             opacity: 0.6 !important;
         }
 
-        /* ===== ФИНАЛЬНЫЙ ФИКС: СКРЫВАЕМ КНОПКИ И ТОЧКИ НА МОБИЛЬНОЙ ===== */
-        @media (max-width: 768px) {
-            .slider-nav,
-            .slider-nav *,
-            .slider-btn,
-            .slider-dots,
-            .slider-dots * {
-                display: none !important;
-                visibility: hidden !important;
-                opacity: 0 !important;
-                pointer-events: none !important;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .reviews-scroll-hint {
-                display: block !important;
-            }
-        }
-
-        /* ===== О НАС: ИКОНКА РЯДОМ С ЗАГОЛОВКОМ ===== */
-        .adv {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 12px;
-            padding: 24px 22px;
-        }
-
-        .adv-ico {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(232,93,93,.12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-bottom: 0;
-        }
-
-        .adv h3 {
-            margin: 0;
-            font-size: 20px;
-        }
-
-        .adv p {
-            flex: 1 0 100%;
-            margin-top: 4px;
-        }
-
-        /* ===== УМЕНЬШАЕМ ОТСТУП ПЕРЕД ПЕРВОЙ КАРТОЧКОЙ ===== */
-        .adv-grid {
-            margin-top: 30px;
-        }
-
-        /* ===== РУКОВОДИТЕЛЬ ===== */
+        /* ===== РУКОВОДИТЕЛЬ (как было) ===== */
         .founder {
             display: grid;
             grid-template-columns: 0.9fr 1.1fr;
             gap: 40px;
             align-items: center;
         }
-
         .founder-media {
             position: relative;
             border-radius: var(--radius);
@@ -396,26 +357,22 @@
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--line);
         }
-
         .founder-media img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             filter: var(--photo);
         }
-
         .founder-body p {
             margin-bottom: 16px;
             color: var(--grey);
             font-size: 17px;
             line-height: 1.6;
         }
-
         .founder-body p strong {
             color: var(--ink);
             font-weight: 700;
         }
-
         .founder-quote {
             margin-top: 24px;
             padding: 20px 24px;
@@ -428,7 +385,6 @@
             line-height: 1.5;
             font-style: italic;
         }
-
         @media (max-width: 768px) {
             .founder {
                 grid-template-columns: 1fr;
@@ -456,7 +412,6 @@
         #founder {
             padding-top: 20px !important;
         }
-
         @media (max-width: 768px) {
             #founder {
                 padding-top: 0 !important;
@@ -466,7 +421,6 @@
                 margin: 0 !important;
             }
         }
-
         .founder-body p:first-of-type {
             margin-top: 10px !important;
         }
@@ -484,13 +438,11 @@
         .blog-slider {
             margin-top: 40px;
         }
-
         .blog-track {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 22px;
         }
-
         .blog-card {
             background: #fff;
             border-radius: var(--radius);
@@ -500,33 +452,28 @@
             display: flex;
             flex-direction: column;
         }
-
         .blog-card img {
             width: 100%;
             aspect-ratio: 16/9;
             object-fit: cover;
             filter: var(--photo);
         }
-
         .blog-card-body {
             padding: 20px;
             display: flex;
             flex-direction: column;
             flex: 1;
         }
-
         .blog-card-date {
             font-size: 12px;
             color: var(--grey);
             font-weight: 600;
             margin-bottom: 8px;
         }
-
         .blog-card h3 {
             font-size: 18px;
             margin-bottom: 16px;
         }
-
         .blog-card a {
             margin-top: auto;
             color: var(--coral-ink);
@@ -534,33 +481,7 @@
             font-size: 14px;
         }
 
-        /* Блог: кнопка "Подробнее" как в курсах, но цвет прежний */
-        .blog-card a.read-btn {
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: var(--radius-btn);
-            background: var(--coral-dark);
-            color: #fff;
-            text-align: center;
-            margin-top: auto;
-            transition: background .25s var(--ease), color .25s var(--ease), transform .2s var(--ease);
-            box-shadow: 0 8px 22px -10px rgba(209,52,52,.8);
-        }
-        .blog-card a.read-btn:hover {
-            background: #fff;
-            color: var(--coral-ink);
-        }
-        @media (max-width: 560px) {
-            .blog-card a.read-btn {
-                width: auto;
-                min-width: 200px;
-                align-self: center;
-            }
-        }
-
-        /* Мобильная версия блога */
+        /* Мобильный блог */
         @media (max-width: 768px) {
             .blog-slider {
                 overflow-x: auto;
@@ -570,13 +491,11 @@
                 padding: 0;
                 margin: 0;
             }
-
             .blog-track {
                 display: flex;
                 gap: 0;
                 width: 100%;
             }
-
             .blog-card {
                 flex: 0 0 100%;
                 scroll-snap-align: start;
@@ -584,33 +503,75 @@
                 padding: 0;
                 box-sizing: border-box;
             }
-
             .blog-card:not(:last-child) {
                 margin-right: 10px;
             }
         }
 
-        /* Индикатор «Листай» в блоге — только мобильная */
-        .blog-scroll-hint {
+        /* Кнопка "Читать" и "Все статьи" в карточке (мобильная) */
+        .blog-card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .blog-card-actions .read-link {
+            color: var(--coral-ink);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .blog-more-btn {
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: var(--radius-btn);
+            background: var(--coral-dark);
+            color: #fff;
             text-align: center;
-            margin: 24px 0 0;
-            color: var(--grey);
-            font-size: 11px;
-            letter-spacing: .2em;
-            text-transform: uppercase;
-            font-weight: 600;
+            text-decoration: none;
+            transition: background .25s var(--ease), color .25s var(--ease);
+            box-shadow: 0 6px 18px -8px rgba(209,52,52,.8);
             display: none;
         }
-        .blog-scroll-hint span {
-            display: block;
-            width: 40px;
-            height: 2px;
-            background: var(--coral);
-            margin: 8px auto 0;
+        .blog-more-btn:hover {
+            background: #fff;
+            color: var(--coral-ink);
         }
         @media (max-width: 768px) {
-            .blog-scroll-hint {
-                display: block !important;
+            .blog-more-btn {
+                display: inline-block;
+            }
+        }
+
+        /* ===== О НАС: ИКОНКА И ЗАГОЛОВОК В ОДНУ СТРОКУ (мобильная) ===== */
+        @media (max-width: 768px) {
+            .adv {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 12px;
+                padding: 22px 18px;
+            }
+            .adv-ico {
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+                flex-shrink: 0;
+                margin-bottom: 0;
+            }
+            .adv h3 {
+                margin: 0;
+                font-size: 18px;
+                line-height: 1.2;
+            }
+            .adv p {
+                flex: 1 0 100%;
+                margin: 0;
+            }
+            .adv-grid {
+                margin-top: 24px;
             }
         }
 
@@ -619,35 +580,28 @@
             padding-top: clamp(40px, 6vw, 80px) !important;
             padding-bottom: clamp(40px, 6vw, 80px) !important;
         }
-
         #blog {
             padding-bottom: 10px !important;
         }
-
         #contacts {
             padding-top: 20px !important;
             scroll-margin-top: 70px !important;
         }
-
         @media (max-width: 768px) {
             #contacts {
                 padding-top: 10px !important;
                 scroll-margin-top: 70px !important;
             }
         }
-
         .afisha-board {
             margin-top: 24px !important;
         }
-
         .event-body {
             padding: 16px !important;
         }
-
         .event-body .e-short {
             margin-bottom: 12px !important;
         }
-
         @media (max-width: 768px) {
             #blog {
                 scroll-margin-top: 40px !important;
@@ -664,26 +618,31 @@
                 scroll-margin-top: 120px;
             }
         }
-
-        /* ===== ОТСТУП ПЕРЕД ТЕАТРОМ ===== */
         .section-inner {
             margin-top: 80px;
         }
-
         @media (max-width: 768px) {
             .section-inner {
                 margin-top: 50px;
             }
         }
-
         #abajur {
             scroll-margin-top: 90px;
         }
-
         @media (max-width: 768px) {
             #abajur {
                 scroll-margin-top: 80px;
             }
+        }
+
+        /* ===== КНОПКА "ЗАПИСАТЬСЯ" В ПЕРВОМ ШАГЕ — как "Регистрация" в афише ===== */
+        .doubt-cta .btn {
+            padding: 11px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: var(--radius-btn);
+            display: inline-block;
+            width: auto;
         }
     </style>
     <script type="application/ld+json">
@@ -765,7 +724,7 @@
             <h1 class="anim" data-delay="120">Актёрское мастерство для жизни</h1>
             <p class="hero-sub anim" data-delay="240">Более 15 лет раскрываем таланты детей и взрослых — для сцены и повседневных побед. Без пафоса, зато с душой.</p>
             <div class="hero-btn-wrapper anim" data-delay="360">
-                <a class="btn" href="#zapis">Записаться</a>
+                <a class="btn btn--lg" href="#zapis">Записаться</a>
             </div>
         </div>
         <a class="hero-scroll" href="#about" aria-label="Листай вниз">Листай</a>
@@ -1166,7 +1125,7 @@
     </section>
 
     <!-- ============ БЛОГ ============ -->
-    <section class="section bg-white" id="blog">
+    <section class="section bg-paper" id="blog">
         <div class="wrap">
             <span class="kicker anim">Блог</span>
             <h2 class="sec-title anim">Полезное от ШКИТ<span class="aside">Статьи, которые помогают не только на сцене.</span></h2>
@@ -1176,41 +1135,50 @@
                 <span></span>
             </div>
 
-            <div class="blog-slider anim" data-stagger="90">
-                <div class="blog-track">
+            <div class="afisha-board anim">
+                <div class="blog-slider" data-stagger="90">
+                    <div class="blog-track">
 
-                    <article class="blog-card">
-                        <img src="assets/img/gallery-05.jpg" alt="Ребёнок стесняется сцены" loading="lazy">
-                        <div class="blog-card-body">
-                            <div class="blog-card-date">05.09.2026</div>
-                            <h3>Ребёнок стесняется и боится сцены: что делать родителю</h3>
-                            <a class="read-btn" href="blog/statya-1.html">Подробнее</a>
-                        </div>
-                    </article>
+                        <article class="blog-card">
+                            <img src="assets/img/gallery-05.jpg" alt="Ребёнок стесняется сцены" loading="lazy">
+                            <div class="blog-card-body">
+                                <div class="blog-card-date">05.09.2026</div>
+                                <h3>Ребёнок стесняется и боится сцены: что делать родителю</h3>
+                                <div class="blog-card-actions">
+                                    <a class="read-link" href="blog/statya-1.html">Читать →</a>
+                                    <a class="blog-more-btn" href="blog/">Все статьи</a>
+                                </div>
+                            </div>
+                        </article>
 
-                    <article class="blog-card">
-                        <img src="assets/img/gallery-06.jpg" alt="Подростки на сцене ШКИТ" loading="lazy">
-                        <div class="blog-card-body">
-                            <div class="blog-card-date">12.09.2026</div>
-                            <h3>Подросток молчит и закрывается: как театр помогает вернуть голос</h3>
-                            <a class="read-btn" href="blog/statya-2.html">Подробнее</a>
-                        </div>
-                    </article>
+                        <article class="blog-card">
+                            <img src="assets/img/gallery-06.jpg" alt="Подростки на сцене ШКИТ" loading="lazy">
+                            <div class="blog-card-body">
+                                <div class="blog-card-date">12.09.2026</div>
+                                <h3>Подросток молчит и закрывается: как театр помогает вернуть голос</h3>
+                                <div class="blog-card-actions">
+                                    <a class="read-link" href="blog/statya-2.html">Читать →</a>
+                                </div>
+                            </div>
+                        </article>
 
-                    <article class="blog-card">
-                        <img src="assets/img/gal130.webp" alt="Взрослые на сцене ШКИТ" loading="lazy">
-                        <div class="blog-card-body">
-                            <div class="blog-card-date">19.09.2026</div>
-                            <h3>Можно ли начать заниматься театром в 25, 35, 50 лет</h3>
-                            <a class="read-btn" href="blog/statya-3.html">Подробнее</a>
-                        </div>
-                    </article>
+                        <article class="blog-card">
+                            <img src="assets/img/gal130.webp" alt="Взрослые на сцене ШКИТ" loading="lazy">
+                            <div class="blog-card-body">
+                                <div class="blog-card-date">19.09.2026</div>
+                                <h3>Можно ли начать заниматься театром в 25, 35, 50 лет</h3>
+                                <div class="blog-card-actions">
+                                    <a class="read-link" href="blog/statya-3.html">Читать →</a>
+                                </div>
+                            </div>
+                        </article>
 
+                    </div>
                 </div>
-            </div>
 
-            <div class="blog-more-wrap" style="text-align:center; margin-top:30px;">
-                <a class="btn btn--ghost" href="blog/">Все статьи</a>
+                <div class="blog-more-wrap-desktop" style="text-align:center; margin-top:30px;">
+                    <a class="btn btn--ghost" href="blog/">Все статьи</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1528,4 +1496,4 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 </script>
 </body>
-</html>
+</html
