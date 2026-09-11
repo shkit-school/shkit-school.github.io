@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="assets/img/gal125.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/img/shapka1.webp" fetchpriority="high">
     <script>document.documentElement.className+=" js";</script>
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
@@ -43,7 +43,17 @@
             min-height: 500px;
             border-radius: 12px;
         }
-        
+
+        /* ===== ПЕРВЫЙ ЭКРАН: ПЛАШКА ВЫШЕ ===== */
+        .hero-tag {
+            margin-top: -30px;
+        }
+        @media (max-width: 768px) {
+            .hero-tag {
+                margin-top: -10px;
+            }
+        }
+
         /* ===== ЯКОРЯ ===== */
         section[id] {
             scroll-margin-top: 15px;
@@ -54,7 +64,7 @@
         #abajur {
             scroll-margin-top: 160px;
         }
-        
+
         @media (max-width: 768px) {
             section[id] {
                 scroll-margin-top: 20px;
@@ -69,7 +79,7 @@
                 display: none !important;
             }
         }
-        
+
         /* ===== КНОПКА В МОБИЛЬНОМ МЕНЮ ===== */
         @media (max-width: 880px) {
             .nav.is-open .m-cta .btn {
@@ -77,7 +87,7 @@
                 color: #fff !important;
                 border: 2px solid var(--coral-dark, #D13434);
                 border-radius: var(--radius-btn, 11px);
-                padding: 10px 20px;
+                padding: 15px 30px;
                 font-weight: 700;
                 font-size: 16px;
                 width: 100%;
@@ -90,7 +100,33 @@
                 color: var(--coral-ink, #BC3636) !important;
             }
         }
-        
+
+        /* ===== КНОПКИ КАК "ПОДРОБНЕЕ В КУРСАХ" ===== */
+        /* Кнопка в шапке (десктоп) */
+        .header-cta .btn,
+        .hero-btn-wrapper .btn,
+        .doubt-cta .btn,
+        .blog-more-wrap .btn {
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: var(--radius-btn);
+            width: auto;
+            display: inline-flex;
+        }
+
+        .hero-btn-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+        @media (max-width: 560px) {
+            .hero-btn-wrapper .btn,
+            .doubt-cta .btn {
+                width: auto;
+                min-width: 200px;
+            }
+        }
+
         /* ===== КАРУСЕЛЬ ОТЗЫВОВ — ДЕСКТОП ===== */
         .reviews-slider {
             position: relative;
@@ -99,14 +135,14 @@
             margin: 40px 0;
             width: 100%;
         }
-        
+
         .reviews-track {
             display: flex;
             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: grab;
             width: 100%;
         }
-        
+
         .review-slide {
             flex: 0 0 100%;
             min-width: 100%;
@@ -116,7 +152,7 @@
             display: flex;
             width: 100%;
         }
-        
+
         .review-slide .review {
             display: flex;
             flex-direction: column;
@@ -127,12 +163,12 @@
             scroll-snap-align: none !important;
             scroll-snap-stop: normal !important;
         }
-        
+
         .review-slide .review p {
             flex-grow: 1;
             font-style: italic;
         }
-        
+
         .slider-nav {
             display: flex;
             justify-content: center;
@@ -140,7 +176,7 @@
             gap: 20px;
             margin-top: 25px;
         }
-        
+
         .slider-btn {
             width: 44px;
             height: 44px;
@@ -165,23 +201,23 @@
             -webkit-appearance: none;
             appearance: none;
         }
-        
+
         .slider-btn:hover {
             background: var(--coral-dark, #D13434);
             transform: scale(1.1);
         }
-        
+
         .slider-btn:active {
             transform: scale(0.95);
         }
-        
+
         .slider-dots {
             display: flex;
             justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
         }
-        
+
         .slider-dots .dot {
             width: 10px;
             height: 10px;
@@ -194,12 +230,12 @@
             -webkit-appearance: none;
             appearance: none;
         }
-        
+
         .slider-dots .dot.active {
             background: var(--coral-ink, #BC3636);
             transform: scale(1.3);
         }
-        
+
         /* Десктоп: 2 карточки */
         @media (min-width: 769px) {
             .review-slide {
@@ -215,7 +251,7 @@
                 margin-top: 30px;
             }
         }
-        
+
         /* ===== МОБИЛЬНАЯ ВЕРСИЯ: НАТИВНЫЙ СКРОЛЛ ===== */
         @media (max-width: 768px) {
             .reviews-slider {
@@ -227,7 +263,7 @@
                 padding: 0;
                 width: 100%;
             }
-            
+
             .reviews-track {
                 overflow: visible !important;
                 transform: none !important;
@@ -236,7 +272,7 @@
                 width: auto !important;
                 min-width: 100% !important;
             }
-            
+
             .review-slide {
                 flex: 0 0 100% !important;
                 min-width: 100% !important;
@@ -246,7 +282,7 @@
                 scroll-snap-align: start !important;
                 scroll-snap-stop: normal !important;
             }
-            
+
             .review-slide .review {
                 flex: 0 0 100% !important;
                 min-height: 336px;
@@ -258,36 +294,36 @@
                 scroll-snap-align: start !important;
                 scroll-snap-stop: normal !important;
             }
-            
+
             .review-slide .review p {
                 font-size: 14px;
                 line-height: 1.5;
                 margin-bottom: 15px;
                 font-style: italic;
             }
-            
+
             .slider-nav {
                 display: none !important;
             }
-            
+
             .slider-dots {
                 gap: 8px;
                 margin-top: 20px;
             }
-            
+
             .slider-dots .dot {
                 width: 8px;
                 height: 8px;
             }
         }
-        
+
         /* ===== КНОПКА "КУПИТЬ БИЛЕТ" (неактивная) ===== */
         .btn--disabled {
             pointer-events: none !important;
             cursor: default !important;
             opacity: 0.6 !important;
         }
-        
+
         /* ===== ФИНАЛЬНЫЙ ФИКС: СКРЫВАЕМ КНОПКИ И ТОЧКИ НА МОБИЛЬНОЙ ===== */
         @media (max-width: 768px) {
             .slider-nav,
@@ -301,13 +337,49 @@
                 pointer-events: none !important;
             }
         }
-        
+
         @media (max-width: 768px) {
             .reviews-scroll-hint {
                 display: block !important;
             }
         }
-        
+
+        /* ===== О НАС: ИКОНКА РЯДОМ С ЗАГОЛОВКОМ ===== */
+        .adv {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            padding: 24px 22px;
+        }
+
+        .adv-ico {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(232,93,93,.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-bottom: 0;
+        }
+
+        .adv h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .adv p {
+            flex: 1 0 100%;
+            margin-top: 4px;
+        }
+
+        /* ===== УМЕНЬШАЕМ ОТСТУП ПЕРЕД ПЕРВОЙ КАРТОЧКОЙ ===== */
+        .adv-grid {
+            margin-top: 30px;
+        }
+
         /* ===== РУКОВОДИТЕЛЬ ===== */
         .founder {
             display: grid;
@@ -315,7 +387,7 @@
             gap: 40px;
             align-items: center;
         }
-        
+
         .founder-media {
             position: relative;
             border-radius: var(--radius);
@@ -324,26 +396,26 @@
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--line);
         }
-        
+
         .founder-media img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             filter: var(--photo);
         }
-        
+
         .founder-body p {
             margin-bottom: 16px;
             color: var(--grey);
             font-size: 17px;
             line-height: 1.6;
         }
-        
+
         .founder-body p strong {
             color: var(--ink);
             font-weight: 700;
         }
-        
+
         .founder-quote {
             margin-top: 24px;
             padding: 20px 24px;
@@ -356,8 +428,8 @@
             line-height: 1.5;
             font-style: italic;
         }
-        
-       @media (max-width: 768px) {
+
+        @media (max-width: 768px) {
             .founder {
                 grid-template-columns: 1fr;
                 gap: 24px;
@@ -381,11 +453,11 @@
                 padding: 16px 18px;
             }
         }
-         #founder {
+        #founder {
             padding-top: 20px !important;
         }
-        
-      @media (max-width: 768px) {
+
+        @media (max-width: 768px) {
             #founder {
                 padding-top: 0 !important;
             }
@@ -398,7 +470,7 @@
         .founder-body p:first-of-type {
             margin-top: 10px !important;
         }
-         .popup-close {
+        .popup-close {
             position: sticky;
             top: 22px;
             float: right;
@@ -407,104 +479,155 @@
             margin-bottom: -56px;
             z-index: 10;
         }
+
         /* ===== БЛОГ НА ГЛАВНОЙ ===== */
-.blog-slider {
-    margin-top: 40px;
-}
+        .blog-slider {
+            margin-top: 40px;
+        }
 
-.blog-track {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
+        .blog-track {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
 
-.blog-card {
-    background: #fff;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--line);
-    display: flex;
-    flex-direction: column;
-}
+        .blog-card {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--line);
+            display: flex;
+            flex-direction: column;
+        }
 
-.blog-card img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    filter: var(--photo);
-}
+        .blog-card img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            filter: var(--photo);
+        }
 
-.blog-card-body {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
+        .blog-card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
 
-.blog-card-date {
-    font-size: 12px;
-    color: var(--grey);
-    font-weight: 600;
-    margin-bottom: 8px;
-}
+        .blog-card-date {
+            font-size: 12px;
+            color: var(--grey);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
 
-.blog-card h3 {
-    font-size: 18px;
-    margin-bottom: 16px;
-}
+        .blog-card h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
 
-.blog-card a {
-    margin-top: auto;
-    color: var(--coral-ink);
-    font-weight: 700;
-    font-size: 14px;
-}
+        .blog-card a {
+            margin-top: auto;
+            color: var(--coral-ink);
+            font-weight: 700;
+            font-size: 14px;
+        }
 
-/* Мобильная версия */
-@media (max-width: 768px) {
-  .blog-slider {
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding: 0;
-        margin: 0;
-    }
+        /* Блог: кнопка "Подробнее" как в курсах, но цвет прежний */
+        .blog-card a.read-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: var(--radius-btn);
+            background: var(--coral-dark);
+            color: #fff;
+            text-align: center;
+            margin-top: auto;
+            transition: background .25s var(--ease), color .25s var(--ease), transform .2s var(--ease);
+            box-shadow: 0 8px 22px -10px rgba(209,52,52,.8);
+        }
+        .blog-card a.read-btn:hover {
+            background: #fff;
+            color: var(--coral-ink);
+        }
+        @media (max-width: 560px) {
+            .blog-card a.read-btn {
+                width: auto;
+                min-width: 200px;
+                align-self: center;
+            }
+        }
 
- .blog-track {
-        display: flex;
-        gap: 0;
-        width: 100%;
-    }
+        /* Мобильная версия блога */
+        @media (max-width: 768px) {
+            .blog-slider {
+                overflow-x: auto;
+                overflow-y: hidden;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding: 0;
+                margin: 0;
+            }
 
-       .blog-card {
-        flex: 0 0 100%;
-        scroll-snap-align: start;
-        scroll-snap-stop: normal;
-        padding: 0;
-        box-sizing: border-box;
-     }
+            .blog-track {
+                display: flex;
+                gap: 0;
+                width: 100%;
+            }
 
-     .blog-card:not(:last-child) {
-        margin-right: 10px;
-    }
-}
-   /* ===== УМЕНЬШАЕМ ЛИШНЮЮ ПУСТОТУ ===== */
+            .blog-card {
+                flex: 0 0 100%;
+                scroll-snap-align: start;
+                scroll-snap-stop: normal;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .blog-card:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+
+        /* Индикатор «Листай» в блоге — только мобильная */
+        .blog-scroll-hint {
+            text-align: center;
+            margin: 24px 0 0;
+            color: var(--grey);
+            font-size: 11px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: none;
+        }
+        .blog-scroll-hint span {
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--coral);
+            margin: 8px auto 0;
+        }
+        @media (max-width: 768px) {
+            .blog-scroll-hint {
+                display: block !important;
+            }
+        }
+
+        /* ===== УМЕНЬШАЕМ ЛИШНЮЮ ПУСТОТУ ===== */
         .section {
             padding-top: clamp(40px, 6vw, 80px) !important;
             padding-bottom: clamp(40px, 6vw, 80px) !important;
         }
 
-        /* Убираем большой отступ между блогом и контактами */
         #blog {
             padding-bottom: 10px !important;
         }
 
-       #contacts {
+        #contacts {
             padding-top: 20px !important;
             scroll-margin-top: 70px !important;
-                }
+        }
 
         @media (max-width: 768px) {
             #contacts {
@@ -512,6 +635,7 @@
                 scroll-margin-top: 70px !important;
             }
         }
+
         .afisha-board {
             margin-top: 24px !important;
         }
@@ -523,13 +647,14 @@
         .event-body .e-short {
             margin-bottom: 12px !important;
         }
+
         @media (max-width: 768px) {
             #blog {
                 scroll-margin-top: 40px !important;
                 padding-top: 30px !important;
             }
         }
-         @media (max-width: 768px) {
+        @media (max-width: 768px) {
             section[id]:not(#contacts):not(#blog) {
                 scroll-margin-top: 40px !important;
             }
@@ -539,7 +664,8 @@
                 scroll-margin-top: 120px;
             }
         }
-     /* ===== ОТСТУП ПЕРЕД ТЕАТРОМ КАК У СЕКЦИЙ ===== */
+
+        /* ===== ОТСТУП ПЕРЕД ТЕАТРОМ ===== */
         .section-inner {
             margin-top: 80px;
         }
@@ -550,7 +676,7 @@
             }
         }
 
-       #abajur {
+        #abajur {
             scroll-margin-top: 90px;
         }
 
@@ -558,7 +684,7 @@
             #abajur {
                 scroll-margin-top: 80px;
             }
-        }   
+        }
     </style>
     <script type="application/ld+json">
         {
@@ -589,7 +715,7 @@
             ]
         }
     </script>
-     <!-- Yandex.Metrika counter -->
+    <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){...})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112359274', 'ym');
         ym(112359274, 'init', {...});
@@ -619,7 +745,7 @@
             <span class="m-cta"><a class="btn btn--sm" href="#zapis">Записаться</a></span>
         </nav>
         <a class="header-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
-        <span class="header-cta"><a class="btn btn--sm" href="#zapis">Записаться</a></span>
+        <span class="header-cta"><a class="btn" href="#zapis">Записаться</a></span>
         <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
 </header>
@@ -629,17 +755,17 @@
     <!-- ============ 1. ПЕРВЫЙ ЭКРАН ============ -->
     <section class="hero" id="hero">
         <div class="hero-bg">
-    <picture>
-        <source media="(max-width: 768px)" srcset="assets/img/shapka2.webp">
-        <img src="assets/img/shapka1.webp" alt="Ученики школы ШКИТ на сцене" width="1600" height="900" fetchpriority="high">
-    </picture>
-</div>
+            <picture>
+                <source media="(max-width: 768px)" srcset="assets/img/shapka2.webp">
+                <img src="assets/img/shapka1.webp" alt="Ученики школы ШКИТ на сцене" width="1600" height="900" fetchpriority="high">
+            </picture>
+        </div>
         <div class="wrap">
             <span class="hero-tag anim">Челябинск · с 2009 года</span>
             <h1 class="anim" data-delay="120">Актёрское мастерство для жизни</h1>
             <p class="hero-sub anim" data-delay="240">Более 15 лет раскрываем таланты детей и взрослых — для сцены и повседневных побед. Без пафоса, зато с душой.</p>
             <div class="hero-btn-wrapper anim" data-delay="360">
-                <a class="btn btn--lg" href="#zapis">Записаться</a>
+                <a class="btn" href="#zapis">Записаться</a>
             </div>
         </div>
         <a class="hero-scroll" href="#about" aria-label="Листай вниз">Листай</a>
@@ -799,7 +925,7 @@
                             <div class="card-format">2 раза в неделю по 3 ч<br>проект 2–3 месяца</div>
                             <div class="card-price card-price--accent" style="font-size:16px">₽ После<small>консультации</small></div>
                         </div>
-                        <div class="card-actions"><button class="btn btn--block" data-popup="pop-benefis">Узнать подробности</button></div>
+                        <div class="card-actions"><button class="btn btn--block" data-popup="pop-benefis">Подробнее</button></div>
                     </div>
                 </article>
             </div>
@@ -811,15 +937,13 @@
         <div class="wrap">
             <span class="kicker anim">Отзывы</span>
             <h2 class="sec-title anim">Что о нас говорят<span class="aside">Честно, без цензуры и причёсывания.</span></h2>
-            <!-- Индикатор «Листай» для отзывов (только мобильная версия) -->
-            <div class="reviews-scroll-hint" style="text-align:center; margin: 24px 0 0; color: var(--grey); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; display: none;">
+            <div class="reviews-scroll-hint">
                 Листай
-                <span style="display:block; width: 40px; height: 2px; background: var(--coral); margin: 8px auto 0;"></span>
+                <span></span>
             </div>
             <div class="reviews-slider anim" data-stagger="90" id="reviews-slider">
                 <div class="reviews-track" id="reviews-track">
-                    
-                    <!-- Отзыв 1 — Дети -->
+
                     <div class="review-slide">
                         <div class="review review--dark">
                             <span class="quote-mark" aria-hidden="true">”</span>
@@ -827,8 +951,7 @@
                             <div class="review-author"><div class="review-ava">И</div><div class="review-who"><b>Ирина П</b><span>мама Веи, 10 лет</span></div></div>
                         </div>
                     </div>
-                    
-                    <!-- Отзыв 2 — Дети -->
+
                     <div class="review-slide">
                         <div class="review review--coral">
                             <span class="quote-mark" aria-hidden="true">”</span>
@@ -836,8 +959,7 @@
                             <div class="review-author"><div class="review-ava">О</div><div class="review-who"><b>Ольга А</b><span>мама Артёма, 7 лет</span></div></div>
                         </div>
                     </div>
-                    
-                    <!-- Отзыв 3 — Выпускники -->
+
                     <div class="review-slide">
                         <div class="review review--dark">
                             <span class="quote-mark" aria-hidden="true">”</span>
@@ -845,8 +967,7 @@
                             <div class="review-author"><div class="review-ava">В</div><div class="review-who"><b>Василий К</b><span>выпускник ШКИТ</span></div></div>
                         </div>
                     </div>
-                    
-                    <!-- Отзыв 4 — Выпускники -->
+
                     <div class="review-slide">
                         <div class="review review--coral">
                             <span class="quote-mark" aria-hidden="true">”</span>
@@ -854,8 +975,7 @@
                             <div class="review-author"><div class="review-ava">Д</div><div class="review-who"><b>Дарья М</b><span>выпускница ШКИТ</span></div></div>
                         </div>
                     </div>
-                    
-                    <!-- Отзыв 5 — Давай сыграем жизнь -->
+
                     <div class="review-slide">
                         <div class="review review--dark">
                             <span class="quote-mark" aria-hidden="true">”</span>
@@ -863,8 +983,7 @@
                             <div class="review-author"><div class="review-ava">А</div><div class="review-who"><b>Анна В, 28 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
                         </div>
                     </div>
-                    
-                    <!-- Отзыв 6 — Давай сыграем жизнь -->
+
                     <div class="review-slide">
                         <div class="review review--coral">
                             <span class="quote-mark" aria-hidden="true">”</span>
@@ -872,8 +991,7 @@
                             <div class="review-author"><div class="review-ava">О</div><div class="review-who"><b>Ольга З, 39 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
                         </div>
                     </div>
-                    
-                    <!-- Отзыв 7 — Давай сыграем жизнь -->
+
                     <div class="review-slide">
                         <div class="review review--dark">
                             <span class="quote-mark" aria-hidden="true">”</span>
@@ -881,8 +999,7 @@
                             <div class="review-author"><div class="review-ava">Т</div><div class="review-who"><b>Татьяна В, 53 года</b><span>проект «Давай сыграем жизнь»</span></div></div>
                         </div>
                     </div>
-                    
-                    <!-- Отзыв 8 — Давай сыграем жизнь -->
+
                     <div class="review-slide">
                         <div class="review review--coral">
                             <span class="quote-mark" aria-hidden="true">”</span>
@@ -890,8 +1007,7 @@
                             <div class="review-author"><div class="review-ava">С</div><div class="review-who"><b>Светлана Б, 48 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
                         </div>
                     </div>
-                    
-                    <!-- Отзыв 9 — Магия слов -->
+
                     <div class="review-slide">
                         <div class="review review--dark">
                             <span class="quote-mark" aria-hidden="true">”</span>
@@ -899,8 +1015,7 @@
                             <div class="review-author"><div class="review-ava">А</div><div class="review-who"><b>Алена И, 44 года</b><span>проект «Магия слов»</span></div></div>
                         </div>
                     </div>
-                    
-                    <!-- Отзыв 10 — Магия слов -->
+
                     <div class="review-slide">
                         <div class="review review--coral">
                             <span class="quote-mark" aria-hidden="true">”</span>
@@ -908,8 +1023,7 @@
                             <div class="review-author"><div class="review-ava">Е</div><div class="review-who"><b>Елена П, 35 лет</b><span>проект «Магия слов»</span></div></div>
                         </div>
                     </div>
-                    
-                    <!-- Отзыв 11 — Абажур -->
+
                     <div class="review-slide">
                         <div class="review review--dark">
                             <span class="quote-mark" aria-hidden="true">”</span>
@@ -917,8 +1031,7 @@
                             <div class="review-author"><div class="review-ava">С</div><div class="review-who"><b>Светлана М</b><span>зритель перформанса</span></div></div>
                         </div>
                     </div>
-                    
-                    <!-- Отзыв 12 — Абажур -->
+
                     <div class="review-slide">
                         <div class="review review--coral">
                             <span class="quote-mark" aria-hidden="true">”</span>
@@ -926,8 +1039,7 @@
                             <div class="review-author"><div class="review-ava">С</div><div class="review-who"><b>Светлана К</b><span>зритель перформанса</span></div></div>
                         </div>
                     </div>
-                    
-                    <!-- Отзыв 13 — Мой бенефис -->
+
                     <div class="review-slide">
                         <div class="review review--dark">
                             <span class="quote-mark" aria-hidden="true">”</span>
@@ -935,17 +1047,16 @@
                             <div class="review-author"><div class="review-ava">Т</div><div class="review-who"><b>Татьяна М</b><span>проект «Мой бенефис»</span></div></div>
                         </div>
                     </div>
-                    
+
                 </div>
-                
-                <!-- Кнопки навигации (только десктоп) -->
+
                 <div class="slider-nav" id="slider-nav">
                     <button class="slider-btn" data-direction="prev" aria-label="Предыдущие отзывы">‹</button>
                     <div class="slider-dots" aria-hidden="true"></div>
                     <button class="slider-btn" data-direction="next" aria-label="Следующие отзывы">›</button>
                 </div>
             </div>
-            
+
             <p class="reviews-foot anim">Это не всё. Мы могли бы заполнить отзывами весь сайт — но лучше вы придёте и напишете свой.</p>
         </div>
     </section>
@@ -965,7 +1076,7 @@
             <div class="doubt-cta anim">
                 <p>Первое занятие — самый сложный шаг. Мы поможем сделать его без страха.</p>
                 <div class="hero-btn-wrapper">
-                    <a class="btn btn--lg" href="#zapis">Записаться</a>
+                    <a class="btn" href="#zapis">Записаться</a>
                 </div>
             </div>
         </div>
@@ -1005,9 +1116,7 @@
                         <div class="event-body">
                              <h3><span style="font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-ink);display:block;">перформанс</span> «ИСТОРИИ ПОД АБАЖУРОМ»</h3>
                             <div class="e-meta">7 декабря, 19:00 · театр «Многогранник»</div>
-                            <div class="e-short"><strong style="color:var(--coral-ink);">Плейбэк театр "АБАЖУР"</strong><br>Холодный декабрьский вечер, тёплый свет под абажуром и истории, которые оживают прямо у вас на глазах. Приходите рассказать, услышать, увидеть — и согреться.
-
-</div>
+                            <div class="e-short"><strong style="color:var(--coral-ink);">Плейбэк театр "АБАЖУР"</strong><br>Холодный декабрьский вечер, тёплый свет под абажуром и истории, которые оживают прямо у вас на глазах. Приходите рассказать, услышать, увидеть — и согреться.</div>
                             <a class="btn btn--sm btn--block" href="https://chel.kassy.ru/events/teatr/2-55861/" target="_blank" rel="noopener">Купить билет</a>
                         </div>
                     </article>
@@ -1015,7 +1124,7 @@
                 <p class="afisha-hint">Афиша обновляется. Больше информации в нашей <a href="https://vk.com/shkit74" target="_blank" rel="noopener" style="color:var(--coral-ink);font-weight:700">группе ВКонтакте</a>.</p>
             </div>
 
-         <!-- 12. Театр (якорь abajur) -->
+            <!-- 12. Театр (якорь abajur) -->
             <div class="section-inner" id="abajur">
                 <span class="kicker anim">Театр</span>
                 <h2 class="sec-title anim">Наши друзья — плейбэк-театр «Абажур»<span class="aside">Театр, где ваши истории обретают свет и тепло.</span></h2>
@@ -1027,9 +1136,7 @@
                     <p>Театр импровизации. В «Абажуре» не играют выученных пьес. Здесь играют саму жизнь — ту, что прямо сейчас пульсирует в сердцах зрителей. Вы рассказываете историю, ведущий помогает оформить чувство, а актёры и музыкант тут же, без единой репетиции, воплощают её на сцене.</p>
                     <p>Под мягким, уютным светом — словно под абажуром старинной лампы — здесь смеялись и плакали, находили ответы и просто грелись душой. Приходите на огонёк. Новые события театра всегда в нашей афише.</p>
                     <div>
-                       <a class="btn btn--sm" href="https://vk.ru/teatr_abajur" target="_blank" rel="noopener noreferrer">
-    Абажур ВКонтакте
-                        </a>
+                        <a class="btn btn--sm" href="https://vk.ru/teatr_abajur" target="_blank" rel="noopener noreferrer">Абажур ВКонтакте</a>
                     </div>
                 </div>
             </div>
@@ -1059,49 +1166,55 @@
     </section>
 
     <!-- ============ БЛОГ ============ -->
-<section class="section bg-white" id="blog">
-    <div class="wrap">
-        <span class="kicker anim">Блог</span>
-        <h2 class="sec-title anim">Полезное от ШКИТ<span class="aside">Статьи, которые помогают не только на сцене.</span></h2>
+    <section class="section bg-white" id="blog">
+        <div class="wrap">
+            <span class="kicker anim">Блог</span>
+            <h2 class="sec-title anim">Полезное от ШКИТ<span class="aside">Статьи, которые помогают не только на сцене.</span></h2>
 
-        <div class="blog-slider anim" data-stagger="90">
-            <div class="blog-track">
-                
-                <article class="blog-card">
-                    <img src="assets/img/gallery-05.jpg" alt="Ребёнок стесняется сцены" loading="lazy">
-                    <div class="blog-card-body">
-                        <div class="blog-card-date">05.09.2026</div>
-                        <h3>Ребёнок стесняется и боится сцены: что делать родителю</h3>
-                       <a href="blog/statya-1.html">Читать →</a>
-                    </div>
-                </article>
+            <div class="blog-scroll-hint">
+                Листай
+                <span></span>
+            </div>
 
-                <article class="blog-card">
-                    <img src="assets/img/gallery-06.jpg" alt="Подростки на сцене ШКИТ" loading="lazy">
-                    <div class="blog-card-body">
-                        <div class="blog-card-date">12.09.2026</div>
-                        <h3>Подросток молчит и закрывается: как театр помогает вернуть голос</h3>
-                      <a href="blog/statya-2.html">Читать →</a>
-                    </div>
-                </article>
+            <div class="blog-slider anim" data-stagger="90">
+                <div class="blog-track">
 
-                <article class="blog-card">
-                    <img src="assets/img/gal130.webp" alt="Взрослые на сцене ШКИТ" loading="lazy">
-                    <div class="blog-card-body">
-                        <div class="blog-card-date">19.09.2026</div>
-                        <h3>Можно ли начать заниматься театром в 25, 35, 50 лет</h3>
-                       <a href="blog/statya-3.html">Читать →</a>
-                    </div>
-                </article>
+                    <article class="blog-card">
+                        <img src="assets/img/gallery-05.jpg" alt="Ребёнок стесняется сцены" loading="lazy">
+                        <div class="blog-card-body">
+                            <div class="blog-card-date">05.09.2026</div>
+                            <h3>Ребёнок стесняется и боится сцены: что делать родителю</h3>
+                            <a class="read-btn" href="blog/statya-1.html">Подробнее</a>
+                        </div>
+                    </article>
 
+                    <article class="blog-card">
+                        <img src="assets/img/gallery-06.jpg" alt="Подростки на сцене ШКИТ" loading="lazy">
+                        <div class="blog-card-body">
+                            <div class="blog-card-date">12.09.2026</div>
+                            <h3>Подросток молчит и закрывается: как театр помогает вернуть голос</h3>
+                            <a class="read-btn" href="blog/statya-2.html">Подробнее</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <img src="assets/img/gal130.webp" alt="Взрослые на сцене ШКИТ" loading="lazy">
+                        <div class="blog-card-body">
+                            <div class="blog-card-date">19.09.2026</div>
+                            <h3>Можно ли начать заниматься театром в 25, 35, 50 лет</h3>
+                            <a class="read-btn" href="blog/statya-3.html">Подробнее</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            <div class="blog-more-wrap" style="text-align:center; margin-top:30px;">
+                <a class="btn btn--ghost" href="blog/">Все статьи</a>
             </div>
         </div>
+    </section>
 
-        <div style="text-align:center; margin-top:30px;">
-           <a class="btn btn--ghost" href="blog/">Все статьи</a>
-        </div>
-    </div>
-</section>
     <!-- ============ 14. КОНТАКТЫ ============ -->
     <section class="section bg-white" id="contacts">
         <div class="wrap">
@@ -1124,31 +1237,30 @@
                             <svg viewBox="0 0 24 24"><path d="M3 20V4h3.2l5 8 5-8H21v16h-3V9.5l-4.8 7.5h-.4L8 9.5V20z"/></svg>MAX</a>
                     </div>
                     <div class="map-wrap" id="map-wrap" style="margin-top:22px; position:relative; overflow:hidden; border-radius:12px;">
-    <iframe 
-        id="map-iframe"
-        title="Карта: Школа кино и театра ШКИТ, вход с ул. Тернопольской" 
-        loading="lazy" 
-        src="https://yandex.ru/map-widget/v1/?ll=61.371311%2C55.158862&z=17&pt=61.371311%2C55.158862&scroll=false"
-        style="width:100%; height:350px; border:0; border-radius:12px; pointer-events:auto;"
-        frameborder="0" 
-        allow="fullscreen; autoplay; encrypted-media; clipboard-write; picture-in-picture; payment">
-    </iframe>
-    <button id="map-activator" style="display:none; position:absolute; inset:0; background:transparent; border:none; cursor:pointer; z-index:2;" aria-label="Активировать карту"></button>
-</div>
-
+                        <iframe
+                            id="map-iframe"
+                            title="Карта: Школа кино и театра ШКИТ, вход с ул. Тернопольской"
+                            loading="lazy"
+                            src="https://yandex.ru/map-widget/v1/?ll=61.371311%2C55.158862&z=17&pt=61.371311%2C55.158862&scroll=false"
+                            style="width:100%; height:350px; border:0; border-radius:12px; pointer-events:auto;"
+                            frameborder="0"
+                            allow="fullscreen; autoplay; encrypted-media; clipboard-write; picture-in-picture; payment">
+                        </iframe>
+                        <button id="map-activator" style="display:none; position:absolute; inset:0; background:transparent; border:none; cursor:pointer; z-index:2;" aria-label="Активировать карту"></button>
+                    </div>
                 </div>
 
-             <div class="form-card form-card--webask anim" id="zapis" style="background:transparent !important; box-shadow:none !important; padding:0 !important;">
-    <h3 style="margin-bottom:6px;">Остались вопросы?</h3>
-    <p style="color:var(--grey); font-size:14.5px; margin-bottom:16px;">Напишите или позвоните. Подскажем, с чего начать, и подберём удобный формат.</p>
-    <script src="https://forms.yandex.ru/_static/embed.js"></script>
-    <iframe 
-        src="https://forms.yandex.ru/u/6a9a626c4936395e001c5ec1?iframe=1" 
-        frameborder="0" 
-        name="ya-form-6a9a626c4936395e001c5ec1" 
-        width="100%" 
-        height="550"
-        style="border:none; display:block; background:transparent; border-radius:12px;">
+                <div class="form-card form-card--webask anim" id="zapis" style="background:transparent !important; box-shadow:none !important; padding:0 !important;">
+                    <h3 style="margin-bottom:6px;">Остались вопросы?</h3>
+                    <p style="color:var(--grey); font-size:14.5px; margin-bottom:16px;">Напишите или позвоните. Подскажем, с чего начать, и подберём удобный формат.</p>
+                    <script src="https://forms.yandex.ru/_static/embed.js"></script>
+                    <iframe
+                        src="https://forms.yandex.ru/u/6a9a626c4936395e001c5ec1?iframe=1"
+                        frameborder="0"
+                        name="ya-form-6a9a626c4936395e001c5ec1"
+                        width="100%"
+                        height="550"
+                        style="border:none; display:block; background:transparent; border-radius:12px;">
                     </iframe>
                 </div>
             </div>
@@ -1191,7 +1303,6 @@
 </footer>
 
 <!-- ============ ПОПАПЫ ============ -->
-<!-- Дети -->
 <div class="popup-overlay" id="pop-kids" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pt-kids">
     <div class="popup">
         <button class="popup-close" data-close aria-label="Закрыть">✕</button>
@@ -1211,7 +1322,6 @@
     </div>
 </div>
 
-<!-- Подростки -->
 <div class="popup-overlay" id="pop-teens" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pt-teens">
     <div class="popup">
         <button class="popup-close" data-close aria-label="Закрыть">✕</button>
@@ -1231,7 +1341,6 @@
     </div>
 </div>
 
-<!-- Давай сыграем жизнь -->
 <div class="popup-overlay" id="pop-adults" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pt-adults">
     <div class="popup">
         <button class="popup-close" data-close aria-label="Закрыть">✕</button>
@@ -1252,7 +1361,6 @@
     </div>
 </div>
 
-<!-- Магия слов -->
 <div class="popup-overlay" id="pop-poetry" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pt-poetry">
     <div class="popup">
         <button class="popup-close" data-close aria-label="Закрыть">✕</button>
@@ -1273,7 +1381,6 @@
     </div>
 </div>
 
-<!-- Мой бенефис -->
 <div class="popup-overlay" id="pop-benefis" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pt-benefis">
     <div class="popup">
         <button class="popup-close" data-close aria-label="Закрыть">✕</button>
@@ -1309,18 +1416,17 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // ============ КАРУСЕЛЬ ОТЗЫВОВ (ДЕСКТОП) ============
     var slider = document.getElementById('reviews-slider');
     var track = document.getElementById('reviews-track');
     var prevBtn = document.querySelector('[data-direction="prev"]');
     var nextBtn = document.querySelector('[data-direction="next"]');
     var dotsContainer = document.querySelector('.slider-dots');
     var slides = document.querySelectorAll('.review-slide');
-    
+
     if (slider && track && prevBtn && nextBtn && dotsContainer && slides.length) {
         var currentIndex = 0;
         var slidesPerView = window.innerWidth > 768 ? 2 : 1;
-        
+
         function createDots() {
             dotsContainer.innerHTML = '';
             var dotsCount = Math.ceil(slides.length / slidesPerView);
@@ -1337,40 +1443,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 dotsContainer.appendChild(dot);
             }
         }
-        
+
         function updateSlider() {
             if (window.innerWidth <= 768) return;
             var slideWidth = track.clientWidth / slidesPerView;
             track.style.transform = 'translateX(-' + (currentIndex * slideWidth) + 'px)';
-            
+
             var dots = dotsContainer.querySelectorAll('.dot');
             var activeDotIndex = Math.floor(currentIndex / slidesPerView);
             dots.forEach(function(dot, i) {
                 dot.classList.toggle('active', i === activeDotIndex);
             });
         }
-        
+
         function prev() {
             currentIndex -= slidesPerView;
             if (currentIndex < 0) currentIndex = slides.length - slidesPerView;
             updateSlider();
         }
-        
+
         function next() {
             currentIndex += slidesPerView;
             if (currentIndex >= slides.length) currentIndex = 0;
             updateSlider();
         }
-        
+
         prevBtn.addEventListener('click', prev);
         nextBtn.addEventListener('click', next);
-        
+
         window.addEventListener('resize', function() {
             slidesPerView = window.innerWidth > 768 ? 2 : 1;
             createDots();
             updateSlider();
         });
-        
+
         createDots();
         updateSlider();
      }
@@ -1399,7 +1505,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
- var sleepTimer = null;
+  var sleepTimer = null;
 
   function sleepMap() {
     if (!isMobile()) return;
