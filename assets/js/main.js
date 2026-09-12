@@ -128,7 +128,7 @@
   document.addEventListener('visibilitychange', revealGuard);
 
   /* ---------- Активный пункт меню при прокрутке ---------- */
-var navLinks = document.querySelectorAll('.nav a[href^="#"]');
+  var navLinks = document.querySelectorAll('.nav a[href^="#"]');
 
   navLinks.forEach(function (link) {
     link.addEventListener('click', function () {
@@ -290,7 +290,9 @@ var navLinks = document.querySelectorAll('.nav a[href^="#"]');
   /* экранируем то, что уйдёт в Telegram с parse_mode: HTML */
   function esc(s) {
     return String(s || '').trim()
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
   }
 
   function showSuccess(form) {
