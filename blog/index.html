@@ -7,10 +7,40 @@
     <meta name="description" content="Полезные статьи от ШКИТ: как помочь ребёнку не бояться сцены, развить речь, общаться с подростком и взрослому вернуть уверенность.">
     <link rel="canonical" href="https://shkit-school.github.io/blog/">
     <meta name="robots" content="index, follow">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <meta name="theme-color" content="#BC3636">
+
+    <!-- ===== Open Graph (для соцсетей) ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Блог — Школа кино и театра ШКИТ">
+    <meta property="og:description" content="Полезные статьи от ШКИТ: как помочь ребёнку не бояться сцены, развить речь, общаться с подростком и взрослому вернуть уверенность.">
+    <meta property="og:url" content="https://shkit-school.github.io/blog/">
+    <meta property="og:image" content="https://shkit-school.github.io/assets/img/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Блог — ШКИТ">
+    <meta name="twitter:description" content="Статьи, которые помогают не только на сцене.">
+    <meta name="twitter:image" content="https://shkit-school.github.io/assets/img/og.jpg">
+
+    <!-- ===== Иконки ===== -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon.png">
+
+    <!-- ===== Шрифты ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap&subset=cyrillic,latin" rel="stylesheet">
+
+    <!-- ===== Progressive enhancement ===== -->
+    <script>document.documentElement.className+=" js";</script>
+
+    <!-- ===== Стили ===== -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         * { -webkit-tap-highlight-color: transparent; }
+
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -31,13 +61,6 @@
             height: 220px;
             object-fit: cover;
             display: block;
-        }
-
-        @media (max-width: 768px) {
-            .blog-card img {
-                height: auto;
-                aspect-ratio: 16/9;
-            }
         }
         .blog-card-body {
             padding: 20px;
@@ -61,61 +84,91 @@
             font-weight: 700;
             font-size: 14px;
         }
-        .blog-more {
-            display: none;
-        }
-        .blog-more.visible {
-            display: grid;
-        }
         .blog-more-btn {
             display: none;
             margin: 30px auto 0;
         }
         .blog-more-btn.visible {
-            display: block;
+            display: inline-block;
         }
         @media (max-width: 768px) {
             .blog-grid {
                 grid-template-columns: 1fr;
             }
-            .blog-card:nth-child(n+4) {
-                display: none;
+            .blog-card img {
+                height: auto;
+                aspect-ratio: 16/9;
             }
         }
         .section.bg-white {
             padding-top: 5px !important;
         }
-        @media (max-width: 880px) {
-            .nav.is-open .m-cta .btn {
-                background: var(--coral-dark, #D13434);
-                color: #fff !important;
-                border: 2px solid var(--coral-dark, #D13434);
-                border-radius: var(--radius-btn, 11px);
-                padding: 12px 24px;
-                font-weight: 700;
-                font-size: 15px;
-                width: 100%;
-                text-align: center;
-                display: block;
-                box-shadow: 0 8px 22px -10px rgba(209,52,52,.8);
-            }
-            .nav.is-open .m-cta .btn:hover {
-                background: #fff;
-                color: var(--coral-ink, #BC3636) !important;
-            }
-        }
     </style>
+
+    <!-- ===== Yandex.Metrika counter ===== -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112359274', 'ym');
+
+        ym(112359274, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/112359274" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- ===== /Yandex.Metrika counter ===== -->
+
+    <!-- ===== Schema.org: Blog ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Блог школы кино и театра ШКИТ",
+        "description": "Полезные статьи от ШКИТ: как помочь ребёнку не бояться сцены, развить речь, общаться с подростком и взрослому вернуть уверенность.",
+        "url": "https://shkit-school.github.io/blog/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Школа кино и театра «ШКИТ»",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://shkit-school.github.io/assets/img/logo.png"
+            }
+        },
+        "blogPost": [
+            {
+                "@type": "BlogPosting",
+                "headline": "Ребёнок стесняется и боится сцены: что делать родителю",
+                "url": "https://shkit-school.github.io/blog/statya-1.html",
+                "datePublished": "2026-09-05"
+            },
+            {
+                "@type": "BlogPosting",
+                "headline": "Подросток молчит и закрывается: как театр помогает вернуть голос",
+                "url": "https://shkit-school.github.io/blog/statya-2.html",
+                "datePublished": "2026-09-12"
+            },
+            {
+                "@type": "BlogPosting",
+                "headline": "Можно ли начать заниматься театром в 25, 35, 50 лет",
+                "url": "https://shkit-school.github.io/blog/statya-3.html",
+                "datePublished": "2026-09-19"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
 <a class="skip-link" href="#main">К основному содержимому</a>
 
+<!-- ============ ШАПКА ============ -->
 <header class="header">
     <div class="wrap header-inner">
-        <a class="logo" href="../index.html">
+        <a class="logo" href="../index.html" aria-label="ШКИТ — на главную">
             <img src="../assets/img/logo-sm.png" alt="Логотип ШКИТ" width="48" height="44">
             <span><b>ШКИТ</b><span>Школа кино и театра</span></span>
         </a>
-        <nav class="nav">
+        <nav class="nav" aria-label="Основная навигация">
             <a href="../index.html#about">О нас</a>
             <a href="../index.html#kursy">Курсы</a>
             <a href="../index.html#proekty">Проекты</a>
@@ -124,12 +177,13 @@
             <a href="index.html" class="is-active">Блог</a>
             <a href="../index.html#contacts">Контакты</a>
             <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
-            <span class="m-cta"><a class="btn btn--sm" href="../index.html#zapis">Записаться</a></span>
+            <span class="m-cta"><a class="btn m-menu-btn" href="../index.html#zapis">Оставить заявку</a></span>
         </nav>
-        <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+        <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
 </header>
 
+<!-- ============ КОНТЕНТ ============ -->
 <main id="main" tabindex="-1">
     <section class="page-hero">
         <div class="wrap">
@@ -177,6 +231,7 @@
     </section>
 </main>
 
+<!-- ============ ФУТЕР ============ -->
 <footer class="footer">
     <div class="wrap">
         <div class="footer-bottom">
@@ -199,18 +254,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function update() {
         cards.forEach(function(card, i) {
-            if (i < visibleCount) {
-                card.style.display = 'flex';
-            } else {
-                card.style.display = 'none';
-            }
+            card.style.display = (i < visibleCount) ? 'flex' : 'none';
         });
-
-        if (visibleCount >= cards.length) {
-            btn.style.display = 'none';
-        } else {
-            btn.style.display = 'inline-block';
-        }
+        btn.classList.toggle('visible', visibleCount < cards.length);
     }
 
     btn.addEventListener('click', function() {
