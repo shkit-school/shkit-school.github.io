@@ -149,31 +149,39 @@
         height: 100%;
     }
 
-    /* Белая шапка карточки */
+    /* Белая шапка карточки — ФИКСИРОВАННАЯ ВЫСОТА */
     .vk-card__heading {
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
+        align-items: flex-start;
         gap: 16px;
-        padding: 16px 26px 14px;
+        padding: 14px 26px 14px;
         border-bottom: 1px solid rgba(45,45,45,.1);
         flex: none;
+        min-height: 60px;
     }
 
     .vk-card__title {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 900;
-        line-height: 1.1;
+        line-height: 1.15;
         color: #2D2D2D;
+        max-width: 65%;
+    }
+
+    .vk-card__title b {
+        color: #BC3636;
     }
 
     .vk-card__age {
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 700;
         letter-spacing: .06em;
         text-transform: uppercase;
         color: #BC3636;
         white-space: nowrap;
+        margin-top: 4px;
+        flex: none;
     }
 
     /* ===== ДВА БЛОКА С ФОТО ===== */
@@ -263,7 +271,7 @@
     /* ===== НИЖНЯЯ ЧАСТЬ ===== */
     .vk-card__footer {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1.4fr;   /* Итог шире */
         gap: 0;
         border-top: 1px solid rgba(45,45,45,.1);
         flex: none;
@@ -274,6 +282,7 @@
         border-right: 1px solid rgba(45,45,45,.1);
         display: flex;
         flex-direction: column;
+        min-height: 80px;
     }
 
     .vk-card__footer > div:last-child { border-right: none; }
@@ -320,7 +329,7 @@
     }
 
     .vk-price__value {
-        font-size: 24px;
+        font-size: 22px;
         font-weight: 900;
         color: #BC3636;
         line-height: 1;
@@ -332,8 +341,9 @@
         color: #6E6A67;
     }
 
+    /* Итог — текст не обрезается */
     .vk-show {
-        font-size: 13px;
+        font-size: 12.5px;
         font-weight: 600;
         line-height: 1.4;
         color: #2D2D2D;
@@ -461,9 +471,12 @@
         <div class="vk-post__cards">
             <div class="vk-card">
 
-                <!-- Белая шапка -->
+                <!-- Белая шапка — заголовок в 2 строки, тег </b> закрыт -->
                 <div class="vk-card__heading">
-                    <div class="vk-card__title">Театральный проект для взрослых<br><b>"ДАВАЙ СЫГРАЕМ ЖИЗНЬ</div>
+                    <div class="vk-card__title">
+                        Театральный проект для взрослых<br>
+                        <b>«Давай сыграем жизнь»</b>
+                    </div>
                     <div class="vk-card__age">Реализация · 3–4 месяца</div>
                 </div>
 
@@ -526,7 +539,7 @@
 
                 </div>
 
-                <!-- Нижняя часть -->
+                <!-- Нижняя часть: расписание / стоимость / итог -->
                 <div class="vk-card__footer">
 
                     <!-- Расписание -->
@@ -549,11 +562,11 @@
                         <div class="vk-card__label">Стоимость</div>
                         <div class="vk-price">
                             <span class="vk-price__value">56 000 ₽</span>
-                            <span class="vk-price__unit">/ месяц</span>
+                            <span class="vk-price__unit">/ проект</span>
                         </div>
                     </div>
 
-                    <!-- Отчётный показ -->
+                    <!-- Итог -->
                     <div>
                         <div class="vk-card__label">Итог</div>
                         <div class="vk-show">
