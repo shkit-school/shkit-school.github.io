@@ -10,7 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap&subset=cyrillic,latin" rel="stylesheet">
 
 <style>
-    /* ============ ОБЩЕЕ ============ */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html, body {
@@ -23,7 +22,6 @@
         padding: 20px;
     }
 
-    /* ============ ХОЛСТ ============ */
     .vk-post {
         position: relative;
         overflow: hidden;
@@ -32,20 +30,19 @@
         box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7);
     }
 
-    /* Размеры по форматам */
     .vk-post[data-format="square"] { width: 1080px; height: 1080px; }
     .vk-post[data-format="story"]  { width: 1080px; height: 1920px; }
     .vk-post[data-format="post"]   { width: 1200px; height: 630px; }
     .vk-post[data-format="cover"]  { width: 1590px; height: 400px; }
 
-    /* ============ ФОН ============ */
+    /* ===== ФОН ===== */
     .vk-post__bg {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: saturate(.9) contrast(1.05) sepia(.12) brightness(.5);
+        filter: saturate(.92) contrast(1.04) sepia(.12) brightness(.75);
         z-index: 0;
     }
 
@@ -53,24 +50,26 @@
         position: absolute;
         inset: 0;
         z-index: 1;
-        background:
-            radial-gradient(120% 80% at 50% 100%, rgba(36,36,36,.95) 0%, rgba(36,36,36,.6) 50%, rgba(36,36,36,.35) 100%),
-            linear-gradient(180deg, rgba(36,36,36,.5) 0%, rgba(36,36,36,.7) 100%);
+        background: linear-gradient(180deg,
+            rgba(36,36,36,.2) 0%,
+            rgba(36,36,36,.4) 30%,
+            rgba(36,36,36,.88) 70%,
+            rgba(36,36,36,.97) 100%);
     }
 
-    /* ============ КОНТЕНТ ============ */
+    /* ===== КОНТЕНТ ===== */
     .vk-post__content {
         position: relative;
         z-index: 2;
         height: 100%;
-        padding: 5% 5.5%;
+        padding: 4.5% 5%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: 3%;
+        gap: 2%;
     }
 
-    /* Верхняя часть */
+    /* Верх */
     .vk-post__top {
         display: flex;
         justify-content: space-between;
@@ -85,14 +84,11 @@
         gap: 16px;
     }
 
-    .vk-post__logo img {
-        height: 64px;
-        width: auto;
-    }
+    .vk-post__logo img { height: 58px; width: auto; }
 
     .vk-post__logo-text b {
         display: block;
-        font-size: 32px;
+        font-size: 28px;
         font-weight: 900;
         line-height: 1;
         letter-spacing: .02em;
@@ -100,197 +96,234 @@
 
     .vk-post__logo-text span {
         display: block;
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 600;
         letter-spacing: .18em;
         text-transform: uppercase;
-        color: rgba(255,255,255,.65);
+        color: rgba(255,255,255,.7);
         margin-top: 4px;
     }
 
     .vk-post__city {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 700;
         letter-spacing: .18em;
         text-transform: uppercase;
-        color: rgba(255,255,255,.7);
-        padding: 12px 24px;
-        border: 2px solid rgba(255,255,255,.35);
+        color: rgba(255,255,255,.8);
+        padding: 11px 22px;
+        border: 2px solid rgba(255,255,255,.4);
         border-radius: 999px;
     }
 
-    /* Центральная часть: заголовок */
-    .vk-post__middle {
-        text-align: left;
-    }
-
-    .vk-post__kicker {
-        display: inline-block;
-        font-size: 15px;
-        font-weight: 700;
-        letter-spacing: .2em;
-        text-transform: uppercase;
-        color: #F28B87;
-        margin-bottom: 20px;
-    }
-
-    .vk-post__title {
-        font-size: clamp(56px, 7vw, 96px);
-        font-weight: 900;
-        line-height: .98;
-        letter-spacing: -.02em;
-        color: #E85D5D;
-        margin-bottom: 20px;
-        max-width: 90%;
-    }
-
-    .vk-post__subtitle {
-        font-size: clamp(20px, 2.2vw, 30px);
-        font-weight: 500;
-        line-height: 1.35;
-        color: rgba(255,255,255,.88);
-        max-width: 75%;
-    }
-
-    /* Нижняя часть: три карточки */
+    /* ===== КАРТОЧКИ С ФОТО ===== */
     .vk-post__cards {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
+        gap: 14px;
     }
 
     .vk-card {
-        background: rgba(255,255,255,.08);
-        border: 1px solid rgba(255,255,255,.14);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: #fff;
         border-radius: 16px;
-        padding: 22px 22px 24px;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        box-shadow: 0 16px 40px -12px rgba(0,0,0,.6);
+        color: #2D2D2D;
     }
 
+    /* Фото внутри карточки */
+    .vk-card__media {
+        position: relative;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: #1a1a1a;
+    }
+
+    .vk-card__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(.92) contrast(1.05) sepia(.12) brightness(.95);
+    }
+
+    /* Тег на фото */
     .vk-card__tag {
-        display: inline-block;
-        align-self: flex-start;
-        font-size: 12px;
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        font-size: 11px;
         font-weight: 700;
-        letter-spacing: .1em;
+        letter-spacing: .08em;
         text-transform: uppercase;
         color: #fff;
-        background: #D13434;
-        padding: 6px 14px;
+        background: rgba(45,45,45,.85);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 6px 12px;
         border-radius: 999px;
     }
 
+    .vk-card__tag--coral {
+        background: #D13434;
+    }
+
+    /* Тело карточки */
+    .vk-card__body {
+        padding: 16px 18px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+    }
+
     .vk-card__title {
-        font-size: 22px;
+        font-size: 17px;
         font-weight: 800;
-        line-height: 1.15;
-        color: #fff;
-        margin-top: 4px;
+        line-height: 1.2;
+        color: #2D2D2D;
     }
 
     .vk-card__text {
-        font-size: 14.5px;
-        line-height: 1.45;
-        color: rgba(255,255,255,.78);
+        font-size: 12.5px;
+        line-height: 1.4;
+        color: #6E6A67;
         font-weight: 500;
     }
 
-    .vk-card__price {
+    .vk-card__meta {
         margin-top: auto;
-        font-size: 18px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(45,45,45,.12);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .vk-card__format {
+        font-size: 10.5px;
+        font-weight: 600;
+        color: #6E6A67;
+        line-height: 1.3;
+    }
+
+    .vk-card__price {
+        font-size: 16px;
         font-weight: 800;
-        color: #F28B87;
+        color: #BC3636;
+        white-space: nowrap;
     }
 
     .vk-card__price small {
-        font-size: 12px;
+        display: block;
+        font-size: 10px;
         font-weight: 600;
-        color: rgba(255,255,255,.6);
-        margin-left: 4px;
+        color: #6E6A67;
+        margin-top: 1px;
     }
 
-    /* ============ КНОПКА CTA ============ */
+    /* ===== ЗАГОЛОВОК ===== */
+    .vk-post__middle {
+        text-align: left;
+        margin-top: 2%;
+    }
+
+    .vk-post__title {
+        font-size: clamp(34px, 4.2vw, 52px);
+        font-weight: 900;
+        line-height: 1.02;
+        letter-spacing: -.01em;
+        color: #E85D5D;
+        margin-bottom: 12px;
+        max-width: 80%;
+    }
+
+    .vk-post__subtitle {
+        font-size: clamp(14px, 1.5vw, 18px);
+        font-weight: 500;
+        line-height: 1.4;
+        color: rgba(255,255,255,.85);
+        max-width: 70%;
+    }
+
+    /* ===== CTA ===== */
     .vk-post__cta {
         display: inline-flex;
         align-items: center;
-        gap: 14px;
-        font-size: 26px;
+        gap: 12px;
+        font-size: 20px;
         font-weight: 800;
         color: #fff;
         background: #D13434;
-        padding: 22px 44px;
+        padding: 18px 36px;
         border-radius: 14px;
         box-shadow: 0 20px 50px -14px rgba(209, 52, 52, .95);
         align-self: flex-start;
     }
 
-    .vk-post__cta svg {
-        width: 26px;
-        height: 26px;
-        flex: none;
-    }
+    .vk-post__cta svg { width: 22px; height: 22px; flex: none; }
 
-    /* ============ АДАПТАЦИЯ ПО ФОРМАТУ ============ */
-
+    /* ===== ФОРМАТЫ ===== */
     /* POST 1200×630 — компактный горизонт */
-    .vk-post[data-format="post"] .vk-post__title { font-size: 56px; max-width: 70%; }
-    .vk-post[data-format="post"] .vk-post__subtitle { font-size: 18px; max-width: 65%; }
-    .vk-post[data-format="post"] .vk-post__cards { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .vk-post[data-format="post"] .vk-card { padding: 14px 16px; }
-    .vk-post[data-format="post"] .vk-card__title { font-size: 15px; }
+    .vk-post[data-format="post"] .vk-post__content { padding: 3% 3.5%; gap: 1.5%; }
+    .vk-post[data-format="post"] .vk-post__logo img { height: 40px; }
+    .vk-post[data-format="post"] .vk-post__logo-text b { font-size: 20px; }
+    .vk-post[data-format="post"] .vk-post__logo-text span { font-size: 8px; }
+    .vk-post[data-format="post"] .vk-post__city { font-size: 10px; padding: 6px 14px; }
+    .vk-post[data-format="post"] .vk-post__cards { gap: 10px; }
+    .vk-post[data-format="post"] .vk-card__media { aspect-ratio: 16/9; }
+    .vk-post[data-format="post"] .vk-card__body { padding: 10px 12px 12px; gap: 5px; }
+    .vk-post[data-format="post"] .vk-card__title { font-size: 13px; }
     .vk-post[data-format="post"] .vk-card__text { display: none; }
-    .vk-post[data-format="post"] .vk-card__price { font-size: 14px; }
-    .vk-post[data-format="post"] .vk-post__cta { font-size: 18px; padding: 14px 28px; }
-    .vk-post[data-format="post"] .vk-post__content { padding: 3.5% 4%; }
-    .vk-post[data-format="post"] .vk-post__logo img { height: 44px; }
-    .vk-post[data-format="post"] .vk-post__logo-text b { font-size: 22px; }
-    .vk-post[data-format="post"] .vk-post__logo-text span { font-size: 9px; }
-    .vk-post[data-format="post"] .vk-post__city { font-size: 11px; padding: 8px 16px; }
-    .vk-post[data-format="post"] .vk-post__kicker { font-size: 11px; margin-bottom: 10px; }
+    .vk-post[data-format="post"] .vk-card__tag { font-size: 9px; padding: 4px 8px; top: 8px; left: 8px; }
+    .vk-post[data-format="post"] .vk-card__price { font-size: 13px; }
+    .vk-post[data-format="post"] .vk-post__title { font-size: 36px; max-width: 55%; }
+    .vk-post[data-format="post"] .vk-post__subtitle { font-size: 14px; max-width: 55%; }
+    .vk-post[data-format="post"] .vk-post__cta { font-size: 15px; padding: 12px 24px; }
+    .vk-post[data-format="post"] .vk-post__middle { margin-top: 0; }
 
     /* STORY 1080×1920 — вертикаль, карточки в столбик */
-    .vk-post[data-format="story"] .vk-post__content { padding: 8% 7%; }
-    .vk-post[data-format="story"] .vk-post__title { font-size: 96px; max-width: 100%; }
-    .vk-post[data-format="story"] .vk-post__subtitle { font-size: 30px; max-width: 100%; }
+    .vk-post[data-format="story"] .vk-post__content { padding: 7% 6%; gap: 3%; }
     .vk-post[data-format="story"] .vk-post__cards { grid-template-columns: 1fr; gap: 16px; }
-    .vk-post[data-format="story"] .vk-card { padding: 26px 28px; }
-    .vk-post[data-format="story"] .vk-card__title { font-size: 26px; }
-    .vk-post[data-format="story"] .vk-card__text { font-size: 17px; }
-    .vk-post[data-format="story"] .vk-card__price { font-size: 22px; }
-    .vk-post[data-format="story"] .vk-post__cta { font-size: 30px; padding: 28px 52px; }
+    .vk-post[data-format="story"] .vk-card__body { padding: 20px 22px 22px; }
+    .vk-post[data-format="story"] .vk-card__title { font-size: 22px; }
+    .vk-post[data-format="story"] .vk-card__text { font-size: 15px; }
+    .vk-post[data-format="story"] .vk-card__price { font-size: 20px; }
+    .vk-post[data-format="story"] .vk-post__title { font-size: 60px; max-width: 100%; }
+    .vk-post[data-format="story"] .vk-post__subtitle { font-size: 22px; max-width: 100%; }
+    .vk-post[data-format="story"] .vk-post__cta { font-size: 24px; padding: 24px 44px; }
 
-    /* COVER 1590×400 — сверхкомпактный горизонт */
-    .vk-post[data-format="cover"] .vk-post__content { padding: 3% 4%; gap: 2%; }
-    .vk-post[data-format="cover"] .vk-post__top { align-items: center; }
-    .vk-post[data-format="cover"] .vk-post__logo img { height: 52px; }
-    .vk-post[data-format="cover"] .vk-post__logo-text b { font-size: 24px; }
-    .vk-post[data-format="cover"] .vk-post__logo-text span { font-size: 9px; }
+    /* COVER 1590×400 — сверхкомпактный */
+    .vk-post[data-format="cover"] .vk-post__content { padding: 3% 4%; gap: 1.5%; }
+    .vk-post[data-format="cover"] .vk-post__logo img { height: 42px; }
+    .vk-post[data-format="cover"] .vk-post__logo-text b { font-size: 20px; }
+    .vk-post[data-format="cover"] .vk-post__logo-text span { font-size: 8px; }
     .vk-post[data-format="cover"] .vk-post__city { display: none; }
-    .vk-post[data-format="cover"] .vk-post__kicker { display: none; }
-    .vk-post[data-format="cover"] .vk-post__middle { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
-    .vk-post[data-format="cover"] .vk-post__title { font-size: 44px; margin: 0; max-width: 45%; }
-    .vk-post[data-format="cover"] .vk-post__subtitle { display: none; }
-    .vk-post[data-format="cover"] .vk-post__cards { grid-template-columns: repeat(3, 1fr); gap: 14px; flex: 1; max-width: 50%; }
-    .vk-post[data-format="cover"] .vk-card { padding: 12px 16px; background: rgba(255,255,255,.1); }
-    .vk-post[data-format="cover"] .vk-card__tag { font-size: 10px; padding: 4px 10px; }
-    .vk-post[data-format="cover"] .vk-card__title { font-size: 14px; }
-    .vk-post[data-format="cover"] .vk-card__text { display: none; }
-    .vk-post[data-format="cover"] .vk-card__price { font-size: 13px; }
+    .vk-post[data-format="cover"] .vk-post__middle { display: none; }
     .vk-post[data-format="cover"] .vk-post__cta { display: none; }
+    .vk-post[data-format="cover"] .vk-post__cards { gap: 10px; }
+    .vk-post[data-format="cover"] .vk-card { flex-direction: row; align-items: center; }
+    .vk-post[data-format="cover"] .vk-card__media { width: 80px; aspect-ratio: 1; flex: none; }
+    .vk-post[data-format="cover"] .vk-card__body { padding: 8px 12px; gap: 4px; }
+    .vk-post[data-format="cover"] .vk-card__title { font-size: 12px; }
+    .vk-post[data-format="cover"] .vk-card__text { display: none; }
+    .vk-post[data-format="cover"] .vk-card__meta { padding-top: 4px; border: none; }
+    .vk-post[data-format="cover"] .vk-card__format { display: none; }
+    .vk-post[data-format="cover"] .vk-card__price { font-size: 12px; }
+    .vk-post[data-format="cover"] .vk-card__tag { font-size: 8px; padding: 3px 6px; top: 4px; left: 4px; }
 </style>
 </head>
 <body>
 
 <div class="vk-post" id="post" data-format="square">
     <!-- Фон -->
-    <img class="vk-post__bg" src="assets/img/gal104.jpg" alt="">
+    <picture>
+        <source media="(max-width: 768px)" srcset="assets/img/shapka2.webp">
+        <img class="vk-post__bg" src="assets/img/shapka1.webp" alt="">
+    </picture>
     <div class="vk-post__overlay"></div>
 
-    <!-- Контент -->
     <div class="vk-post__content">
 
         <!-- Верх: лого + город -->
@@ -305,37 +338,63 @@
             <span class="vk-post__city">Челябинск · с 2009</span>
         </div>
 
-        <!-- Центр: заголовок -->
-        <div class="vk-post__middle">
-            <span class="vk-post__kicker">Набор открыт</span>
-            <h1 class="vk-post__title">Актёрское мастерство для жизни</h1>
-            <p class="vk-post__subtitle">
-                Дети, подростки, взрослые. Без пафоса, зато с душой.
-            </p>
+        <!-- Карточки с фото -->
+        <div class="vk-post__cards">
+
+            <!-- Дети -->
+            <div class="vk-card">
+                <div class="vk-card__media">
+                    <img src="assets/img/gallery-15.jpg" alt="Дети на сцене ШКИТ">
+                    <span class="vk-card__tag">Дети · 5–11</span>
+                </div>
+                <div class="vk-card__body">
+                    <div class="vk-card__title">Игра, которая превращает стеснение в суперсилу</div>
+                    <p class="vk-card__text">Эмоциональный интеллект, речь, уверенность. Отчётный спектакль в финале.</p>
+                    <div class="vk-card__meta">
+                        <div class="vk-card__format">2 р/нед · по 2 ч</div>
+                        <div class="vk-card__price">5 600 ₽<small>в месяц</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Подростки -->
+            <div class="vk-card">
+                <div class="vk-card__media">
+                    <img src="assets/img/gal124.jpg" alt="Подростки на сцене ШКИТ">
+                    <span class="vk-card__tag">Подростки · 12–17</span>
+                </div>
+                <div class="vk-card__body">
+                    <div class="vk-card__title">От «попробовать» до «я поступил»</div>
+                    <p class="vk-card__text">Уверенность, харизма, подготовка к поступлению в театральный.</p>
+                    <div class="vk-card__meta">
+                        <div class="vk-card__format">2 р/нед · по 3 ч</div>
+                        <div class="vk-card__price">5 600 ₽<small>в месяц</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Взрослые -->
+            <div class="vk-card">
+                <div class="vk-card__media">
+                    <img src="assets/img/gal104.jpg" alt="Взрослые на сцене ШКИТ">
+                    <span class="vk-card__tag vk-card__tag--coral">Взрослые · 18+</span>
+                </div>
+                <div class="vk-card__body">
+                    <div class="vk-card__title">Роль в спектакле на профессиональной сцене</div>
+                    <p class="vk-card__text">Проекты «Давай сыграем жизнь», «Магия слов», «Мой бенефис».</p>
+                    <div class="vk-card__meta">
+                        <div class="vk-card__format">2 р/нед · по 3 ч</div>
+                        <div class="vk-card__price">от 5 600 ₽<small>в месяц</small></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Низ: три карточки -->
-        <div class="vk-post__cards">
-            <div class="vk-card">
-                <span class="vk-card__tag">Дети · 5–11</span>
-                <div class="vk-card__title">Игра, которая превращает стеснение в суперсилу</div>
-                <p class="vk-card__text">Эмоциональный интеллект, речь, уверенность. Отчётный спектакль в финале.</p>
-                <div class="vk-card__price">5 600 ₽ <small>/ мес</small></div>
-            </div>
-
-            <div class="vk-card">
-                <span class="vk-card__tag">Подростки · 12–17</span>
-                <div class="vk-card__title">От «попробовать» до «я поступил»</div>
-                <p class="vk-card__text">Уверенность, харизма, подготовка к поступлению в театральный.</p>
-                <div class="vk-card__price">5 600 ₽ <small>/ мес</small></div>
-            </div>
-
-            <div class="vk-card">
-                <span class="vk-card__tag">Взрослые · 18+</span>
-                <div class="vk-card__title">Роль в спектакле на профессиональной сцене</div>
-                <p class="vk-card__text">Проекты «Давай сыграем жизнь», «Магия слов», «Мой бенефис».</p>
-                <div class="vk-card__price">от 5 600 ₽ <small>/ мес</small></div>
-            </div>
+        <!-- Заголовок -->
+        <div class="vk-post__middle">
+            <h1 class="vk-post__title">Актёрское мастерство для жизни</h1>
+            <p class="vk-post__subtitle">Дети, подростки, взрослые. Без пафоса, зато с душой.</p>
         </div>
 
         <!-- CTA -->
@@ -343,14 +402,13 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14M13 5l7 7-7 7"/>
             </svg>
-            Бесплатное пробное занятие
+            Записаться на пробное
         </div>
 
     </div>
 </div>
 
 <script>
-    // ?format=square|story|post|cover
     var params = new URLSearchParams(location.search);
     var fmt = params.get('format') || 'square';
     document.getElementById('post').dataset.format = fmt;
