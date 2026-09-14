@@ -149,7 +149,7 @@
         height: 100%;
     }
 
-    /* Белая шапка карточки — ФИКСИРОВАННАЯ ВЫСОТА */
+    /* Белая шапка карточки */
     .vk-card__heading {
         display: flex;
         justify-content: space-between;
@@ -227,7 +227,7 @@
     }
 
     .vk-block__title {
-        font-size: 18px;
+        font-size: 17px;
         font-weight: 800;
         line-height: 1.2;
         color: #2D2D2D;
@@ -271,7 +271,7 @@
     /* ===== НИЖНЯЯ ЧАСТЬ ===== */
     .vk-card__footer {
         display: grid;
-        grid-template-columns: 1fr 1fr 1.4fr;   /* Итог шире */
+        grid-template-columns: 1fr 1fr 1.4fr;
         gap: 0;
         border-top: 1px solid rgba(45,45,45,.1);
         flex: none;
@@ -341,7 +341,7 @@
         color: #6E6A67;
     }
 
-    /* Итог — текст не обрезается */
+    /* Итог */
     .vk-show {
         font-size: 12.5px;
         font-weight: 600;
@@ -471,7 +471,7 @@
         <div class="vk-post__cards">
             <div class="vk-card">
 
-                <!-- Белая шапка — заголовок в 2 строки, тег </b> закрыт -->
+                <!-- Белая шапка -->
                 <div class="vk-card__heading">
                     <div class="vk-card__title">
                         Театральный проект для взрослых<br>
@@ -483,55 +483,62 @@
                 <!-- Два блока -->
                 <div class="vk-blocks">
 
-                    <!-- Блок 1: Актёрское мастерство -->
+                    <!-- Блок 1: Актёрское мастерство + Сценическая речь -->
                     <div class="vk-block">
                         <div class="vk-block__media">
-                            <img src="assets/img/gal104.jpg" alt="Взрослые на занятии актёрским мастерством в ШКИТ">
+                            <img src="assets/img/gal104.jpg" alt="Взрослые на занятии в ШКИТ">
                         </div>
                         <div class="vk-block__body">
                             <div class="vk-block__title">
                                 <svg viewBox="0 0 24 24"><path d="M12 2l2.5 6H21l-5 4 2 7-6-4-6 4 2-7-5-4h6.5z"/></svg>
-                                Актёрское мастерство
+                                Актёрское мастерство<br>+ Сценическая речь
                             </div>
 
                             <div class="vk-info">
                                 <span class="vk-info__label">Чем занимаются</span>
                                 <div class="vk-info__value">
-                                    Снятие зажимов, импровизация, работа с ролью. Этюды и сцены из современной драматургии.
+                                    Снятие зажимов, импровизация, работа с ролью. Дыхание, голос, дикция, работа с текстом и интонацией.
                                 </div>
                             </div>
 
                             <div class="vk-info">
                                 <span class="vk-info__label">Польза</span>
                                 <div class="vk-info__value">
-                                    Свобода речи и тела, уверенность на публике, новые эмоции и круг общения.
+                                    Свобода речи и тела, уверенный голос на публике, умение держать внимание. Новые эмоции и круг общения.
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Блок 2: Сценическая речь -->
+                    <!-- Блок 2: Постановка спектакля -->
                     <div class="vk-block">
                         <div class="vk-block__media">
-                            <img src="assets/img/adults.jpg" alt="Занятие по сценической речи для взрослых в ШКИТ">
+                            <img src="assets/img/adults.jpg" alt="Постановка спектакля в ШКИТ">
                         </div>
                         <div class="vk-block__body">
                             <div class="vk-block__title">
-                                <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><path d="M12 19v4M8 23h8"/></svg>
-                                Сценическая речь
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M3 8c0 4 2 8 5 8s3-4 3-8"/>
+                                    <path d="M13 8c0 4 1 8 4 8s4-4 4-8"/>
+                                    <circle cx="6" cy="6" r="1"/>
+                                    <circle cx="18" cy="6" r="1"/>
+                                    <path d="M5 5c1-2 3-2 4 0"/>
+                                    <path d="M15 5c1-2 3-2 4 0"/>
+                                </svg>
+                                Постановка спектакля
                             </div>
 
                             <div class="vk-info">
                                 <span class="vk-info__label">Чем занимаются</span>
                                 <div class="vk-info__value">
-                                    Дыхание, голос, дикция. Работа с текстом, интонацией и публичным выступлением.
+                                    Репетиции сцен, работа с партнёром, разбор роли и текста. Свет, костюмы, выход на профессиональную сцену.
                                 </div>
                             </div>
 
                             <div class="vk-info">
                                 <span class="vk-info__label">Польза</span>
                                 <div class="vk-info__value">
-                                    Уверенный голос на работе и в жизни. Умение говорить ясно, спокойно и убедительно.
+                                    Опыт настоящего спектакля на профессиональной сцене. Уверенность, командная работа, ощущение «я смог».
                                 </div>
                             </div>
                         </div>
@@ -539,7 +546,7 @@
 
                 </div>
 
-                <!-- Нижняя часть: расписание / стоимость / итог -->
+                <!-- Нижняя часть -->
                 <div class="vk-card__footer">
 
                     <!-- Расписание -->
