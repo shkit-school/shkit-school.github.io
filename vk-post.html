@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ШКИТ — анонс для соцсетей</title>
+<title>ШКИТ — Дети 5–11 лет</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,12 +28,9 @@
         background: #242424;
         color: #fff;
         box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7);
+        width: 1080px;
+        height: 1080px;
     }
-
-    .vk-post[data-format="square"] { width: 1080px; height: 1080px; }
-    .vk-post[data-format="story"]  { width: 1080px; height: 1920px; }
-    .vk-post[data-format="post"]   { width: 1200px; height: 630px; }
-    .vk-post[data-format="cover"]  { width: 1590px; height: 400px; }
 
     /* ===== ФОН ===== */
     .vk-post__bg {
@@ -42,7 +39,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: saturate(.92) contrast(1.04) sepia(.12) brightness(.75);
+        filter: saturate(.92) contrast(1.04) sepia(.12) brightness(.55);
         z-index: 0;
     }
 
@@ -51,10 +48,9 @@
         inset: 0;
         z-index: 1;
         background: linear-gradient(180deg,
-            rgba(36,36,36,.2) 0%,
-            rgba(36,36,36,.4) 30%,
-            rgba(36,36,36,.88) 70%,
-            rgba(36,36,36,.97) 100%);
+            rgba(36,36,36,.55) 0%,
+            rgba(36,36,36,.75) 40%,
+            rgba(36,36,36,.95) 100%);
     }
 
     /* ===== КОНТЕНТ ===== */
@@ -62,20 +58,17 @@
         position: relative;
         z-index: 2;
         height: 100%;
-        padding: 4.5% 5%;
+        padding: 5% 5.5%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        gap: 2%;
+        gap: 3%;
     }
 
-    /* Верх */
+    /* ===== ВЕРХ: лого + город ===== */
     .vk-post__top {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
-        gap: 20px;
     }
 
     .vk-post__logo {
@@ -115,27 +108,53 @@
         border-radius: 999px;
     }
 
-    /* ===== КАРТОЧКИ С ФОТО ===== */
+    /* ===== ЗАГОЛОВОК — СВЕРХУ, КАК НА ГЛАВНОЙ ===== */
+    .vk-post__hero {
+        text-align: left;
+        margin-top: 1%;
+    }
+
+    .vk-post__title {
+        font-size: 72px;
+        font-weight: 900;
+        line-height: .98;
+        letter-spacing: -.02em;
+        color: #E85D5D;
+        margin-bottom: 12px;
+        max-width: 85%;
+    }
+
+    .vk-post__subtitle {
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 1.35;
+        color: rgba(255,255,255,.9);
+        max-width: 75%;
+    }
+
+    /* ===== КАРТОЧКА ===== */
     .vk-post__cards {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
+        grid-template-columns: 1fr;
+        gap: 0;
+        flex: 1;
+        min-height: 0;
     }
 
     .vk-card {
         background: #fff;
-        border-radius: 16px;
+        border-radius: 18px;
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        box-shadow: 0 16px 40px -12px rgba(0,0,0,.6);
         color: #2D2D2D;
+        box-shadow: 0 20px 50px -16px rgba(0,0,0,.6);
+        height: 100%;
     }
 
-    /* Фото внутри карточки */
     .vk-card__media {
         position: relative;
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 21 / 7;
         overflow: hidden;
         background: #1a1a1a;
     }
@@ -144,179 +163,221 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: saturate(.92) contrast(1.05) sepia(.12) brightness(.95);
+        filter: saturate(.95) contrast(1.05) sepia(.1) brightness(.9);
     }
 
-    /* Тег на фото */
     .vk-card__tag {
         position: absolute;
-        top: 12px;
-        left: 12px;
-        font-size: 11px;
+        top: 16px;
+        left: 16px;
+        font-size: 13px;
         font-weight: 700;
-        letter-spacing: .08em;
+        letter-spacing: .1em;
         text-transform: uppercase;
         color: #fff;
-        background: rgba(45,45,45,.85);
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-        padding: 6px 12px;
-        border-radius: 999px;
-    }
-
-    .vk-card__tag--coral {
         background: #D13434;
+        padding: 8px 16px;
+        border-radius: 999px;
+        box-shadow: 0 8px 20px -6px rgba(209,52,52,.7);
     }
 
-    /* Тело карточки */
     .vk-card__body {
-        padding: 16px 18px 18px;
+        padding: 22px 26px 24px;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 14px;
         flex: 1;
+        min-height: 0;
+    }
+
+    .vk-card__heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 16px;
+        flex-wrap: wrap;
+        border-bottom: 1px solid rgba(45,45,45,.12);
+        padding-bottom: 14px;
     }
 
     .vk-card__title {
-        font-size: 17px;
-        font-weight: 800;
-        line-height: 1.2;
+        font-size: 26px;
+        font-weight: 900;
+        line-height: 1.1;
         color: #2D2D2D;
     }
 
-    .vk-card__text {
-        font-size: 12.5px;
-        line-height: 1.4;
-        color: #6E6A67;
-        font-weight: 500;
+    .vk-card__age {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: #BC3636;
     }
 
-    .vk-card__meta {
-        margin-top: auto;
-        padding-top: 10px;
-        border-top: 1px solid rgba(45,45,45,.12);
+    /* Сетка двух колонок */
+    .vk-card__info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 32px;
+        flex: 1;
+    }
+
+    .vk-info-block {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
+        flex-direction: column;
+        gap: 6px;
     }
 
-    .vk-card__format {
-        font-size: 10.5px;
+    .vk-info-block__label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: #BC3636;
+        margin-bottom: 2px;
+    }
+
+    .vk-info-block__value {
+        font-size: 14.5px;
         font-weight: 600;
-        color: #6E6A67;
+        line-height: 1.45;
+        color: #2D2D2D;
+    }
+
+    .vk-info-block__value strong {
+        font-weight: 800;
+    }
+
+    /* Расписание */
+    .vk-schedule {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        font-size: 14.5px;
+        font-weight: 600;
         line-height: 1.3;
     }
 
-    .vk-card__price {
-        font-size: 16px;
-        font-weight: 800;
-        color: #BC3636;
-        white-space: nowrap;
+    .vk-schedule__row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 7px 12px;
+        background: #F6F4F2;
+        border-radius: 8px;
     }
 
-    .vk-card__price small {
-        display: block;
-        font-size: 10px;
+    .vk-schedule__day { color: #6E6A67; font-weight: 700; }
+    .vk-schedule__time { color: #2D2D2D; font-weight: 800; }
+
+    /* Стоимость */
+    .vk-price {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-top: 4px;
+    }
+
+    .vk-price__value {
+        font-size: 26px;
+        font-weight: 900;
+        color: #BC3636;
+        line-height: 1;
+    }
+
+    .vk-price__unit {
+        font-size: 13px;
         font-weight: 600;
         color: #6E6A67;
-        margin-top: 1px;
     }
 
-    /* ===== ЗАГОЛОВОК ===== */
-    .vk-post__middle {
-        text-align: left;
-        margin-top: 2%;
-    }
-
-    .vk-post__title {
-        font-size: clamp(34px, 4.2vw, 52px);
-        font-weight: 900;
-        line-height: 1.02;
-        letter-spacing: -.01em;
-        color: #E85D5D;
-        margin-bottom: 12px;
-        max-width: 80%;
-    }
-
-    .vk-post__subtitle {
-        font-size: clamp(14px, 1.5vw, 18px);
-        font-weight: 500;
-        line-height: 1.4;
-        color: rgba(255,255,255,.85);
-        max-width: 70%;
-    }
-
-    /* ===== CTA ===== */
-    .vk-post__cta {
-        display: inline-flex;
+    /* ===== НИЖНЯЯ ПАНЕЛЬ: контакты + QR ===== */
+    .vk-post__footer {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 28px;
         align-items: center;
-        gap: 12px;
-        font-size: 20px;
-        font-weight: 800;
-        color: #fff;
-        background: #D13434;
-        padding: 18px 36px;
-        border-radius: 14px;
-        box-shadow: 0 20px 50px -14px rgba(209, 52, 52, .95);
-        align-self: flex-start;
+        background: rgba(255,255,255,.08);
+        border: 1px solid rgba(255,255,255,.14);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 16px;
+        padding: 18px 22px;
     }
 
-    .vk-post__cta svg { width: 22px; height: 22px; flex: none; }
+    .vk-contacts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 28px;
+    }
 
-    /* ===== ФОРМАТЫ ===== */
-    /* POST 1200×630 — компактный горизонт */
-    .vk-post[data-format="post"] .vk-post__content { padding: 3% 3.5%; gap: 1.5%; }
-    .vk-post[data-format="post"] .vk-post__logo img { height: 40px; }
-    .vk-post[data-format="post"] .vk-post__logo-text b { font-size: 20px; }
-    .vk-post[data-format="post"] .vk-post__logo-text span { font-size: 8px; }
-    .vk-post[data-format="post"] .vk-post__city { font-size: 10px; padding: 6px 14px; }
-    .vk-post[data-format="post"] .vk-post__cards { gap: 10px; }
-    .vk-post[data-format="post"] .vk-card__media { aspect-ratio: 16/9; }
-    .vk-post[data-format="post"] .vk-card__body { padding: 10px 12px 12px; gap: 5px; }
-    .vk-post[data-format="post"] .vk-card__title { font-size: 13px; }
-    .vk-post[data-format="post"] .vk-card__text { display: none; }
-    .vk-post[data-format="post"] .vk-card__tag { font-size: 9px; padding: 4px 8px; top: 8px; left: 8px; }
-    .vk-post[data-format="post"] .vk-card__price { font-size: 13px; }
-    .vk-post[data-format="post"] .vk-post__title { font-size: 36px; max-width: 55%; }
-    .vk-post[data-format="post"] .vk-post__subtitle { font-size: 14px; max-width: 55%; }
-    .vk-post[data-format="post"] .vk-post__cta { font-size: 15px; padding: 12px 24px; }
-    .vk-post[data-format="post"] .vk-post__middle { margin-top: 0; }
+    .vk-contact {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1.3;
+    }
 
-    /* STORY 1080×1920 — вертикаль, карточки в столбик */
-    .vk-post[data-format="story"] .vk-post__content { padding: 7% 6%; gap: 3%; }
-    .vk-post[data-format="story"] .vk-post__cards { grid-template-columns: 1fr; gap: 16px; }
-    .vk-post[data-format="story"] .vk-card__body { padding: 20px 22px 22px; }
-    .vk-post[data-format="story"] .vk-card__title { font-size: 22px; }
-    .vk-post[data-format="story"] .vk-card__text { font-size: 15px; }
-    .vk-post[data-format="story"] .vk-card__price { font-size: 20px; }
-    .vk-post[data-format="story"] .vk-post__title { font-size: 60px; max-width: 100%; }
-    .vk-post[data-format="story"] .vk-post__subtitle { font-size: 22px; max-width: 100%; }
-    .vk-post[data-format="story"] .vk-post__cta { font-size: 24px; padding: 24px 44px; }
+    .vk-contact svg {
+        width: 18px;
+        height: 18px;
+        flex: none;
+        stroke: #F28B87;
+        fill: none;
+        stroke-width: 2;
+    }
 
-    /* COVER 1590×400 — сверхкомпактный */
-    .vk-post[data-format="cover"] .vk-post__content { padding: 3% 4%; gap: 1.5%; }
-    .vk-post[data-format="cover"] .vk-post__logo img { height: 42px; }
-    .vk-post[data-format="cover"] .vk-post__logo-text b { font-size: 20px; }
-    .vk-post[data-format="cover"] .vk-post__logo-text span { font-size: 8px; }
-    .vk-post[data-format="cover"] .vk-post__city { display: none; }
-    .vk-post[data-format="cover"] .vk-post__middle { display: none; }
-    .vk-post[data-format="cover"] .vk-post__cta { display: none; }
-    .vk-post[data-format="cover"] .vk-post__cards { gap: 10px; }
-    .vk-post[data-format="cover"] .vk-card { flex-direction: row; align-items: center; }
-    .vk-post[data-format="cover"] .vk-card__media { width: 80px; aspect-ratio: 1; flex: none; }
-    .vk-post[data-format="cover"] .vk-card__body { padding: 8px 12px; gap: 4px; }
-    .vk-post[data-format="cover"] .vk-card__title { font-size: 12px; }
-    .vk-post[data-format="cover"] .vk-card__text { display: none; }
-    .vk-post[data-format="cover"] .vk-card__meta { padding-top: 4px; border: none; }
-    .vk-post[data-format="cover"] .vk-card__format { display: none; }
-    .vk-post[data-format="cover"] .vk-card__price { font-size: 12px; }
-    .vk-post[data-format="cover"] .vk-card__tag { font-size: 8px; padding: 3px 6px; top: 4px; left: 4px; }
+    .vk-contact b {
+        font-weight: 800;
+    }
+
+    .vk-contact--small {
+        font-size: 13px;
+        color: rgba(255,255,255,.85);
+    }
+
+    /* QR */
+    .vk-qr {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex: none;
+    }
+
+    .vk-qr__img {
+        width: 96px;
+        height: 96px;
+        background: #fff;
+        border-radius: 10px;
+        padding: 6px;
+        object-fit: contain;
+    }
+
+    .vk-qr__text {
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.3;
+        color: rgba(255,255,255,.85);
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        max-width: 90px;
+    }
+
+    .vk-qr__text span {
+        display: block;
+        color: #F28B87;
+        font-size: 11px;
+        margin-top: 4px;
+    }
 </style>
 </head>
 <body>
 
-<div class="vk-post" id="post" data-format="square">
+<div class="vk-post" id="post">
     <!-- Фон -->
     <picture>
         <source media="(max-width: 768px)" srcset="assets/img/shapka2.webp">
@@ -338,81 +399,112 @@
             <span class="vk-post__city">Челябинск · с 2009</span>
         </div>
 
-        <!-- Карточки с фото -->
-        <div class="vk-post__cards">
-
-            <!-- Дети -->
-            <div class="vk-card">
-                <div class="vk-card__media">
-                    <img src="assets/img/gallery-15.jpg" alt="Дети на сцене ШКИТ">
-                    <span class="vk-card__tag">Дети · 5–11</span>
-                </div>
-                <div class="vk-card__body">
-                    <div class="vk-card__title">Игра, которая превращает стеснение в суперсилу</div>
-                    <p class="vk-card__text">Эмоциональный интеллект, речь, уверенность. Отчётный спектакль в финале.</p>
-                    <div class="vk-card__meta">
-                        <div class="vk-card__format">2 р/нед · по 2 ч</div>
-                        <div class="vk-card__price">5 600 ₽<small>в месяц</small></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Подростки -->
-            <div class="vk-card">
-                <div class="vk-card__media">
-                    <img src="assets/img/gal124.jpg" alt="Подростки на сцене ШКИТ">
-                    <span class="vk-card__tag">Подростки · 12–17</span>
-                </div>
-                <div class="vk-card__body">
-                    <div class="vk-card__title">От «попробовать» до «я поступил»</div>
-                    <p class="vk-card__text">Уверенность, харизма, подготовка к поступлению в театральный.</p>
-                    <div class="vk-card__meta">
-                        <div class="vk-card__format">2 р/нед · по 3 ч</div>
-                        <div class="vk-card__price">5 600 ₽<small>в месяц</small></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Взрослые -->
-            <div class="vk-card">
-                <div class="vk-card__media">
-                    <img src="assets/img/gal104.jpg" alt="Взрослые на сцене ШКИТ">
-                    <span class="vk-card__tag vk-card__tag--coral">Взрослые · 18+</span>
-                </div>
-                <div class="vk-card__body">
-                    <div class="vk-card__title">Роль в спектакле на профессиональной сцене</div>
-                    <p class="vk-card__text">Проекты «Давай сыграем жизнь», «Магия слов», «Мой бенефис».</p>
-                    <div class="vk-card__meta">
-                        <div class="vk-card__format">2 р/нед · по 3 ч</div>
-                        <div class="vk-card__price">от 5 600 ₽<small>в месяц</small></div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Заголовок -->
-        <div class="vk-post__middle">
+        <!-- Заголовок — СВЕРХУ -->
+        <div class="vk-post__hero">
             <h1 class="vk-post__title">Актёрское мастерство для жизни</h1>
-            <p class="vk-post__subtitle">Дети, подростки, взрослые. Без пафоса, зато с душой.</p>
+            <p class="vk-post__subtitle">Дети 5–11 лет · игра, которая превращает стеснение в суперсилу</p>
         </div>
 
-        <!-- CTA -->
-        <div class="vk-post__cta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14M13 5l7 7-7 7"/>
-            </svg>
-            Записаться на пробное
+        <!-- Карточка -->
+        <div class="vk-post__cards">
+            <div class="vk-card">
+                <div class="vk-card__media">
+                    <img src="assets/img/gallery-15.jpg" alt="Дети на отчётном спектакле ШКИТ">
+                    <span class="vk-card__tag">Дети · 5–11 лет</span>
+                </div>
+
+                <div class="vk-card__body">
+                    <div class="vk-card__heading">
+                        <div class="vk-card__title">Актёрское мастерство и сценическая речь</div>
+                        <div class="vk-card__age">5–11 лет</div>
+                    </div>
+
+                    <div class="vk-card__info">
+
+                        <!-- Чем занимаются -->
+                        <div class="vk-info-block">
+                            <span class="vk-info-block__label">Чем занимаются</span>
+                            <div class="vk-info-block__value">
+                                Актёрское мастерство (внимание, память, воображение), сценическая речь (дикция, голос, интонации), импровизация и работа в команде.
+                            </div>
+                        </div>
+
+                        <!-- Польза -->
+                        <div class="vk-info-block">
+                            <span class="vk-info-block__label">Польза</span>
+                            <div class="vk-info-block__value">
+                                Ребёнок перестаёт стесняться, учится говорить громко и внятно, легко знакомится и дружит. Развивается эмоциональный интеллект и уверенность в себе.
+                            </div>
+                        </div>
+
+                        <!-- Расписание -->
+                        <div class="vk-info-block">
+                            <span class="vk-info-block__label">Расписание</span>
+                            <div class="vk-schedule">
+                                <div class="vk-schedule__row">
+                                    <span class="vk-schedule__day">Понедельник</span>
+                                    <span class="vk-schedule__time">18:00 – 20:00</span>
+                                </div>
+                                <div class="vk-schedule__row">
+                                    <span class="vk-schedule__day">Суббота</span>
+                                    <span class="vk-schedule__time">14:00 – 16:00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Стоимость -->
+                        <div class="vk-info-block">
+                            <span class="vk-info-block__label">Стоимость</span>
+                            <div class="vk-price">
+                                <span class="vk-price__value">5 600 ₽</span>
+                                <span class="vk-price__unit">в месяц</span>
+                            </div>
+                        </div>
+
+                        <!-- Отчётный показ -->
+                        <div class="vk-info-block" style="grid-column: 1 / -1;">
+                            <span class="vk-info-block__label">Отчётный показ</span>
+                            <div class="vk-info-block__value">
+                                В финале курса — <strong>большой спектакль</strong> на профессиональной сцене: декорации, костюмы, свет, полный зал и настоящие аплодисменты. Это точка, в которой ребёнок говорит себе: «У меня получилось».
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Контакты + QR -->
+        <div class="vk-post__footer">
+
+            <div class="vk-contacts">
+                <div class="vk-contact">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-5.5 8-12a8 8 0 10-16 0c0 6.5 8 12 8 12z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>пр. Ленина, 83, офис 509 · <b>вход с ул. Тернопольской</b></span>
+                </div>
+                <div class="vk-contact">
+                    <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg>
+                    <span><b>+7 (919) 404-01-23</b></span>
+                </div>
+                <div class="vk-contact vk-contact--small" style="grid-column: 1 / -1;">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+                    <span>shkit-school.github.io</span>
+                </div>
+            </div>
+
+            <!-- QR -->
+            <div class="vk-qr">
+                <img class="vk-qr__img" src="assets/img/qr.png" alt="QR-код сайта ШКИТ">
+                <div class="vk-qr__text">
+                    Наведи
+                    <span>и запишись</span>
+                </div>
+            </div>
+
         </div>
 
     </div>
 </div>
-
-<script>
-    var params = new URLSearchParams(location.search);
-    var fmt = params.get('format') || 'square';
-    document.getElementById('post').dataset.format = fmt;
-</script>
 
 </body>
 </html>
