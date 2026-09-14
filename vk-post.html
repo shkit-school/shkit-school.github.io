@@ -149,6 +149,33 @@
         height: 100%;
     }
 
+    /* Белая шапка карточки — ВЕРНУЛ */
+    .vk-card__heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 16px;
+        padding: 16px 26px 14px;
+        border-bottom: 1px solid rgba(45,45,45,.1);
+        flex: none;
+    }
+
+    .vk-card__title {
+        font-size: 24px;
+        font-weight: 900;
+        line-height: 1.1;
+        color: #2D2D2D;
+    }
+
+    .vk-card__age {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: #BC3636;
+        white-space: nowrap;
+    }
+
     /* ===== ДВА БЛОКА С ФОТО ===== */
     .vk-blocks {
         display: grid;
@@ -167,7 +194,7 @@
 
     .vk-block:last-child { border-right: none; }
 
-    /* Фото — без плашек */
+    /* Фото */
     .vk-block__media {
         position: relative;
         aspect-ratio: 16 / 9;
@@ -183,12 +210,12 @@
         filter: saturate(.95) contrast(1.05) sepia(.1) brightness(.95);
     }
 
-    /* Тело блока */
+    /* Тело блока — вернули «Пользу» */
     .vk-block__body {
         padding: 18px 24px 20px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
         flex: 1;
         min-height: 0;
     }
@@ -203,7 +230,6 @@
         gap: 10px;
     }
 
-    /* SVG-иконка в едином стиле */
     .vk-block__title svg {
         width: 22px;
         height: 22px;
@@ -215,11 +241,26 @@
         stroke-linejoin: round;
     }
 
-    .vk-block__text {
+    /* Инфо-блоки: «Чем занимаются» + «Польза» */
+    .vk-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .vk-info__label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: #BC3636;
+    }
+
+    .vk-info__value {
         font-size: 13.5px;
         font-weight: 500;
         line-height: 1.45;
-        color: #4a4a4a;
+        color: #2D2D2D;
     }
 
     /* ===== НИЖНЯЯ ЧАСТЬ: 3 равные колонки ===== */
@@ -249,7 +290,7 @@
         margin-bottom: 8px;
     }
 
-    /* Расписание — компактное */
+    /* Расписание */
     .vk-schedule {
         display: flex;
         flex-direction: column;
@@ -268,10 +309,17 @@
     .vk-schedule__day { color: #6E6A67; font-weight: 700; }
     .vk-schedule__time { color: #2D2D2D; font-weight: 800; white-space: nowrap; }
 
-    /* Стоимость */
+    /* ===== СТОИМОСТЬ — ОТЦЕНТРОВАНА ===== */
+    .vk-card__footer > div.vk-footer-price {
+        justify-content: flex-start;
+        align-items: center;      /* ← центрирование по горизонтали */
+        text-align: center;
+    }
+
     .vk-price {
         display: flex;
         align-items: baseline;
+        justify-content: center;  /* ← центр внутри колонки */
         gap: 6px;
     }
 
@@ -288,7 +336,7 @@
         color: #6E6A67;
     }
 
-    /* Отчётный показ — коротко */
+    /* Отчётный показ */
     .vk-show {
         font-size: 13px;
         font-weight: 600;
@@ -298,7 +346,7 @@
 
     .vk-show strong { font-weight: 800; }
 
-    /* ===== НИЖНЯЯ ПАНЕЛЬ: адрес + телефон + QR ===== */
+    /* ===== НИЖНЯЯ ПАНЕЛЬ ===== */
     .vk-post__footer {
         display: grid;
         grid-template-columns: 1fr 1fr auto;
@@ -335,7 +383,6 @@
 
     .vk-contact b { font-weight: 800; }
 
-    /* Телефон — центрирован по вертикали, крупнее */
     .vk-contact--phone {
         justify-content: center;
         font-size: 16px;
@@ -348,7 +395,7 @@
         height: 20px;
     }
 
-    /* ===== QR ===== */
+    /* QR */
     .vk-qr {
         display: flex;
         align-items: center;
@@ -395,7 +442,7 @@
 
     <div class="vk-post__content">
 
-        <!-- Верх: лого + город -->
+        <!-- Верх -->
         <div class="vk-post__top">
             <div class="vk-post__logo">
                 <img src="assets/img/logo-white-sm.png" alt="ШКИТ">
@@ -413,12 +460,18 @@
                 Актёрское мастерство
                 <span>для жизни</span>
             </h1>
-            <p class="vk-post__subtitle">Дети 5–11 лет · 2 раза в неделю</p>
+            <p class="vk-post__subtitle">Дети 5–11 лет · игра, которая превращает стеснение в суперсилу</p>
         </div>
 
         <!-- Карточка -->
         <div class="vk-post__cards">
             <div class="vk-card">
+
+                <!-- Белая шапка карточки — ВЕРНУЛ -->
+                <div class="vk-card__heading">
+                    <div class="vk-card__title">Дети 5–11 лет</div>
+                    <div class="vk-card__age">Курс · 2 раза в неделю</div>
+                </div>
 
                 <!-- Два блока с фото -->
                 <div class="vk-blocks">
@@ -433,8 +486,19 @@
                                 <svg viewBox="0 0 24 24"><path d="M12 2l2.5 6H21l-5 4 2 7-6-4-6 4 2-7-5-4h6.5z"/></svg>
                                 Актёрское мастерство
                             </div>
-                            <div class="vk-block__text">
-                                Внимание, память, воображение. Этюды, импровизация, работа в команде.
+
+                            <div class="vk-info">
+                                <span class="vk-info__label">Чем занимаются</span>
+                                <div class="vk-info__value">
+                                    Внимание, память, воображение. Этюды, импровизация, работа в команде.
+                                </div>
+                            </div>
+
+                            <div class="vk-info">
+                                <span class="vk-info__label">Польза</span>
+                                <div class="vk-info__value">
+                                    Ребёнок перестаёт стесняться, учится выражать эмоции и уверенно быть в центре внимания.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -449,15 +513,26 @@
                                 <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><path d="M12 19v4M8 23h8"/></svg>
                                 Сценическая речь
                             </div>
-                            <div class="vk-block__text">
-                                Артикуляция, дыхание, дикция. Скороговорки, интонация, сила голоса.
+
+                            <div class="vk-info">
+                                <span class="vk-info__label">Чем занимаются</span>
+                                <div class="vk-info__value">
+                                    Артикуляция, дыхание, дикция. Скороговорки, интонация, сила голоса.
+                                </div>
+                            </div>
+
+                            <div class="vk-info">
+                                <span class="vk-info__label">Польза</span>
+                                <div class="vk-info__value">
+                                    Ребёнок говорит громко, чётко и выразительно — и в школе, и в жизни.
+                                </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- Нижняя часть: 3 равные колонки -->
+                <!-- Нижняя часть -->
                 <div class="vk-card__footer">
 
                     <!-- Расписание -->
@@ -475,8 +550,8 @@
                         </div>
                     </div>
 
-                    <!-- Стоимость -->
-                    <div>
+                    <!-- Стоимость — ОТЦЕНТРОВАНА -->
+                    <div class="vk-footer-price">
                         <div class="vk-card__label">Стоимость</div>
                         <div class="vk-price">
                             <span class="vk-price__value">5 600 ₽</span>
@@ -500,19 +575,16 @@
         <!-- Контакты + QR -->
         <div class="vk-post__footer">
 
-            <!-- Адрес -->
             <div class="vk-contact">
                 <svg viewBox="0 0 24 24"><path d="M12 22s8-5.5 8-12a8 8 0 10-16 0c0 6.5 8 12 8 12z"/><circle cx="12" cy="10" r="3"/></svg>
                 <span>пр. Ленина, 83, офис 509<br><b>вход с ул. Тернопольской</b></span>
             </div>
 
-            <!-- Телефон -->
             <div class="vk-contact vk-contact--phone">
                 <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg>
                 <b>+7 (919) 404-01-23</b>
             </div>
 
-            <!-- QR -->
             <div class="vk-qr">
                 <img class="vk-qr__img" src="assets/img/qr.png" alt="QR-код сайта ШКИТ">
                 <div class="vk-qr__text">
