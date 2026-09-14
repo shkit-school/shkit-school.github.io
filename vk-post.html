@@ -39,7 +39,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: saturate(.92) contrast(1.04) sepia(.12) brightness(.55);
+        filter: saturate(.92) contrast(1.04) sepia(.12) brightness(.5);
         z-index: 0;
     }
 
@@ -48,8 +48,8 @@
         inset: 0;
         z-index: 1;
         background: linear-gradient(180deg,
-            rgba(36,36,36,.55) 0%,
-            rgba(36,36,36,.75) 40%,
+            rgba(36,36,36,.65) 0%,
+            rgba(36,36,36,.82) 40%,
             rgba(36,36,36,.95) 100%);
     }
 
@@ -58,13 +58,13 @@
         position: relative;
         z-index: 2;
         height: 100%;
-        padding: 5% 5.5%;
+        padding: 4.5% 5%;
         display: flex;
         flex-direction: column;
-        gap: 3%;
+        gap: 2.5%;
     }
 
-    /* ===== ВЕРХ: лого + город ===== */
+    /* ===== ВЕРХ ===== */
     .vk-post__top {
         display: flex;
         justify-content: space-between;
@@ -74,14 +74,14 @@
     .vk-post__logo {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 14px;
     }
 
-    .vk-post__logo img { height: 58px; width: auto; }
+    .vk-post__logo img { height: 54px; width: auto; }
 
     .vk-post__logo-text b {
         display: block;
-        font-size: 28px;
+        font-size: 26px;
         font-weight: 900;
         line-height: 1;
         letter-spacing: .02em;
@@ -89,7 +89,7 @@
 
     .vk-post__logo-text span {
         display: block;
-        font-size: 10px;
+        font-size: 9px;
         font-weight: 600;
         letter-spacing: .18em;
         text-transform: uppercase;
@@ -98,46 +98,40 @@
     }
 
     .vk-post__city {
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 700;
-        letter-spacing: .18em;
+        letter-spacing: .16em;
         text-transform: uppercase;
         color: rgba(255,255,255,.8);
-        padding: 11px 22px;
+        padding: 10px 20px;
         border: 2px solid rgba(255,255,255,.4);
         border-radius: 999px;
     }
 
-    /* ===== ЗАГОЛОВОК — СВЕРХУ, КАК НА ГЛАВНОЙ ===== */
-    .vk-post__hero {
-        text-align: left;
-        margin-top: 1%;
-    }
+    /* ===== ЗАГОЛОВОК ===== */
+    .vk-post__hero { text-align: left; }
 
     .vk-post__title {
-        font-size: 72px;
+        font-size: 56px;
         font-weight: 900;
         line-height: .98;
         letter-spacing: -.02em;
         color: #E85D5D;
-        margin-bottom: 12px;
-        max-width: 85%;
+        margin-bottom: 8px;
     }
 
     .vk-post__subtitle {
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 500;
         line-height: 1.35;
-        color: rgba(255,255,255,.9);
-        max-width: 75%;
+        color: rgba(255,255,255,.88);
     }
 
     /* ===== КАРТОЧКА ===== */
     .vk-post__cards {
+        flex: 1;
         display: grid;
         grid-template-columns: 1fr;
-        gap: 0;
-        flex: 1;
         min-height: 0;
     }
 
@@ -152,191 +146,237 @@
         height: 100%;
     }
 
-    .vk-card__media {
-        position: relative;
-        aspect-ratio: 21 / 7;
-        overflow: hidden;
-        background: #1a1a1a;
-    }
-
-    .vk-card__media img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: saturate(.95) contrast(1.05) sepia(.1) brightness(.9);
-    }
-
-    .vk-card__tag {
-        position: absolute;
-        top: 16px;
-        left: 16px;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: .1em;
-        text-transform: uppercase;
-        color: #fff;
-        background: #D13434;
-        padding: 8px 16px;
-        border-radius: 999px;
-        box-shadow: 0 8px 20px -6px rgba(209,52,52,.7);
-    }
-
-    .vk-card__body {
-        padding: 22px 26px 24px;
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        flex: 1;
-        min-height: 0;
-    }
-
+    /* Верхняя панель карточки: заголовок + возраст */
     .vk-card__heading {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         gap: 16px;
-        flex-wrap: wrap;
-        border-bottom: 1px solid rgba(45,45,45,.12);
-        padding-bottom: 14px;
+        padding: 16px 24px 14px;
+        border-bottom: 1px solid rgba(45,45,45,.1);
+        flex: none;
     }
 
     .vk-card__title {
-        font-size: 26px;
+        font-size: 22px;
         font-weight: 900;
         line-height: 1.1;
         color: #2D2D2D;
     }
 
     .vk-card__age {
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 700;
         letter-spacing: .06em;
         text-transform: uppercase;
         color: #BC3636;
+        white-space: nowrap;
     }
 
-    /* Сетка двух колонок */
-    .vk-card__info {
+    /* ===== ДВА БЛОКА С ФОТО ===== */
+    .vk-blocks {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 16px 32px;
+        gap: 0;
         flex: 1;
+        min-height: 0;
     }
 
-    .vk-info-block {
+    .vk-block {
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        border-right: 1px solid rgba(45,45,45,.1);
+        min-height: 0;
     }
 
-    .vk-info-block__label {
+    .vk-block:last-child { border-right: none; }
+
+    /* Фото блока */
+    .vk-block__media {
+        position: relative;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: #1a1a1a;
+        flex: none;
+    }
+
+    .vk-block__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(.95) contrast(1.05) sepia(.1) brightness(.95);
+    }
+
+    .vk-block__tag {
+        position: absolute;
+        top: 12px;
+        left: 12px;
         font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: #fff;
+        background: #D13434;
+        padding: 6px 14px;
+        border-radius: 999px;
+        box-shadow: 0 8px 20px -6px rgba(209,52,52,.7);
+    }
+
+    /* Тело блока */
+    .vk-block__body {
+        padding: 16px 20px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        flex: 1;
+        min-height: 0;
+    }
+
+    .vk-block__title {
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 1.2;
+        color: #2D2D2D;
+    }
+
+    .vk-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .vk-info__label {
+        font-size: 10px;
         font-weight: 700;
         letter-spacing: .14em;
         text-transform: uppercase;
         color: #BC3636;
-        margin-bottom: 2px;
     }
 
-    .vk-info-block__value {
-        font-size: 14.5px;
+    .vk-info__value {
+        font-size: 13px;
         font-weight: 600;
-        line-height: 1.45;
+        line-height: 1.4;
         color: #2D2D2D;
     }
 
-    .vk-info-block__value strong {
-        font-weight: 800;
+    /* ===== НИЖНЯЯ ЧАСТЬ КАРТОЧКИ: расписание, стоимость, отчёт ===== */
+    .vk-card__footer {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr 1.4fr;
+        gap: 0;
+        border-top: 1px solid rgba(45,45,45,.1);
+        flex: none;
+    }
+
+    .vk-card__footer > div {
+        padding: 14px 20px 16px;
+        border-right: 1px solid rgba(45,45,45,.1);
+    }
+
+    .vk-card__footer > div:last-child { border-right: none; }
+
+    .vk-card__label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: #BC3636;
+        margin-bottom: 6px;
     }
 
     /* Расписание */
     .vk-schedule {
         display: flex;
         flex-direction: column;
-        gap: 5px;
-        font-size: 14.5px;
-        font-weight: 600;
-        line-height: 1.3;
+        gap: 4px;
     }
 
     .vk-schedule__row {
         display: flex;
         justify-content: space-between;
-        gap: 12px;
-        padding: 7px 12px;
-        background: #F6F4F2;
-        border-radius: 8px;
+        gap: 8px;
+        font-size: 12.5px;
+        font-weight: 600;
+        line-height: 1.25;
     }
 
     .vk-schedule__day { color: #6E6A67; font-weight: 700; }
-    .vk-schedule__time { color: #2D2D2D; font-weight: 800; }
+    .vk-schedule__time { color: #2D2D2D; font-weight: 800; white-space: nowrap; }
 
     /* Стоимость */
     .vk-price {
         display: flex;
         align-items: baseline;
-        gap: 8px;
-        margin-top: 4px;
+        gap: 6px;
     }
 
     .vk-price__value {
-        font-size: 26px;
+        font-size: 24px;
         font-weight: 900;
         color: #BC3636;
         line-height: 1;
     }
 
     .vk-price__unit {
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 600;
         color: #6E6A67;
     }
+
+    /* Отчётный показ */
+    .vk-show {
+        font-size: 12.5px;
+        font-weight: 600;
+        line-height: 1.4;
+        color: #2D2D2D;
+    }
+
+    .vk-show strong { font-weight: 800; }
 
     /* ===== НИЖНЯЯ ПАНЕЛЬ: контакты + QR ===== */
     .vk-post__footer {
         display: grid;
         grid-template-columns: 1fr auto;
-        gap: 28px;
+        gap: 24px;
         align-items: center;
         background: rgba(255,255,255,.08);
         border: 1px solid rgba(255,255,255,.14);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border-radius: 16px;
-        padding: 18px 22px;
+        border-radius: 14px;
+        padding: 14px 18px;
     }
 
     .vk-contacts {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 8px 28px;
+        gap: 6px 24px;
     }
 
     .vk-contact {
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-size: 14px;
+        gap: 9px;
+        font-size: 13px;
         font-weight: 600;
         color: #fff;
         line-height: 1.3;
     }
 
     .vk-contact svg {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
         flex: none;
         stroke: #F28B87;
         fill: none;
         stroke-width: 2;
     }
 
-    .vk-contact b {
-        font-weight: 800;
-    }
+    .vk-contact b { font-weight: 800; }
 
     .vk-contact--small {
-        font-size: 13px;
+        font-size: 12px;
         color: rgba(255,255,255,.85);
     }
 
@@ -344,34 +384,34 @@
     .vk-qr {
         display: flex;
         align-items: center;
-        gap: 14px;
+        gap: 12px;
         flex: none;
     }
 
     .vk-qr__img {
-        width: 96px;
-        height: 96px;
+        width: 80px;
+        height: 80px;
         background: #fff;
-        border-radius: 10px;
-        padding: 6px;
+        border-radius: 8px;
+        padding: 5px;
         object-fit: contain;
     }
 
     .vk-qr__text {
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 700;
-        line-height: 1.3;
+        line-height: 1.25;
         color: rgba(255,255,255,.85);
         text-transform: uppercase;
-        letter-spacing: .1em;
-        max-width: 90px;
+        letter-spacing: .08em;
+        max-width: 85px;
     }
 
     .vk-qr__text span {
         display: block;
         color: #F28B87;
-        font-size: 11px;
-        margin-top: 4px;
+        font-size: 10px;
+        margin-top: 3px;
     }
 </style>
 </head>
@@ -399,7 +439,7 @@
             <span class="vk-post__city">Челябинск · с 2009</span>
         </div>
 
-        <!-- Заголовок — СВЕРХУ -->
+        <!-- Заголовок -->
         <div class="vk-post__hero">
             <h1 class="vk-post__title">Актёрское мастерство для жизни</h1>
             <p class="vk-post__subtitle">Дети 5–11 лет · игра, которая превращает стеснение в суперсилу</p>
@@ -408,69 +448,105 @@
         <!-- Карточка -->
         <div class="vk-post__cards">
             <div class="vk-card">
-                <div class="vk-card__media">
-                    <img src="assets/img/gallery-15.jpg" alt="Дети на отчётном спектакле ШКИТ">
-                    <span class="vk-card__tag">Дети · 5–11 лет</span>
+
+                <!-- Заголовок карточки -->
+                <div class="vk-card__heading">
+                    <div class="vk-card__title">Дети 5–11 лет</div>
+                    <div class="vk-card__age">Курс · 2 раза в неделю</div>
                 </div>
 
-                <div class="vk-card__body">
-                    <div class="vk-card__heading">
-                        <div class="vk-card__title">Актёрское мастерство и сценическая речь</div>
-                        <div class="vk-card__age">5–11 лет</div>
-                    </div>
+                <!-- Два блока с фото -->
+                <div class="vk-blocks">
 
-                    <div class="vk-card__info">
-
-                        <!-- Чем занимаются -->
-                        <div class="vk-info-block">
-                            <span class="vk-info-block__label">Чем занимаются</span>
-                            <div class="vk-info-block__value">
-                                Актёрское мастерство (внимание, память, воображение), сценическая речь (дикция, голос, интонации), импровизация и работа в команде.
-                            </div>
+                    <!-- Блок 1: Актёрское мастерство -->
+                    <div class="vk-block">
+                        <div class="vk-block__media">
+                            <img src="assets/img/gallery-15.jpg" alt="Дети на занятии актёрским мастерством в ШКИТ">
+                            <span class="vk-block__tag">Мастерство</span>
                         </div>
+                        <div class="vk-block__body">
+                            <div class="vk-block__title">🎭 Актёрское мастерство</div>
 
-                        <!-- Польза -->
-                        <div class="vk-info-block">
-                            <span class="vk-info-block__label">Польза</span>
-                            <div class="vk-info-block__value">
-                                Ребёнок перестаёт стесняться, учится говорить громко и внятно, легко знакомится и дружит. Развивается эмоциональный интеллект и уверенность в себе.
-                            </div>
-                        </div>
-
-                        <!-- Расписание -->
-                        <div class="vk-info-block">
-                            <span class="vk-info-block__label">Расписание</span>
-                            <div class="vk-schedule">
-                                <div class="vk-schedule__row">
-                                    <span class="vk-schedule__day">Понедельник</span>
-                                    <span class="vk-schedule__time">18:00 – 20:00</span>
+                            <div class="vk-info">
+                                <span class="vk-info__label">Чем занимаются</span>
+                                <div class="vk-info__value">
+                                    Упражнения на внимание, память и воображение. Этюды, импровизация, работа в команде.
                                 </div>
-                                <div class="vk-schedule__row">
-                                    <span class="vk-schedule__day">Суббота</span>
-                                    <span class="vk-schedule__time">14:00 – 16:00</span>
+                            </div>
+
+                            <div class="vk-info">
+                                <span class="vk-info__label">Польза</span>
+                                <div class="vk-info__value">
+                                    Ребёнок перестаёт стесняться, учится выражать эмоции и уверенно быть в центре внимания.
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Стоимость -->
-                        <div class="vk-info-block">
-                            <span class="vk-info-block__label">Стоимость</span>
-                            <div class="vk-price">
-                                <span class="vk-price__value">5 600 ₽</span>
-                                <span class="vk-price__unit">в месяц</span>
-                            </div>
-                        </div>
-
-                        <!-- Отчётный показ -->
-                        <div class="vk-info-block" style="grid-column: 1 / -1;">
-                            <span class="vk-info-block__label">Отчётный показ</span>
-                            <div class="vk-info-block__value">
-                                В финале курса — <strong>большой спектакль</strong> на профессиональной сцене: декорации, костюмы, свет, полный зал и настоящие аплодисменты. Это точка, в которой ребёнок говорит себе: «У меня получилось».
-                            </div>
-                        </div>
-
                     </div>
+
+                    <!-- Блок 2: Сценическая речь -->
+                    <div class="vk-block">
+                        <div class="vk-block__media">
+                            <img src="assets/img/gallery-16.jpg" alt="Занятие по сценической речи в ШКИТ">
+                            <span class="vk-block__tag">Речь</span>
+                        </div>
+                        <div class="vk-block__body">
+                            <div class="vk-block__title">🗣 Сценическая речь</div>
+
+                            <div class="vk-info">
+                                <span class="vk-info__label">Чем занимаются</span>
+                                <div class="vk-info__value">
+                                    Артикуляция, дыхание, дикция. Скороговорки, работа с интонацией и силой голоса.
+                                </div>
+                            </div>
+
+                            <div class="vk-info">
+                                <span class="vk-info__label">Польза</span>
+                                <div class="vk-info__value">
+                                    Ребёнок говорит громко, чётко и выразительно. Речь становится ясной — и в школе, и в жизни.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
+                <!-- Нижняя часть: расписание / стоимость / отчёт -->
+                <div class="vk-card__footer">
+
+                    <!-- Расписание -->
+                    <div>
+                        <div class="vk-card__label">Расписание</div>
+                        <div class="vk-schedule">
+                            <div class="vk-schedule__row">
+                                <span class="vk-schedule__day">Пн</span>
+                                <span class="vk-schedule__time">18:00–20:00</span>
+                            </div>
+                            <div class="vk-schedule__row">
+                                <span class="vk-schedule__day">Сб</span>
+                                <span class="vk-schedule__time">14:00–16:00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Стоимость -->
+                    <div>
+                        <div class="vk-card__label">Стоимость</div>
+                        <div class="vk-price">
+                            <span class="vk-price__value">5 600 ₽</span>
+                            <span class="vk-price__unit">в месяц</span>
+                        </div>
+                    </div>
+
+                    <!-- Отчётный показ -->
+                    <div>
+                        <div class="vk-card__label">Отчётный показ</div>
+                        <div class="vk-show">
+                            В финале — <strong>большой спектакль</strong> на профессиональной сцене: декорации, костюмы, свет и полный зал.
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
 
