@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -7,38 +8,37 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;0,900;1,800;1,900&display=swap&subset=cyrillic,latin" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&display=swap&subset=cyrillic,latin" rel="stylesheet">
 
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html, body {
         font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
-        background: #111;
+        background: #2a2a2a;
         min-height: 100vh;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         padding: 20px;
     }
 
     /* ============================================================
-       БАЗА ПЛАКАТА — 1080×1920
+       ПЛАКАТ 1080×1920
        ============================================================ */
     .post {
         position: relative;
         width: 1080px;
         height: 1920px;
         overflow: hidden;
-        background: #141414;
+        background: #1b1b1b;
         color: #fff;
         isolation: isolate;
-        box-shadow: 0 40px 120px -30px rgba(0,0,0,.9);
-        /* масштаб для предпросмотра на маленьком экране */
+        box-shadow: 0 40px 120px -30px rgba(0,0,0,.8);
         transform-origin: top center;
     }
 
-    /* Фото на всю высоту */
+    /* Фон — сцена (прожекторы, свет) */
     .post__bg {
         position: absolute;
         inset: 0;
@@ -46,50 +46,50 @@
         height: 100%;
         object-fit: cover;
         z-index: 0;
-        /* заглушка, если нет фото */
+        filter: saturate(1.05) contrast(1.02) brightness(.85);
         background:
-            radial-gradient(120% 90% at 50% 20%, #4a4a4a 0%, #1a1a1a 60%, #0d0d0d 100%);
+            radial-gradient(100% 70% at 50% 30%, #6b5a4a 0%, #2e2a26 55%, #16140f 100%);
     }
 
-    /* Затемнение снизу и сверху, чтобы текст читался */
+    /* Лёгкая вуаль — только чтобы текст читался, без мрака */
     .post__scrim {
         position: absolute;
         inset: 0;
         z-index: 1;
         background:
             linear-gradient(180deg,
-                rgba(10,10,10,.55) 0%,
-                rgba(10,10,10,.15) 22%,
-                rgba(10,10,10,.0) 40%,
-                rgba(10,10,10,.35) 62%,
-                rgba(10,10,10,.88) 82%,
-                rgba(10,10,10,.98) 100%);
+                rgba(15,15,15,.55) 0%,
+                rgba(15,15,15,.25) 18%,
+                rgba(15,15,15,.10) 38%,
+                rgba(15,15,15,.45) 68%,
+                rgba(15,15,15,.80) 100%);
     }
 
-    /* Зерно — общий слой для версии B (и лёгкое для A) */
+    /* Еле заметное зерно — текстура, не грязь */
     .post__grain {
         position: absolute;
         inset: 0;
         z-index: 2;
         pointer-events: none;
-        opacity: .14;
+        opacity: .05;
         mix-blend-mode: overlay;
         background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
     }
 
     /* ============================================================
-       СЕТКА КОНТЕНТА
+       КОНТЕНТ
        ============================================================ */
     .post__content {
         position: relative;
         z-index: 3;
         height: 100%;
-        padding: 64px 72px 72px;
+        padding: 70px 80px 80px;
         display: flex;
         flex-direction: column;
+        gap: 36px;
     }
 
-    /* ---------- ВЕРХ: лого + метка ---------- */
+    /* ---------- ВЕРХ ---------- */
     .post__top {
         display: flex;
         justify-content: space-between;
@@ -100,135 +100,167 @@
     .post__logo {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 18px;
     }
-    .post__logo img { height: 56px; width: auto; display: block; }
+    .post__logo img { height: 72px; width: auto; display: block; }
 
     .post__logo-text b {
         display: block;
-        font-size: 26px;
+        font-size: 34px;
         font-weight: 900;
         line-height: 1;
-        letter-spacing: .02em;
+        letter-spacing: .01em;
     }
     .post__logo-text span {
         display: block;
-        font-size: 10px;
+        font-size: 13px;
         font-weight: 700;
-        letter-spacing: .22em;
+        letter-spacing: .2em;
         text-transform: uppercase;
-        color: rgba(255,255,255,.65);
-        margin-top: 5px;
+        color: rgba(255,255,255,.7);
+        margin-top: 6px;
     }
 
-    /* Штамп-наклейка «18+ / взрослым» */
     .post__stamp {
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 900;
         letter-spacing: .14em;
         text-transform: uppercase;
-        color: #141414;
-        background: #E85D5D;
-        padding: 12px 22px;
-        border-radius: 4px;
-        transform: rotate(2.5deg);
-        box-shadow: 0 10px 26px -8px rgba(232,93,93,.7);
+        color: #1b1b1b;
+        background: #F28B87;
+        padding: 16px 28px;
+        border-radius: 6px;
+        transform: rotate(2deg);
+        box-shadow: 0 14px 34px -10px rgba(242,139,135,.6);
         white-space: nowrap;
     }
 
-    /* ---------- ЦЕНТР: заголовок ---------- */
+    /* ---------- ЗАГОЛОВОК ---------- */
     .post__hero {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding-bottom: 40px;
+        flex: none;
     }
 
-    /* Рваный заголовок */
     .title {
         display: flex;
         flex-direction: column;
-        gap: 0;
-        line-height: .82;
-        letter-spacing: -.035em;
+        line-height: .84;
+        letter-spacing: -.03em;
         text-transform: uppercase;
         font-weight: 900;
     }
 
     .title__row { display: block; }
 
-    /* строка 1 — ДАВАЙ — меньше, с отступом влево */
     .title__row--1 {
-        font-size: 148px;
+        font-size: 130px;
         font-weight: 800;
         font-style: italic;
-        margin-left: 8px;
         color: #fff;
-        text-shadow: 0 12px 40px rgba(0,0,0,.55);
+        margin-left: 4px;
+        text-shadow: 0 10px 34px rgba(0,0,0,.5);
     }
-
-    /* строка 2 — СЫГРАЕМ — курсив, средний, сдвинут вправо */
     .title__row--2 {
-        font-size: 168px;
+        font-size: 148px;
         font-weight: 900;
         font-style: italic;
-        margin-left: 40px;
         color: #fff;
-        text-shadow: 0 12px 40px rgba(0,0,0,.55);
+        margin-left: 32px;
+        text-shadow: 0 10px 34px rgba(0,0,0,.5);
     }
-
-    /* строка 3 — ЖИЗНЬ — огромная, красная, вылет за левый край */
     .title__row--3 {
-        font-size: 260px;
+        font-size: 220px;
         font-weight: 900;
-        font-style: normal;
-        color: #E85D5D;
-        margin-left: -32px;           /* вылет за край */
-        margin-top: 6px;
+        color: #F28B87;
+        margin-left: -12px;
+        margin-top: 4px;
         letter-spacing: -.05em;
-        line-height: .78;
-        text-shadow:
-            0 0 0 #E85D5D,
-            0 20px 60px rgba(0,0,0,.65);
-        /* жёсткая обводка — трафаретный панк */
-        -webkit-text-stroke: 3px rgba(0,0,0,.35);
+        text-shadow: 0 16px 46px rgba(0,0,0,.6);
     }
 
-    /* Подзаголовок-вызов */
-    .post__punch {
-        margin-top: 56px;
-        font-size: 30px;
-        font-weight: 800;
-        line-height: 1.25;
-        text-transform: uppercase;
-        letter-spacing: .01em;
-        color: #fff;
-        max-width: 760px;
+    /* ---------- ФОТО БЛОК ---------- */
+    .post__photo {
+        position: relative;
+        flex: 1;
+        min-height: 0;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 30px 70px -20px rgba(0,0,0,.7);
+        border: 1px solid rgba(255,255,255,.12);
     }
-    .post__punch span {
+    .post__photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         display: block;
     }
-    .post__punch em {
-        font-style: italic;
-        color: #E85D5D;
-    }
-    /* тонкая линия-подчёркивание от руки */
-    .post__punch-underline {
-        display: inline-block;
-        position: relative;
-    }
-    .post__punch-underline::after {
+    /* лёгкое затемнение снизу фото, чтобы стикер читался */
+    .post__photo::after {
         content: "";
         position: absolute;
-        left: -4px;
-        right: -8px;
-        bottom: -6px;
-        height: 5px;
-        background: #E85D5D;
-        transform: rotate(-1.2deg);
-        border-radius: 3px;
-        opacity: .9;
+        inset: 0;
+        background: linear-gradient(180deg,
+            rgba(0,0,0,0) 55%,
+            rgba(0,0,0,.45) 100%);
+        pointer-events: none;
+    }
+
+    /* Стикер поверх фото */
+    .sticker {
+        position: absolute;
+        right: 28px;
+        bottom: 28px;
+        z-index: 4;
+        background: #fff;
+        color: #1b1b1b;
+        padding: 20px 28px 22px;
+        border-radius: 8px;
+        transform: rotate(-3deg);
+        box-shadow: 0 24px 60px -14px rgba(0,0,0,.7);
+        max-width: 380px;
+    }
+    .sticker__label {
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: #BC3636;
+        margin-bottom: 8px;
+    }
+    .sticker__text {
+        font-size: 26px;
+        font-weight: 900;
+        line-height: 1.12;
+        text-transform: uppercase;
+    }
+    .sticker::before {
+        content: "";
+        position: absolute;
+        top: -16px;
+        left: 50%;
+        width: 110px;
+        height: 30px;
+        transform: translateX(-50%) rotate(-2deg);
+        background: rgba(255,255,255,.35);
+        border: 1px solid rgba(255,255,255,.55);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+    }
+
+    /* ---------- ВЫЗОВ ---------- */
+    .post__punch {
+        flex: none;
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 1.22;
+        text-transform: uppercase;
+        color: #fff;
+        max-width: 880px;
+        text-shadow: 0 6px 22px rgba(0,0,0,.5);
+    }
+    .post__punch span { display: block; }
+    .post__punch em {
+        font-style: italic;
+        color: #F28B87;
     }
 
     /* ---------- НИЗ: факты + QR ---------- */
@@ -240,141 +272,84 @@
         align-items: end;
     }
 
-    /* Строка фактов */
     .facts {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px 14px;
-        align-items: center;
+        gap: 14px 16px;
+        align-items: stretch;
     }
+
     .fact {
-        display: inline-flex;
-        align-items: baseline;
-        gap: 8px;
-        font-size: 22px;
-        font-weight: 800;
-        letter-spacing: .01em;
-        padding: 14px 20px;
-        border-radius: 999px;
-        background: rgba(255,255,255,.08);
-        border: 1.5px solid rgba(255,255,255,.18);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 18px 26px;
+        border-radius: 14px;
+        background: rgba(255,255,255,.10);
+        border: 1.5px solid rgba(255,255,255,.22);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         white-space: nowrap;
     }
     .fact__label {
-        font-size: 11px;
+        font-size: 14px;
         font-weight: 800;
         letter-spacing: .16em;
         text-transform: uppercase;
         color: #F28B87;
     }
-    .fact__value { color: #fff; }
-    .fact--price { background: #E85D5D; border-color: #E85D5D; }
-    .fact--price .fact__label { color: rgba(20,20,20,.7); }
-    .fact--price .fact__value { color: #141414; }
-
-    /* Стикер-плашка «Фотосессия в подарок» — под углом */
-    .sticker {
-        position: absolute;
-        right: 96px;
-        bottom: 340px;
-        background: #fff;
-        color: #141414;
-        padding: 18px 26px 20px;
-        border-radius: 6px;
-        transform: rotate(-3deg);
-        box-shadow: 0 24px 60px -14px rgba(0,0,0,.75);
-        max-width: 340px;
-        z-index: 4;
-    }
-    .sticker__label {
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: .16em;
-        text-transform: uppercase;
-        color: #BC3636;
-        margin-bottom: 6px;
-    }
-    .sticker__text {
-        font-size: 20px;
+    .fact__value {
+        font-size: 30px;
         font-weight: 900;
-        line-height: 1.15;
-        text-transform: uppercase;
+        color: #fff;
+        line-height: 1;
     }
-    /* «скотч» сверху */
-    .sticker::before {
-        content: "";
-        position: absolute;
-        top: -14px;
-        left: 50%;
-        width: 96px;
-        height: 26px;
-        transform: translateX(-50%) rotate(-2deg);
-        background: rgba(255,255,255,.35);
-        border: 1px solid rgba(255,255,255,.5);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
+    .fact--price {
+        background: #F28B87;
+        border-color: #F28B87;
     }
+    .fact--price .fact__label { color: rgba(27,27,27,.7); }
+    .fact--price .fact__value { color: #1b1b1b; }
 
     /* QR */
     .qr {
         display: flex;
         align-items: center;
-        gap: 14px;
+        gap: 18px;
         flex: none;
     }
     .qr__img {
-        width: 120px;
-        height: 120px;
+        width: 150px;
+        height: 150px;
         background: #fff;
-        border-radius: 10px;
-        padding: 8px;
+        border-radius: 12px;
+        padding: 10px;
         object-fit: contain;
         display: block;
     }
     .qr__text {
-        font-size: 12px;
+        font-size: 16px;
         font-weight: 800;
         line-height: 1.25;
-        color: rgba(255,255,255,.85);
+        color: rgba(255,255,255,.9);
         text-transform: uppercase;
-        letter-spacing: .14em;
-        max-width: 110px;
+        letter-spacing: .12em;
+        max-width: 140px;
     }
     .qr__text span {
         display: block;
         color: #F28B87;
-        margin-top: 4px;
+        margin-top: 6px;
     }
 
     /* ============================================================
-       ВЕРСИЯ A — ч/б фото + красный акцент
-       ============================================================ */
-    .post--a .post__bg {
-        filter: grayscale(1) contrast(1.15) brightness(.75);
-    }
-    .post--a .post__grain { opacity: .1; }
-
-    /* ============================================================
-       ВЕРСИЯ B — цветное с зерном, стикеры
-       ============================================================ */
-    .post--b .post__bg {
-        filter: saturate(1.05) contrast(1.08) sepia(.12) brightness(.8);
-    }
-    .post--b .post__grain { opacity: .2; }
-    .post--b .title__row--3 {
-        -webkit-text-stroke: 3px rgba(0,0,0,.5);
-    }
-
-    /* ============================================================
-       ПРЕДПРОСМОТР: масштабируем 1080×1920 под окно
+       ПРЕДПРОСМОТР
        ============================================================ */
     @media (max-width: 1180px), (max-height: 2000px) {
-        html, body { padding: 0; align-items: flex-start; }
+        html, body { padding: 0; }
         .post {
             transform: scale(.5);
-            margin-bottom: -960px; /* компенсируем высоту после scale */
+            margin-bottom: -960px;
         }
     }
     @media (max-width: 640px) {
@@ -384,11 +359,9 @@
 </head>
 <body>
 
-<!-- ============================================================
-     ВЕРСИЯ A — ч/б + красный
-     ============================================================ -->
-<div class="post post--a" id="postA">
-    <img class="post__bg" src="assets/img/adults.jpg" alt="">
+<div class="post">
+    <!-- Фон: сцена -->
+    <img class="post__bg" src="assets/img/scene.jpg" alt="">
     <div class="post__scrim"></div>
     <div class="post__grain"></div>
 
@@ -406,95 +379,55 @@
             <div class="post__stamp">18+ · взрослым</div>
         </div>
 
-        <!-- Центр: рваный заголовок -->
+        <!-- Заголовок -->
         <div class="post__hero">
             <h1 class="title">
                 <span class="title__row title__row--1">Давай</span>
                 <span class="title__row title__row--2">Сыграем</span>
                 <span class="title__row title__row--3">Жизнь</span>
             </h1>
+        </div>
 
-            <div class="post__punch">
-                <span>Театральный проект для взрослых.</span>
-                <span><em>Без опыта. Без страха. Без «поздно».</em></span>
+        <!-- Фото gal104 -->
+        <div class="post__photo">
+            <img src="assets/img/gal104.jpg" alt="Взрослые на занятии в ШКИТ">
+            <div class="sticker">
+                <div class="sticker__label">В подарок</div>
+                <div class="sticker__text">Фотосессия<br>на сцене</div>
             </div>
         </div>
 
-        <!-- Стикер -->
-        <div class="sticker">
-            <div class="sticker__label">В подарок</div>
-            <div class="sticker__text">Фотосессия<br>на сцене</div>
+        <!-- Вызов -->
+        <div class="post__punch">
+            <span>Театральный проект для взрослых.</span>
+            <span><em>Без опыта. Без страха. Без «поздно».</em></span>
         </div>
 
-        <!-- Низ -->
+        <!-- Факты + QR -->
         <div class="post__bottom">
             <div class="facts">
-                <span class="fact"><span class="fact__label">Ср · Вс</span><span class="fact__value">18:00 / 10:00</span></span>
-                <span class="fact fact--price"><span class="fact__label">Проект</span><span class="fact__value">56 000 ₽</span></span>
-                <span class="fact"><span class="fact__label">Запись</span><span class="fact__value">+7 919 404-01-23</span></span>
-            </div>
-
-            <div class="qr">
-                <img class="qr__img" src="assets/img/qr.png" alt="QR">
-                <div class="qr__text">Запишись<span>в проект</span></div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- ============================================================
-     ВЕРСИЯ B — цветная с зерном (раскомментируй, чтобы посмотреть)
-     ============================================================ -->
-<!--
-<div class="post post--b" id="postB">
-    <img class="post__bg" src="assets/img/adults.jpg" alt="">
-    <div class="post__scrim"></div>
-    <div class="post__grain"></div>
-
-    <div class="post__content">
-        <div class="post__top">
-            <div class="post__logo">
-                <img src="assets/img/logo-white-sm.png" alt="ШКИТ">
-                <div class="post__logo-text">
-                    <b>ШКИТ</b>
-                    <span>Школа кино и театра</span>
+                <div class="fact">
+                    <span class="fact__label">Ср · Вс</span>
+                    <span class="fact__value">18:00 / 10:00</span>
+                </div>
+                <div class="fact fact--price">
+                    <span class="fact__label">Проект</span>
+                    <span class="fact__value">56 000 ₽</span>
+                </div>
+                <div class="fact">
+                    <span class="fact__label">Запись</span>
+                    <span class="fact__value">+7 919 404-01-23</span>
                 </div>
             </div>
-            <div class="post__stamp">18+ · взрослым</div>
-        </div>
 
-        <div class="post__hero">
-            <h1 class="title">
-                <span class="title__row title__row--1">Давай</span>
-                <span class="title__row title__row--2">Сыграем</span>
-                <span class="title__row title__row--3">Жизнь</span>
-            </h1>
-            <div class="post__punch">
-                <span>Театральный проект для взрослых.</span>
-                <span><em>Без опыта. Без страха. Без «поздно».</em></span>
-            </div>
-        </div>
-
-        <div class="sticker">
-            <div class="sticker__label">В подарок</div>
-            <div class="sticker__text">Фотосессия<br>на сцене</div>
-        </div>
-
-        <div class="post__bottom">
-            <div class="facts">
-                <span class="fact"><span class="fact__label">Ср · Вс</span><span class="fact__value">18:00 / 10:00</span></span>
-                <span class="fact fact--price"><span class="fact__label">Проект</span><span class="fact__value">56 000 ₽</span></span>
-                <span class="fact"><span class="fact__label">Запись</span><span class="fact__value">+7 919 404-01-23</span></span>
-            </div>
             <div class="qr">
                 <img class="qr__img" src="assets/img/qr.png" alt="QR">
                 <div class="qr__text">Запишись<span>в проект</span></div>
             </div>
         </div>
+
     </div>
 </div>
--->
 
 </body>
 </html>
