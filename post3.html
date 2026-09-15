@@ -32,7 +32,7 @@
         width: 1080px;
         height: 1920px;
         overflow: hidden;
-        background: #181820;
+        background: #2a0e12;
         color: #fff;
         isolation: isolate;
         box-shadow: 0 40px 120px -30px rgba(0,0,0,.8);
@@ -48,58 +48,53 @@
     }
 
     /* ============================================================
-       ФОН: СОФИТЫ
+       ФОН: приглушённо-красный + софиты
        ============================================================ */
 
-    /* База — глубокий графит с лёгким градиентом от центра */
+    /* База — глубокий бордовый, к краям почти чёрный */
     .post__bg {
         position: absolute;
         inset: 0;
         z-index: 0;
         background:
             radial-gradient(120% 80% at 50% 30%,
-                #232330 0%,
-                #1c1c26 45%,
-                #14141c 100%);
+                #3a1218 0%,
+                #2a0e12 45%,
+                #1a070a 100%);
     }
 
-    /* Лучи софитов — три конуса света сверху.
-       conic-gradient даёт мягкий конус, screen — свет «светит». */
+    /* Лучи софитов — три конуса, тёплые, приглушённые */
     .post__lights {
         position: absolute;
         inset: 0;
         z-index: 1;
         pointer-events: none;
         mix-blend-mode: screen;
-        opacity: .9;
+        opacity: .85;
         background:
-
-            /* Луч 1 — левее центра, падает вниз-вправо */
             conic-gradient(from 168deg at 30% -10%,
-                rgba(255,236,200,0)   0deg,
-                rgba(255,236,200,.16) 6deg,
-                rgba(255,236,200,.22) 9deg,
-                rgba(255,236,200,.16) 12deg,
-                rgba(255,236,200,0)  18deg),
+                rgba(255,225,180,0)   0deg,
+                rgba(255,225,180,.14) 6deg,
+                rgba(255,225,180,.20) 9deg,
+                rgba(255,225,180,.14) 12deg,
+                rgba(255,225,180,0)  18deg),
 
-            /* Луч 2 — по центру, самый яркий */
             conic-gradient(from 175deg at 50% -8%,
-                rgba(255,242,215,0)   0deg,
-                rgba(255,242,215,.20) 5deg,
-                rgba(255,242,215,.30) 8deg,
-                rgba(255,242,215,.20) 11deg,
-                rgba(255,242,215,0)  17deg),
+                rgba(255,235,200,0)   0deg,
+                rgba(255,235,200,.18) 5deg,
+                rgba(255,235,200,.26) 8deg,
+                rgba(255,235,200,.18) 11deg,
+                rgba(255,235,200,0)  17deg),
 
-            /* Луч 3 — правее центра, падает вниз-влево */
             conic-gradient(from 182deg at 70% -10%,
-                rgba(255,236,200,0)   0deg,
-                rgba(255,236,200,.16) 6deg,
-                rgba(255,236,200,.22) 9deg,
-                rgba(255,236,200,.16) 12deg,
-                rgba(255,236,200,0)  18deg);
+                rgba(255,225,180,0)   0deg,
+                rgba(255,225,180,.14) 6deg,
+                rgba(255,225,180,.20) 9deg,
+                rgba(255,225,180,.14) 12deg,
+                rgba(255,225,180,0)  18deg);
     }
 
-    /* Дополнительный тёплый ореол у вершины — «пыль в свете» */
+    /* Тёплый ореол у вершины */
     .post__haze {
         position: absolute;
         inset: 0;
@@ -108,12 +103,12 @@
         mix-blend-mode: screen;
         background:
             radial-gradient(50% 22% at 50% 4%,
-                rgba(255,236,200,.22) 0%,
-                rgba(255,220,160,.10) 40%,
+                rgba(255,225,180,.18) 0%,
+                rgba(255,200,140,.08) 40%,
                 rgba(0,0,0,0) 75%);
     }
 
-    /* Виньетка по краям — фокус в центр */
+    /* Виньетка */
     .post__vignette {
         position: absolute;
         inset: 0;
@@ -126,7 +121,7 @@
                 rgba(0,0,0,.55) 100%);
     }
 
-    /* Зерно — текстура, чтобы свет не был «пластиковым» */
+    /* Зерно */
     .post__grain {
         position: absolute;
         inset: 0;
@@ -137,14 +132,19 @@
         background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
     }
 
-    /* Тонкая рамка по краю плаката — «афишный паспарту» */
+    /* Рамка как у фотографии: двойной паспарту, ровно по периметру */
     .post__frame {
         position: absolute;
-        inset: 24px;
+        inset: 28px;
         z-index: 5;
         pointer-events: none;
-        border: 2px solid rgba(244,199,123,.28);
-        border-radius: 4px;
+        border: 2px solid rgba(244,199,123,.45);
+    }
+    .post__frame::after {
+        content: "";
+        position: absolute;
+        inset: 8px;
+        border: 1px solid rgba(244,199,123,.22);
     }
 
     /* ============================================================
@@ -154,7 +154,7 @@
         position: relative;
         z-index: 6;
         height: 100%;
-        padding: 68px 84px 76px;
+        padding: 72px 88px 80px;
         display: flex;
         flex-direction: column;
     }
@@ -190,7 +190,7 @@
     }
     .post__logo-text span {
         display: block;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 700;
         letter-spacing: .2em;
         text-transform: uppercase;
@@ -255,23 +255,21 @@
         margin-top: 4px;
         letter-spacing: -.05em;
         text-shadow: 0 14px 46px rgba(0,0,0,.7);
-        -webkit-text-stroke: 3px rgba(30,20,10,.5);
+        -webkit-text-stroke: 3px rgba(30,10,10,.5);
     }
 
-    /* ---------- ФОТО (сменный блок) ---------- */
+    /* ---------- ФОТО ---------- */
     .post__photo {
         position: relative;
-        height: 700px;
+        height: 660px;
         flex: none;
         margin-top: 40px;
-        border-radius: 20px;
         overflow: hidden;
         box-shadow:
             0 34px 80px -22px rgba(0,0,0,.8),
-            0 0 0 5px rgba(244,199,123,.35),
-            0 0 0 6px rgba(0,0,0,.6);
-        /* Фон-картинка — html2canvas рендерит корректно.
-           ЗАМЕНИ путь на своё фото. */
+            0 0 0 4px rgba(244,199,123,.4),
+            0 0 0 5px rgba(0,0,0,.55);
+        /* ЗАМЕНИ путь на своё фото */
         background-image: url('assets/img/gal104.jpg');
         background-size: cover;
         background-position: center center;
@@ -305,7 +303,7 @@
         max-width: 400px;
     }
     .sticker__label {
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 800;
         letter-spacing: .16em;
         text-transform: uppercase;
@@ -313,7 +311,7 @@
         margin-bottom: 8px;
     }
     .sticker__text {
-        font-size: 28px;
+        font-size: 30px;
         font-weight: 900;
         line-height: 1.12;
         text-transform: uppercase;
@@ -350,30 +348,31 @@
     }
 
     /* ============================================================
-       НИЗ: три плашки + QR
+       НИЗ — плашки в ряд + QR-строка на всю ширину
        ============================================================ */
     .post__bottom {
         flex: none;
         margin-top: auto;
-        padding-top: 28px;
+        padding-top: 30px;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 22px;
     }
 
+    /* Три плашки в ряд */
     .facts {
         display: grid;
         grid-template-columns: 1fr 1fr 1.35fr;
-        gap: 14px;
+        gap: 16px;
     }
 
     .fact {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 6px;
-        padding: 18px 24px;
-        height: 96px;
+        gap: 8px;
+        padding: 20px 26px;
+        height: 104px;
         border-radius: 16px;
         background: rgba(255,247,230,.95);
         color: #2a1a0a;
@@ -381,7 +380,7 @@
         overflow: hidden;
     }
     .fact__label {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 800;
         letter-spacing: .16em;
         text-transform: uppercase;
@@ -389,7 +388,7 @@
         white-space: nowrap;
     }
     .fact__value {
-        font-size: 26px;
+        font-size: 30px;
         font-weight: 900;
         color: #2a1a0a;
         line-height: 1;
@@ -401,40 +400,56 @@
     .fact--price .fact__label { color: #6b2a0a; }
     .fact--price .fact__value { color: #2a1a0a; }
 
+    /* QR-строка на всю ширину */
     .qr-row {
         display: flex;
         align-items: center;
-        gap: 22px;
+        gap: 28px;
+        background: rgba(20,8,10,.55);
+        border: 2px solid rgba(244,199,123,.35);
+        border-radius: 18px;
+        padding: 20px 28px;
     }
 
     .qr__img {
-        width: 190px;
-        height: 190px;
+        width: 180px;
+        height: 180px;
         background: #FFF7E6;
-        border-radius: 16px;
-        padding: 12px;
+        border-radius: 12px;
+        padding: 10px;
         object-fit: contain;
         display: block;
-        box-shadow:
-            0 22px 50px -16px rgba(0,0,0,.7),
-            0 0 0 4px rgba(244,199,123,.45);
+        box-shadow: 0 14px 34px -12px rgba(0,0,0,.7);
         flex: none;
     }
 
     .qr__text {
-        font-size: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+        min-width: 0;
+    }
+    .qr__title {
+        font-size: 30px;
         font-weight: 900;
-        line-height: 1.2;
+        line-height: 1.1;
         color: #fff;
         text-transform: uppercase;
-        letter-spacing: .12em;
+        letter-spacing: .06em;
         text-shadow: 0 6px 18px rgba(0,0,0,.6);
     }
-    .qr__text span {
+    .qr__title span {
         display: block;
         color: #F4C77B;
-        margin-top: 6px;
-        font-size: 24px;
+    }
+    .qr__hint {
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 1.3;
+        color: rgba(255,255,255,.75);
+        text-transform: none;
+        letter-spacing: 0;
     }
 
     /* ============================================================
@@ -495,12 +510,9 @@
 </head>
 <body>
 
-<!-- ============================================================
-     ПЛАКАТ
-     ============================================================ -->
 <div class="post" id="post">
 
-    <!-- Фон: софиты -->
+    <!-- Фон -->
     <div class="post__bg"></div>
     <div class="post__lights"></div>
     <div class="post__haze"></div>
@@ -531,7 +543,7 @@
             </h1>
         </div>
 
-        <!-- Фото — сменный блок -->
+        <!-- Фото -->
         <div class="post__photo">
             <div class="sticker">
                 <div class="sticker__label">В подарок</div>
@@ -566,8 +578,11 @@
             <div class="qr-row">
                 <img class="qr__img" src="assets/img/qr.png" alt="QR">
                 <div class="qr__text">
-                    Запишись
-                    <span>в проект</span>
+                    <div class="qr__title">
+                        Запишись
+                        <span>в проект</span>
+                    </div>
+                    <div class="qr__hint">Наведи камеру — и мы на связи</div>
                 </div>
             </div>
 
@@ -576,9 +591,6 @@
     </div>
 </div>
 
-<!-- ============================================================
-     ПАНЕЛЬ ЭКСПОРТА
-     ============================================================ -->
 <div class="export-bar" id="exportBar">
     <span class="export-status" id="status">Готов к экспорту</span>
     <button class="export-btn" id="exportBtn">Скачать PNG</button>
@@ -607,7 +619,6 @@
                     await document.fonts.ready;
                 }
 
-                // Дождаться загрузки фоновой картинки фото
                 const photoUrl = getComputedStyle(
                     document.querySelector('.post__photo')
                 ).backgroundImage.match(/url\(["']?(.+?)["']?\)/);
@@ -629,7 +640,7 @@
                     scale: 1,
                     useCORS: true,
                     allowTaint: false,
-                    backgroundColor: '#181820',
+                    backgroundColor: '#2a0e12',
                     logging: false,
                     windowWidth: 1080,
                     windowHeight: 1920
@@ -662,3 +673,4 @@
 
 </body>
 </html>
+   
