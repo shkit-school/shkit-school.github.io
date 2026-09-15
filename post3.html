@@ -25,7 +25,7 @@
     }
 
     /* ============================================================
-       ПЛАКАТ 1080×1920 — всегда в реальном размере
+       ПЛАКАТ 1080×1920 — реальные размеры всегда
        ============================================================ */
     .post {
         position: relative;
@@ -39,8 +39,6 @@
         flex: none;
     }
 
-    /* Превью: уменьшаем только визуально, чтобы влезал в окно.
-       zoom (а не transform) — Chrome учитывает корректно при скриншоте. */
     @media (max-width: 1180px), (max-height: 2000px) {
         html, body { padding: 20px 10px 100px; }
         .post { zoom: .48; }
@@ -60,7 +58,6 @@
         filter: saturate(1.02) contrast(1.02) brightness(.95);
     }
 
-    /* Тёплый ореол от прожектора */
     .post__glow {
         position: absolute;
         inset: 0;
@@ -75,7 +72,6 @@
         mix-blend-mode: screen;
     }
 
-    /* Вуаль: сверху и снизу, центр не трогаем */
     .post__scrim {
         position: absolute;
         inset: 0;
@@ -92,7 +88,7 @@
     }
 
     /* ============================================================
-       КОНТЕНТ
+       КОНТЕНТ — фиксированные размеры блоков
        ============================================================ */
     .post__content {
         position: relative;
@@ -101,14 +97,14 @@
         padding: 60px 80px 70px;
         display: flex;
         flex-direction: column;
-        gap: 32px;
     }
 
-    /* ---------- ВЕРХ ---------- */
+    /* ---------- ВЕРХ: 84px ---------- */
     .post__top {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: 84px;
         flex: none;
     }
 
@@ -143,7 +139,6 @@
         text-shadow: 0 4px 14px rgba(0,0,0,.55);
     }
 
-    /* Плашка «3 месяца подготовки» */
     .post__stamp {
         font-size: 22px;
         font-weight: 900;
@@ -160,9 +155,10 @@
         white-space: nowrap;
     }
 
-    /* ---------- ЗАГОЛОВОК (чуть меньше, «Жизнь» в кадре) ---------- */
+    /* ---------- ЗАГОЛОВОК: авто, ~360px ---------- */
     .post__hero {
         flex: none;
+        margin-top: 36px;
     }
 
     .title {
@@ -196,7 +192,6 @@
         font-size: 198px;
         font-weight: 900;
         color: #F4C77B;
-        margin-left: 0;              /* вернули в кадр */
         margin-top: 4px;
         letter-spacing: -.05em;
         text-shadow:
@@ -205,31 +200,33 @@
         -webkit-text-stroke: 4px rgba(58,10,13,.55);
     }
 
-    /* ---------- ФОТО ---------- */
+    /* ---------- ФОТО: фиксированная высота 700px ---------- */
     .post__photo {
         position: relative;
-        flex: 1;
-        min-height: 0;
+        height: 700px;
+        flex: none;
+        margin-top: 36px;
         border-radius: 22px;
         overflow: hidden;
         box-shadow:
             0 34px 80px -22px rgba(0,0,0,.8),
             0 0 0 6px rgba(244,199,123,.35),
             0 0 0 7px rgba(58,10,13,.5);
+        /* Фон-картинка вместо <img> — html2canvas рендерит корректно */
+        background-image: url('assets/img/gal104.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
     }
-    .post__photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
+
+    /* Лёгкое затемнение снизу под стикер */
     .post__photo::after {
         content: "";
         position: absolute;
         inset: 0;
         background: linear-gradient(180deg,
             rgba(0,0,0,0) 55%,
-            rgba(0,0,0,.5) 100%);
+            rgba(0,0,0,.45) 100%);
         pointer-events: none;
     }
 
@@ -280,12 +277,12 @@
     /* ---------- ВЫЗОВ ---------- */
     .post__punch {
         flex: none;
+        margin-top: 32px;
         font-size: 44px;
         font-weight: 800;
         line-height: 1.2;
         text-transform: uppercase;
         color: #fff;
-        max-width: 940px;
         text-shadow: 0 8px 26px rgba(0,0,0,.6);
     }
     .post__punch span { display: block; }
@@ -294,34 +291,37 @@
         color: #F4C77B;
     }
 
-    /* ---------- НИЗ: факты одной строкой + QR ---------- */
+    /* ============================================================
+       НИЗ — Вариант 1: три плашки в ряд, QR снизу
+       ============================================================ */
     .post__bottom {
         flex: none;
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 28px;
-        align-items: end;
+        margin-top: auto;
+        padding-top: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
+    /* Плашки: три в ряд, фиксированная высота, ничего не переносится */
     .facts {
-        display: flex;
-        gap: 12px;
-        align-items: stretch;
-        flex-wrap: nowrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1.35fr;
+        gap: 14px;
     }
 
     .fact {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         gap: 6px;
-        padding: 18px 22px;
+        padding: 18px 24px;
+        height: 96px;
         border-radius: 16px;
         background: rgba(255,247,230,.94);
         color: #3a0a0d;
         box-shadow: 0 16px 36px -12px rgba(0,0,0,.6);
-        white-space: nowrap;
-        flex: 1;
-        min-width: 0;
+        overflow: hidden;
     }
     .fact__label {
         font-size: 14px;
@@ -329,12 +329,14 @@
         letter-spacing: .16em;
         text-transform: uppercase;
         color: #A02424;
+        white-space: nowrap;
     }
     .fact__value {
         font-size: 26px;
         font-weight: 900;
         color: #3a0a0d;
         line-height: 1;
+        white-space: nowrap;
     }
     .fact--price {
         background: linear-gradient(180deg, #F7D28A 0%, #E8B96A 100%);
@@ -342,94 +344,96 @@
     .fact--price .fact__label { color: #6b2a0a; }
     .fact--price .fact__value { color: #3a0a0d; }
 
-    /* QR — крупный */
-    .qr {
+    /* QR-строка: QR слева, подпись справа */
+    .qr-row {
         display: flex;
         align-items: center;
-        gap: 20px;
-        flex: none;
+        gap: 22px;
     }
+
     .qr__img {
-        width: 220px;
-        height: 220px;
+        width: 190px;
+        height: 190px;
         background: #FFF7E6;
         border-radius: 16px;
-        padding: 14px;
+        padding: 12px;
         object-fit: contain;
         display: block;
         box-shadow:
             0 22px 50px -16px rgba(0,0,0,.7),
             0 0 0 4px rgba(244,199,123,.45);
+        flex: none;
     }
+
     .qr__text {
-        font-size: 20px;
+        font-size: 22px;
         font-weight: 900;
         line-height: 1.2;
         color: #fff;
         text-transform: uppercase;
         letter-spacing: .12em;
-        max-width: 170px;
         text-shadow: 0 6px 18px rgba(0,0,0,.6);
     }
     .qr__text span {
         display: block;
         color: #F4C77B;
-        margin-top: 8px;
-        font-size: 22px;
+        margin-top: 6px;
+        font-size: 24px;
     }
 
     /* ============================================================
-       КНОПКА ЭКСПОРТА — вне .post, на картинку не попадает
+       КНОПКА ЭКСПОРТА
        ============================================================ */
     .export-bar {
         position: fixed;
-        right: 32px;
-        bottom: 32px;
+        right: 24px;
+        bottom: 24px;
         z-index: 999;
         display: flex;
-        gap: 12px;
+        gap: 10px;
         align-items: center;
     }
 
     .export-btn {
         font-family: inherit;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 900;
         letter-spacing: .1em;
         text-transform: uppercase;
         color: #3a0a0d;
         background: linear-gradient(180deg, #F7D28A 0%, #E8B96A 100%);
         border: none;
-        border-radius: 12px;
-        padding: 18px 28px;
+        border-radius: 10px;
+        padding: 14px 22px;
         cursor: pointer;
-        box-shadow:
-            0 18px 40px -10px rgba(0,0,0,.7),
-            inset 0 1px 0 rgba(255,255,255,.5);
-        transition: transform .15s ease, box-shadow .15s ease;
+        box-shadow: 0 14px 32px -8px rgba(0,0,0,.7);
+        transition: transform .15s ease;
     }
-    .export-btn:hover {
-        transform: translateY(-2px);
-        box-shadow:
-            0 22px 48px -10px rgba(0,0,0,.8),
-            inset 0 1px 0 rgba(255,255,255,.5);
-    }
+    .export-btn:hover { transform: translateY(-2px); }
     .export-btn:active { transform: translateY(0); }
-    .export-btn:disabled {
-        opacity: .6;
-        cursor: wait;
-        transform: none;
-    }
+    .export-btn:disabled { opacity: .6; cursor: wait; transform: none; }
 
     .export-status {
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 700;
         color: rgba(255,255,255,.75);
         background: rgba(0,0,0,.45);
-        padding: 10px 16px;
+        padding: 8px 14px;
         border-radius: 999px;
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
+    }
+
+    .export-hide {
+        font-size: 12px;
+        font-weight: 700;
+        color: rgba(255,255,255,.55);
+        background: rgba(0,0,0,.35);
+        border: none;
+        border-radius: 999px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-family: inherit;
     }
 </style>
 </head>
@@ -445,6 +449,7 @@
 
     <div class="post__content">
 
+        <!-- Верх -->
         <div class="post__top">
             <div class="post__logo">
                 <img src="assets/img/logo-white-sm.png" alt="ШКИТ">
@@ -456,6 +461,7 @@
             <div class="post__stamp">3 месяца подготовки</div>
         </div>
 
+        <!-- Заголовок -->
         <div class="post__hero">
             <h1 class="title">
                 <span class="title__row title__row--1">Давай</span>
@@ -464,20 +470,24 @@
             </h1>
         </div>
 
+        <!-- Фото -->
         <div class="post__photo">
-            <img src="assets/img/gal104.jpg" alt="Взрослые на занятии в ШКИТ">
             <div class="sticker">
                 <div class="sticker__label">В подарок</div>
                 <div class="sticker__text">Фотосессия<br>на сцене</div>
             </div>
         </div>
 
+        <!-- Вызов -->
         <div class="post__punch">
             <span>Главная роль в спектакле</span>
             <span><em>на театральной сцене</em></span>
         </div>
 
+        <!-- Низ -->
         <div class="post__bottom">
+
+            <!-- Три плашки в ряд -->
             <div class="facts">
                 <div class="fact">
                     <span class="fact__label">Ср · Вс</span>
@@ -493,10 +503,15 @@
                 </div>
             </div>
 
-            <div class="qr">
+            <!-- QR + подпись -->
+            <div class="qr-row">
                 <img class="qr__img" src="assets/img/qr.png" alt="QR">
-                <div class="qr__text">Запишись<span>в проект</span></div>
+                <div class="qr__text">
+                    Запишись
+                    <span>в проект</span>
+                </div>
             </div>
+
         </div>
 
     </div>
@@ -505,29 +520,50 @@
 <!-- ============================================================
      ПАНЕЛЬ ЭКСПОРТА
      ============================================================ -->
-<div class="export-bar">
+<div class="export-bar" id="exportBar">
     <span class="export-status" id="status">Готов к экспорту</span>
     <button class="export-btn" id="exportBtn">Скачать PNG</button>
+    <button class="export-hide" id="hideBtn" title="Скрыть (вернуть — Esc)">×</button>
 </div>
 
 <script>
     (function () {
         const btn = document.getElementById('exportBtn');
+        const hideBtn = document.getElementById('hideBtn');
         const status = document.getElementById('status');
         const post = document.getElementById('post');
+        const bar = document.getElementById('exportBar');
+
+        // Скрыть панель
+        hideBtn.addEventListener('click', () => { bar.style.display = 'none'; });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') bar.style.display = 'flex';
+        });
 
         btn.addEventListener('click', async () => {
             btn.disabled = true;
             status.textContent = 'Рендерю…';
 
             try {
-                // Ждём, пока шрифты загрузятся, чтобы текст не «поплыл»
+                // Дождаться шрифтов
                 if (document.fonts && document.fonts.ready) {
                     await document.fonts.ready;
                 }
 
-                // Временно сбрасываем zoom на плакате — html2canvas
-                // должен видеть его в реальных 1080×1920
+                // Дождаться загрузки фоновой картинки
+                const photoUrl = getComputedStyle(
+                    document.querySelector('.post__photo')
+                ).backgroundImage.match(/url\(["']?(.+?)["']?\)/);
+                if (photoUrl && photoUrl[1]) {
+                    await new Promise((res) => {
+                        const im = new Image();
+                        im.crossOrigin = 'anonymous';
+                        im.onload = im.onerror = res;
+                        im.src = photoUrl[1];
+                    });
+                }
+
+                // Сбросить zoom на время рендера
                 const prevZoom = post.style.zoom;
                 post.style.zoom = '1';
 
@@ -538,12 +574,14 @@
                     useCORS: true,
                     allowTaint: false,
                     backgroundColor: '#6b0f14',
-                    logging: false
+                    logging: false,
+                    // Важно: уважать реальные размеры
+                    windowWidth: 1080,
+                    windowHeight: 1920
                 });
 
                 post.style.zoom = prevZoom;
 
-                // Скачиваем
                 canvas.toBlob((blob) => {
                     const url = URL.createObjectURL(blob);
                     const a = document.createElement('a');
