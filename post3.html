@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -10,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&display=swap&subset=cyrillic,latin" rel="stylesheet">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -17,14 +18,14 @@
         font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
         background: #2a2a2a;
         min-height: 100vh;
+        padding: 40px 20px 120px;
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        padding: 20px;
     }
 
     /* ============================================================
-       ПЛАКАТ 1080×1920
+       ПЛАКАТ 1080×1920 — всегда в реальном размере
        ============================================================ */
     .post {
         position: relative;
@@ -35,7 +36,17 @@
         color: #fff;
         isolation: isolate;
         box-shadow: 0 40px 120px -30px rgba(0,0,0,.8);
-        transform-origin: top center;
+        flex: none;
+    }
+
+    /* Превью: уменьшаем только визуально, чтобы влезал в окно.
+       zoom (а не transform) — Chrome учитывает корректно при скриншоте. */
+    @media (max-width: 1180px), (max-height: 2000px) {
+        html, body { padding: 20px 10px 100px; }
+        .post { zoom: .48; }
+    }
+    @media (max-width: 640px) {
+        .post { zoom: .32; }
     }
 
     /* Фон — красный занавес */
@@ -49,7 +60,7 @@
         filter: saturate(1.02) contrast(1.02) brightness(.95);
     }
 
-    /* Тёплый ореол от прожектора — свет «живёт» */
+    /* Тёплый ореол от прожектора */
     .post__glow {
         position: absolute;
         inset: 0;
@@ -64,7 +75,7 @@
         mix-blend-mode: screen;
     }
 
-    /* Мягкая вуаль: сверху и снизу, центр — не трогаем */
+    /* Вуаль: сверху и снизу, центр не трогаем */
     .post__scrim {
         position: absolute;
         inset: 0;
@@ -87,10 +98,10 @@
         position: relative;
         z-index: 3;
         height: 100%;
-        padding: 70px 80px 80px;
+        padding: 60px 80px 70px;
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 32px;
     }
 
     /* ---------- ВЕРХ ---------- */
@@ -107,7 +118,7 @@
         gap: 18px;
     }
     .post__logo img {
-        height: 78px;
+        height: 84px;
         width: auto;
         display: block;
         filter: drop-shadow(0 6px 16px rgba(0,0,0,.5));
@@ -115,7 +126,7 @@
 
     .post__logo-text b {
         display: block;
-        font-size: 36px;
+        font-size: 38px;
         font-weight: 900;
         line-height: 1;
         letter-spacing: .01em;
@@ -132,7 +143,7 @@
         text-shadow: 0 4px 14px rgba(0,0,0,.55);
     }
 
-    /* Плашка «3 месяца подготовки» — крупная, золотая */
+    /* Плашка «3 месяца подготовки» */
     .post__stamp {
         font-size: 22px;
         font-weight: 900;
@@ -149,7 +160,7 @@
         white-space: nowrap;
     }
 
-    /* ---------- ЗАГОЛОВОК ---------- */
+    /* ---------- ЗАГОЛОВОК (чуть меньше, «Жизнь» в кадре) ---------- */
     .post__hero {
         flex: none;
     }
@@ -166,7 +177,7 @@
     .title__row { display: block; }
 
     .title__row--1 {
-        font-size: 132px;
+        font-size: 114px;
         font-weight: 800;
         font-style: italic;
         color: #fff;
@@ -174,19 +185,18 @@
         text-shadow: 0 10px 34px rgba(0,0,0,.6);
     }
     .title__row--2 {
-        font-size: 150px;
+        font-size: 130px;
         font-weight: 900;
         font-style: italic;
         color: #fff;
-        margin-left: 34px;
+        margin-left: 30px;
         text-shadow: 0 10px 34px rgba(0,0,0,.6);
     }
-    /* Жизнь — золото, с тёмной обводкой для читаемости на занавесе */
     .title__row--3 {
-        font-size: 224px;
+        font-size: 198px;
         font-weight: 900;
         color: #F4C77B;
-        margin-left: -12px;
+        margin-left: 0;              /* вернули в кадр */
         margin-top: 4px;
         letter-spacing: -.05em;
         text-shadow:
@@ -195,7 +205,7 @@
         -webkit-text-stroke: 4px rgba(58,10,13,.55);
     }
 
-    /* ---------- ФОТО БЛОК ---------- */
+    /* ---------- ФОТО ---------- */
     .post__photo {
         position: relative;
         flex: 1;
@@ -223,7 +233,7 @@
         pointer-events: none;
     }
 
-    /* Стикер поверх фото */
+    /* Стикер */
     .sticker {
         position: absolute;
         right: 30px;
@@ -234,7 +244,9 @@
         padding: 22px 30px 24px;
         border-radius: 10px;
         transform: rotate(-3deg);
-        box-shadow: 0 26px 60px -14px rgba(0,0,0,.75);
+        box-shadow:
+            0 26px 60px -14px rgba(0,0,0,.75),
+            0 0 0 3px rgba(255,247,230,.5);
         max-width: 400px;
     }
     .sticker__label {
@@ -282,42 +294,44 @@
         color: #F4C77B;
     }
 
-    /* ---------- НИЗ: факты + QR ---------- */
+    /* ---------- НИЗ: факты одной строкой + QR ---------- */
     .post__bottom {
         flex: none;
         display: grid;
         grid-template-columns: 1fr auto;
-        gap: 32px;
+        gap: 28px;
         align-items: end;
     }
 
     .facts {
         display: flex;
-        flex-wrap: wrap;
-        gap: 14px 16px;
+        gap: 12px;
         align-items: stretch;
+        flex-wrap: nowrap;
     }
 
     .fact {
         display: flex;
         flex-direction: column;
         gap: 6px;
-        padding: 20px 28px;
+        padding: 18px 22px;
         border-radius: 16px;
         background: rgba(255,247,230,.94);
         color: #3a0a0d;
         box-shadow: 0 16px 36px -12px rgba(0,0,0,.6);
         white-space: nowrap;
+        flex: 1;
+        min-width: 0;
     }
     .fact__label {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 800;
         letter-spacing: .16em;
         text-transform: uppercase;
         color: #A02424;
     }
     .fact__value {
-        font-size: 32px;
+        font-size: 26px;
         font-weight: 900;
         color: #3a0a0d;
         line-height: 1;
@@ -336,8 +350,8 @@
         flex: none;
     }
     .qr__img {
-        width: 200px;
-        height: 200px;
+        width: 220px;
+        height: 220px;
         background: #FFF7E6;
         border-radius: 16px;
         padding: 14px;
@@ -365,31 +379,72 @@
     }
 
     /* ============================================================
-       ПРЕДПРОСМОТР
+       КНОПКА ЭКСПОРТА — вне .post, на картинку не попадает
        ============================================================ */
-    @media (max-width: 1180px), (max-height: 2000px) {
-        html, body { padding: 0; }
-        .post {
-            transform: scale(.5);
-            margin-bottom: -960px;
-        }
+    .export-bar {
+        position: fixed;
+        right: 32px;
+        bottom: 32px;
+        z-index: 999;
+        display: flex;
+        gap: 12px;
+        align-items: center;
     }
-    @media (max-width: 640px) {
-        .post { transform: scale(.32); margin-bottom: -1305px; }
+
+    .export-btn {
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: #3a0a0d;
+        background: linear-gradient(180deg, #F7D28A 0%, #E8B96A 100%);
+        border: none;
+        border-radius: 12px;
+        padding: 18px 28px;
+        cursor: pointer;
+        box-shadow:
+            0 18px 40px -10px rgba(0,0,0,.7),
+            inset 0 1px 0 rgba(255,255,255,.5);
+        transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .export-btn:hover {
+        transform: translateY(-2px);
+        box-shadow:
+            0 22px 48px -10px rgba(0,0,0,.8),
+            inset 0 1px 0 rgba(255,255,255,.5);
+    }
+    .export-btn:active { transform: translateY(0); }
+    .export-btn:disabled {
+        opacity: .6;
+        cursor: wait;
+        transform: none;
+    }
+
+    .export-status {
+        font-size: 13px;
+        font-weight: 700;
+        color: rgba(255,255,255,.75);
+        background: rgba(0,0,0,.45);
+        padding: 10px 16px;
+        border-radius: 999px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
     }
 </style>
 </head>
 <body>
 
-<div class="post">
-    <!-- Фон: красный занавес -->
+<!-- ============================================================
+     ПЛАКАТ
+     ============================================================ -->
+<div class="post" id="post">
     <img class="post__bg" src="assets/img/shapka2.webp" alt="">
     <div class="post__glow"></div>
     <div class="post__scrim"></div>
 
     <div class="post__content">
 
-        <!-- Верх -->
         <div class="post__top">
             <div class="post__logo">
                 <img src="assets/img/logo-white-sm.png" alt="ШКИТ">
@@ -401,7 +456,6 @@
             <div class="post__stamp">3 месяца подготовки</div>
         </div>
 
-        <!-- Заголовок -->
         <div class="post__hero">
             <h1 class="title">
                 <span class="title__row title__row--1">Давай</span>
@@ -410,7 +464,6 @@
             </h1>
         </div>
 
-        <!-- Фото gal104 -->
         <div class="post__photo">
             <img src="assets/img/gal104.jpg" alt="Взрослые на занятии в ШКИТ">
             <div class="sticker">
@@ -419,13 +472,11 @@
             </div>
         </div>
 
-        <!-- Вызов -->
         <div class="post__punch">
             <span>Главная роль в спектакле</span>
             <span><em>на театральной сцене</em></span>
         </div>
 
-        <!-- Факты + QR -->
         <div class="post__bottom">
             <div class="facts">
                 <div class="fact">
@@ -450,6 +501,71 @@
 
     </div>
 </div>
+
+<!-- ============================================================
+     ПАНЕЛЬ ЭКСПОРТА
+     ============================================================ -->
+<div class="export-bar">
+    <span class="export-status" id="status">Готов к экспорту</span>
+    <button class="export-btn" id="exportBtn">Скачать PNG</button>
+</div>
+
+<script>
+    (function () {
+        const btn = document.getElementById('exportBtn');
+        const status = document.getElementById('status');
+        const post = document.getElementById('post');
+
+        btn.addEventListener('click', async () => {
+            btn.disabled = true;
+            status.textContent = 'Рендерю…';
+
+            try {
+                // Ждём, пока шрифты загрузятся, чтобы текст не «поплыл»
+                if (document.fonts && document.fonts.ready) {
+                    await document.fonts.ready;
+                }
+
+                // Временно сбрасываем zoom на плакате — html2canvas
+                // должен видеть его в реальных 1080×1920
+                const prevZoom = post.style.zoom;
+                post.style.zoom = '1';
+
+                const canvas = await html2canvas(post, {
+                    width: 1080,
+                    height: 1920,
+                    scale: 1,
+                    useCORS: true,
+                    allowTaint: false,
+                    backgroundColor: '#6b0f14',
+                    logging: false
+                });
+
+                post.style.zoom = prevZoom;
+
+                // Скачиваем
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'shkit-davai-sygraem-zhizn.png';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                    URL.revokeObjectURL(url);
+
+                    status.textContent = 'Готово · 1080×1920';
+                    btn.disabled = false;
+                }, 'image/png');
+
+            } catch (err) {
+                console.error(err);
+                status.textContent = 'Ошибка: ' + err.message;
+                btn.disabled = false;
+            }
+        });
+    })();
+</script>
 
 </body>
 </html>
