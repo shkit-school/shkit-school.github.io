@@ -25,14 +25,14 @@
     }
 
     /* ============================================================
-       ПЛАКАТ 1080×1920 — реальные размеры всегда
+       ПЛАКАТ 1080×1920
        ============================================================ */
     .post {
         position: relative;
         width: 1080px;
         height: 1920px;
         overflow: hidden;
-        background: #6b0f14;
+        background: #181820;
         color: #fff;
         isolation: isolate;
         box-shadow: 0 40px 120px -30px rgba(0,0,0,.8);
@@ -47,59 +47,119 @@
         .post { zoom: .32; }
     }
 
-    /* Фон — красный занавес */
+    /* ============================================================
+       ФОН: СОФИТЫ
+       ============================================================ */
+
+    /* База — глубокий графит с лёгким градиентом от центра */
     .post__bg {
         position: absolute;
         inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
         z-index: 0;
-        filter: saturate(1.02) contrast(1.02) brightness(.95);
+        background:
+            radial-gradient(120% 80% at 50% 30%,
+                #232330 0%,
+                #1c1c26 45%,
+                #14141c 100%);
     }
 
-    .post__glow {
+    /* Лучи софитов — три конуса света сверху.
+       conic-gradient даёт мягкий конус, screen — свет «светит». */
+    .post__lights {
         position: absolute;
         inset: 0;
         z-index: 1;
         pointer-events: none;
-        background:
-            radial-gradient(58% 34% at 50% 26%,
-                rgba(255,236,190,.38) 0%,
-                rgba(255,220,150,.18) 40%,
-                rgba(255,200,120,.05) 65%,
-                rgba(0,0,0,0) 80%);
         mix-blend-mode: screen;
+        opacity: .9;
+        background:
+
+            /* Луч 1 — левее центра, падает вниз-вправо */
+            conic-gradient(from 168deg at 30% -10%,
+                rgba(255,236,200,0)   0deg,
+                rgba(255,236,200,.16) 6deg,
+                rgba(255,236,200,.22) 9deg,
+                rgba(255,236,200,.16) 12deg,
+                rgba(255,236,200,0)  18deg),
+
+            /* Луч 2 — по центру, самый яркий */
+            conic-gradient(from 175deg at 50% -8%,
+                rgba(255,242,215,0)   0deg,
+                rgba(255,242,215,.20) 5deg,
+                rgba(255,242,215,.30) 8deg,
+                rgba(255,242,215,.20) 11deg,
+                rgba(255,242,215,0)  17deg),
+
+            /* Луч 3 — правее центра, падает вниз-влево */
+            conic-gradient(from 182deg at 70% -10%,
+                rgba(255,236,200,0)   0deg,
+                rgba(255,236,200,.16) 6deg,
+                rgba(255,236,200,.22) 9deg,
+                rgba(255,236,200,.16) 12deg,
+                rgba(255,236,200,0)  18deg);
     }
 
-    .post__scrim {
+    /* Дополнительный тёплый ореол у вершины — «пыль в свете» */
+    .post__haze {
         position: absolute;
         inset: 0;
         z-index: 2;
+        pointer-events: none;
+        mix-blend-mode: screen;
         background:
-            linear-gradient(180deg,
-                rgba(60,8,12,.62) 0%,
-                rgba(60,8,12,.30) 14%,
-                rgba(60,8,12,.05) 30%,
-                rgba(60,8,12,.00) 45%,
-                rgba(60,8,12,.35) 66%,
-                rgba(60,8,12,.72) 86%,
-                rgba(60,8,12,.88) 100%);
+            radial-gradient(50% 22% at 50% 4%,
+                rgba(255,236,200,.22) 0%,
+                rgba(255,220,160,.10) 40%,
+                rgba(0,0,0,0) 75%);
+    }
+
+    /* Виньетка по краям — фокус в центр */
+    .post__vignette {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        pointer-events: none;
+        background:
+            radial-gradient(120% 90% at 50% 50%,
+                rgba(0,0,0,0) 50%,
+                rgba(0,0,0,.35) 85%,
+                rgba(0,0,0,.55) 100%);
+    }
+
+    /* Зерно — текстура, чтобы свет не был «пластиковым» */
+    .post__grain {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        pointer-events: none;
+        opacity: .06;
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    }
+
+    /* Тонкая рамка по краю плаката — «афишный паспарту» */
+    .post__frame {
+        position: absolute;
+        inset: 24px;
+        z-index: 5;
+        pointer-events: none;
+        border: 2px solid rgba(244,199,123,.28);
+        border-radius: 4px;
     }
 
     /* ============================================================
-       КОНТЕНТ — фиксированные размеры блоков
+       КОНТЕНТ
        ============================================================ */
     .post__content {
         position: relative;
-        z-index: 3;
+        z-index: 6;
         height: 100%;
-        padding: 60px 80px 70px;
+        padding: 68px 84px 76px;
         display: flex;
         flex-direction: column;
     }
 
-    /* ---------- ВЕРХ: 84px ---------- */
+    /* ---------- ВЕРХ ---------- */
     .post__top {
         display: flex;
         justify-content: space-between;
@@ -155,10 +215,10 @@
         white-space: nowrap;
     }
 
-    /* ---------- ЗАГОЛОВОК: авто, ~360px ---------- */
+    /* ---------- ЗАГОЛОВОК ---------- */
     .post__hero {
         flex: none;
-        margin-top: 36px;
+        margin-top: 40px;
     }
 
     .title {
@@ -194,38 +254,36 @@
         color: #F4C77B;
         margin-top: 4px;
         letter-spacing: -.05em;
-        text-shadow:
-            0 0 0 #3a0a0d,
-            0 14px 46px rgba(0,0,0,.7);
-        -webkit-text-stroke: 4px rgba(58,10,13,.55);
+        text-shadow: 0 14px 46px rgba(0,0,0,.7);
+        -webkit-text-stroke: 3px rgba(30,20,10,.5);
     }
 
-    /* ---------- ФОТО: фиксированная высота 700px ---------- */
+    /* ---------- ФОТО (сменный блок) ---------- */
     .post__photo {
         position: relative;
         height: 700px;
         flex: none;
-        margin-top: 36px;
-        border-radius: 22px;
+        margin-top: 40px;
+        border-radius: 20px;
         overflow: hidden;
         box-shadow:
             0 34px 80px -22px rgba(0,0,0,.8),
-            0 0 0 6px rgba(244,199,123,.35),
-            0 0 0 7px rgba(58,10,13,.5);
-        /* Фон-картинка вместо <img> — html2canvas рендерит корректно */
+            0 0 0 5px rgba(244,199,123,.35),
+            0 0 0 6px rgba(0,0,0,.6);
+        /* Фон-картинка — html2canvas рендерит корректно.
+           ЗАМЕНИ путь на своё фото. */
         background-image: url('assets/img/gal104.jpg');
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
     }
 
-    /* Лёгкое затемнение снизу под стикер */
     .post__photo::after {
         content: "";
         position: absolute;
         inset: 0;
         background: linear-gradient(180deg,
-            rgba(0,0,0,0) 55%,
+            rgba(0,0,0,0) 60%,
             rgba(0,0,0,.45) 100%);
         pointer-events: none;
     }
@@ -233,17 +291,17 @@
     /* Стикер */
     .sticker {
         position: absolute;
-        right: 30px;
-        bottom: 30px;
+        right: 28px;
+        bottom: 28px;
         z-index: 4;
         background: #FFF7E6;
-        color: #3a0a0d;
+        color: #2a1a0a;
         padding: 22px 30px 24px;
         border-radius: 10px;
         transform: rotate(-3deg);
         box-shadow:
             0 26px 60px -14px rgba(0,0,0,.75),
-            0 0 0 3px rgba(255,247,230,.5);
+            0 0 0 3px rgba(255,247,230,.4);
         max-width: 400px;
     }
     .sticker__label {
@@ -268,8 +326,8 @@
         width: 120px;
         height: 32px;
         transform: translateX(-50%) rotate(-2deg);
-        background: rgba(255,255,255,.35);
-        border: 1px solid rgba(255,255,255,.6);
+        background: rgba(255,255,255,.28);
+        border: 1px solid rgba(255,255,255,.5);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
     }
@@ -277,7 +335,7 @@
     /* ---------- ВЫЗОВ ---------- */
     .post__punch {
         flex: none;
-        margin-top: 32px;
+        margin-top: 34px;
         font-size: 44px;
         font-weight: 800;
         line-height: 1.2;
@@ -292,7 +350,7 @@
     }
 
     /* ============================================================
-       НИЗ — Вариант 1: три плашки в ряд, QR снизу
+       НИЗ: три плашки + QR
        ============================================================ */
     .post__bottom {
         flex: none;
@@ -303,7 +361,6 @@
         gap: 20px;
     }
 
-    /* Плашки: три в ряд, фиксированная высота, ничего не переносится */
     .facts {
         display: grid;
         grid-template-columns: 1fr 1fr 1.35fr;
@@ -318,8 +375,8 @@
         padding: 18px 24px;
         height: 96px;
         border-radius: 16px;
-        background: rgba(255,247,230,.94);
-        color: #3a0a0d;
+        background: rgba(255,247,230,.95);
+        color: #2a1a0a;
         box-shadow: 0 16px 36px -12px rgba(0,0,0,.6);
         overflow: hidden;
     }
@@ -334,7 +391,7 @@
     .fact__value {
         font-size: 26px;
         font-weight: 900;
-        color: #3a0a0d;
+        color: #2a1a0a;
         line-height: 1;
         white-space: nowrap;
     }
@@ -342,9 +399,8 @@
         background: linear-gradient(180deg, #F7D28A 0%, #E8B96A 100%);
     }
     .fact--price .fact__label { color: #6b2a0a; }
-    .fact--price .fact__value { color: #3a0a0d; }
+    .fact--price .fact__value { color: #2a1a0a; }
 
-    /* QR-строка: QR слева, подпись справа */
     .qr-row {
         display: flex;
         align-items: center;
@@ -400,7 +456,7 @@
         font-weight: 900;
         letter-spacing: .1em;
         text-transform: uppercase;
-        color: #3a0a0d;
+        color: #2a1a0a;
         background: linear-gradient(180deg, #F7D28A 0%, #E8B96A 100%);
         border: none;
         border-radius: 10px;
@@ -443,9 +499,14 @@
      ПЛАКАТ
      ============================================================ -->
 <div class="post" id="post">
-    <img class="post__bg" src="assets/img/shapka2.webp" alt="">
-    <div class="post__glow"></div>
-    <div class="post__scrim"></div>
+
+    <!-- Фон: софиты -->
+    <div class="post__bg"></div>
+    <div class="post__lights"></div>
+    <div class="post__haze"></div>
+    <div class="post__vignette"></div>
+    <div class="post__grain"></div>
+    <div class="post__frame"></div>
 
     <div class="post__content">
 
@@ -470,7 +531,7 @@
             </h1>
         </div>
 
-        <!-- Фото -->
+        <!-- Фото — сменный блок -->
         <div class="post__photo">
             <div class="sticker">
                 <div class="sticker__label">В подарок</div>
@@ -487,7 +548,6 @@
         <!-- Низ -->
         <div class="post__bottom">
 
-            <!-- Три плашки в ряд -->
             <div class="facts">
                 <div class="fact">
                     <span class="fact__label">Ср · Вс</span>
@@ -503,7 +563,6 @@
                 </div>
             </div>
 
-            <!-- QR + подпись -->
             <div class="qr-row">
                 <img class="qr__img" src="assets/img/qr.png" alt="QR">
                 <div class="qr__text">
@@ -534,7 +593,6 @@
         const post = document.getElementById('post');
         const bar = document.getElementById('exportBar');
 
-        // Скрыть панель
         hideBtn.addEventListener('click', () => { bar.style.display = 'none'; });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') bar.style.display = 'flex';
@@ -545,12 +603,11 @@
             status.textContent = 'Рендерю…';
 
             try {
-                // Дождаться шрифтов
                 if (document.fonts && document.fonts.ready) {
                     await document.fonts.ready;
                 }
 
-                // Дождаться загрузки фоновой картинки
+                // Дождаться загрузки фоновой картинки фото
                 const photoUrl = getComputedStyle(
                     document.querySelector('.post__photo')
                 ).backgroundImage.match(/url\(["']?(.+?)["']?\)/);
@@ -563,7 +620,6 @@
                     });
                 }
 
-                // Сбросить zoom на время рендера
                 const prevZoom = post.style.zoom;
                 post.style.zoom = '1';
 
@@ -573,9 +629,8 @@
                     scale: 1,
                     useCORS: true,
                     allowTaint: false,
-                    backgroundColor: '#6b0f14',
+                    backgroundColor: '#181820',
                     logging: false,
-                    // Важно: уважать реальные размеры
                     windowWidth: 1080,
                     windowHeight: 1920
                 });
