@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -9,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&display=swap&subset=cyrillic,latin" rel="stylesheet">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
 
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,10 +49,10 @@
     }
 
     /* ============================================================
-       ФОН: приглушённо-красный + софиты
+       ФОН — приглушённо-красный + софиты
+       (radial-gradient, без mix-blend — совместимо с экспортом)
        ============================================================ */
 
-    /* База — глубокий бордовый, к краям почти чёрный */
     .post__bg {
         position: absolute;
         inset: 0;
@@ -63,35 +64,29 @@
                 #1a070a 100%);
     }
 
-    /* Лучи софитов — три конуса, тёплые, приглушённые */
+    /* Три луча софитов — эллипсы сверху.
+       Без mix-blend-mode: screen — иначе экспорт их не увидит. */
     .post__lights {
         position: absolute;
         inset: 0;
         z-index: 1;
         pointer-events: none;
-        mix-blend-mode: screen;
-        opacity: .85;
         background:
-            conic-gradient(from 168deg at 30% -10%,
-                rgba(255,225,180,0)   0deg,
-                rgba(255,225,180,.14) 6deg,
-                rgba(255,225,180,.20) 9deg,
-                rgba(255,225,180,.14) 12deg,
-                rgba(255,225,180,0)  18deg),
-
-            conic-gradient(from 175deg at 50% -8%,
-                rgba(255,235,200,0)   0deg,
-                rgba(255,235,200,.18) 5deg,
-                rgba(255,235,200,.26) 8deg,
-                rgba(255,235,200,.18) 11deg,
-                rgba(255,235,200,0)  17deg),
-
-            conic-gradient(from 182deg at 70% -10%,
-                rgba(255,225,180,0)   0deg,
-                rgba(255,225,180,.14) 6deg,
-                rgba(255,225,180,.20) 9deg,
-                rgba(255,225,180,.14) 12deg,
-                rgba(255,225,180,0)  18deg);
+            /* левый луч */
+            radial-gradient(28% 68% at 30% 0%,
+                rgba(255,225,180,.30) 0%,
+                rgba(255,225,180,.14) 35%,
+                rgba(255,225,180,0)   70%),
+            /* центральный — ярче */
+            radial-gradient(32% 78% at 50% 0%,
+                rgba(255,235,200,.40) 0%,
+                rgba(255,235,200,.20) 35%,
+                rgba(255,235,200,0)   72%),
+            /* правый луч */
+            radial-gradient(28% 68% at 70% 0%,
+                rgba(255,225,180,.30) 0%,
+                rgba(255,225,180,.14) 35%,
+                rgba(255,225,180,0)   70%);
     }
 
     /* Тёплый ореол у вершины */
@@ -100,10 +95,9 @@
         inset: 0;
         z-index: 2;
         pointer-events: none;
-        mix-blend-mode: screen;
         background:
             radial-gradient(50% 22% at 50% 4%,
-                rgba(255,225,180,.18) 0%,
+                rgba(255,225,180,.20) 0%,
                 rgba(255,200,140,.08) 40%,
                 rgba(0,0,0,0) 75%);
     }
@@ -121,18 +115,17 @@
                 rgba(0,0,0,.55) 100%);
     }
 
-    /* Зерно */
+    /* Зерно — без mix-blend, просто низкая прозрачность */
     .post__grain {
         position: absolute;
         inset: 0;
         z-index: 4;
         pointer-events: none;
-        opacity: .06;
-        mix-blend-mode: overlay;
+        opacity: .07;
         background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
     }
 
-    /* Рамка как у фотографии: двойной паспарту, ровно по периметру */
+    /* Рамка как у фотографии — двойной паспарту */
     .post__frame {
         position: absolute;
         inset: 28px;
@@ -248,14 +241,19 @@
         margin-left: 30px;
         text-shadow: 0 10px 34px rgba(0,0,0,.6);
     }
+    /* Обводка — через text-shadow, не -webkit-text-stroke */
     .title__row--3 {
         font-size: 198px;
         font-weight: 900;
         color: #F4C77B;
         margin-top: 4px;
         letter-spacing: -.05em;
-        text-shadow: 0 14px 46px rgba(0,0,0,.7);
-        -webkit-text-stroke: 3px rgba(30,10,10,.5);
+        text-shadow:
+            -2px -2px 0 rgba(30,10,10,.55),
+             2px -2px 0 rgba(30,10,10,.55),
+            -2px  2px 0 rgba(30,10,10,.55),
+             2px  2px 0 rgba(30,10,10,.55),
+             0 14px 46px rgba(0,0,0,.7);
     }
 
     /* ---------- ФОТО ---------- */
@@ -269,7 +267,6 @@
             0 34px 80px -22px rgba(0,0,0,.8),
             0 0 0 4px rgba(244,199,123,.4),
             0 0 0 5px rgba(0,0,0,.55);
-        /* ЗАМЕНИ путь на своё фото */
         background-image: url('assets/img/gal104.jpg');
         background-size: cover;
         background-position: center center;
@@ -286,7 +283,7 @@
         pointer-events: none;
     }
 
-    /* Стикер */
+    /* Стикер — теперь без «на сцене» */
     .sticker {
         position: absolute;
         right: 28px;
@@ -294,13 +291,12 @@
         z-index: 4;
         background: #FFF7E6;
         color: #2a1a0a;
-        padding: 22px 30px 24px;
+        padding: 24px 34px 26px;
         border-radius: 10px;
         transform: rotate(-3deg);
         box-shadow:
             0 26px 60px -14px rgba(0,0,0,.75),
             0 0 0 3px rgba(255,247,230,.4);
-        max-width: 400px;
     }
     .sticker__label {
         font-size: 16px;
@@ -311,9 +307,9 @@
         margin-bottom: 8px;
     }
     .sticker__text {
-        font-size: 30px;
+        font-size: 34px;
         font-weight: 900;
-        line-height: 1.12;
+        line-height: 1.05;
         text-transform: uppercase;
     }
     .sticker::before {
@@ -326,8 +322,6 @@
         transform: translateX(-50%) rotate(-2deg);
         background: rgba(255,255,255,.28);
         border: 1px solid rgba(255,255,255,.5);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
     }
 
     /* ---------- ВЫЗОВ ---------- */
@@ -348,7 +342,7 @@
     }
 
     /* ============================================================
-       НИЗ — плашки в ряд + QR-строка на всю ширину
+       НИЗ
        ============================================================ */
     .post__bottom {
         flex: none;
@@ -359,7 +353,6 @@
         gap: 22px;
     }
 
-    /* Три плашки в ряд */
     .facts {
         display: grid;
         grid-template-columns: 1fr 1fr 1.35fr;
@@ -400,15 +393,46 @@
     .fact--price .fact__label { color: #6b2a0a; }
     .fact--price .fact__value { color: #2a1a0a; }
 
-    /* QR-строка на всю ширину */
+    /* QR-строка: текст слева, QR справа + печать в углу */
     .qr-row {
+        position: relative;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 28px;
         background: rgba(20,8,10,.55);
         border: 2px solid rgba(244,199,123,.35);
         border-radius: 18px;
-        padding: 20px 28px;
+        padding: 22px 32px;
+        min-height: 224px;
+    }
+
+    .qr__text {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex: 1;
+        min-width: 0;
+        max-width: 480px;
+    }
+    .qr__title {
+        font-size: 34px;
+        font-weight: 900;
+        line-height: 1.1;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        text-shadow: 0 6px 18px rgba(0,0,0,.6);
+    }
+    .qr__title span {
+        display: block;
+        color: #F4C77B;
+    }
+    .qr__hint {
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 1.35;
+        color: rgba(255,255,255,.75);
     }
 
     .qr__img {
@@ -423,33 +447,78 @@
         flex: none;
     }
 
-    .qr__text {
+    /* ============================================================
+       ПЕЧАТЬ — круглая, в правом нижнем углу
+       ============================================================ */
+    .seal {
+        position: absolute;
+        right: -8px;
+        bottom: -14px;
+        width: 220px;
+        height: 220px;
+        z-index: 7;
+        pointer-events: none;
+        transform: rotate(-9deg);
+        opacity: .85;
+    }
+
+    /* Внешний круг */
+    .seal__ring {
+        position: absolute;
+        inset: 0;
+        border: 3px solid #F4C77B;
+        border-radius: 50%;
+        opacity: .85;
+    }
+    /* Внутренний круг */
+    .seal__ring::after {
+        content: "";
+        position: absolute;
+        inset: 14px;
+        border: 1.5px solid #F4C77B;
+        border-radius: 50%;
+    }
+
+    /* Текст по кругу — SVG */
+    .seal__svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .seal__svg text {
+        fill: #F4C77B;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        letter-spacing: .22em;
+        text-transform: uppercase;
+    }
+
+    /* Центр печати */
+    .seal__center {
+        position: absolute;
+        inset: 0;
         display: flex;
         flex-direction: column;
-        gap: 8px;
-        flex: 1;
-        min-width: 0;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        text-align: center;
     }
-    .qr__title {
+    .seal__center b {
         font-size: 30px;
         font-weight: 900;
-        line-height: 1.1;
-        color: #fff;
-        text-transform: uppercase;
-        letter-spacing: .06em;
-        text-shadow: 0 6px 18px rgba(0,0,0,.6);
-    }
-    .qr__title span {
-        display: block;
         color: #F4C77B;
+        letter-spacing: .06em;
+        line-height: 1;
     }
-    .qr__hint {
-        font-size: 17px;
-        font-weight: 600;
-        line-height: 1.3;
-        color: rgba(255,255,255,.75);
-        text-transform: none;
-        letter-spacing: 0;
+    .seal__center i {
+        font-style: normal;
+        font-size: 12px;
+        font-weight: 700;
+        color: #F4C77B;
+        letter-spacing: .2em;
+        text-transform: uppercase;
     }
 
     /* ============================================================
@@ -491,8 +560,6 @@
         background: rgba(0,0,0,.45);
         padding: 8px 14px;
         border-radius: 999px;
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
     }
 
     .export-hide {
@@ -547,7 +614,7 @@
         <div class="post__photo">
             <div class="sticker">
                 <div class="sticker__label">В подарок</div>
-                <div class="sticker__text">Фотосессия<br>на сцене</div>
+                <div class="sticker__text">Фотосессия</div>
             </div>
         </div>
 
@@ -575,15 +642,38 @@
                 </div>
             </div>
 
+            <!-- QR + печать -->
             <div class="qr-row">
-                <img class="qr__img" src="assets/img/qr.png" alt="QR">
                 <div class="qr__text">
                     <div class="qr__title">
                         Запишись
                         <span>в проект</span>
                     </div>
-                    <div class="qr__hint">Наведи камеру — и мы на связи</div>
+                    <div class="qr__hint">Наведи камеру телефона — и мы на связи</div>
                 </div>
+
+                <img class="qr__img" src="assets/img/qr.png" alt="QR">
+
+                <!-- Печать -->
+                <div class="seal" aria-hidden="true">
+                    <div class="seal__ring"></div>
+                    <svg class="seal__svg" viewBox="0 0 220 220">
+                        <defs>
+                            <path id="sealPath"
+                                  d="M110,110 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/>
+                        </defs>
+                        <text font-size="13">
+                            <textPath href="#sealPath" startOffset="0%">
+                                ШКИТ · ЧЕЛЯБИНСК · С 2009 · ШКОЛА КИНО И ТЕАТРА ·
+                            </textPath>
+                        </text>
+                    </svg>
+                    <div class="seal__center">
+                        <b>ШКИТ</b>
+                        <i>с 2009</i>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -593,6 +683,7 @@
 
 <div class="export-bar" id="exportBar">
     <span class="export-status" id="status">Готов к экспорту</span>
+    <button class="export-btn" id="previewBtn" style="background:linear-gradient(180deg,#fff2d8 0%,#f0d9a8 100%)">Проверить</button>
     <button class="export-btn" id="exportBtn">Скачать PNG</button>
     <button class="export-hide" id="hideBtn" title="Скрыть (вернуть — Esc)">×</button>
 </div>
@@ -600,6 +691,7 @@
 <script>
     (function () {
         const btn = document.getElementById('exportBtn');
+        const previewBtn = document.getElementById('previewBtn');
         const hideBtn = document.getElementById('hideBtn');
         const status = document.getElementById('status');
         const post = document.getElementById('post');
@@ -610,58 +702,75 @@
             if (e.key === 'Escape') bar.style.display = 'flex';
         });
 
+        async function render() {
+            if (document.fonts && document.fonts.ready) {
+                await document.fonts.ready;
+            }
+
+            // Ждём картинку фона фото
+            const photoUrl = getComputedStyle(
+                document.querySelector('.post__photo')
+            ).backgroundImage.match(/url\(["']?(.+?)["']?\)/);
+            if (photoUrl && photoUrl[1]) {
+                await new Promise((res) => {
+                    const im = new Image();
+                    im.crossOrigin = 'anonymous';
+                    im.onload = im.onerror = res;
+                    im.src = photoUrl[1];
+                });
+            }
+
+            const prevZoom = post.style.zoom;
+            post.style.zoom = '1';
+
+            const dataUrl = await htmlToImage.toPng(post, {
+                width: 1080,
+                height: 1920,
+                pixelRatio: 1,
+                backgroundColor: '#2a0e12',
+                cacheBust: true
+            });
+
+            post.style.zoom = prevZoom;
+            return dataUrl;
+        }
+
+        // Проверить — открыть PNG в новом окне
+        previewBtn.addEventListener('click', async () => {
+            previewBtn.disabled = true;
+            status.textContent = 'Рендерю превью…';
+            try {
+                const dataUrl = await render();
+                const w = window.open('', '_blank');
+                w.document.write(
+                    '<title>Превью</title>' +
+                    '<body style="margin:0;background:#111;display:flex;justify-content:center">' +
+                    '<img src="' + dataUrl + '" style="max-width:100%;height:auto">' +
+                    '</body>'
+                );
+                status.textContent = 'Превью открыто';
+                previewBtn.disabled = false;
+            } catch (err) {
+                console.error(err);
+                status.textContent = 'Ошибка: ' + err.message;
+                previewBtn.disabled = false;
+            }
+        });
+
+        // Скачать PNG
         btn.addEventListener('click', async () => {
             btn.disabled = true;
             status.textContent = 'Рендерю…';
-
             try {
-                if (document.fonts && document.fonts.ready) {
-                    await document.fonts.ready;
-                }
-
-                const photoUrl = getComputedStyle(
-                    document.querySelector('.post__photo')
-                ).backgroundImage.match(/url\(["']?(.+?)["']?\)/);
-                if (photoUrl && photoUrl[1]) {
-                    await new Promise((res) => {
-                        const im = new Image();
-                        im.crossOrigin = 'anonymous';
-                        im.onload = im.onerror = res;
-                        im.src = photoUrl[1];
-                    });
-                }
-
-                const prevZoom = post.style.zoom;
-                post.style.zoom = '1';
-
-                const canvas = await html2canvas(post, {
-                    width: 1080,
-                    height: 1920,
-                    scale: 1,
-                    useCORS: true,
-                    allowTaint: false,
-                    backgroundColor: '#2a0e12',
-                    logging: false,
-                    windowWidth: 1080,
-                    windowHeight: 1920
-                });
-
-                post.style.zoom = prevZoom;
-
-                canvas.toBlob((blob) => {
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = 'shkit-davai-sygraem-zhizn.png';
-                    document.body.appendChild(a);
-                    a.click();
-                    a.remove();
-                    URL.revokeObjectURL(url);
-
-                    status.textContent = 'Готово · 1080×1920';
-                    btn.disabled = false;
-                }, 'image/png');
-
+                const dataUrl = await render();
+                const a = document.createElement('a');
+                a.href = dataUrl;
+                a.download = 'shkit-davai-sygraem-zhizn.png';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                status.textContent = 'Готово · 1080×1920';
+                btn.disabled = false;
             } catch (err) {
                 console.error(err);
                 status.textContent = 'Ошибка: ' + err.message;
@@ -673,4 +782,3 @@
 
 </body>
 </html>
-   
