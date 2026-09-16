@@ -18,7 +18,7 @@
         font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
         background: #2a2a2a;
         min-height: 100vh;
-        padding: 40px 20px 100px;
+        padding: 40px 20px 90px;
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -36,8 +36,9 @@
         flex: none;
     }
 
+    /* Превью-масштаб только визуально */
     @media (max-width: 1180px), (max-height: 1500px) {
-        html, body { padding: 20px 10px 90px; }
+        html, body { padding: 20px 10px 80px; }
         .post { zoom: .62; }
     }
     @media (max-width: 640px) {
@@ -231,40 +232,34 @@
         background: rgba(255,247,230,.45); border: 1px solid rgba(255,247,230,.7);
     }
 
-    /* ===== ПОДПИСЬ С БОЛЬШОЙ ЗВЕЗДОЙ ===== */
+    /* ===== ПОДПИСЬ — звезда отдельно, текст под ней, всё выше ===== */
     .post__punch {
         flex: none;
-        margin-top: 30px;
+        margin-top: -30px;    /* поднимаем блок подписи к фото */
         position: relative;
         z-index: 30;
-        text-align: center;
-        color: #8C1D24;
-        font-weight: 900;
-    }
-
-    /* Первая строка: [звезда с ВЫ] — главный герой, автор */
-    .punch-row {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 20px;
+        gap: 0;
     }
 
-    /* ЗВЕЗДА 280px — глянцевая, ВЫ внутри */
+    /* ЗВЕЗДА 560px — отдельный большой блок, «ВЫ» внутри */
     .punch-star {
         position: relative;
-        flex: none;
-        width: 280px;
-        height: 280px;
+        width: 560px;
+        height: 560px;
         transform: rotate(-8deg);
-        filter: drop-shadow(0 18px 32px rgba(0,0,0,.55));
-        margin: -70px 0 -60px 0;   /* вылезает на фото снизу и на строку сверху */
+        filter: drop-shadow(0 26px 46px rgba(0,0,0,.6));
+        margin-bottom: -130px;      /* текст подходит под звезду */
+        margin-top: -120px;         /* звезда налезает на фото */
+        flex: none;
     }
 
     /* Лучи-сияние */
     .punch-star__rays {
         position: absolute;
-        inset: -30px;
+        inset: -50px;
         pointer-events: none;
         z-index: 0;
     }
@@ -272,32 +267,30 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        width: 4px;
-        height: 30px;
-        margin-left: -2px;
-        margin-top: -15px;
+        width: 5px;
+        height: 44px;
+        margin-left: -2.5px;
+        margin-top: -22px;
         background: linear-gradient(180deg,
             rgba(255,248,210,0) 0%,
             rgba(255,248,210,.95) 50%,
             rgba(255,248,210,0) 100%);
         border-radius: 2px;
         transform-origin: center;
-        transform: rotate(var(--a, 0deg)) translateY(-160px);
-        filter: blur(.4px);
+        transform: rotate(var(--a, 0deg)) translateY(-330px);
+        filter: blur(.5px);
     }
 
-    /* Тело звезды — clip-path */
+    /* Тело звезды */
     .punch-star__shape {
         position: absolute;
         inset: 0;
         z-index: 1;
         background:
-            /* верхний блик */
             radial-gradient(60% 45% at 32% 22%,
                 rgba(255,255,255,.95) 0%,
                 rgba(255,255,255,.35) 22%,
                 rgba(255,255,255,0) 55%),
-            /* базовое золото */
             linear-gradient(160deg,
                 #FFEFB0 0%,
                 #F7D770 22%,
@@ -305,46 +298,26 @@
                 #C79330 72%,
                 #8E6518 100%);
         clip-path: polygon(
-            50% 0%,
-            61% 35%,
-            98% 35%,
-            68% 57%,
-            79% 91%,
-            50% 70%,
-            21% 91%,
-            32% 57%,
-            2% 35%,
-            39% 35%
-        );
-        box-shadow: inset 0 0 0 3px rgba(255,247,230,.8);
+            50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%,
+            50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        box-shadow: inset 0 0 0 4px rgba(255,247,230,.8);
     }
 
-    /* ГЛЯНЕЦ — отдельный слой-блик поверх звезды, повёрнутый */
+    /* ГЛЯНЕЦ */
     .punch-star__gloss {
         position: absolute;
         inset: 0;
         z-index: 2;
         clip-path: polygon(
-            50% 0%,
-            61% 35%,
-            98% 35%,
-            68% 57%,
-            79% 91%,
-            50% 70%,
-            21% 91%,
-            32% 57%,
-            2% 35%,
-            39% 35%
-        );
+            50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%,
+            50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
         background:
-            /* длинный диагональный блик */
             linear-gradient(115deg,
                 rgba(255,255,255,0) 28%,
                 rgba(255,255,255,.75) 42%,
-                rgba(255,255,255,.95) 48%,
+                rgba(255,255,255,.98) 48%,
                 rgba(255,255,255,.6) 54%,
                 rgba(255,255,255,0) 68%),
-            /* маленький точечный блик */
             radial-gradient(14% 10% at 30% 24%,
                 rgba(255,255,255,1) 0%,
                 rgba(255,255,255,0) 70%);
@@ -352,23 +325,14 @@
         pointer-events: none;
     }
 
-    /* Тёмная нижняя кромка — объём */
+    /* Тёмная нижняя кромка */
     .punch-star__shade {
         position: absolute;
         inset: 0;
         z-index: 3;
         clip-path: polygon(
-            50% 0%,
-            61% 35%,
-            98% 35%,
-            68% 57%,
-            79% 91%,
-            50% 70%,
-            21% 91%,
-            32% 57%,
-            2% 35%,
-            39% 35%
-        );
+            50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%,
+            50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
         background: linear-gradient(15deg,
             rgba(90,50,10,.55) 0%,
             rgba(90,50,10,.25) 22%,
@@ -376,7 +340,7 @@
         pointer-events: none;
     }
 
-    /* «ВЫ» внутри звезды */
+    /* «ВЫ» — по центру звезды */
     .punch-star__text {
         position: absolute;
         inset: 0;
@@ -384,31 +348,35 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 72px;
+        font-size: 130px;
         font-weight: 900;
         letter-spacing: .04em;
         text-transform: uppercase;
         color: #FFF7E6;
         text-shadow:
-            -2px -2px 0 rgba(60,10,10,.95), 2px -2px 0 rgba(60,10,10,.95),
-            -2px  2px 0 rgba(60,10,10,.95), 2px  2px 0 rgba(60,10,10,.95),
-            0 5px 14px rgba(0,0,0,.55);
+            -3px -3px 0 rgba(60,10,10,.95), 3px -3px 0 rgba(60,10,10,.95),
+            -3px  3px 0 rgba(60,10,10,.95), 3px  3px 0 rgba(60,10,10,.95),
+            0 8px 22px rgba(0,0,0,.55);
         line-height: 1;
-        padding-bottom: 6px;
+        padding-bottom: 20px;
     }
 
-    /* Текст подписи */
+    /* Текст — две строки, под звездой */
     .punch-text {
-        font-size: 54px;
+        position: relative;
+        z-index: 5;
+        font-size: 50px;
         font-weight: 900;
-        line-height: 1.15;
+        line-height: 1.2;
         color: #8C1D24;
+        text-align: center;
         letter-spacing: -.01em;
         text-shadow:
             -1.5px -1.5px 0 rgba(255,250,230,.85), 1.5px -1.5px 0 rgba(255,250,230,.85),
             -1.5px  1.5px 0 rgba(255,250,230,.85), 1.5px  1.5px 0 rgba(255,250,230,.85),
             0 8px 22px rgba(0,0,0,.4);
     }
+    .punch-text .line { display: block; }
     .punch-text em { font-style: italic; font-weight: 900; color: #5e0f13; }
     .punch-text .accent {
         position: relative; display: inline-block; color: #7a1418;
@@ -420,23 +388,6 @@
             rgba(244,199,123,0) 0%, #F4C77B 15%, #F4C77B 85%, rgba(244,199,123,0) 100%);
         border-radius: 3px; transform: rotate(-1.5deg);
     }
-
-    /* Вторая строка — под всем блоком, по центру */
-    .punch-line-2 {
-        display: block;
-        margin-top: 6px;
-        font-size: 54px;
-        font-weight: 900;
-        line-height: 1.15;
-        color: #8C1D24;
-        letter-spacing: -.01em;
-        text-align: center;
-        text-shadow:
-            -1.5px -1.5px 0 rgba(255,250,230,.85), 1.5px -1.5px 0 rgba(255,250,230,.85),
-            -1.5px  1.5px 0 rgba(255,250,230,.85), 1.5px  1.5px 0 rgba(255,250,230,.85),
-            0 8px 22px rgba(0,0,0,.4);
-    }
-    .punch-line-2 em { font-style: italic; font-weight: 900; color: #5e0f13; }
 
     /* ===== НИЗ ===== */
     .post__bottom {
@@ -472,13 +423,13 @@
         font-size: 26px; font-weight: 900; color: #2a1a05; line-height: 1;
     }
 
-    /* ===== КНОПКИ — как в предыдущих карточках ===== */
+    /* ===== КНОПКИ — как в первых карточках ===== */
     .export-bar {
         position: fixed;
         left: 50%;
-        bottom: 24px;
+        bottom: 20px;
         transform: translateX(-50%);
-        z-index: 9999;
+        z-index: 99999;
         display: flex;
         gap: 10px;
         align-items: center;
@@ -570,31 +521,31 @@
             </div>
         </div>
 
-        <!-- Подпись: звезда в строке + текст -->
+        <!-- Подпись: звезда отдельно, текст под ней -->
         <div class="post__punch">
 
-            <div class="punch-row">
-                <span class="punch-star">
-                    <span class="punch-star__rays">
-                        <i style="--a: 0deg"></i>
-                        <i style="--a: 45deg"></i>
-                        <i style="--a: 90deg"></i>
-                        <i style="--a: 135deg"></i>
-                        <i style="--a: 180deg"></i>
-                        <i style="--a: 225deg"></i>
-                        <i style="--a: 270deg"></i>
-                        <i style="--a: 315deg"></i>
-                    </span>
-                    <span class="punch-star__shape"></span>
-                    <span class="punch-star__gloss"></span>
-                    <span class="punch-star__shade"></span>
-                    <span class="punch-star__text">Вы</span>
+            <span class="punch-star">
+                <span class="punch-star__rays">
+                    <i style="--a: 0deg"></i>
+                    <i style="--a: 45deg"></i>
+                    <i style="--a: 90deg"></i>
+                    <i style="--a: 135deg"></i>
+                    <i style="--a: 180deg"></i>
+                    <i style="--a: 225deg"></i>
+                    <i style="--a: 270deg"></i>
+                    <i style="--a: 315deg"></i>
                 </span>
+                <span class="punch-star__shape"></span>
+                <span class="punch-star__gloss"></span>
+                <span class="punch-star__shade"></span>
+                <span class="punch-star__text">Вы</span>
+            </span>
 
-                <span class="punch-text">— <span class="accent">главный герой</span>, автор</span>
+            <div class="punch-text">
+                <span class="line">— <span class="accent">главный герой</span>, автор</span>
+                <span class="line">и <em>легенда</em> одного вечера.</span>
             </div>
 
-            <span class="punch-line-2">и <em>легенда</em> одного вечера.</span>
         </div>
 
         <div class="post__bottom">
@@ -615,4 +566,85 @@
     <span class="export-status" id="status">Готов к экспорту</span>
     <button class="export-btn" id="previewBtn">Проверить</button>
     <button class="export-btn" id="exportBtn">Скачать PNG</button>
-   
+    <button class="export-hide" id="hideBtn" title="Скрыть (вернуть — Esc)">×</button>
+</div>
+
+<script>
+    (function () {
+        const btn = document.getElementById('exportBtn');
+        const previewBtn = document.getElementById('previewBtn');
+        const hideBtn = document.getElementById('hideBtn');
+        const status = document.getElementById('status');
+        const post = document.getElementById('post');
+        const bar = document.getElementById('exportBar');
+
+        hideBtn.addEventListener('click', () => { bar.style.display = 'none'; });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') bar.style.display = 'flex';
+        });
+
+        async function render() {
+            if (document.fonts && document.fonts.ready) {
+                await document.fonts.ready;
+            }
+
+            const photoUrl = getComputedStyle(
+                document.querySelector('.post__photo')
+            ).backgroundImage.match(/url\(["']?(.+?)["']?\)/);
+            if (photoUrl && photoUrl[1]) {
+                await new Promise((res) => {
+                    const im = new Image();
+                    im.crossOrigin = 'anonymous';
+                    im.onload = im.onerror = res;
+                    im.src = photoUrl[1];
+                });
+            }
+
+            const prevZoom = post.style.zoom;
+            post.style.zoom = '1';
+
+            const dataUrl = await htmlToImage.toPng(post, {
+                width: 1080,
+                height: 1350,
+                pixelRatio: 1,
+                backgroundColor: '#7a5a1e',
+                cacheBust: true
+            });
+
+            post.style.zoom = prevZoom;
+            return dataUrl;
+        }
+
+        previewBtn.addEventListener('click', async () => {
+            previewBtn.disabled = true;
+            status.textContent = 'Рендерю превью…';
+            try {
+                const dataUrl = await render();
+                const w = window.open('', '_blank');
+                w.document.write(
+                    '<title>Превью</title>' +
+                    '<body style="margin:0;background:#111;display:flex;justify-content:center">' +
+                    '<img src="' + dataUrl + '" style="max-width:100%;height:auto">' +
+                    '</body>'
+                );
+                status.textContent = 'Превью открыто';
+                previewBtn.disabled = false;
+            } catch (err) {
+                console.error(err);
+                status.textContent = 'Ошибка: ' + err.message;
+                previewBtn.disabled = false;
+            }
+        });
+
+        btn.addEventListener('click', async () => {
+            btn.disabled = true;
+            status.textContent = 'Рендерю…';
+            try {
+                const dataUrl = await render();
+                const a = document.createElement('a');
+                a.href = dataUrl;
+                a.download = 'shkit-moy-benefis-1350.png';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                status.text
