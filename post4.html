@@ -48,7 +48,7 @@
     }
 
     /* ============================================================
-       ФОН — идентичен первой странице
+       ФОН
        ============================================================ */
 
     .post__bg {
@@ -131,7 +131,6 @@
             rgba(0,0,0,0) 100%);
     }
 
-    /* Фон-штамп — «Слово», наклон +6° (в другую сторону от «Сцены») */
     .post__wordmark {
         position: absolute;
         inset: 0;
@@ -219,7 +218,7 @@
         flex-direction: column;
     }
 
-    /* ---------- ВЕРХ — ЗЕРКАЛО: плашка слева, лого справа ---------- */
+    /* ---------- ВЕРХ: плашка слева, лого справа ---------- */
     .post__top {
         display: flex;
         justify-content: space-between;
@@ -228,7 +227,6 @@
         flex: none;
     }
 
-    /* Плашка — теперь СЛЕВА */
     .post__stamp {
         font-size: 19px;
         font-weight: 900;
@@ -245,7 +243,6 @@
         white-space: nowrap;
     }
 
-    /* Лого — теперь СПРАВА */
     .post__logo {
         display: flex;
         align-items: center;
@@ -281,7 +278,7 @@
         text-shadow: 0 4px 14px rgba(0,0,0,.55);
     }
 
-    /* ---------- ЗАГОЛОВОК + QR: ЗЕРКАЛО — QR слева, заголовок справа ---------- */
+    /* ---------- ЗАГОЛОВОК + QR: QR слева, заголовок справа ---------- */
     .post__hero-row {
         position: relative;
         z-index: 20;
@@ -294,7 +291,6 @@
         margin-bottom: -50px;
     }
 
-    /* QR — теперь СЛЕВА */
     .post__qr-top {
         flex: none;
         display: flex;
@@ -316,7 +312,6 @@
             0 0 0 4px rgba(244,199,123,.55);
     }
 
-    /* Заголовок — теперь СПРАВА, наклон +2.5° */
     .post__hero {
         flex: 1;
         min-width: 0;
@@ -338,7 +333,6 @@
 
     .title__row { display: block; }
 
-    /* «МАГИЯ» — курсив, белый */
     .title__row--1 {
         font-size: 118px;
         font-weight: 800;
@@ -349,7 +343,6 @@
             0 10px 34px rgba(0,0,0,.7),
             0 0 30px rgba(0,0,0,.35);
     }
-    /* «СЛОВ» — огромное, золото, с вылетом за правый край */
     .title__row--2 {
         font-size: 250px;
         font-weight: 900;
@@ -365,7 +358,7 @@
              0 0 40px rgba(0,0,0,.5);
     }
 
-    /* ---------- ФОТО — наклон в другую сторону (−1.5°) ---------- */
+    /* ---------- ФОТО ---------- */
     .post__photo {
         position: relative;
         height: 600px;
@@ -395,7 +388,9 @@
         pointer-events: none;
     }
 
-    /* Стикер — теперь СЛЕВА, наклон +4° */
+    /* ============================================================
+       СТИКЕР — «Поэтический спектакль / свет, музыка, поэзия и ТЫ»
+       ============================================================ */
     .sticker {
         position: absolute;
         left: 26px;
@@ -403,27 +398,65 @@
         z-index: 4;
         background: #FFF7E6;
         color: #2a1a0a;
-        padding: 22px 30px 24px;
+        padding: 24px 34px 30px;
         border-radius: 10px;
         transform: rotate(4deg);
         box-shadow:
             0 26px 60px -14px rgba(0,0,0,.75),
             0 0 0 3px rgba(255,247,230,.4);
+        min-width: 420px;
     }
+
     .sticker__label {
         font-size: 17px;
-        font-weight: 800;
-        letter-spacing: .14em;
+        font-weight: 900;
+        letter-spacing: .16em;
         text-transform: uppercase;
         color: #A02424;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
+        white-space: nowrap;
     }
+
     .sticker__text {
-        font-size: 32px;
-        font-weight: 900;
-        line-height: 1.05;
-        text-transform: uppercase;
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1.2;
+        color: #2a1a0a;
+        white-space: nowrap;
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
     }
+
+    /* ТЫ — крупное, красное, наклонено, подчёркнуто */
+    .sticker__you {
+        display: inline-block;
+        font-size: 52px;
+        font-weight: 900;
+        line-height: .85;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: #A02424;
+        transform: rotate(-6deg) translateY(-2px);
+        position: relative;
+        padding: 0 8px;
+    }
+    .sticker__you::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -8px;
+        height: 5px;
+        background: linear-gradient(90deg,
+            rgba(244,199,123,0) 0%,
+            #F4C77B 15%,
+            #F4C77B 85%,
+            rgba(244,199,123,0) 100%);
+        transform: rotate(-2deg);
+        border-radius: 3px;
+    }
+
     .sticker::before {
         content: "";
         position: absolute;
@@ -456,7 +489,7 @@
         color: #F4C77B;
     }
 
-    /* ---------- НИЗ — три плашки ---------- */
+    /* ---------- НИЗ ---------- */
     .post__bottom {
         flex: none;
         margin-top: auto;
@@ -574,7 +607,7 @@
 
     <div class="post__content">
 
-        <!-- Верх: ЗЕРКАЛО — плашка слева, лого справа -->
+        <!-- Верх: плашка слева, лого справа -->
         <div class="post__top">
             <div class="post__stamp">Театрально-поэтическая мастерская</div>
             <div class="post__logo">
@@ -602,11 +635,14 @@
 
         </div>
 
-        <!-- Фото — наклон в противоположную сторону -->
+        <!-- Фото -->
         <div class="post__photo">
             <div class="sticker">
-                <div class="sticker__label">Мест немного</div>
-                <div class="sticker__text">Камерный<br>формат</div>
+                <div class="sticker__label">Поэтический спектакль</div>
+                <div class="sticker__text">
+                    свет, музыка, поэзия и
+                    <span class="sticker__you">Ты</span>
+                </div>
             </div>
         </div>
 
@@ -616,7 +652,7 @@
             <span><em>и камерная сцена</em></span>
         </div>
 
-        <!-- Низ: три плашки -->
+        <!-- Низ -->
         <div class="post__bottom">
             <div class="facts">
                 <div class="fact">
