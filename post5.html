@@ -25,7 +25,7 @@
     }
 
     /* ============================================================
-       ПЛАКАТ 1080×1350 — «МОЙ БЕНЕФИС» — золотой слиток
+       ПЛАКАТ 1080×1350 — «МОЙ БЕНЕФИС»
        ============================================================ */
     .post {
         position: relative;
@@ -51,7 +51,6 @@
        ФОН — ЗОЛОТОЙ СЛИТОК
        ============================================================ */
 
-    /* База — светящееся золото из центра */
     .post__bg {
         position: absolute;
         inset: 0;
@@ -65,7 +64,6 @@
                 #7a5a1e 100%);
     }
 
-    /* Софиты — ТЁПЛЫЕ, свет играет на золоте */
     .post__lights {
         position: absolute;
         inset: 0;
@@ -92,7 +90,6 @@
                 rgba(255,220,140,0)   60%);
     }
 
-    /* Тёплый ореол у вершины */
     .post__haze {
         position: absolute;
         inset: 0;
@@ -105,7 +102,7 @@
                 rgba(0,0,0,0) 75%);
     }
 
-    /* БЛИК — как отражение на полированном металле (сверху-слева) */
+    /* БЛИК — отражение на полированном металле */
     .post__shine {
         position: absolute;
         inset: 0;
@@ -123,7 +120,7 @@
                 rgba(0,0,0,0) 75%);
     }
 
-    /* ИСКРЫ — золотая стружка поверх фона */
+    /* ИСКРЫ — золотая стружка */
     .post__sparkles {
         position: absolute;
         inset: 0;
@@ -180,7 +177,6 @@
             rgba(0,0,0,0) 100%);
     }
 
-    /* Штамп на фоне — «Бенефис» */
     .post__wordmark {
         position: absolute;
         inset: 0;
@@ -220,7 +216,6 @@
                 transparent 1px 60px);
     }
 
-    /* Виньетка — мягче, чем была */
     .post__vignette {
         position: absolute;
         inset: 0;
@@ -233,7 +228,6 @@
                 rgba(15,8,0,.40) 100%);
     }
 
-    /* Зерно — тише и теплее */
     .post__grain {
         position: absolute;
         inset: 0;
@@ -244,7 +238,6 @@
         background-size: 120px 120px;
     }
 
-    /* Рамка — красная на золоте */
     .post__frame {
         position: absolute;
         inset: 24px;
@@ -384,7 +377,6 @@
 
     .title__row { display: block; }
 
-    /* «МОЙ» — курсив, огромный, красный, с белой обводкой для объёма */
     .title__row--1 {
         font-size: 240px;
         font-weight: 900;
@@ -412,7 +404,6 @@
         border-radius: 2px;
     }
 
-    /* «БЕНЕФИС» — прямой, меньше, красный */
     .title__row--2 {
         font-size: 118px;
         font-weight: 900;
@@ -504,13 +495,16 @@
         border: 1px solid rgba(255,247,230,.7);
     }
 
-    /* ---------- ПОДПИСЬ ПОД ФОТО — ГЛАВНАЯ! ---------- */
+    /* ============================================================
+       ПОДПИСЬ ПОД ФОТО — с крупным «ВЫ»
+       (рифмуется с «ТЫ» из «Магии слов»)
+       ============================================================ */
     .post__punch {
         flex: none;
         margin-top: 32px;
-        font-size: 54px;
+        font-size: 52px;
         font-weight: 900;
-        line-height: 1.15;
+        line-height: 1.2;
         text-transform: none;
         color: #8C1D24;
         text-align: center;
@@ -526,11 +520,48 @@
     }
     .post__punch span { display: block; }
 
-    /* «главный герой» — крупнее, с золотым подчёркиванием */
+    /* ВЫ — крупно, красным, с наклоном и золотым подчёркиванием */
+    .punch-you {
+        display: inline-block;
+        font-size: 74px;
+        font-weight: 900;
+        line-height: .9;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: #7a1418;
+        transform: rotate(-6deg) translateY(-4px);
+        position: relative;
+        padding: 0 10px;
+        margin-right: 4px;
+        vertical-align: baseline;
+        text-shadow:
+            -1.5px -1.5px 0 rgba(255,250,230,.85),
+             1.5px -1.5px 0 rgba(255,250,230,.85),
+            -1.5px  1.5px 0 rgba(255,250,230,.85),
+             1.5px  1.5px 0 rgba(255,250,230,.85),
+             0 10px 22px rgba(0,0,0,.4);
+    }
+    .punch-you::after {
+        content: "";
+        position: absolute;
+        left: 2px;
+        right: 2px;
+        bottom: -4px;
+        height: 6px;
+        background: linear-gradient(90deg,
+            rgba(244,199,123,0) 0%,
+            #F4C77B 15%,
+            #F4C77B 85%,
+            rgba(244,199,123,0) 100%);
+        border-radius: 3px;
+        transform: rotate(-2deg);
+    }
+
+    /* «главный герой» — акцент с золотым подчёркиванием */
     .post__punch .accent {
         position: relative;
         display: inline-block;
-        font-size: 58px;
+        font-size: 56px;
         color: #7a1418;
     }
     .post__punch .accent::after {
@@ -538,7 +569,7 @@
         position: absolute;
         left: -4px;
         right: -4px;
-        bottom: 2px;
+        bottom: 0;
         height: 6px;
         background: linear-gradient(90deg,
             rgba(244,199,123,0) 0%,
@@ -731,9 +762,9 @@
             </div>
         </div>
 
-        <!-- Главная подпись — крупная, красная, с акцентами -->
+        <!-- Подпись с крупным «ВЫ» -->
         <div class="post__punch">
-            <span>Вы — <span class="accent">главный герой</span>, автор</span>
+            <span><span class="punch-you">Вы</span> — <span class="accent">главный герой</span>, автор</span>
             <span>и <em>легенда</em> одного вечера.</span>
         </div>
 
@@ -746,7 +777,7 @@
 
             <div class="fact-phone">
                 <span class="fact__label">Запись</span>
-                <span class="fact__value">+7 919 404-01-23</span>
+                <span class="fact__value">+7 909 090-44-71</span>
             </div>
 
         </div>
