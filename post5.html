@@ -18,7 +18,7 @@
         font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
         background: #2a2a2a;
         min-height: 100vh;
-        padding: 40px 20px 160px;
+        padding: 40px 20px 80px;
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -40,7 +40,7 @@
     }
 
     @media (max-width: 1180px), (max-height: 1500px) {
-        html, body { padding: 20px 10px 100px; }
+        html, body { padding: 20px 10px 70px; }
         .post { zoom: .62; }
     }
     @media (max-width: 640px) {
@@ -102,7 +102,6 @@
                 rgba(0,0,0,0) 75%);
     }
 
-    /* БЛИК — отражение на полированном металле */
     .post__shine {
         position: absolute;
         inset: 0;
@@ -120,7 +119,6 @@
                 rgba(0,0,0,0) 75%);
     }
 
-    /* ИСКРЫ — золотая стружка */
     .post__sparkles {
         position: absolute;
         inset: 0;
@@ -496,15 +494,14 @@
     }
 
     /* ============================================================
-       ПОДПИСЬ ПОД ФОТО — с крупным «ВЫ»
-       (рифмуется с «ТЫ» из «Магии слов»)
+       ПОДПИСЬ ПОД ФОТО — с крупным белым «ВЫ»
        ============================================================ */
     .post__punch {
         flex: none;
-        margin-top: 32px;
+        margin-top: 30px;
         font-size: 52px;
         font-weight: 900;
-        line-height: 1.2;
+        line-height: 1.25;
         text-transform: none;
         color: #8C1D24;
         text-align: center;
@@ -520,33 +517,33 @@
     }
     .post__punch span { display: block; }
 
-    /* ВЫ — крупно, красным, с наклоном и золотым подчёркиванием */
+    /* ВЫ — крупное, БЕЛОЕ, с тёмной обводкой. Может залезать на фото. */
     .punch-you {
         display: inline-block;
-        font-size: 74px;
+        font-size: 86px;
         font-weight: 900;
         line-height: .9;
         letter-spacing: .06em;
         text-transform: uppercase;
-        color: #7a1418;
-        transform: rotate(-6deg) translateY(-4px);
+        color: #FFF7E6;
+        transform: rotate(-6deg) translateY(-6px);
         position: relative;
-        padding: 0 10px;
-        margin-right: 4px;
+        padding: 0 12px;
+        margin-right: 6px;
         vertical-align: baseline;
         text-shadow:
-            -1.5px -1.5px 0 rgba(255,250,230,.85),
-             1.5px -1.5px 0 rgba(255,250,230,.85),
-            -1.5px  1.5px 0 rgba(255,250,230,.85),
-             1.5px  1.5px 0 rgba(255,250,230,.85),
-             0 10px 22px rgba(0,0,0,.4);
+            -2px -2px 0 rgba(60,10,10,.85),
+             2px -2px 0 rgba(60,10,10,.85),
+            -2px  2px 0 rgba(60,10,10,.85),
+             2px  2px 0 rgba(60,10,10,.85),
+             0 10px 26px rgba(0,0,0,.55);
     }
     .punch-you::after {
         content: "";
         position: absolute;
         left: 2px;
         right: 2px;
-        bottom: -4px;
+        bottom: -6px;
         height: 6px;
         background: linear-gradient(90deg,
             rgba(244,199,123,0) 0%,
@@ -580,7 +577,6 @@
         transform: rotate(-1.5deg);
     }
 
-    /* «легенда» — курсив, темнее */
     .post__punch em {
         font-style: italic;
         font-weight: 900;
@@ -656,32 +652,32 @@
     }
 
     /* ============================================================
-       КНОПКА ЭКСПОРТА
+       КНОПКА ЭКСПОРТА — уменьшена, надёжно внизу
        ============================================================ */
     .export-bar {
         position: fixed;
         left: 50%;
-        bottom: 24px;
+        bottom: 14px;
         transform: translateX(-50%);
-        z-index: 999;
+        z-index: 9999;
         display: flex;
-        gap: 10px;
+        gap: 8px;
         align-items: center;
     }
 
     .export-btn {
         font-family: inherit;
-        font-size: 15px;
+        font-size: 12px;
         font-weight: 900;
-        letter-spacing: .1em;
+        letter-spacing: .08em;
         text-transform: uppercase;
         color: #2a1a0a;
         background: linear-gradient(180deg, #F7D28A 0%, #E8B96A 100%);
         border: none;
-        border-radius: 10px;
-        padding: 14px 22px;
+        border-radius: 8px;
+        padding: 10px 16px;
         cursor: pointer;
-        box-shadow: 0 14px 32px -8px rgba(0,0,0,.7);
+        box-shadow: 0 10px 24px -6px rgba(0,0,0,.7);
         transition: transform .15s ease;
     }
     .export-btn:hover { transform: translateY(-2px); }
@@ -689,22 +685,22 @@
     .export-btn:disabled { opacity: .6; cursor: wait; transform: none; }
 
     .export-status {
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 700;
         color: rgba(255,255,255,.75);
-        background: rgba(0,0,0,.45);
-        padding: 8px 14px;
+        background: rgba(0,0,0,.5);
+        padding: 6px 12px;
         border-radius: 999px;
     }
 
     .export-hide {
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 700;
         color: rgba(255,255,255,.55);
-        background: rgba(0,0,0,.35);
+        background: rgba(0,0,0,.4);
         border: none;
         border-radius: 999px;
-        padding: 8px 12px;
+        padding: 6px 10px;
         cursor: pointer;
         font-family: inherit;
     }
@@ -762,7 +758,7 @@
             </div>
         </div>
 
-        <!-- Подпись с крупным «ВЫ» -->
+        <!-- Подпись с белым «ВЫ» -->
         <div class="post__punch">
             <span><span class="punch-you">Вы</span> — <span class="accent">главный герой</span>, автор</span>
             <span>и <em>легенда</em> одного вечера.</span>
@@ -787,7 +783,7 @@
 
 <div class="export-bar" id="exportBar">
     <span class="export-status" id="status">Готов к экспорту</span>
-    <button class="export-btn" id="previewBtn" style="background:linear-gradient(180deg,#fff2d8 0%,#f0d9a8 100%)">Проверить</button>
+    <button class="export-btn" id="previewBtn">Проверить</button>
     <button class="export-btn" id="exportBtn">Скачать PNG</button>
     <button class="export-hide" id="hideBtn" title="Скрыть (вернуть — Esc)">×</button>
 </div>
