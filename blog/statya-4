@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как актёрский курс развивает память — ШКИТ</title>
+    <meta name="description" content="Память — это не то, с чем рождаются, а то, что тренируется. Как актёрский курс развивает память у детей и взрослых: 4 шага для запоминания текста и 5 упражнений для дома.">
+    <link rel="canonical" href="https://shkit-school.github.io/blog/statya-4.html">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#BC3636">
+
+    <!-- ===== Open Graph (для соцсетей) ===== -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как актёрский курс развивает память — ШКИТ">
+    <meta property="og:description" content="Память — это не то, с чем рождаются, а то, что тренируется. 4 шага для запоминания текста и 5 упражнений для дома.">
+    <meta property="og:url" content="https://shkit-school.github.io/blog/statya-4.html">
+    <meta property="og:image" content="https://shkit-school.github.io/assets/img/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Как актёрский курс развивает память — ШКИТ">
+    <meta name="twitter:description" content="4 шага для запоминания текста и 5 упражнений для дома.">
+    <meta name="twitter:image" content="https://shkit-school.github.io/assets/img/og.jpg">
+
+    <!-- ===== Иконки ===== -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon.png">
+
+    <!-- ===== Шрифты ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap&subset=cyrillic,latin" rel="stylesheet">
+
+    <!-- ===== Progressive enhancement ===== -->
+    <script>document.documentElement.className+=" js";</script>
+
+    <!-- ===== Стили ===== -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        * { -webkit-tap-highlight-color: transparent; }
+
+        .article {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        .article h1 {
+            font-size: clamp(28px, 5vw, 44px);
+            margin-bottom: 12px;
+        }
+        .article .article-date {
+            color: var(--grey);
+            font-weight: 600;
+            margin-bottom: 28px;
+        }
+        .article p {
+            margin-bottom: 18px;
+            color: #4a4a4a;
+            font-size: 17px;
+        }
+        .article h2 {
+            font-size: 24px;
+            margin: 32px 0 14px;
+        }
+        .article img {
+            border-radius: var(--radius);
+            margin: 24px 0;
+            width: 100%;
+        }
+        .article-cta {
+            background: var(--ink);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .article-cta h3 {
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .article-cta p {
+            color: rgba(255,255,255,.8);
+            margin-bottom: 18px;
+        }
+        .section.bg-white {
+            padding-top: 5px !important;
+        }
+    </style>
+
+    <!-- ===== Yandex.Metrika counter ===== -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112359274', 'ym');
+
+        ym(112359274, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/112359274" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- ===== /Yandex.Metrika counter ===== -->
+
+    <!-- ===== Schema.org: Article ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Как актёрский курс развивает память",
+        "description": "Память — это не то, с чем рождаются, а то, что тренируется. 4 шага для запоминания текста и 5 упражнений для дома.",
+        "image": "https://shkit-school.github.io/assets/img/og.jpg",
+        "datePublished": "2026-09-16",
+        "dateModified": "2026-09-16",
+        "author": {
+            "@type": "Organization",
+            "name": "Школа кино и театра «ШКИТ»"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Школа кино и театра «ШКИТ»",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://shkit-school.github.io/assets/img/logo.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://shkit-school.github.io/blog/statya-4.html"
+        }
+    }
+    </script>
+</head>
+<body>
+<a class="skip-link" href="#main">К основному содержимому</a>
+
+<!-- ============ ШАПКА ============ -->
+<header class="header">
+    <div class="wrap header-inner">
+        <a class="logo" href="../index.html" aria-label="ШКИТ — на главную">
+            <img src="../assets/img/logo-sm.png" alt="Логотип ШКИТ" width="48" height="44">
+            <span><b>ШКИТ</b><span>Школа кино и театра</span></span>
+        </a>
+        <nav class="nav" aria-label="Основная навигация">
+            <a href="../index.html#about">О нас</a>
+            <a href="../index.html#kursy">Курсы</a>
+            <a href="../index.html#proekty">Проекты</a>
+            <a href="../index.html#otzyvy">Отзывы</a>
+            <a href="../index.html#afisha">Афиша</a>
+            <a href="index.html" class="is-active">Блог</a>
+            <a href="../index.html#contacts">Контакты</a>
+            <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
+            <span class="m-cta"><a class="btn m-menu-btn" href="../index.html#zapis">Оставить заявку</a></span>
+        </nav>
+        <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<!-- ============ КОНТЕНТ ============ -->
+<main id="main" tabindex="-1">
+    <section class="section bg-white">
+        <div class="wrap">
+            <div class="article">
+                <h1>Как актёрский курс развивает память</h1>
+                <div class="article-date">16 сентября 2026</div>
+
+                <p>Мы часто рассказываем, чему учим в ШКИТ: сценической речи, актёрскому мастерству, уверенности, умению держаться на сцене. Но за кадром остаётся один из самых мощных «побочных эффектов» — память.</p>
+
+                <p>Сегодня поговорим именно о ней.</p>
+
+                <p>Потому что родители часто спрашивают: «А как ребёнок будет запоминать большие тексты?», «У него память плохая, сможет ли он?». И вот здесь начинается самое интересное.</p>
+
+                <p><strong>Память — это не то, с чем рождаются. Это то, что тренируется.</strong></p>
+
+                <p>Актёрский курс — это, по сути, ежедневный тренажёр для мозга. Причём в игровой форме, без зубрёжки и скуки. Что мы развиваем параллельно:</p>
+
+                <p>✔ <strong>Внимание</strong> — без него ничего не отложится.<br>
+                ✔ <strong>Воображение</strong> — образы запоминаются лучше, чем сухие слова.<br>
+                ✔ <strong>Эмоциональный интеллект</strong> — то, что пережито, помнится дольше.<br>
+                ✔ <strong>Речь</strong> — чёткость и интонация помогают удерживать смысл.<br>
+                ✔ <strong>Уверенность</strong> — когда не боишься ошибиться, память работает свободнее.</p>
+
+                <p>А ещё — навык работать с текстом. Именно он и помогает запоминать большие объёмы.</p>
+
+                <h2>Как запомнить много текста: 4 шага</h2>
+
+                <p><strong>1. Разобрать по смыслам, а не зубрить.</strong><br>
+                Мы никогда не учим текст целиком «от и до». Сначала делим его на смысловые куски: что происходит в каждом? Какая задача у персонажа? О чём он думает в этот момент?<br>
+                Когда есть логика — текст запоминается сам.</p>
+
+                <p><strong>2. Найти «ключевые слова».</strong><br>
+                В каждом куске есть 1–2 слова, за которые цепляется вся фраза. Их достаточно запомнить — остальное восстановится.</p>
+
+                <p><strong>3. Подключить тело.</strong><br>
+                Актёры запоминают текст через движение: жест, шаг, пауза. Тело запоминает быстрее, чем голова.</p>
+
+                <p><strong>4. Проговорить вслух — и не один раз.</strong><br>
+                Память любит повторение, но не механическое. Лучше проговорить три раза с разными интонациями, чем десять раз монотонно.</p>
+
+                <h2>🎯 5 упражнений для памяти, которые можно делать дома</h2>
+
+                <p>Эти упражнения простые, занимают 10–15 минут и подходят и детям, и взрослым.</p>
+
+                <p><strong>1. «Цепочка слов».</strong><br>
+                Назовите 10–15 слов подряд: дом, кот, окно, дождь, чай… Ребёнок должен повторить в том же порядке.<br>
+                <em>Что развивает:</em> слуховую память, внимание.<br>
+                <em>Усложнение:</em> попросите повторить в обратном порядке.</p>
+
+                <p><strong>2. «Что изменилось?».</strong><br>
+                Разложите 7–10 предметов на столе. Дайте запомнить. Затем попросите отвернуться — и уберите или поменяйте один предмет. Задача — заметить, что изменилось.<br>
+                <em>Что развивает:</em> зрительную память, наблюдательность.</p>
+
+                <p><strong>3. «Снежный ком».</strong><br>
+                Первый игрок называет слово. Второй повторяет его и добавляет своё. Третий — оба и своё. И так по кругу.<br>
+                <em>Что развивает:</em> объём памяти, умение удерживать информацию.<br>
+                Отлично работает в семейном кругу.</p>
+
+                <p><strong>4. «Рассказ по картинке».</strong><br>
+                Покажите картинку на 30 секунд. Затем уберите и попросите описать, что было. Чем больше деталей — тем лучше.<br>
+                <em>Что развивает:</em> зрительную память, связную речь.</p>
+
+                <p><strong>5. «Ассоциации».</strong><br>
+                Дайте список слов: море, книга, лампа, зима… Задача — придумать к каждому образ и связать их в одну историю.<br>
+                <em>Что развивает:</em> ассоциативную память — главный инструмент актёра.<br>
+                Пример: «Море — в нём плавает книга — она светится, как лампа — а вокруг зима».</p>
+
+                <img src="../assets/img/gallery-06.jpg" alt="Дети на занятии в ШКИТ" loading="lazy">
+
+                <h2>Почему это важно не только для сцены</h2>
+
+                <p>Память — это база. Без неё не выучить язык, не сдать экзамен, не подготовить доклад, не удержать в голове разговор. Актёрский курс тренирует её так, что ребёнок сам не замечает — просто играет, двигается, говорит. А память работает.</p>
+
+                <p>И да — большой текст перестаёт быть страшным. Потому что теперь есть метод, а не паника.</p>
+
+                <div class="article-cta">
+                    <h3>Попробовать на практике</h3>
+                    <p>Запишитесь на пробное занятие — покажем, как это работает.</p>
+                    <a class="btn" href="../index.html#zapis">Записаться</a>
+                </div>
+
+                <p style="margin-top:24px;text-align:center">
+                    <a href="index.html" style="color:var(--coral-ink);font-weight:700">← Все статьи</a>
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ============ ФУТЕР ============ -->
+<footer class="footer">
+    <div class="wrap">
+        <div class="footer-bottom">
+            <span>© <span id="year">2026</span> Школа кино и театра «ШКИТ» · </span>
+            <span><a href="../policy.html">Политика конфиденциальности</a></span>
+        </div>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
