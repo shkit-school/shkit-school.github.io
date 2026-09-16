@@ -48,11 +48,9 @@
     }
 
     /* ============================================================
-       ФОН — БЛЕДНО-КРАСНЫЙ + СВЕТ + ПЫЛЬ + ШТАМП
+       ФОН — красный + свет + пыль + штамп + сетка
        ============================================================ */
 
-    /* База — настоящий красный, не бордовый.
-       Центр светлее (прожектор), края глубже. */
     .post__bg {
         position: absolute;
         inset: 0;
@@ -65,15 +63,12 @@
                 #4A0D13 100%);
     }
 
-    /* Софиты — три луча, бело-тёплые (не жёлтые — не гасят красный).
-       Два слоя со смещением → неровные, «дрожащие» края. */
     .post__lights {
         position: absolute;
         inset: 0;
         z-index: 1;
         pointer-events: none;
         background:
-            /* слой 1 — основной свет */
             radial-gradient(28% 68% at 30% 0%,
                 rgba(255,240,225,.34) 0%,
                 rgba(255,225,210,.16) 35%,
@@ -86,8 +81,6 @@
                 rgba(255,240,225,.34) 0%,
                 rgba(255,225,210,.16) 35%,
                 rgba(255,220,200,0)   70%),
-
-            /* слой 2 — смещён, делает край неровным */
             radial-gradient(24% 60% at 32% 1%,
                 rgba(255,235,215,.18) 0%,
                 rgba(255,220,200,0)   60%),
@@ -96,7 +89,6 @@
                 rgba(255,220,200,0)   60%);
     }
 
-    /* Тёплый ореол у вершины */
     .post__haze {
         position: absolute;
         inset: 0;
@@ -109,8 +101,6 @@
                 rgba(0,0,0,0) 75%);
     }
 
-    /* ПЫЛЬ В ЛУЧАХ — точки, летающие в свете.
-       Повторяющийся радиальный паттерн из мелких точек. */
     .post__dust {
         position: absolute;
         inset: 0;
@@ -129,7 +119,6 @@
             220px 220px,
             300px 300px,
             340px 340px;
-        /* маска: пыль видна только в верхней зоне, где лучи */
         -webkit-mask-image: linear-gradient(180deg,
             rgba(0,0,0,1) 0%,
             rgba(0,0,0,.7) 40%,
@@ -142,7 +131,6 @@
             rgba(0,0,0,0) 100%);
     }
 
-    /* ФОН-ШТАМП — огромное слово «СЦЕНА» через весь плакат */
     .post__wordmark {
         position: absolute;
         inset: 0;
@@ -167,7 +155,6 @@
         user-select: none;
     }
 
-    /* Лёгкая сетка — как миллиметровка / репетиционный лист */
     .post__grid {
         position: absolute;
         inset: 0;
@@ -183,7 +170,6 @@
                 transparent 1px 60px);
     }
 
-    /* Виньетка — мягкая, по краям */
     .post__vignette {
         position: absolute;
         inset: 0;
@@ -196,7 +182,6 @@
                 rgba(0,0,0,.5) 100%);
     }
 
-    /* Зерно — киношное, крупнее, без overlay (для экспорта) */
     .post__grain {
         position: absolute;
         inset: 0;
@@ -207,7 +192,6 @@
         background-size: 120px 120px;
     }
 
-    /* Рамка как у фотографии — двойной паспарту */
     .post__frame {
         position: absolute;
         inset: 28px;
@@ -263,14 +247,15 @@
         letter-spacing: .01em;
         text-shadow: 0 6px 20px rgba(0,0,0,.55);
     }
+    /* Подпись лого — крупнее: 15 → 17 */
     .post__logo-text span {
         display: block;
-        font-size: 15px;
+        font-size: 17px;
         font-weight: 700;
-        letter-spacing: .2em;
+        letter-spacing: .18em;
         text-transform: uppercase;
-        color: rgba(255,255,255,.85);
-        margin-top: 7px;
+        color: rgba(255,255,255,.88);
+        margin-top: 8px;
         text-shadow: 0 4px 14px rgba(0,0,0,.55);
     }
 
@@ -290,10 +275,16 @@
         white-space: nowrap;
     }
 
-    /* ---------- ЗАГОЛОВОК ---------- */
+    /* ---------- ЗАГОЛОВОК — теперь с наклоном ---------- */
     .post__hero {
         flex: none;
-        margin-top: 40px;
+        margin-top: 48px;
+        /* наклон всего блока, как у плашки «3 месяца подготовки»,
+           только в другую сторону — для «расклеенности» */
+        transform: rotate(-2.5deg);
+        transform-origin: left center;
+        /* компенсируем сдвиг от поворота, чтобы не вылезло за рамку */
+        margin-left: -6px;
     }
 
     .title {
@@ -337,7 +328,7 @@
              0 14px 46px rgba(0,0,0,.7);
     }
 
-    /* ---------- ФОТО ---------- */
+    /* ---------- ФОТО — наклон в другую сторону ---------- */
     .post__photo {
         position: relative;
         height: 660px;
@@ -352,6 +343,9 @@
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
+        /* наклон в противоположную сторону от заголовка */
+        transform: rotate(1.5deg);
+        transform-origin: center center;
     }
 
     .post__photo::after {
@@ -374,7 +368,7 @@
         color: #2a1a0a;
         padding: 24px 34px 26px;
         border-radius: 10px;
-        transform: rotate(-3deg);
+        transform: rotate(-4deg);
         box-shadow:
             0 26px 60px -14px rgba(0,0,0,.75),
             0 0 0 3px rgba(255,247,230,.4);
@@ -408,7 +402,7 @@
     /* ---------- ВЫЗОВ ---------- */
     .post__punch {
         flex: none;
-        margin-top: 34px;
+        margin-top: 42px;
         font-size: 44px;
         font-weight: 800;
         line-height: 1.2;
@@ -446,17 +440,18 @@
         justify-content: center;
         gap: 8px;
         padding: 20px 26px;
-        height: 104px;
+        height: 108px;
         border-radius: 16px;
         background: rgba(255,247,230,.95);
         color: #2a1a0a;
         box-shadow: 0 16px 36px -12px rgba(0,0,0,.6);
         overflow: hidden;
     }
+    /* Лейблы плашек — крупнее: 16 → 18 */
     .fact__label {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 800;
-        letter-spacing: .16em;
+        letter-spacing: .14em;
         text-transform: uppercase;
         color: #A02424;
         white-space: nowrap;
@@ -474,27 +469,42 @@
     .fact--price .fact__label { color: #6b2a0a; }
     .fact--price .fact__value { color: #2a1a0a; }
 
-    /* QR-строка */
+    /* QR-строка — теперь УЖЕ, по центру, QR слева, текст справа */
     .qr-row {
         position: relative;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 28px;
+        justify-content: center;
+        gap: 36px;
         background: rgba(30,6,9,.55);
         border: 2px solid rgba(244,199,123,.4);
         border-radius: 18px;
-        padding: 22px 32px;
+        padding: 24px 40px;
         min-height: 224px;
+        /* не на всю ширину — уже и по центру */
+        width: 92%;
+        margin: 0 auto;
     }
 
+    /* QR — теперь СЛЕВА */
+    .qr__img {
+        width: 190px;
+        height: 190px;
+        background: #FFF7E6;
+        border-radius: 12px;
+        padding: 10px;
+        object-fit: contain;
+        display: block;
+        box-shadow: 0 14px 34px -12px rgba(0,0,0,.7);
+        flex: none;
+    }
+
+    /* Текст — теперь СПРАВА */
     .qr__text {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        flex: 1;
-        min-width: 0;
-        max-width: 480px;
+        max-width: 420px;
     }
     .qr__title {
         font-size: 34px;
@@ -509,93 +519,12 @@
         display: block;
         color: #F4C77B;
     }
+    /* Подпись — крупнее: 17 → 19 */
     .qr__hint {
-        font-size: 17px;
+        font-size: 19px;
         font-weight: 600;
         line-height: 1.35;
-        color: rgba(255,255,255,.75);
-    }
-
-    .qr__img {
-        width: 180px;
-        height: 180px;
-        background: #FFF7E6;
-        border-radius: 12px;
-        padding: 10px;
-        object-fit: contain;
-        display: block;
-        box-shadow: 0 14px 34px -12px rgba(0,0,0,.7);
-        flex: none;
-    }
-
-    /* ============================================================
-       ПЕЧАТЬ
-       ============================================================ */
-    .seal {
-        position: absolute;
-        right: -8px;
-        bottom: -14px;
-        width: 220px;
-        height: 220px;
-        z-index: 7;
-        pointer-events: none;
-        transform: rotate(-9deg);
-        opacity: .9;
-    }
-
-    .seal__ring {
-        position: absolute;
-        inset: 0;
-        border: 3px solid #F4C77B;
-        border-radius: 50%;
-        opacity: .9;
-    }
-    .seal__ring::after {
-        content: "";
-        position: absolute;
-        inset: 14px;
-        border: 1.5px solid #F4C77B;
-        border-radius: 50%;
-    }
-
-    .seal__svg {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-    }
-    .seal__svg text {
-        fill: #F4C77B;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        letter-spacing: .22em;
-        text-transform: uppercase;
-    }
-
-    .seal__center {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-        text-align: center;
-    }
-    .seal__center b {
-        font-size: 30px;
-        font-weight: 900;
-        color: #F4C77B;
-        letter-spacing: .06em;
-        line-height: 1;
-    }
-    .seal__center i {
-        font-style: normal;
-        font-size: 12px;
-        font-weight: 700;
-        color: #F4C77B;
-        letter-spacing: .2em;
-        text-transform: uppercase;
+        color: rgba(255,255,255,.8);
     }
 
     /* ============================================================
@@ -656,7 +585,6 @@
 
 <div class="post" id="post">
 
-    <!-- Фон: красный + свет + пыль + штамп + сетка -->
     <div class="post__bg"></div>
     <div class="post__lights"></div>
     <div class="post__haze"></div>
@@ -681,7 +609,7 @@
             <div class="post__stamp">3 месяца подготовки</div>
         </div>
 
-        <!-- Заголовок -->
+        <!-- Заголовок — с наклоном -2.5° -->
         <div class="post__hero">
             <h1 class="title">
                 <span class="title__row title__row--1">Давай</span>
@@ -690,7 +618,7 @@
             </h1>
         </div>
 
-        <!-- Фото -->
+        <!-- Фото — с наклоном +1.5° -->
         <div class="post__photo">
             <div class="sticker">
                 <div class="sticker__label">В подарок</div>
@@ -722,7 +650,9 @@
                 </div>
             </div>
 
+            <!-- QR-строка: QR слева, текст справа, по центру -->
             <div class="qr-row">
+                <img class="qr__img" src="assets/img/qr.png" alt="QR">
                 <div class="qr__text">
                     <div class="qr__title">
                         Запишись
@@ -730,28 +660,6 @@
                     </div>
                     <div class="qr__hint">Наведи камеру телефона — и мы на связи</div>
                 </div>
-
-                <img class="qr__img" src="assets/img/qr.png" alt="QR">
-
-                <div class="seal" aria-hidden="true">
-                    <div class="seal__ring"></div>
-                    <svg class="seal__svg" viewBox="0 0 220 220">
-                        <defs>
-                            <path id="sealPath"
-                                  d="M110,110 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/>
-                        </defs>
-                        <text font-size="13">
-                            <textPath href="#sealPath" startOffset="0%">
-                                ШКИТ · ЧЕЛЯБИНСК · С 2009 · ШКОЛА КИНО И ТЕАТРА ·
-                            </textPath>
-                        </text>
-                    </svg>
-                    <div class="seal__center">
-                        <b>ШКИТ</b>
-                        <i>с 2009</i>
-                    </div>
-                </div>
-
             </div>
 
         </div>
