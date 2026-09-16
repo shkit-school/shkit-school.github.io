@@ -18,14 +18,14 @@
         font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
         background: #2a2a2a;
         min-height: 100vh;
-        padding: 40px 20px 120px;
+        padding: 40px 20px 160px;
         display: flex;
         justify-content: center;
         align-items: flex-start;
     }
 
     /* ============================================================
-       ПЛАКАТ 1080×1350 — формат карусели ВК (4:5)
+       ПЛАКАТ 1080×1350
        ============================================================ */
     .post {
         position: relative;
@@ -274,18 +274,27 @@
         white-space: nowrap;
     }
 
-    /* ---------- ЗАГОЛОВОК — поверх фото ---------- */
-    .post__hero {
+    /* ---------- ЗАГОЛОВОК + QR В ОДНОЙ СТРОКЕ ---------- */
+    .post__hero-row {
+        position: relative;
+        z-index: 20;
         flex: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
         margin-top: 30px;
+        /* компенсация, чтобы «Жизнь» налезла на фото */
+        margin-bottom: -46px;
+    }
+
+    /* Левый блок — заголовок */
+    .post__hero {
+        flex: 1;
+        min-width: 0;
         transform: rotate(-2.5deg);
         transform-origin: left center;
         margin-left: -6px;
-        /* Ключевое: заголовок поверх фото */
-        position: relative;
-        z-index: 20;
-        /* Компенсация: сдвигаем вниз, чтобы нижняя строка зашла на фото */
-        margin-bottom: -46px;
     }
 
     .title {
@@ -334,7 +343,32 @@
              0 0 40px rgba(0,0,0,.5);
     }
 
-    /* ---------- ФОТО — наклон +1.5° ---------- */
+    /* Правый блок — QR */
+    .post__qr-top {
+        flex: none;
+        /* отступ 60px от правого края уже учтён паддингом .post__content (64px),
+           но добавляем ещё зазор — итого визуально ~60px от рамки */
+        margin-right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(2deg);
+    }
+
+    .qr__img {
+        width: 170px;
+        height: 170px;
+        background: #FFF7E6;
+        border-radius: 12px;
+        padding: 10px;
+        object-fit: contain;
+        display: block;
+        box-shadow:
+            0 18px 44px -12px rgba(0,0,0,.75),
+            0 0 0 4px rgba(244,199,123,.55);
+    }
+
+    /* ---------- ФОТО ---------- */
     .post__photo {
         position: relative;
         height: 540px;
@@ -351,7 +385,6 @@
         background-repeat: no-repeat;
         transform: rotate(1.5deg);
         transform-origin: center center;
-        /* z-index ниже заголовка — заголовок «лежит» на фото */
         z-index: 5;
     }
 
@@ -425,15 +458,12 @@
     }
 
     /* ============================================================
-       НИЗ
+       НИЗ — только три плашки, QR внизу НЕТ
        ============================================================ */
     .post__bottom {
         flex: none;
         margin-top: auto;
         padding-top: 22px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
     }
 
     .facts {
@@ -464,7 +494,7 @@
         white-space: nowrap;
     }
     .fact__value {
-        font-size: 30px;
+        font-size: 28px;
         font-weight: 900;
         color: #2a1a0a;
         line-height: 1;
@@ -476,66 +506,14 @@
     .fact--price .fact__label { color: #6b2a0a; }
     .fact--price .fact__value { color: #2a1a0a; }
 
-    .qr-row {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 32px;
-        background: rgba(30,6,9,.55);
-        border: 2px solid rgba(244,199,123,.4);
-        border-radius: 16px;
-        padding: 18px 32px;
-        min-height: 196px;
-        width: 92%;
-        margin: 0 auto;
-    }
-
-    .qr__img {
-        width: 168px;
-        height: 168px;
-        background: #FFF7E6;
-        border-radius: 12px;
-        padding: 10px;
-        object-fit: contain;
-        display: block;
-        box-shadow: 0 14px 34px -12px rgba(0,0,0,.7);
-        flex: none;
-    }
-
-    .qr__text {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        max-width: 400px;
-    }
-    .qr__title {
-        font-size: 32px;
-        font-weight: 900;
-        line-height: 1.1;
-        color: #fff;
-        text-transform: uppercase;
-        letter-spacing: .03em;
-        text-shadow: 0 6px 18px rgba(0,0,0,.6);
-    }
-    .qr__title span {
-        display: block;
-        color: #F4C77B;
-    }
-    .qr__hint {
-        font-size: 19px;
-        font-weight: 600;
-        line-height: 1.35;
-        color: rgba(255,255,255,.85);
-    }
-
     /* ============================================================
-       КНОПКА ЭКСПОРТА
+       КНОПКА ЭКСПОРТА — по центру снизу
        ============================================================ */
     .export-bar {
         position: fixed;
-        right: 24px;
+        left: 50%;
         bottom: 24px;
+        transform: translateX(-50%);
         z-index: 999;
         display: flex;
         gap: 10px;
@@ -599,6 +577,7 @@
 
     <div class="post__content">
 
+        <!-- Верх: лого + «3 месяца» -->
         <div class="post__top">
             <div class="post__logo">
                 <img src="assets/img/logo-white-sm.png" alt="ШКИТ">
@@ -610,13 +589,21 @@
             <div class="post__stamp">3 месяца подготовки</div>
         </div>
 
-        <!-- Заголовок — поверх фото -->
-        <div class="post__hero">
-            <h1 class="title">
-                <span class="title__row title__row--1">Давай</span>
-                <span class="title__row title__row--2">Сыграем</span>
-                <span class="title__row title__row--3">Жизнь</span>
-            </h1>
+        <!-- Строка: заголовок слева, QR справа -->
+        <div class="post__hero-row">
+
+            <div class="post__hero">
+                <h1 class="title">
+                    <span class="title__row title__row--1">Давай</span>
+                    <span class="title__row title__row--2">Сыграем</span>
+                    <span class="title__row title__row--3">Жизнь</span>
+                </h1>
+            </div>
+
+            <div class="post__qr-top">
+                <img class="qr__img" src="assets/img/qr.png" alt="QR">
+            </div>
+
         </div>
 
         <!-- Фото -->
@@ -627,13 +614,14 @@
             </div>
         </div>
 
+        <!-- Вызов -->
         <div class="post__punch">
             <span>Главная роль в спектакле</span>
             <span><em>на театральной сцене</em></span>
         </div>
 
+        <!-- Низ: только три плашки -->
         <div class="post__bottom">
-
             <div class="facts">
                 <div class="fact">
                     <span class="fact__label">Ср · Вс</span>
@@ -648,18 +636,6 @@
                     <span class="fact__value">+7 919 404-01-23</span>
                 </div>
             </div>
-
-            <div class="qr-row">
-                <img class="qr__img" src="assets/img/qr.png" alt="QR">
-                <div class="qr__text">
-                    <div class="qr__title">
-                        Запишись
-                        <span>в проект</span>
-                    </div>
-                    <div class="qr__hint">Наведи камеру телефона — и мы на связи</div>
-                </div>
-            </div>
-
         </div>
 
     </div>
