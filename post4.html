@@ -24,9 +24,6 @@
         align-items: flex-start;
     }
 
-    /* ============================================================
-       ПЛАКАТ 1080×1350
-       ============================================================ */
     .post {
         position: relative;
         width: 1080px;
@@ -218,7 +215,7 @@
         flex-direction: column;
     }
 
-    /* ---------- ВЕРХ: плашка слева, лого справа ---------- */
+    /* ---------- ВЕРХ ---------- */
     .post__top {
         display: flex;
         justify-content: space-between;
@@ -278,7 +275,7 @@
         text-shadow: 0 4px 14px rgba(0,0,0,.55);
     }
 
-    /* ---------- ЗАГОЛОВОК + QR: QR слева, заголовок справа ---------- */
+    /* ---------- ЗАГОЛОВОК + QR ---------- */
     .post__hero-row {
         position: relative;
         z-index: 20;
@@ -389,57 +386,75 @@
     }
 
     /* ============================================================
-       СТИКЕР — «Поэтический спектакль / свет, музыка, поэзия и ТЫ»
+       СТИКЕР — справа, вертикальный
        ============================================================ */
     .sticker {
         position: absolute;
-        left: 26px;
+        right: 60px;
         bottom: 26px;
-        z-index: 4;
+        z-index: 6;
         background: #FFF7E6;
         color: #2a1a0a;
-        padding: 24px 34px 30px;
+        padding: 26px 32px 32px;
         border-radius: 10px;
-        transform: rotate(4deg);
+        transform: rotate(-4deg);
         box-shadow:
-            0 26px 60px -14px rgba(0,0,0,.75),
+            0 26px 60px -14px rgba(0,0,0,.8),
             0 0 0 3px rgba(255,247,230,.4);
-        min-width: 420px;
+        min-width: 320px;
     }
 
+    /* «ПОЭТИЧЕСКИЙ / СПЕКТАКЛЬ» — красным, в две строки */
     .sticker__label {
-        font-size: 17px;
+        font-size: 22px;
         font-weight: 900;
-        letter-spacing: .16em;
+        letter-spacing: .1em;
         text-transform: uppercase;
         color: #A02424;
-        margin-bottom: 12px;
+        line-height: 1.15;
         white-space: nowrap;
     }
 
+    /* Золотая разделительная линия */
+    .sticker__divider {
+        width: 100%;
+        height: 3px;
+        margin: 14px 0 16px;
+        background: linear-gradient(90deg,
+            #F4C77B 0%,
+            rgba(244,199,123,.25) 100%);
+        border-radius: 2px;
+    }
+
+    /* «свет, музыка / поэзия и / ТЫ» */
     .sticker__text {
-        font-size: 22px;
+        font-size: 24px;
         font-weight: 800;
-        line-height: 1.2;
+        line-height: 1.3;
         color: #2a1a0a;
         white-space: nowrap;
-        display: flex;
-        align-items: baseline;
-        gap: 12px;
+    }
+    .sticker__text .sticker__line {
+        display: block;
+    }
+    .sticker__text .sticker__you-wrap {
+        display: block;
+        text-align: right;
+        margin-top: 6px;
     }
 
     /* ТЫ — крупное, красное, наклонено, подчёркнуто */
     .sticker__you {
         display: inline-block;
-        font-size: 52px;
+        font-size: 56px;
         font-weight: 900;
         line-height: .85;
         letter-spacing: .06em;
         text-transform: uppercase;
         color: #A02424;
-        transform: rotate(-6deg) translateY(-2px);
+        transform: rotate(-6deg) translateY(-4px);
         position: relative;
-        padding: 0 8px;
+        padding: 0 6px;
     }
     .sticker__you::after {
         content: "";
@@ -607,7 +622,6 @@
 
     <div class="post__content">
 
-        <!-- Верх: плашка слева, лого справа -->
         <div class="post__top">
             <div class="post__stamp">Театрально-поэтическая мастерская</div>
             <div class="post__logo">
@@ -619,40 +633,39 @@
             </div>
         </div>
 
-        <!-- Строка: QR слева, заголовок справа -->
         <div class="post__hero-row">
-
             <div class="post__qr-top">
                 <img class="qr__img" src="assets/img/qr.png" alt="QR">
             </div>
-
             <div class="post__hero">
                 <h1 class="title">
                     <span class="title__row title__row--1">Магия</span>
                     <span class="title__row title__row--2">Слов</span>
                 </h1>
             </div>
-
         </div>
 
-        <!-- Фото -->
         <div class="post__photo">
             <div class="sticker">
-                <div class="sticker__label">Поэтический спектакль</div>
+                <div class="sticker__label">
+                    Поэтический<br>спектакль
+                </div>
+                <div class="sticker__divider"></div>
                 <div class="sticker__text">
-                    свет, музыка, поэзия и
-                    <span class="sticker__you">Ты</span>
+                    <span class="sticker__line">свет, музыка</span>
+                    <span class="sticker__line">поэзия и</span>
+                    <span class="sticker__you-wrap">
+                        <span class="sticker__you">Ты</span>
+                    </span>
                 </div>
             </div>
         </div>
 
-        <!-- Вызов -->
         <div class="post__punch">
             <span>Твой голос, живые стихи</span>
             <span><em>и камерная сцена</em></span>
         </div>
 
-        <!-- Низ -->
         <div class="post__bottom">
             <div class="facts">
                 <div class="fact">
