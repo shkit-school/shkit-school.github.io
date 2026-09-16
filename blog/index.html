@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -78,11 +79,25 @@
             font-size: 18px;
             margin-bottom: 16px;
         }
-        .blog-card a {
+        .blog-card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-top: auto;
+            gap: 10px;
+        }
+        .blog-card-actions .read-link {
             color: var(--coral-ink);
             font-weight: 700;
             font-size: 14px;
+        }
+        .blog-card-actions .all-link {
+            color: var(--ink);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .blog-card-actions .all-link:hover {
+            color: var(--coral-ink);
         }
         .blog-more-btn {
             display: none;
@@ -138,9 +153,15 @@
         "blogPost": [
             {
                 "@type": "BlogPosting",
-                "headline": "Ребёнок стесняется и боится сцены: что делать родителю",
-                "url": "https://shkit-school.github.io/blog/statya-1.html",
-                "datePublished": "2026-09-05"
+                "headline": "Как актёрский курс развивает память",
+                "url": "https://shkit-school.github.io/blog/statya-4.html",
+                "datePublished": "2026-09-16"
+            },
+            {
+                "@type": "BlogPosting",
+                "headline": "Можно ли начать заниматься театром в 25, 35, 50 лет",
+                "url": "https://shkit-school.github.io/blog/statya-3.html",
+                "datePublished": "2026-09-19"
             },
             {
                 "@type": "BlogPosting",
@@ -150,9 +171,9 @@
             },
             {
                 "@type": "BlogPosting",
-                "headline": "Можно ли начать заниматься театром в 25, 35, 50 лет",
-                "url": "https://shkit-school.github.io/blog/statya-3.html",
-                "datePublished": "2026-09-19"
+                "headline": "Ребёнок стесняется и боится сцены: что делать родителю",
+                "url": "https://shkit-school.github.io/blog/statya-1.html",
+                "datePublished": "2026-09-05"
             }
         ]
     }
@@ -196,32 +217,59 @@
     <section class="section bg-white">
         <div class="wrap">
             <div class="blog-grid" id="blog-grid">
+
+                <!-- ===== НОВАЯ СТАТЬЯ (первая) ===== -->
+                <article class="blog-card">
+                    <img src="../assets/img/gallery-06.jpg" alt="Дети на занятии в ШКИТ" loading="lazy">
+                    <div class="blog-card-body">
+                        <div class="blog-card-date">16.09.2026</div>
+                        <h3>Как актёрский курс развивает память</h3>
+                        <div class="blog-card-actions">
+                            <a class="read-link" href="statya-4.html">Читать →</a>
+                            <a class="all-link" href="index.html">Все статьи →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ===== Статья 1 ===== -->
                 <article class="blog-card">
                     <img src="../assets/img/gallery-05.jpg" alt="Ребёнок стесняется сцены" loading="lazy">
                     <div class="blog-card-body">
                         <div class="blog-card-date">05.09.2026</div>
                         <h3>Ребёнок стесняется и боится сцены: что делать родителю</h3>
-                        <a href="statya-1.html">Читать →</a>
+                        <div class="blog-card-actions">
+                            <a class="read-link" href="statya-1.html">Читать →</a>
+                            <a class="all-link" href="index.html">Все статьи →</a>
+                        </div>
                     </div>
                 </article>
 
+                <!-- ===== Статья 2 ===== -->
                 <article class="blog-card">
                     <img src="../assets/img/gallery-06.jpg" alt="Подросток молчит и закрывается" loading="lazy">
                     <div class="blog-card-body">
                         <div class="blog-card-date">12.09.2026</div>
                         <h3>Подросток молчит и закрывается: как театр помогает вернуть голос</h3>
-                        <a href="statya-2.html">Читать →</a>
+                        <div class="blog-card-actions">
+                            <a class="read-link" href="statya-2.html">Читать →</a>
+                            <a class="all-link" href="index.html">Все статьи →</a>
+                        </div>
                     </div>
                 </article>
 
+                <!-- ===== Статья 3 ===== -->
                 <article class="blog-card">
                     <img src="../assets/img/gal130.webp" alt="Взрослые ученики ШКИТ на сцене" loading="lazy">
                     <div class="blog-card-body">
                         <div class="blog-card-date">19.09.2026</div>
                         <h3>Можно ли начать заниматься театром в 25, 35, 50 лет</h3>
-                        <a href="statya-3.html">Читать →</a>
+                        <div class="blog-card-actions">
+                            <a class="read-link" href="statya-3.html">Читать →</a>
+                            <a class="all-link" href="index.html">Все статьи →</a>
+                        </div>
                     </div>
                 </article>
+
             </div>
 
             <div style="text-align:center; margin-top:30px;">
@@ -250,6 +298,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!grid || !btn) return;
 
     var cards = grid.querySelectorAll('.blog-card');
+    var step = window.innerWidth <= 768 ? 3 : 3;  // можно менять: на мобильном +3, на десктопе +3
     var visibleCount = 3;
 
     function update() {
@@ -260,7 +309,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     btn.addEventListener('click', function() {
-        visibleCount += 3;
+        visibleCount += step;
         update();
     });
 
