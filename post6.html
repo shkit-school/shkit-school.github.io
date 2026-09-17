@@ -26,40 +26,47 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 .post__frame{position:absolute;inset:24px;z-index:8;pointer-events:none;border:2px solid rgba(244,199,123,.5)}
 .post__frame::after{content:"";position:absolute;inset:7px;border:1px solid rgba(244,199,123,.25)}
 
-.post__content{position:relative;z-index:20;height:100%;padding:44px 56px 48px;display:flex;flex-direction:column}
-.post__top{display:flex;justify-content:space-between;align-items:center;height:68px;flex:none}
-.post__logo{display:flex;align-items:center;gap:16px}
-.post__logo img{height:68px;width:auto;display:block;filter:drop-shadow(0 6px 16px rgba(0,0,0,.5))}
-.post__logo-text b{display:block;font-size:30px;font-weight:900;line-height:1;letter-spacing:.01em;text-shadow:0 6px 20px rgba(0,0,0,.55)}
-.post__logo-text span{display:block;font-size:16px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.92);margin-top:6px;text-shadow:0 4px 14px rgba(0,0,0,.55)}
-.post__stamp{font-size:20px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#3a0a0d;background:linear-gradient(180deg,#F7D28A 0%,#E8B96A 100%);padding:14px 26px;border-radius:8px;transform:rotate(2deg);box-shadow:0 18px 40px -10px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.5);white-space:nowrap}
+.post__content{position:relative;z-index:20;height:100%;padding:40px 52px 44px;display:flex;flex-direction:column}
+.post__top{display:flex;justify-content:space-between;align-items:center;height:64px;flex:none}
+.post__logo{display:flex;align-items:center;gap:14px}
+.post__logo img{height:64px;width:auto;display:block;filter:drop-shadow(0 6px 16px rgba(0,0,0,.5))}
+.post__logo-text b{display:block;font-size:28px;font-weight:900;line-height:1;letter-spacing:.01em;text-shadow:0 6px 20px rgba(0,0,0,.55)}
+.post__logo-text span{display:block;font-size:15px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.92);margin-top:5px;text-shadow:0 4px 14px rgba(0,0,0,.55)}
+.post__stamp{font-size:19px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#3a0a0d;background:linear-gradient(180deg,#F7D28A 0%,#E8B96A 100%);padding:12px 24px;border-radius:8px;transform:rotate(2deg);box-shadow:0 18px 40px -10px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.5);white-space:nowrap}
 
-.post__hero{margin-top:22px;position:relative;z-index:20;display:flex;align-items:flex-start;justify-content:space-between;gap:28px}
+.post__hero{margin-top:18px;position:relative;z-index:20;display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
 .post__hero-text{flex:1;min-width:0}
-
-/* КИКЕР — АКЦЕНТ: крупнее, золотом, с подчёркиванием */
-.kicker{display:inline-block;font-size:26px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#F4C77B;text-shadow:0 4px 14px rgba(0,0,0,.7);margin-bottom:16px;white-space:nowrap;position:relative;padding-bottom:8px}
+.kicker{display:inline-block;font-size:24px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#F4C77B;text-shadow:0 4px 14px rgba(0,0,0,.7);margin-bottom:14px;white-space:nowrap;position:relative;padding-bottom:8px}
 .kicker::after{content:"";position:absolute;left:0;right:8px;bottom:0;height:4px;background:linear-gradient(90deg,#F4C77B 0%,#F4C77B 70%,rgba(244,199,123,0) 100%);border-radius:2px;transform:rotate(-1deg)}
-
-.punch-title{font-size:118px;font-weight:900;font-style:italic;line-height:.88;letter-spacing:-.04em;text-transform:uppercase;color:#fff;text-shadow:-2px -2px 0 rgba(30,10,10,.7),2px -2px 0 rgba(30,10,10,.7),-2px 2px 0 rgba(30,10,10,.7),2px 2px 0 rgba(30,10,10,.7),0 14px 46px rgba(0,0,0,.85);transform:rotate(-2deg);transform-origin:left center;margin-left:-4px}
+.punch-title{font-size:108px;font-weight:900;font-style:italic;line-height:.88;letter-spacing:-.04em;text-transform:uppercase;color:#fff;text-shadow:-2px -2px 0 rgba(30,10,10,.7),2px -2px 0 rgba(30,10,10,.7),-2px 2px 0 rgba(30,10,10,.7),2px 2px 0 rgba(30,10,10,.7),0 14px 46px rgba(0,0,0,.85);transform:rotate(-2deg);transform-origin:left center;margin-left:-4px}
 .punch-title em{font-style:italic;color:#F4C77B}
 .post__qr-top{flex:none;display:flex;align-items:flex-start;margin-top:6px}
-.qr__img{width:140px;height:140px;background:#FFF7E6;border-radius:12px;padding:10px;object-fit:contain;display:block;box-shadow:0 18px 44px -12px rgba(0,0,0,.75),0 0 0 4px rgba(244,199,123,.55);transform:rotate(3deg)}
+.qr__img{width:130px;height:130px;background:#FFF7E6;border-radius:12px;padding:10px;object-fit:contain;display:block;box-shadow:0 18px 44px -12px rgba(0,0,0,.75),0 0 0 4px rgba(244,199,123,.55);transform:rotate(3deg)}
 
-/* СЕТКА КАРТОЧЕК — компактнее по вертикали, крупнее мелкий текст */
-.facts{margin-top:26px;flex:none;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:14px}
-.fact{position:relative;padding:18px 18px 16px;border-radius:14px;background:rgba(255,247,230,.97);color:#2a1a0a;box-shadow:0 20px 44px -14px rgba(0,0,0,.7),0 0 0 3px rgba(244,199,123,.4);display:flex;flex-direction:column;overflow:hidden;min-height:230px}
+/* СЕТКА 6 КАРТОЧЕК */
+.facts{margin-top:22px;flex:none;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:12px}
+.fact{position:relative;padding:16px 16px 14px;border-radius:12px;background:rgba(255,247,230,.97);color:#2a1a0a;box-shadow:0 20px 44px -14px rgba(0,0,0,.7),0 0 0 3px rgba(244,199,123,.4);display:flex;flex-direction:column;overflow:hidden;min-height:200px}
 .fact:nth-child(1){transform:rotate(-2.5deg)}
 .fact:nth-child(2){transform:rotate(1.5deg)}
 .fact:nth-child(3){transform:rotate(-1deg)}
 .fact:nth-child(4){transform:rotate(2deg)}
 .fact:nth-child(5){transform:rotate(-1.5deg)}
 .fact:nth-child(6){transform:rotate(2.5deg)}
-.fact__num{font-size:48px;font-weight:900;font-style:italic;color:#A02424;line-height:1;letter-spacing:-.05em;margin-bottom:6px;text-shadow:0 2px 0 rgba(255,255,255,.5)}
-.fact__title{font-size:28px;font-weight:900;line-height:1.02;text-transform:uppercase;color:#2a1a0a;letter-spacing:-.02em;margin-bottom:10px}
-.fact__text{font-size:22px;font-weight:700;line-height:1.25;color:#5a2a1a;margin-top:auto}
+.fact__num{font-size:42px;font-weight:900;font-style:italic;color:#A02424;line-height:1;letter-spacing:-.05em;margin-bottom:4px;text-shadow:0 2px 0 rgba(255,255,255,.5)}
+.fact__title{font-size:24px;font-weight:900;line-height:1.02;text-transform:uppercase;color:#2a1a0a;letter-spacing:-.02em;margin-bottom:8px}
+.fact__text{font-size:19px;font-weight:700;line-height:1.22;color:#5a2a1a;margin-top:auto}
 
-.post__bottom{flex:none;margin-top:22px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:stretch}
+/* БЛОК ЦИФР — крупно, дерзко, игриво */
+.numbers{margin-top:26px;position:relative;z-index:20;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;flex:none}
+.num{position:relative;text-align:center;padding:6px 8px}
+.num:nth-child(1){transform:rotate(-2deg)}
+.num:nth-child(2){transform:rotate(1.5deg);margin-top:-6px}
+.num:nth-child(3){transform:rotate(-1deg)}
+.num__value{font-size:88px;font-weight:900;font-style:italic;line-height:.9;letter-spacing:-.05em;color:#F4C77B;text-shadow:-3px -3px 0 rgba(30,10,10,.85),3px -3px 0 rgba(30,10,10,.85),-3px 3px 0 rgba(30,10,10,.85),3px 3px 0 rgba(30,10,10,.85),0 12px 30px rgba(0,0,0,.7)}
+.num__label{font-size:17px;font-weight:900;line-height:1.15;text-transform:uppercase;color:#FFF7E6;letter-spacing:.02em;margin-top:8px;text-shadow:0 4px 14px rgba(0,0,0,.7)}
+
+/* НИЗ — телефон + ЗАПИШИСЬ */
+.post__bottom{flex:none;margin-top:auto;padding-top:20px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:stretch}
 .phone-card{display:flex;flex-direction:column;justify-content:center;gap:6px;padding:16px 26px;border-radius:14px;background:rgba(255,247,230,.95);color:#2a1a0a;box-shadow:0 16px 36px -12px rgba(0,0,0,.6)}
 .phone-card .label{font-size:14px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#A02424}
 .phone-card .value{font-size:32px;font-weight:900;color:#2a1a0a;line-height:1;letter-spacing:.02em}
@@ -120,7 +127,7 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 <div class="fact">
 <div class="fact__num">03</div>
 <div class="fact__title">Поступают.<br>Каждый год.</div>
-<div class="fact__text">В театральные вузы и колледжи Москвы, СПб, Екатеринбурга.</div>
+<div class="fact__text">В театральные вузы и колледжи.</div>
 </div>
 <div class="fact">
 <div class="fact__num">04</div>
@@ -136,6 +143,21 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 <div class="fact__num">06</div>
 <div class="fact__title">Возвращаются.</div>
 <div class="fact__text">Даже выпускники. Это не школа. Это свои.</div>
+</div>
+</div>
+
+<div class="numbers">
+<div class="num">
+<div class="num__value">5000+</div>
+<div class="num__label">учеников</div>
+</div>
+<div class="num">
+<div class="num__value">500+</div>
+<div class="num__label">киноработ<br>и постановок</div>
+</div>
+<div class="num">
+<div class="num__value">100+</div>
+<div class="num__label">поступили<br>по профилю</div>
 </div>
 </div>
 
