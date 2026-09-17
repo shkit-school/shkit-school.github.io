@@ -41,7 +41,7 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 .title__row{display:block}
 .title__row--1{font-size:240px;font-weight:900;font-style:italic;color:#8C1D24;letter-spacing:-.06em;line-height:.82;text-shadow:-2px -2px 0 rgba(255,250,230,.75),2px -2px 0 rgba(255,250,230,.75),-2px 2px 0 rgba(255,250,230,.75),2px 2px 0 rgba(255,250,230,.75),0 18px 50px rgba(0,0,0,.45)}
 .title__divider{width:340px;height:3px;background:linear-gradient(90deg,rgba(140,29,36,0) 0%,#8C1D24 20%,#8C1D24 80%,rgba(140,29,36,0) 100%);margin:12px 0 14px;border-radius:2px}
-.title__row--2{font-size:118px;font-weight:900;color:#8C1D24;letter-spacing:.02em;line-height:.9;text-shadow:-2px -2px 0 rgba(255,250,230,.65),2px -2px 0 rgba(255,250,230,.65),-2px 2px 0 rgba(255,250,230,.65),2px 2px 0 rgba(255,250,230,.65),0 14px 40px rgba(0,0,0,.4)}
+.title__row--2{font-size:118px;font-weight:900;color:#FFF7E6;letter-spacing:.02em;line-height:.9;text-shadow:-2px -2px 0 rgba(90,10,10,.85),2px -2px 0 rgba(90,10,10,.85),-2px 2px 0 rgba(90,10,10,.85),2px 2px 0 rgba(90,10,10,.85),0 14px 40px rgba(0,0,0,.55)}
 .post__photo{position:relative;height:520px;flex:none;margin-top:20px;overflow:hidden;box-shadow:0 34px 80px -22px rgba(0,0,0,.7),0 0 0 4px rgba(140,29,36,.75),0 0 0 5px rgba(0,0,0,.35);background-image:url('assets/img/adults.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;transform:rotate(-1.5deg);transform-origin:center;z-index:5}
 .post__photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.5) 100%);pointer-events:none}
 .sticker{position:absolute;right:36px;bottom:26px;z-index:6;background:linear-gradient(180deg,#A02424 0%,#7a1418 100%);color:#F4C77B;padding:22px 28px 24px;border-radius:10px;transform:rotate(-4deg);box-shadow:0 26px 60px -14px rgba(0,0,0,.85),0 0 0 3px rgba(244,199,123,.65);min-width:280px}
@@ -52,14 +52,17 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 .punch-star{position:absolute;left:0;top:-260px;width:440px;height:440px;transform:rotate(-8deg);filter:drop-shadow(0 26px 46px rgba(0,0,0,.6));z-index:1}
 .punch-star__rays{position:absolute;inset:-40px;pointer-events:none;z-index:0}
 .punch-star__rays i{position:absolute;left:50%;top:50%;width:5px;height:40px;margin-left:-2.5px;margin-top:-20px;background:linear-gradient(180deg,rgba(255,248,210,0) 0%,rgba(255,248,210,.95) 50%,rgba(255,248,210,0) 100%);border-radius:2px;transform-origin:center;transform:rotate(var(--a,0deg)) translateY(-260px);filter:blur(.5px)}
+/* КРАСНАЯ ОКАНТОВКА — слой чуть больше звезды, под ней */
+.punch-star__outline{position:absolute;inset:-8px;z-index:0;background:linear-gradient(160deg,#B02424 0%,#8C1D24 50%,#5e0f13 100%);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
 .punch-star__shape{position:absolute;inset:0;z-index:1;background:radial-gradient(60% 45% at 32% 22%,rgba(255,255,255,.95) 0%,rgba(255,255,255,.35) 22%,rgba(255,255,255,0) 55%),linear-gradient(160deg,#FFEFB0 0%,#F7D770 22%,#E7B84E 48%,#C79330 72%,#8E6518 100%);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
 .punch-star__gloss{position:absolute;inset:0;z-index:2;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);background:linear-gradient(115deg,rgba(255,255,255,0) 28%,rgba(255,255,255,.75) 42%,rgba(255,255,255,.98) 48%,rgba(255,255,255,.6) 54%,rgba(255,255,255,0) 68%),radial-gradient(14% 10% at 30% 24%,rgba(255,255,255,1) 0%,rgba(255,255,255,0) 70%);mix-blend-mode:screen;pointer-events:none}
 .punch-star__shade{position:absolute;inset:0;z-index:3;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);background:linear-gradient(15deg,rgba(90,50,10,.55) 0%,rgba(90,50,10,.25) 22%,rgba(90,50,10,0) 50%);pointer-events:none}
 .punch-star__text{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:center;font-size:100px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#FFF7E6;text-shadow:-3px -3px 0 rgba(60,10,10,.95),3px -3px 0 rgba(60,10,10,.95),-3px 3px 0 rgba(60,10,10,.95),3px 3px 0 rgba(60,10,10,.95),0 8px 22px rgba(0,0,0,.55);line-height:1;padding-bottom:18px}
-.punch-text{position:relative;z-index:10;font-size:54px;font-weight:900;line-height:1.2;color:#8C1D24;letter-spacing:-.01em;text-shadow:-1.5px -1.5px 0 rgba(255,250,230,.9),1.5px -1.5px 0 rgba(255,250,230,.9),-1.5px 1.5px 0 rgba(255,250,230,.9),1.5px 1.5px 0 rgba(255,250,230,.9),0 8px 22px rgba(0,0,0,.5)}
+/* ТЕКСТ ПОД ФОТО — БЕЛЫЙ */
+.punch-text{position:relative;z-index:10;font-size:54px;font-weight:900;line-height:1.2;color:#FFF7E6;letter-spacing:-.01em;text-shadow:-2px -2px 0 rgba(90,10,10,.85),2px -2px 0 rgba(90,10,10,.85),-2px 2px 0 rgba(90,10,10,.85),2px 2px 0 rgba(90,10,10,.85),0 8px 22px rgba(0,0,0,.55)}
 .punch-text .line{display:block;text-align:center}
-.punch-text em{font-style:italic;font-weight:900;color:#5e0f13}
-.punch-text .accent{position:relative;display:inline-block;color:#7a1418}
+.punch-text em{font-style:italic;font-weight:900;color:#FFF7E6}
+.punch-text .accent{position:relative;display:inline-block;color:#FFF7E6}
 .punch-text .accent::after{content:"";position:absolute;left:-4px;right:-4px;bottom:0;height:5px;background:linear-gradient(90deg,rgba(244,199,123,0) 0%,#F4C77B 15%,#F4C77B 85%,rgba(244,199,123,0) 100%);border-radius:3px;transform:rotate(-1.5deg)}
 .post__bottom{flex:none;margin-top:auto;padding-top:22px;display:grid;grid-template-columns:1.5fr auto;gap:16px;align-items:end}
 .fact-exclusive{display:flex;flex-direction:column;justify-content:center;gap:6px;padding:16px 28px;height:108px;border-radius:14px;background:linear-gradient(180deg,#A02424 0%,#7a1418 100%);color:#F4C77B;box-shadow:0 20px 44px -12px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.15)}
@@ -124,6 +127,7 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 <i style="--a:0deg"></i><i style="--a:45deg"></i><i style="--a:90deg"></i><i style="--a:135deg"></i>
 <i style="--a:180deg"></i><i style="--a:225deg"></i><i style="--a:270deg"></i><i style="--a:315deg"></i>
 </span>
+<span class="punch-star__outline"></span>
 <span class="punch-star__shape"></span>
 <span class="punch-star__gloss"></span>
 <span class="punch-star__shade"></span>
