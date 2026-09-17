@@ -14,7 +14,6 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 .post{position:relative;width:1080px;height:1350px;overflow:hidden;background:#8C1D24;color:#fff;isolation:isolate;box-shadow:0 40px 120px -30px rgba(0,0,0,.8);flex:none}
 @media(max-width:1180px),(max-height:1500px){html,body{padding:20px 10px 80px}.post{zoom:.62}}
 @media(max-width:640px){.post{zoom:.36}}
-
 .post__bg{position:absolute;inset:0;z-index:0;background:radial-gradient(120% 85% at 50% 28%,#B0242C 0%,#8C1D24 40%,#6B131A 75%,#4A0D13 100%)}
 .post__lights{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(28% 68% at 30% 0%,rgba(255,240,225,.34) 0%,rgba(255,225,210,.16) 35%,rgba(255,220,200,0) 70%),radial-gradient(32% 78% at 50% 0%,rgba(255,245,235,.46) 0%,rgba(255,235,220,.24) 35%,rgba(255,225,205,0) 72%),radial-gradient(28% 68% at 70% 0%,rgba(255,240,225,.34) 0%,rgba(255,225,210,.16) 35%,rgba(255,220,200,0) 70%)}
 .post__haze{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(52% 24% at 50% 4%,rgba(255,240,220,.24) 0%,rgba(255,215,180,.10) 40%,rgba(0,0,0,0) 75%)}
@@ -25,7 +24,6 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 .post__grain{position:absolute;inset:0;z-index:7;pointer-events:none;opacity:.12;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");background-size:120px 120px}
 .post__frame{position:absolute;inset:24px;z-index:8;pointer-events:none;border:2px solid rgba(244,199,123,.5)}
 .post__frame::after{content:"";position:absolute;inset:7px;border:1px solid rgba(244,199,123,.25)}
-
 .post__content{position:relative;z-index:20;height:100%;padding:40px 52px 44px;display:flex;flex-direction:column}
 .post__top{display:flex;justify-content:space-between;align-items:center;height:64px;flex:none}
 .post__logo{display:flex;align-items:center;gap:14px}
@@ -33,7 +31,6 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 .post__logo-text b{display:block;font-size:28px;font-weight:900;line-height:1;letter-spacing:.01em;text-shadow:0 6px 20px rgba(0,0,0,.55)}
 .post__logo-text span{display:block;font-size:15px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.92);margin-top:5px;text-shadow:0 4px 14px rgba(0,0,0,.55)}
 .post__stamp{font-size:19px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#3a0a0d;background:linear-gradient(180deg,#F7D28A 0%,#E8B96A 100%);padding:12px 24px;border-radius:8px;transform:rotate(2deg);box-shadow:0 18px 40px -10px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.5);white-space:nowrap}
-
 .post__hero{margin-top:18px;position:relative;z-index:20;display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
 .post__hero-text{flex:1;min-width:0}
 .kicker{display:inline-block;font-size:24px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#F4C77B;text-shadow:0 4px 14px rgba(0,0,0,.7);margin-bottom:14px;white-space:nowrap;position:relative;padding-bottom:8px}
@@ -42,7 +39,6 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 .punch-title em{font-style:italic;color:#F4C77B}
 .post__qr-top{flex:none;display:flex;align-items:flex-start;margin-top:6px}
 .qr__img{width:130px;height:130px;background:#FFF7E6;border-radius:12px;padding:10px;object-fit:contain;display:block;box-shadow:0 18px 44px -12px rgba(0,0,0,.75),0 0 0 4px rgba(244,199,123,.55);transform:rotate(3deg)}
-
 .facts{margin-top:20px;flex:none;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:12px}
 .fact{position:relative;padding:14px 14px 12px;border-radius:12px;background:rgba(255,247,230,.97);color:#2a1a0a;box-shadow:0 20px 44px -14px rgba(0,0,0,.7),0 0 0 3px rgba(244,199,123,.4);display:flex;flex-direction:column;overflow:hidden;min-height:180px}
 .fact:nth-child(1){transform:rotate(-2.5deg)}
@@ -54,22 +50,19 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 .fact__num{font-size:38px;font-weight:900;font-style:italic;color:#A02424;line-height:1;letter-spacing:-.05em;margin-bottom:4px;text-shadow:0 2px 0 rgba(255,255,255,.5)}
 .fact__title{font-size:22px;font-weight:900;line-height:1.02;text-transform:uppercase;color:#2a1a0a;letter-spacing:-.02em;margin-bottom:8px}
 .fact__text{font-size:17px;font-weight:700;line-height:1.22;color:#5a2a1a;margin-top:auto}
-
-/* БЛОК ЦИФР — ДВЕ ГИГАНТСКИЕ ЦИФРЫ, ЗАПОЛНЯЮТ ВСЁ ПРОСТРАНСТВО */
-.numbers{flex:1;min-height:0;margin-top:18px;position:relative;z-index:20;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
-.num{position:relative;text-align:center;padding:8px}
-.num:nth-child(1){transform:rotate(-2.5deg)}
-.num:nth-child(2){transform:rotate(2deg);margin-top:-20px}
-.num__value{font-size:200px;font-weight:900;font-style:italic;line-height:.82;letter-spacing:-.07em;color:#F4C77B;text-shadow:-5px -5px 0 rgba(30,10,10,.9),5px -5px 0 rgba(30,10,10,.9),-5px 5px 0 rgba(30,10,10,.9),5px 5px 0 rgba(30,10,10,.9),0 20px 48px rgba(0,0,0,.8)}
+/* БЛОК ЦИФР — 5000+ слева сверху, 500+ справа снизу */
+.numbers{flex:1;min-height:0;margin-top:18px;position:relative;z-index:20;display:flex;flex-direction:column;justify-content:space-between;padding:10px 0}
+.num{position:relative;padding:8px}
+.num:nth-child(1){transform:rotate(-2.5deg);align-self:flex-start;text-align:left}
+.num:nth-child(2){transform:rotate(2deg);align-self:flex-end;text-align:right;margin-top:-30px}
+.num__value{font-size:180px;font-weight:900;font-style:italic;line-height:.82;letter-spacing:-.07em;color:#F4C77B;text-shadow:-5px -5px 0 rgba(30,10,10,.9),5px -5px 0 rgba(30,10,10,.9),-5px 5px 0 rgba(30,10,10,.9),5px 5px 0 rgba(30,10,10,.9),0 20px 48px rgba(0,0,0,.8)}
 .num__label{font-size:28px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#FFF7E6;letter-spacing:.03em;margin-top:14px;text-shadow:0 6px 18px rgba(0,0,0,.75)}
 .num__label b{color:#F4C77B}
-
 .post__bottom{flex:none;margin-top:20px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:stretch}
 .phone-card{display:flex;flex-direction:column;justify-content:center;gap:6px;padding:16px 26px;border-radius:14px;background:rgba(255,247,230,.95);color:#2a1a0a;box-shadow:0 16px 36px -12px rgba(0,0,0,.6)}
 .phone-card .label{font-size:14px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#A02424}
 .phone-card .value{font-size:32px;font-weight:900;color:#2a1a0a;line-height:1;letter-spacing:.02em}
 .cta-card{display:flex;align-items:center;justify-content:center;padding:16px 36px;border-radius:14px;background:linear-gradient(180deg,#F7D28A 0%,#E8B96A 100%);color:#2a1a0a;font-size:22px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 20px 44px -14px rgba(0,0,0,.7);white-space:nowrap;transform:rotate(-1.5deg)}
-
 .export-bar{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:99999;display:flex;gap:10px;align-items:center}
 .export-btn{font-family:inherit;font-size:15px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#2a1a0a;background:linear-gradient(180deg,#F7D28A 0%,#E8B96A 100%);border:none;border-radius:10px;padding:14px 22px;cursor:pointer;box-shadow:0 14px 32px -8px rgba(0,0,0,.7);transition:transform .15s ease}
 .export-btn:hover{transform:translateY(-2px)}
@@ -80,7 +73,6 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 </style>
 </head>
 <body>
-
 <div class="post" id="post">
 <div class="post__bg"></div>
 <div class="post__lights"></div>
@@ -90,9 +82,7 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 <div class="post__vignette"></div>
 <div class="post__grain"></div>
 <div class="post__frame"></div>
-
 <div class="post__content">
-
 <div class="post__top">
 <div class="post__logo">
 <img src="assets/img/logo-white-sm.png" alt="ШКИТ">
@@ -100,7 +90,6 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 </div>
 <div class="post__stamp">с 2009</div>
 </div>
-
 <div class="post__hero">
 <div class="post__hero-text">
 <div class="kicker">Курсы для детей и взрослых</div>
@@ -110,7 +99,6 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 </div>
 <div class="post__qr-top"><img class="qr__img" src="assets/img/qr.png" alt="QR"></div>
 </div>
-
 <div class="facts">
 <div class="fact">
 <div class="fact__num">01</div>
@@ -143,7 +131,6 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 <div class="fact__text">Даже выпускники. Это не школа. Это свои.</div>
 </div>
 </div>
-
 <div class="numbers">
 <div class="num">
 <div class="num__value">5000+</div>
@@ -154,7 +141,6 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 <div class="num__label">киноработ и<br><b>театральных постановок</b></div>
 </div>
 </div>
-
 <div class="post__bottom">
 <div class="phone-card">
 <span class="label">Запись</span>
@@ -162,17 +148,14 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 </div>
 <div class="cta-card">Запишись</div>
 </div>
-
 </div>
 </div>
-
 <div class="export-bar" id="exportBar">
 <span class="export-status" id="status">Готов к экспорту</span>
 <button class="export-btn" id="previewBtn">Проверить</button>
 <button class="export-btn" id="exportBtn">Скачать PNG</button>
 <button class="export-hide" id="hideBtn" title="Скрыть (вернуть — Esc)">×</button>
 </div>
-
 <script>
 (function(){
 var btn=document.getElementById('exportBtn'),previewBtn=document.getElementById('previewBtn'),hideBtn=document.getElementById('hideBtn'),status=document.getElementById('status'),post=document.getElementById('post'),bar=document.getElementById('exportBar');
@@ -196,6 +179,5 @@ btn.addEventListener('click',async function(){
 });
 })();
 </script>
-
 </body>
 </html>
