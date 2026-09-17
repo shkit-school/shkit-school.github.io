@@ -31,17 +31,16 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 .post__logo-text b{display:block;font-size:28px;font-weight:900;line-height:1;letter-spacing:.01em;text-shadow:0 6px 20px rgba(0,0,0,.55)}
 .post__logo-text span{display:block;font-size:15px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.92);margin-top:5px;text-shadow:0 4px 14px rgba(0,0,0,.55)}
 .post__stamp{font-size:19px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#3a0a0d;background:linear-gradient(180deg,#F7D28A 0%,#E8B96A 100%);padding:12px 24px;border-radius:8px;transform:rotate(2deg);box-shadow:0 18px 40px -10px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.5);white-space:nowrap}
-.post__hero{margin-top:18px;position:relative;z-index:20}
-.post__hero-text{min-width:0}
+/* QR рядом с заголовком, справа */
+.post__hero{margin-top:18px;position:relative;z-index:20;display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.post__hero-text{flex:1;min-width:0}
 .kicker{display:inline-block;font-size:24px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#F4C77B;text-shadow:0 4px 14px rgba(0,0,0,.7);margin-bottom:14px;white-space:nowrap;position:relative;padding-bottom:8px}
 .kicker::after{content:"";position:absolute;left:0;right:8px;bottom:0;height:4px;background:linear-gradient(90deg,#F4C77B 0%,#F4C77B 70%,rgba(244,199,123,0) 100%);border-radius:2px;transform:rotate(-1deg)}
 .punch-title{font-size:108px;font-weight:900;font-style:italic;line-height:.88;letter-spacing:-.04em;text-transform:uppercase;color:#fff;text-shadow:-2px -2px 0 rgba(30,10,10,.7),2px -2px 0 rgba(30,10,10,.7),-2px 2px 0 rgba(30,10,10,.7),2px 2px 0 rgba(30,10,10,.7),0 14px 46px rgba(0,0,0,.85);transform:rotate(-2deg);transform-origin:left center;margin-left:-4px}
 .punch-title em{font-style:italic;color:#F4C77B}
-/* QR — отдельной строкой, справа, между шапкой и карточками */
-.qr-row{flex:none;display:flex;justify-content:flex-end;padding:12px 0 8px}
-.post__qr-top{display:flex;align-items:center;margin-right:50px}
-.qr__img{width:240px;height:240px;background:#FFF7E6;border-radius:16px;padding:16px;object-fit:contain;display:block;box-shadow:0 18px 44px -12px rgba(0,0,0,.75),0 0 0 4px rgba(244,199,123,.55);transform:rotate(3deg)}
-.facts{margin-top:10px;flex:none;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:12px}
+.post__qr-top{flex:none;display:flex;align-items:flex-start;margin-top:10px}
+.qr__img{width:220px;height:220px;background:#FFF7E6;border-radius:16px;padding:14px;object-fit:contain;display:block;box-shadow:0 18px 44px -12px rgba(0,0,0,.75),0 0 0 4px rgba(244,199,123,.55);transform:rotate(3deg)}
+.facts{margin-top:24px;flex:none;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:12px}
 .fact{position:relative;padding:14px 14px 12px;border-radius:12px;background:rgba(255,247,230,.97);color:#2a1a0a;box-shadow:0 20px 44px -14px rgba(0,0,0,.7),0 0 0 3px rgba(244,199,123,.4);display:flex;flex-direction:column;overflow:hidden;min-height:180px}
 .fact:nth-child(1){transform:rotate(-2.5deg)}
 .fact:nth-child(2){transform:rotate(1.5deg)}
@@ -99,8 +98,6 @@ html,body{font-family:'Montserrat',system-ui,sans-serif;background:#2a2a2a;min-h
 16 ЛЕТ.<br><em>И НЕ ЗРЯ.</em>
 </h1>
 </div>
-</div>
-<div class="qr-row">
 <div class="post__qr-top"><img class="qr__img" src="assets/img/qr.png" alt="QR"></div>
 </div>
 <div class="facts">
