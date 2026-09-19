@@ -84,53 +84,68 @@
             color: rgba(255,255,255,.8);
             margin-bottom: 18px;
         }
-        /* ===== Кнопка в бургере (как на главной) ===== */
-@media (max-width: 880px) {
-    .nav.is-open .m-cta {
-        display: inline-block !important;
-        width: auto !important;
-        align-self: flex-start !important;
-    }
-    .nav.is-open .m-cta .m-menu-btn {
-        height: 36px !important;
-        min-height: 36px !important;
-        max-height: 36px !important;
-        line-height: 32px !important;
-        padding: 0 24px !important;
-        font-size: 14px !important;
-        width: auto !important;
-        min-width: 0 !important;
-        max-width: none !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        margin: 10px 0 0 0 !important;
-        border-radius: var(--radius-btn, 11px) !important;
-        background: var(--coral-dark, #D13434) !important;
-        color: #fff !important;
-        border: 2px solid var(--coral-dark, #D13434) !important;
-    }
-    .nav.is-open .m-cta .btn:hover {
-        background: #fff;
-        color: var(--coral-ink, #BC3636) !important;
-    }
-}
 
-/* ===== Ссылка «← Все статьи» сверху ===== */
-.back-to-blog {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--coral-ink);
-    margin-bottom: 20px;
-    text-decoration: none;
-}
-.back-to-blog:hover { text-decoration: underline; }
-        .section.bg-white {
-            padding-top: 5px !important;
+        /* ===== FAQ ===== */
+        .faq-list { display: grid; gap: 14px; margin: 32px 0 8px; }
+        .faq-item { background: #fff; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow-sm); overflow: hidden; transition: box-shadow .3s ease; }
+        .faq-item:hover { box-shadow: var(--shadow); }
+        .faq-question { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 26px; cursor: pointer; font-size: 18px; font-weight: 700; color: var(--ink); list-style: none; user-select: none; }
+        .faq-question::-webkit-details-marker { display: none; }
+        .faq-question::after { content: "+"; flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(232,93,93,.12); color: var(--coral-ink); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; transition: transform .25s ease, background .25s ease, color .25s ease; }
+        .faq-item[open] .faq-question::after { content: "−"; background: var(--coral-ink); color: #fff; }
+        .faq-answer { padding: 0 26px 24px; color: #4a4a4a; font-size: 16.5px; line-height: 1.6; }
+        .faq-answer a { color: var(--coral-ink); font-weight: 700; }
+        @media (max-width: 768px) {
+            .faq-question { padding: 18px 20px; font-size: 16px; }
+            .faq-answer { padding: 0 20px 20px; font-size: 15.5px; }
         }
+
+        /* ===== Кнопка в бургере (как на главной) ===== */
+        @media (max-width: 880px) {
+            .nav.is-open .m-cta {
+                display: inline-block !important;
+                width: auto !important;
+                align-self: flex-start !important;
+            }
+            .nav.is-open .m-cta .m-menu-btn {
+                height: 36px !important;
+                min-height: 36px !important;
+                max-height: 36px !important;
+                line-height: 32px !important;
+                padding: 0 24px !important;
+                font-size: 14px !important;
+                width: auto !important;
+                min-width: 0 !important;
+                max-width: none !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                margin: 10px 0 0 0 !important;
+                border-radius: var(--radius-btn, 11px) !important;
+                background: var(--coral-dark, #D13434) !important;
+                color: #fff !important;
+                border: 2px solid var(--coral-dark, #D13434) !important;
+            }
+            .nav.is-open .m-cta .btn:hover {
+                background: #fff;
+                color: var(--coral-ink, #BC3636) !important;
+            }
+        }
+
+        /* ===== Ссылка «← Все статьи» сверху ===== */
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--coral-ink);
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+        .back-to-blog:hover { text-decoration: underline; }
+
+        .section.bg-white { padding-top: 5px !important; }
     </style>
 
     <!-- ===== Yandex.Metrika counter ===== -->
@@ -144,7 +159,7 @@
 
         ym(112359274, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
     </script>
-        <!-- ===== /Yandex.Metrika counter ===== -->
+    <!-- ===== /Yandex.Metrika counter ===== -->
 
     <!-- ===== Schema.org: Article ===== -->
     <script type="application/ld+json">
@@ -176,32 +191,66 @@
     </script>
 
     <!-- ===== Schema.org: BreadcrumbList ===== -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Главная",
-            "item": "https://shkit-school.github.io/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Блог",
-            "item": "https://shkit-school.github.io/blog/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Можно ли начать заниматься театром в 25, 35, 50 лет",
-            "item": "https://shkit-school.github.io/blog/statya-3.html"
-        }
-    ]
-}
-</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://shkit-school.github.io/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Блог",
+                "item": "https://shkit-school.github.io/blog/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Можно ли начать заниматься театром в 25, 35, 50 лет",
+                "item": "https://shkit-school.github.io/blog/statya-3.html"
+            }
+        ]
+    }
+    </script>
+
+    <!-- ===== Schema.org: FAQPage ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Зачем взрослому человеку театр? Разве это не инфантилизм — играть в чужую жизнь?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Это не инфантилизм. Инфантилизм — когда взрослый человек прячется от реальности. Театр — наоборот, возвращает к реальности, только к более живой. Что происходит со взрослым без творчества: эмоции сжимаются до рабочих режимов, тело запоминает роль функции, речь становится автоматической. Театр возвращает диапазон чувств, свободу тела, речь как инструмент. Что это даёт в жизни: на переговорах — умение держать паузу и интонацию, в семье — способность говорить о чувствах, в одиночестве — контакт с собой, а не выгорание. Вы играете чужую жизнь, чтобы вернуться к своей — более живой."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Я боюсь выглядеть глупо перед другими. Что с этим делать?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Страх выглядеть глупо — не слабость. Это признак того, что вы взрослый человек с опытом. У взрослых социальный страх сильнее, чем у детей. Стресс вызывает не ситуация, а то, как мы её объясняем. В ШКИТ первые занятия — не про сцену: работаем в кругу, ошибки — часть упражнения. Роль работает как защита: вы говорите не от себя, а от имени героя. Педагог не критикует, а задаёт вопросы. Что можно делать самому: правило 10% хуже, замена формулировки, разделение себя и ошибки. Если страх сильнее вас — это не страх сцены, а социальная тревожность. Тогда сначала к психологу, потом в театр."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Сколько времени нужно, чтобы увидеть результат? И что считать результатом?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Результат — не сыграл роль. Результат — изменения в себе. Через 1 месяц: слышите свой голос в записи без дрожи, можете сказать фразу в кругу без подготовки. Через 3 месяца: держите паузу в разговоре, понимаете эмоцию в моменте. Через 6 месяцев: выступаете перед группой без заготовленного текста. Через год: меняется речь в жизни, меняется присутствие. Что считать результатом: увереннее на совещаниях, разговор с ребёнком о сложном, замечаете, что чувствуете. Честно: если через год ничего не сдвинулось — не та группа, не тот запрос или нужен психолог. Отказ от театра — тоже результат."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <noscript><div><img src="https://mc.yandex.ru/watch/112359274" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
@@ -214,7 +263,7 @@
             <img src="/assets/img/logo-sm.png" alt="Логотип ШКИТ" width="48" height="44">
             <span><b>ШКИТ</b><span>Школа кино и театра</span></span>
         </a>
-                        <nav class="nav" aria-label="Основная навигация">
+        <nav class="nav" aria-label="Основная навигация">
             <a href="/index.html#kursy">Курсы</a>
             <a href="/index.html#proekty">Проекты</a>
             <a href="/index.html#afisha">Афиша</a>
@@ -232,7 +281,8 @@
     <section class="section bg-white">
         <div class="wrap">
             <div class="article">
-                <a class="back-to-blog" href="index.html">← Все статьи</a><h1>Можно ли начать заниматься театром в 25, 35, 50 лет</h1>
+                <a class="back-to-blog" href="index.html">← Все статьи</a>
+                <h1>Можно ли начать заниматься театром в 25, 35, 50 лет</h1>
                 <div class="article-date">11 сентября 2026</div>
 
                 <p>Многие взрослые думают: «Театр — это для детей и молодых. Мне уже поздно». На самом деле театр для взрослых — это не про карьеру актёра. Это про то, чтобы снова почувствовать себя живым, вернуть голосу силу и перестать бояться публичности.</p>
@@ -274,6 +324,85 @@
 
                 <h2>Страшно — это нормально</h2>
                 <p>Первый шаг всегда волнителен. Но именно он возвращает ощущение: «Я могу». Дальше — легче.</p>
+
+                <h2>Частые вопросы</h2>
+                <div class="faq-list">
+
+                    <details class="faq-item">
+                        <summary class="faq-question">Зачем взрослому человеку театр? Разве это не инфантилизм — играть в чужую жизнь?</summary>
+                        <div class="faq-answer">
+                            <p>Это не инфантилизм. Инфантилизм — когда взрослый человек прячется от реальности. Театр — наоборот, возвращает к реальности, только к более живой.</p>
+                            <p><strong>Что происходит со взрослым человеком без творчества:</strong></p>
+                            <p>— Эмоции сжимаются до рабочих режимов: «устал», «раздражён», «нормально».<br>
+                            — Тело запоминает роль «функции», а не «живого человека».<br>
+                            — Речь становится автоматической — без интонаций, без пауз, без смысла.</p>
+                            <p><strong>Театр возвращает то, что взрослый потерял по дороге:</strong></p>
+                            <p>— <strong>Диапазон чувств.</strong> Через этюды вы проживаете то, что в жизни как будто запрещено: злость, нежность, отчаяние, восторг.<br>
+                            — <strong>Свободу тела.</strong> Через работу с телом возвращается естественная пластика — вы снова двигаетесь, как человек, а не как должность.<br>
+                            — <strong>Речь как инструмент.</strong> Не «сказать правильно», а «сказать так, чтобы услышали».</p>
+                            <p><strong>Что это даёт в жизни:</strong></p>
+                            <p>— На переговорах — умение держать паузу и интонацию.<br>
+                            — В семье — способность говорить о чувствах, а не только о делах.<br>
+                            — В одиночестве — контакт с собой, а не выгорание.</p>
+                            <p>Театр — это не побег от реальности. Это возвращение в реальность через проживание. Вы играете чужую жизнь, чтобы вернуться к своей — более живой.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">Я боюсь выглядеть глупо перед другими. Что с этим делать?</summary>
+                        <div class="faq-answer">
+                            <p>Разберём без утешений. Страх выглядеть глупо — не слабость. Это признак того, что вы взрослый человек с опытом. Вы знаете цену чужой оценке. Поэтому боитесь.</p>
+                            <p><strong>Что важно знать про взрослых:</strong></p>
+                            <p>— У взрослых социальный страх сильнее, чем у детей. У детей есть «право на ошибку». У взрослых его как будто нет.<br>
+                            — Стресс вызывает не ситуация, а то, как мы её объясняем себе. Мы боимся не сцены, а собственного вывода: «я провалился», «я смешон».<br>
+                            — Чем выше положение человека, тем сильнее страх потерять лицо. Это нормально.</p>
+                            <p><strong>Что мы делаем в ШКИТ с этим страхом:</strong></p>
+                            <p>— <strong>Первые занятия — не про сцену.</strong> Работаем в кругу: разогрев, внимание, раскрепощение. Ошибки — часть упражнения, а не провал.<br>
+                            — <strong>Роль как защита.</strong> Вы говорите не от себя, а от имени героя. Если что-то не так — «это не я, это герой». Страх оценки уходит на второй план.<br>
+                            — <strong>Работа с внутренним критиком.</strong> Педагог не критикует. Он задаёт вопросы: «Что ты почувствовал?» — вместо «Это было плохо».</p>
+                            <p><strong>Что можно делать самому:</strong></p>
+                            <p>— <strong>«Правило 10% хуже».</strong> Разрешите себе быть на 10% хуже, чем хотите. Это снимает напряжение.<br>
+                            — <strong>Замена формулировки.</strong> Не «я боюсь выглядеть глупо», а «мне важно сделать это хорошо». Разница — в позиции.<br>
+                            — <strong>Разделение себя и ошибки.</strong> Ошибка — событие. Не свойство характера.</p>
+                            <p><strong>Честно.</strong> Если страх сильнее вас — это не страх сцены, а социальная тревожность. Тогда сначала к психологу, потом в театр. Это не слабость. Это забота о себе.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">Сколько времени нужно, чтобы увидеть результат? И что считать результатом?</summary>
+                        <div class="faq-answer">
+                            <p><strong>Сначала главное:</strong> результат — не «сыграл роль». Результат — это изменения в себе. Их можно отследить по конкретным признакам.</p>
+                            <p><strong>Что считать результатом — по месяцам:</strong></p>
+                            <p><strong>Через 1 месяц:</strong><br>
+                            — Слышите свой голос в записи без внутренней дрожи.<br>
+                            — Можете сказать фразу в кругу людей без подготовки.</p>
+                            <p><strong>Через 3 месяца:</strong><br>
+                            — Держите паузу в разговоре, а не заполняете её словами-сорняками.<br>
+                            — Понимаете, какую эмоцию проживаете в моменте — без потери контроля.</p>
+                            <p><strong>Через 6 месяцев:</strong><br>
+                            — Выступаете перед группой без заготовленного текста.<br>
+                            — Слышите себя в разговоре — не только слова, но интонации, темп, смысл.</p>
+                            <p><strong>Через год:</strong><br>
+                            — Меняется речь в жизни — на работе, в семье.<br>
+                            — Меняется присутствие — как входите в комнату, как смотрите в глаза.</p>
+                            <p><strong>Что считать результатом — не роль на сцене, а изменения в жизни:</strong></p>
+                            <p>— Стали увереннее на совещаниях? Результат.<br>
+                            — Смогли поговорить с ребёнком о сложном? Результат.<br>
+                            — Начали замечать, что чувствуете? Результат.</p>
+                            <p><strong>Честно про «не изменилось»:</strong> если через год ничего не сдвинулось — либо не та группа, либо не тот запрос, либо нужен психолог, а не театр. Отказ от театра — тоже результат. Иногда человек понимает, что это не его путь. Это тоже вложение в себя.</p>
+                            <p><strong>Пример из ШКИТ — про страх, который почти победил.</strong></p>
+                            <p>Участник — управленец высшего звена, отвечает за крупные проекты в компании. Классическая история: хочет выйти на сцену, но не может переступить порог.</p>
+                            <p>Пять недель принимал решение. Четыре телефонных разговора с организаторами проекта — по 30–40 минут каждый. Вопросы одни и те же: «А если не получится?», «А что скажут коллеги?», «А если я не справлюсь?».</p>
+                            <p>В день первого занятия — час простоял у двери в Центр. Позвонил. Сказал: «Я не уверен, что войду». Организаторы не уговаривали. Просто сказали: «Хорошо. Мы здесь».</p>
+                            <p>Он вошёл.</p>
+                            <p>После первого занятия — ещё два телефонных разговора. Уже другие вопросы: «А когда следующее?», «А можно прийти ещё раз?».</p>
+                            <p>В итоге — два сезона проекта «Давай сыграем жизнь» и один сезон «Магии слов». За это время — не только сцена. После участия получил крупное повышение и переехал в главный офис в Екатеринбург.</p>
+                            <p>Вот что делает страх. И вот что происходит, когда через него проходят.</p>
+                            <p>Это не про то, что театр «даёт повышение». Это про то, что человек, который научился проходить через собственный страх, начинает по-другому вести себя везде. На работе в том числе.</p>
+                        </div>
+                    </details>
+
+                </div>
 
                 <div class="article-cta">
                     <h3>Выбрать свой проект</h3>
