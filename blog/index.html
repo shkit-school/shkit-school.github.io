@@ -9,7 +9,7 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#BC3636">
 
-    <!-- ===== Open Graph (для соцсетей) ===== -->
+    <!-- ===== Open Graph ===== -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Блог ШКИТ: статьи об актёрском мастерстве и театре в Челябинске">
     <meta property="og:description" content="Полезные статьи ШКИТ в Челябинске: как помочь ребёнку не бояться сцены, развить речь, общаться с подростком, взрослому вернуть уверенность.">
@@ -33,13 +33,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap&subset=cyrillic,latin" rel="stylesheet">
 
-    <!-- ===== Progressive enhancement ===== -->
     <script>document.documentElement.className+=" js";</script>
 
     <!-- ===== Стили ===== -->
     <link rel="stylesheet" href="/assets/css/style.css">
     <style>
         * { -webkit-tap-highlight-color: transparent; }
+
+        .blog-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 32px;
+            margin-bottom: 8px;
+        }
+        .filter-btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            border-radius: 999px;
+            border: 2px solid var(--line);
+            background: #fff;
+            color: var(--ink);
+            cursor: pointer;
+            transition: all .25s ease;
+        }
+        .filter-btn:hover {
+            border-color: var(--coral-ink);
+            color: var(--coral-ink);
+        }
+        .filter-btn.active {
+            background: var(--coral-dark);
+            border-color: var(--coral-dark);
+            color: #fff;
+        }
 
         .blog-grid {
             display: grid;
@@ -97,7 +125,30 @@
         .blog-more-btn.visible {
             display: inline-block;
         }
-        /* Скрытый заголовок h2 для скринридеров и валидатора */
+
+        /* CTA внизу блога */
+        .blog-cta {
+            background: var(--ink);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .blog-cta h2 {
+            color: #fff;
+            font-size: clamp(22px, 3vw, 32px);
+            margin-bottom: 10px;
+        }
+        .blog-cta p {
+            color: rgba(255,255,255,.85);
+            margin-bottom: 24px;
+            font-size: 16px;
+        }
+        .blog-cta .btn {
+            box-shadow: 0 14px 34px -12px rgba(209,52,52,.9);
+        }
+
         .visually-hidden {
             position: absolute !important;
             width: 1px; height: 1px;
@@ -107,6 +158,7 @@
             white-space: nowrap;
             border: 0;
         }
+
         @media (max-width: 768px) {
             .blog-grid {
                 grid-template-columns: 1fr;
@@ -114,6 +166,24 @@
             .blog-card img {
                 height: auto;
                 aspect-ratio: 16/9;
+            }
+            .blog-filters {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin-left: -16px;
+                margin-right: -16px;
+                padding: 0 16px;
+                scrollbar-width: none;
+            }
+            .blog-filters::-webkit-scrollbar { display: none; }
+            .filter-btn {
+                flex-shrink: 0;
+                padding: 9px 16px;
+                font-size: 13px;
+            }
+            .blog-cta {
+                padding: 32px 20px;
             }
         }
         .section.bg-white {
@@ -214,16 +284,16 @@
             <span><b>ШКИТ</b><span>Школа кино и театра</span></span>
         </a>
         <nav class="nav" aria-label="Основная навигация">
-            <a href="/index.html#about">О нас</a>
             <a href="/index.html#kursy">Курсы</a>
             <a href="/index.html#proekty">Проекты</a>
-            <a href="/index.html#otzyvy">Отзывы</a>
             <a href="/index.html#afisha">Афиша</a>
             <a href="index.html" class="is-active">Блог</a>
             <a href="/index.html#contacts">Контакты</a>
             <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
-            <span class="m-cta"><a class="btn m-menu-btn" href="/index.html#zapis">Оставить заявку</a></span>
+            <span class="m-cta"><a class="btn btn--sm m-menu-btn" href="/index.html#zapis">Оставить заявку</a></span>
         </nav>
+        <a class="header-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
+        <span class="header-cta"><a class="btn btn--sm" href="/index.html#zapis">Оставить заявку</a></span>
         <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
 </header>
@@ -241,10 +311,19 @@
     <section class="section bg-white">
         <div class="wrap">
             <h2 class="visually-hidden">Все статьи блога ШКИТ</h2>
+
+            <!-- Фильтры -->
+            <div class="blog-filters" role="tablist" aria-label="Фильтр статей по аудитории">
+                <button class="filter-btn active" data-filter="all" type="button">Все</button>
+                <button class="filter-btn" data-filter="parents" type="button">Для родителей</button>
+                <button class="filter-btn" data-filter="teens" type="button">Для подростков</button>
+                <button class="filter-btn" data-filter="adults" type="button">Для взрослых</button>
+            </div>
+
             <div class="blog-grid" id="blog-grid">
 
-                <!-- ===== НОВАЯ СТАТЬЯ (первая) ===== -->
-                <article class="blog-card">
+                <!-- ===== Статья 4 ===== -->
+                <article class="blog-card" data-category="parents" data-date="2026-09-16">
                     <img src="/assets/img/gal121.jpg" alt="Дети на занятии по актёрскому мастерству в ШКИТ, Челябинск" loading="lazy">
                     <div class="blog-card-body">
                         <div class="blog-card-date">16.09.2026</div>
@@ -256,7 +335,7 @@
                 </article>
 
                 <!-- ===== Статья 1 ===== -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="parents" data-date="2026-09-05">
                     <img src="/assets/img/gallery-05.jpg" alt="Ребёнок боится сцены — советы ШКИТ" loading="lazy">
                     <div class="blog-card-body">
                         <div class="blog-card-date">05.09.2026</div>
@@ -268,7 +347,7 @@
                 </article>
 
                 <!-- ===== Статья 2 ===== -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="teens" data-date="2026-09-12">
                     <img src="/assets/img/gallery-06.jpg" alt="Подростки на сцене ШКИТ" loading="lazy">
                     <div class="blog-card-body">
                         <div class="blog-card-date">12.09.2026</div>
@@ -280,7 +359,7 @@
                 </article>
 
                 <!-- ===== Статья 3 ===== -->
-                <article class="blog-card">
+                <article class="blog-card" data-category="adults" data-date="2026-09-17">
                     <img src="/assets/img/gal130.webp" alt="Взрослые ученики ШКИТ на сцене, Челябинск" loading="lazy">
                     <div class="blog-card-body">
                         <div class="blog-card-date">17.09.2026</div>
@@ -294,7 +373,14 @@
             </div>
 
             <div style="text-align:center; margin-top:30px;">
-                <button class="btn btn--ghost blog-more-btn" id="blog-more-btn">Показать ещё</button>
+                <button class="btn btn--ghost blog-more-btn" id="blog-more-btn" type="button">Показать ещё</button>
+            </div>
+
+            <!-- ===== CTA внизу ===== -->
+            <div class="blog-cta">
+                <h2>Готовы попробовать?</h2>
+                <p>Запишитесь на пробное занятие — поможем сделать первый шаг.</p>
+                <a class="btn btn--lg" href="/index.html#zapis">Записаться</a>
             </div>
         </div>
     </section>
@@ -315,23 +401,47 @@
 document.addEventListener('DOMContentLoaded', function() {
     var grid = document.getElementById('blog-grid');
     var btn = document.getElementById('blog-more-btn');
+    var filterBtns = document.querySelectorAll('.filter-btn');
 
-    if (!grid || !btn) return;
+    if (!grid) return;
 
     var cards = grid.querySelectorAll('.blog-card');
     var step = 3;
     var visibleCount = 3;
+    var activeFilter = 'all';
 
-    function update() {
-        cards.forEach(function(card, i) {
-            card.style.display = (i < visibleCount) ? 'flex' : 'none';
+    function getFiltered() {
+        return Array.prototype.filter.call(cards, function(card) {
+            return activeFilter === 'all' || card.dataset.category === activeFilter;
         });
-        btn.classList.toggle('visible', visibleCount < cards.length);
     }
 
-    btn.addEventListener('click', function() {
-        visibleCount += step;
-        update();
+    function update() {
+        var filtered = getFiltered();
+        cards.forEach(function(card) {
+            card.style.display = 'none';
+        });
+        filtered.forEach(function(card, i) {
+            card.style.display = (i < visibleCount) ? 'flex' : 'none';
+        });
+        if (btn) btn.classList.toggle('visible', visibleCount < filtered.length);
+    }
+
+    if (btn) {
+        btn.addEventListener('click', function() {
+            visibleCount += step;
+            update();
+        });
+    }
+
+    filterBtns.forEach(function(b) {
+        b.addEventListener('click', function() {
+            filterBtns.forEach(function(x) { x.classList.remove('active'); });
+            b.classList.add('active');
+            activeFilter = b.dataset.filter;
+            visibleCount = step;
+            update();
+        });
     });
 
     update();
