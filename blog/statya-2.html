@@ -84,53 +84,68 @@
             color: rgba(255,255,255,.8);
             margin-bottom: 18px;
         }
-        /* ===== Кнопка в бургере (как на главной) ===== */
-@media (max-width: 880px) {
-    .nav.is-open .m-cta {
-        display: inline-block !important;
-        width: auto !important;
-        align-self: flex-start !important;
-    }
-    .nav.is-open .m-cta .m-menu-btn {
-        height: 36px !important;
-        min-height: 36px !important;
-        max-height: 36px !important;
-        line-height: 32px !important;
-        padding: 0 24px !important;
-        font-size: 14px !important;
-        width: auto !important;
-        min-width: 0 !important;
-        max-width: none !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        margin: 10px 0 0 0 !important;
-        border-radius: var(--radius-btn, 11px) !important;
-        background: var(--coral-dark, #D13434) !important;
-        color: #fff !important;
-        border: 2px solid var(--coral-dark, #D13434) !important;
-    }
-    .nav.is-open .m-cta .btn:hover {
-        background: #fff;
-        color: var(--coral-ink, #BC3636) !important;
-    }
-}
 
-/* ===== Ссылка «← Все статьи» сверху ===== */
-.back-to-blog {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--coral-ink);
-    margin-bottom: 20px;
-    text-decoration: none;
-}
-.back-to-blog:hover { text-decoration: underline; }
-        .section.bg-white {
-            padding-top: 5px !important;
+        /* ===== FAQ ===== */
+        .faq-list { display: grid; gap: 14px; margin: 32px 0 8px; }
+        .faq-item { background: #fff; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow-sm); overflow: hidden; transition: box-shadow .3s ease; }
+        .faq-item:hover { box-shadow: var(--shadow); }
+        .faq-question { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 26px; cursor: pointer; font-size: 18px; font-weight: 700; color: var(--ink); list-style: none; user-select: none; }
+        .faq-question::-webkit-details-marker { display: none; }
+        .faq-question::after { content: "+"; flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(232,93,93,.12); color: var(--coral-ink); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; transition: transform .25s ease, background .25s ease, color .25s ease; }
+        .faq-item[open] .faq-question::after { content: "−"; background: var(--coral-ink); color: #fff; }
+        .faq-answer { padding: 0 26px 24px; color: #4a4a4a; font-size: 16.5px; line-height: 1.6; }
+        .faq-answer a { color: var(--coral-ink); font-weight: 700; }
+        @media (max-width: 768px) {
+            .faq-question { padding: 18px 20px; font-size: 16px; }
+            .faq-answer { padding: 0 20px 20px; font-size: 15.5px; }
         }
+
+        /* ===== Кнопка в бургере (как на главной) ===== */
+        @media (max-width: 880px) {
+            .nav.is-open .m-cta {
+                display: inline-block !important;
+                width: auto !important;
+                align-self: flex-start !important;
+            }
+            .nav.is-open .m-cta .m-menu-btn {
+                height: 36px !important;
+                min-height: 36px !important;
+                max-height: 36px !important;
+                line-height: 32px !important;
+                padding: 0 24px !important;
+                font-size: 14px !important;
+                width: auto !important;
+                min-width: 0 !important;
+                max-width: none !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                margin: 10px 0 0 0 !important;
+                border-radius: var(--radius-btn, 11px) !important;
+                background: var(--coral-dark, #D13434) !important;
+                color: #fff !important;
+                border: 2px solid var(--coral-dark, #D13434) !important;
+            }
+            .nav.is-open .m-cta .btn:hover {
+                background: #fff;
+                color: var(--coral-ink, #BC3636) !important;
+            }
+        }
+
+        /* ===== Ссылка «← Все статьи» сверху ===== */
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--coral-ink);
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+        .back-to-blog:hover { text-decoration: underline; }
+
+        .section.bg-white { padding-top: 5px !important; }
     </style>
 
     <!-- ===== Yandex.Metrika counter ===== -->
@@ -176,32 +191,66 @@
     </script>
 
     <!-- ===== Schema.org: BreadcrumbList ===== -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Главная",
-            "item": "https://shkit-school.github.io/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Блог",
-            "item": "https://shkit-school.github.io/blog/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Подросток молчит и закрывается: как театр помогает вернуть голос",
-            "item": "https://shkit-school.github.io/blog/statya-2.html"
-        }
-    ]
-}
-</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://shkit-school.github.io/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Блог",
+                "item": "https://shkit-school.github.io/blog/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Подросток молчит и закрывается: как театр помогает вернуть голос",
+                "item": "https://shkit-school.github.io/blog/statya-2.html"
+            }
+        ]
+    }
+    </script>
+
+    <!-- ===== Schema.org: FAQPage ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Это кризис возраста или что-то серьёзнее?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Подростковое молчание — норма в 12–15 лет. Норма: общается с друзьями (пусть в мессенджерах), есть интересы, молчание длится не дольше нескольких месяцев. Тревожные сигналы: полная изоляция от сверстников, потеря интереса ко всему, нарушения сна и аппетита, разговоры о бессмысленности. Если этого нет — это не болезнь, а этап. Подросток не сломался, он ищет себя. Важно: в этом возрасте подросток не доверяет словам — доверяет опыту. Покажите не «театр полезен», а «в театре можно быть собой» — на примере знакомых ребят или спектаклей."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Что делать, если он отказывается идти к психологу и в театр тоже?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Давление — худшее, что можно сделать. Что работает: 1. Через интерес — любит игры, предложите импровизацию; любит кино, расскажите про мастерскую кино; любит музыку, курс сценической речи. 2. «Один раз посмотреть» — не «пойдёшь на занятие», а «сходим посмотреть спектакль». 3. Вместе — не «иди сам», а «давай сходим вместе». 4. Подождать — иногда нужно полгода. Что НЕ работает: уговоры, слёзы, ультиматумы, записи за спиной подростка. Работает терпение и пример."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Можно ли помочь подростку дома, или нужна группа?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Дома можно много: «диалог без слов», «монолог предмета», «чужой голос». Но дома нет партнёров, сцены и атмосферы — дома всё равно оценят или пожалеют. Группа даёт сверстников, которые тоже стесняются, педагогов-практиков, формат без оценок. Пример из ШКИТ: подросток на первых занятиях молчал три месяца, потом вышел в этюде, на пятом месяце сыграл главную роль в мини-спектакле. Никто не торопил, не заставлял. Просто дали время."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <noscript><div><img src="https://mc.yandex.ru/watch/112359274" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
@@ -214,7 +263,7 @@
             <img src="/assets/img/logo-sm.png" alt="Логотип ШКИТ" width="48" height="44">
             <span><b>ШКИТ</b><span>Школа кино и театра</span></span>
         </a>
-                <nav class="nav" aria-label="Основная навигация">
+        <nav class="nav" aria-label="Основная навигация">
             <a href="/index.html#kursy">Курсы</a>
             <a href="/index.html#proekty">Проекты</a>
             <a href="/index.html#afisha">Афиша</a>
@@ -232,7 +281,8 @@
     <section class="section bg-white">
         <div class="wrap">
             <div class="article">
-                <a class="back-to-blog" href="index.html">← Все статьи</a><h1>Подросток молчит и закрывается: как театр помогает вернуть голос</h1>
+                <a class="back-to-blog" href="index.html">← Все статьи</a>
+                <h1>Подросток молчит и закрывается: как театр помогает вернуть голос</h1>
                 <div class="article-date">12 сентября 2026</div>
 
                 <p>Многие подростки замолкают не потому, что им нечего сказать. А потому, что боятся: не так поймут, не так оценят, не так посмотрят. Театр в этом возрасте — не про «стать артистом», а про то, чтобы снова почувствовать: мой голос важен.</p>
@@ -257,6 +307,73 @@
                 <h2>Когда стоит прийти на занятия</h2>
                 <p>Если подросток молчит, а вам хочется, чтобы он снова заговорил — не давите. Приведите его в среду, где это происходит естественно.</p>
 
+                <h2>Частые вопросы</h2>
+                <div class="faq-list">
+
+                    <details class="faq-item">
+                        <summary class="faq-question">Это кризис возраста или что-то серьёзнее?</summary>
+                        <div class="faq-answer">
+                            <p>Подростковое молчание — норма в 12–15 лет. Задача родителя — не «исправить», а отличить этап от проблемы.</p>
+                            <p><strong>Норма (можно не паниковать):</strong></p>
+                            <p>— Общается с друзьями — пусть в мессенджерах, но общается.<br>
+                            — Есть интересы — игры, музыка, спорт, что-то своё.<br>
+                            — Молчание длится не дольше нескольких месяцев.</p>
+                            <p><strong>Тревожные сигналы (к психологу):</strong></p>
+                            <p>— Полная изоляция — нет друзей, не выходит из дома.<br>
+                            — Потеря интереса ко всему, включая то, что раньше любил.<br>
+                            — Нарушения сна и аппетита.<br>
+                            — Разговоры о бессмысленности или о себе в негативе.</p>
+                            <p>Если этого нет — это не болезнь, а этап. Подросток не «сломался», он ищет себя. Задача — не мешать, но быть рядом.</p>
+                            <p><strong>Что важно понимать:</strong> в этом возрасте подросток не доверяет словам. Он доверяет опыту. Не «театр полезен», а «в театре можно быть собой» — на примере знакомых ребят или спектаклей.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">Что делать, если он отказывается идти к психологу и в театр тоже?</summary>
+                        <div class="faq-answer">
+                            <p>Давление — худшее, что можно сделать. Подросток закроется сильнее. Что работает:</p>
+                            <p><strong>1. Через интерес.</strong><br>
+                            Любит игры → импровизация (там тоже азарт, но живой).<br>
+                            Любит кино → мастерская кино (съёмка, монтаж, сценарии).<br>
+                            Любит музыку → сценическая речь для вокалистов.</p>
+                            <p><strong>2. «Один раз посмотреть».</strong><br>
+                            Не «пойдёшь на занятие», а «сходим посмотреть спектакль». Это не обязательство. Подросток согласится легче.</p>
+                            <p><strong>3. Вместе.</strong><br>
+                            Не «иди сам», а «давай сходим вместе». Даже если не пойдёт заниматься — получит новый опыт.</p>
+                            <p><strong>4. Подождать.</strong><br>
+                            Иногда нужно полгода, чтобы подросток созрел. Возвращайтесь к идее раз в месяц. Без нажима.</p>
+                            <p><strong>Что не работает:</strong></p>
+                            <p>— Уговоры, слёзы, ультиматумы.<br>
+                            — «Ты потом спасибо скажешь».<br>
+                            — Записи за спиной подростка.</p>
+                            <p><strong>Пример из практики.</strong> Один подросток отказался идти на занятие. Родители не давили — просто предложили сходить на спектакль старшей группы «посмотреть». Через полгода он сам попросил записаться. Родителям сказал: «Там нормальные». Комментарии излишни.</p>
+                            <p>Работает терпение и пример. Подросток пойдёт, если увидит, что там живо и честно.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">Можно ли помочь подростку дома, или нужна группа?</summary>
+                        <div class="faq-answer">
+                            <p><strong>Дома можно много:</strong></p>
+                            <p>— «Диалог без слов» — общение жестами.<br>
+                            — «Монолог предмета» — от имени вещи.<br>
+                            — «Чужой голос» — одна фраза пятью голосами.</p>
+                            <p>Это упражнения из нашей статьи — работают, если делать регулярно. Но у дома есть ограничения.</p>
+                            <p><strong>Чего дома нет:</strong></p>
+                            <p>— Партнёров. Подросток играет с мамой — не то же, что со сверстниками.<br>
+                            — Сцены. Нет зрителя — нет опыта публичности.<br>
+                            — Атмосферы. Дома всё равно оценят или пожалеют. В группе — принимают любым.</p>
+                            <p><strong>Что даёт группа:</strong></p>
+                            <p>— Сверстников, которые тоже стесняются — и от этого не страшно.<br>
+                            — Педагогов-практиков — они сами выходят на сцену.<br>
+                            — Формат без оценок — никто не скажет «неправильно».</p>
+                            <p><strong>Пример из ШКИТ.</strong> Подросток на первых занятиях молчал три месяца. Не участвовал в этюдах, просто сидел и смотрел. Педагог не торопил. На четвёртом месяце — вышел в этюде. На пятом — сыграл главную роль в мини-спектакле. Никто не «спасал», не «вытягивал». Просто дали время.</p>
+                            <p><strong>Что выбрать родителю:</strong> если подросток сам тянется — попробуйте группу. Если пока не готов — начните с домашних упражнений. Но помните: они — не замена живому общению.</p>
+                        </div>
+                    </details>
+
+                </div>
+
                 <div class="article-cta">
                     <h3>Дать подростку место, где его услышат</h3>
                     <p>Запишитесь на пробное занятие — подберём группу по возрасту.</p>
@@ -276,7 +393,7 @@
     <div class="wrap">
         <div class="footer-bottom">
             <span>© <span id="year">2026</span> Школа кино и театра «ШКИТ» · </span>
-           <span><a href="/faq.html">Частые вопросы</a> · <a href="/policy.html">Политика конфиденциальности</a></span>
+            <span><a href="/faq.html">Частые вопросы</a> · <a href="/policy.html">Политика конфиденциальности</a></span>
         </div>
     </div>
 </footer>
