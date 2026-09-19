@@ -84,6 +84,50 @@
             color: rgba(255,255,255,.8);
             margin-bottom: 18px;
         }
+        /* ===== Кнопка в бургере (как на главной) ===== */
+@media (max-width: 880px) {
+    .nav.is-open .m-cta {
+        display: inline-block !important;
+        width: auto !important;
+        align-self: flex-start !important;
+    }
+    .nav.is-open .m-cta .m-menu-btn {
+        height: 36px !important;
+        min-height: 36px !important;
+        max-height: 36px !important;
+        line-height: 32px !important;
+        padding: 0 24px !important;
+        font-size: 14px !important;
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 10px 0 0 0 !important;
+        border-radius: var(--radius-btn, 11px) !important;
+        background: var(--coral-dark, #D13434) !important;
+        color: #fff !important;
+        border: 2px solid var(--coral-dark, #D13434) !important;
+    }
+    .nav.is-open .m-cta .btn:hover {
+        background: #fff;
+        color: var(--coral-ink, #BC3636) !important;
+    }
+}
+
+/* ===== Ссылка «← Все статьи» сверху ===== */
+.back-to-blog {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--coral-ink);
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+.back-to-blog:hover { text-decoration: underline; }
         .section.bg-white {
             padding-top: 5px !important;
         }
@@ -169,16 +213,14 @@
             <img src="/assets/img/logo-sm.png" alt="Логотип ШКИТ" width="48" height="44">
             <span><b>ШКИТ</b><span>Школа кино и театра</span></span>
         </a>
-        <nav class="nav" aria-label="Основная навигация">
-            <a href="/index.html#about">О нас</a>
+                <nav class="nav" aria-label="Основная навигация">
             <a href="/index.html#kursy">Курсы</a>
             <a href="/index.html#proekty">Проекты</a>
-            <a href="/index.html#otzyvy">Отзывы</a>
             <a href="/index.html#afisha">Афиша</a>
             <a href="index.html" class="is-active">Блог</a>
             <a href="/index.html#contacts">Контакты</a>
             <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
-            <span class="m-cta"><a class="btn m-menu-btn" href="/index.html#zapis">Оставить заявку</a></span>
+            <span class="m-cta"><a class="btn btn--sm m-menu-btn" href="/index.html#zapis">Оставить заявку</a></span>
         </nav>
         <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -189,7 +231,7 @@
     <section class="section bg-white">
         <div class="wrap">
             <div class="article">
-                <h1>Ребёнок стесняется и боится сцены: что делать родителю</h1>
+                <a class="back-to-blog" href="index.html">← Все статьи</a><h1>Ребёнок стесняется и боится сцены: что делать родителю</h1>
                 <div class="article-date">5 сентября 2026</div>
 
                 <p>Многие дети боятся выступать. Кто-то прячется за маму, кто-то замолкает при чужих, кто-то отказывается выходить к доске. Родители переживают: «Это пройдёт?», «Может, ребёнок не создан для сцены?».</p>
