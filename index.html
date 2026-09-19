@@ -211,27 +211,7 @@
         .founder-body p:first-of-type { margin-top: 0px !important; }
         .popup-close { position: sticky; top: 22px; float: right; margin-right: 22px; margin-left: auto; margin-bottom: -56px; z-index: 10; }
 
-        /* ===== БЛОГ НА ГЛАВНОЙ ===== */
-        .blog-slider { margin-top: 40px; }
-        .blog-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-        .blog-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--line); display: flex; flex-direction: column; }
-        .blog-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; filter: var(--photo); }
-        .blog-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
-        .blog-card-date { font-size: 12px; color: var(--grey); font-weight: 600; margin-bottom: 8px; }
-        .blog-card h3 { font-size: 18px; margin-bottom: 16px; }
-        .blog-card a { margin-top: auto; color: var(--coral-ink); font-weight: 700; font-size: 14px; }
-        @media (max-width: 768px) {
-            .blog-slider { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 0; margin: 0; }
-            .blog-track { display: flex; gap: 0; width: 100%; }
-            .blog-card { flex: 0 0 100%; scroll-snap-align: start; padding: 0; box-sizing: border-box; }
-            .blog-card:not(:last-child) { margin-right: 10px; }
-        }
-        .blog-card-actions { display: flex; justify-content: space-between; align-items: center; margin-top: auto; gap: 10px; }
-        .blog-card-actions .read-link { color: var(--coral-ink); font-weight: 700; font-size: 14px; }
-        .blog-card-actions .all-link { color: var(--ink); font-weight: 700; font-size: 14px; }
-        .blog-card-actions .all-link:hover { color: var(--coral-ink); }
-
-        /* ===== О НАС: ИКОНКА И ЗАГОЛОВОК В ОДНУ СТРОКУ ===== */
+             /* ===== О НАС: ИКОНКА И ЗАГОЛОВОК В ОДНУ СТРОКУ ===== */
         @media (max-width: 768px) {
             .adv { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 22px 18px; }
             .adv-ico { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0; margin-bottom: 0; }
