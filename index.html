@@ -236,6 +236,24 @@
         @media (max-width: 768px) { #abajur { scroll-margin-top: 80px; } }
 
         .doubt-cta .btn { padding: 11px 20px; font-size: 14px; font-weight: 700; border-radius: var(--radius-btn); display: inline-block; width: auto; }
+    
+    /* ===== БЛОГ НА ГЛАВНОЙ (как было, как в афише) ===== */
+.blog-slider { margin-top: 40px; }
+.blog-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.blog-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--line); display: flex; flex-direction: column; }
+.blog-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; filter: var(--photo); }
+.blog-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.blog-card-date { font-size: 12px; color: var(--grey); font-weight: 600; margin-bottom: 8px; }
+.blog-card h3 { font-size: 18px; margin-bottom: 16px; }
+.blog-card-actions { display: flex; justify-content: space-between; align-items: center; margin-top: auto; gap: 10px; }
+.blog-card-actions .read-link { color: var(--coral-ink); font-weight: 700; font-size: 14px; }
+
+@media (max-width: 768px) {
+    .blog-slider { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 0; margin: 0; }
+    .blog-track { display: flex; gap: 0; width: 100%; }
+    .blog-card { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: normal; padding: 0; box-sizing: border-box; }
+    .blog-card:not(:last-child) { margin-right: 10px; }
+}
     </style>
 
     <!-- ===== Schema.org: PerformingArtsTheater ===== -->
