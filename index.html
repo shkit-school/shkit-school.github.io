@@ -254,6 +254,10 @@
     .blog-card { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: normal; padding: 0; box-sizing: border-box; }
     .blog-card:not(:last-child) { margin-right: 10px; }
 }
+      /* ===== «Блог» только на десктопе ===== */
+        @media (max-width: 880px) {
+            .nav .nav-blog { display: none !important; }
+        }
     </style>
 
     <!-- ===== Schema.org: PerformingArtsTheater ===== -->
@@ -451,17 +455,18 @@
             <img src="assets/img/logo-sm.png" alt="Логотип школы кино и театра ШКИТ" width="48" height="44">
             <span><b>ШКИТ</b><span>Школа кино и театра</span></span>
         </a>
-        <nav class="nav" aria-label="Основная навигация">
-            <a href="#about">О нас</a>
-            <a href="#kursy">Курсы</a>
-            <a href="#proekty">Проекты</a>
-            <a href="#otzyvy">Отзывы</a>
-            <a href="#afisha">Афиша</a>
-            <a href="#abajur">Театр</a>
-            <a href="#contacts">Контакты</a>
-            <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
-           <span class="m-cta"><a class="btn btn--sm m-menu-btn" href="#zapis">Записаться</a></span>
-        </nav>
+<nav class="nav" aria-label="Основная навигация">
+    <a href="#about">О нас</a>
+    <a href="#kursy">Курсы</a>
+    <a href="#proekty">Проекты</a>
+    <a href="#otzyvy">Отзывы</a>
+    <a href="#afisha">Афиша</a>
+    <a href="#abajur">Театр</a>
+    <a class="nav-blog" href="/blog/index.html">Блог</a>
+    <a href="#contacts">Контакты</a>
+    <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
+    <span class="m-cta"><a class="btn btn--sm m-menu-btn" href="#zapis">Записаться</a></span>
+</nav>
         <a class="header-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
         <span class="header-cta"><a class="btn" href="#zapis">Записаться</a></span>
         <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
