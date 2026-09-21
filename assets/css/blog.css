@@ -1,0 +1,299 @@
+/* ============================================================
+   blog.css — общие стили блога ШКИТ
+   - карточки статей
+   - фильтры
+   - скелетоны
+   - кнопка «Показать ещё» и счётчик
+   - noscript-список
+   - стили статьи (.article)
+   - FAQ-аккордеон
+   ============================================================ */
+
+/* ===== СЕТКА БЛОГА ===== */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 40px;
+}
+
+/* ===== КАРТОЧКА ===== */
+.blog-card {
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .3s ease, transform .3s ease;
+}
+.blog-card:hover {
+    box-shadow: var(--shadow);
+}
+.blog-card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+.blog-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+.blog-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.blog-card-date {
+    font-size: 12px;
+    color: var(--grey);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.blog-card h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+.blog-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    gap: 10px;
+}
+.blog-card-actions .read-link {
+    color: var(--coral-ink);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* ===== СКЕЛЕТОНЫ ===== */
+.blog-card--skeleton {
+    pointer-events: none;
+}
+.blog-card-skeleton-img {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
+    background-size: 200% 100%;
+    animation: blog-shimmer 1.4s infinite;
+}
+.blog-card-skeleton-line {
+    height: 14px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
+    background-size: 200% 100%;
+    animation: blog-shimmer 1.4s infinite;
+    margin-bottom: 10px;
+}
+.blog-card-skeleton-line--short { width: 40%; }
+@keyframes blog-shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ===== ФИЛЬТРЫ ===== */
+.blog-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+    margin-bottom: 8px;
+}
+.filter-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    border-radius: 999px;
+    border: 2px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all .25s ease;
+}
+.filter-btn:hover {
+    border-color: var(--coral-ink);
+    color: var(--coral-ink);
+}
+.filter-btn.active {
+    background: var(--coral-dark);
+    border-color: var(--coral-dark);
+    color: #fff;
+}
+
+/* ===== КНОПКА И СЧЁТЧИК ===== */
+.blog-more-wrap {
+    text-align: center;
+    margin-top: 30px;
+}
+.blog-more-btn {
+    display: inline-block;
+}
+.blog-counter {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--grey);
+    font-weight: 600;
+}
+
+/* ===== NOSCRIPT-СПИСОК ===== */
+.blog-noscript {
+    margin: 30px 0;
+    padding-left: 20px;
+}
+.blog-noscript li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+.blog-noscript a {
+    color: var(--coral-ink);
+    font-weight: 600;
+}
+
+/* ===== СТАТЬЯ ===== */
+.article { max-width: 780px; margin: 0 auto; }
+.article h1 { font-size: clamp(28px, 5vw, 44px); margin-bottom: 12px; line-height: 1.1; }
+.article .article-date { color: var(--grey); font-weight: 600; margin-bottom: 28px; }
+.article p { margin-bottom: 18px; color: #4a4a4a; font-size: 17px; line-height: 1.7; }
+.article h2 { font-size: 24px; margin: 40px 0 16px; }
+.article h3 { font-size: 19px; margin: 28px 0 12px; }
+.article img { border-radius: var(--radius); margin: 28px 0; width: 100%; height: auto; }
+.article ul, .article ol { margin: 0 0 18px 0; padding-left: 24px; }
+.article li { margin-bottom: 10px; color: #4a4a4a; font-size: 17px; line-height: 1.7; }
+.article strong { color: var(--ink); }
+.article blockquote {
+    border-left: 4px solid var(--coral);
+    background: var(--paper);
+    padding: 18px 22px;
+    margin: 24px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    font-weight: 500;
+}
+.article blockquote p:last-child { margin-bottom: 0; }
+
+.article-cta {
+    background: var(--ink);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 30px;
+    text-align: center;
+    margin-top: 40px;
+}
+.article-cta h3 { color: #fff; margin-bottom: 8px; }
+.article-cta p { color: rgba(255,255,255,.8); margin-bottom: 18px; }
+
+/* ===== FAQ-АККОРДЕОН ===== */
+.faq-list { display: grid; gap: 14px; margin: 32px 0 8px; }
+.faq-item {
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: box-shadow .3s ease;
+}
+.faq-item:hover { box-shadow: var(--shadow); }
+.faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 26px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    list-style: none;
+    user-select: none;
+}
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question::after {
+    content: "+";
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(232,93,93,.12);
+    color: var(--coral-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    transition: background .25s ease, color .25s ease;
+}
+.faq-item[open] .faq-question::after {
+    content: "−";
+    background: var(--coral-ink);
+    color: #fff;
+}
+.faq-answer {
+    padding: 4px 26px 26px;
+    color: #4a4a4a;
+    font-size: 16.5px;
+    line-height: 1.7;
+}
+.faq-answer p { margin-bottom: 14px; }
+.faq-answer p:last-child { margin-bottom: 0; }
+.faq-answer strong { color: var(--ink); }
+.faq-answer ul,
+.faq-answer ol { margin: 0 0 14px 0; padding-left: 22px; }
+.faq-answer li { margin-bottom: 8px; line-height: 1.6; }
+.faq-answer li:last-child { margin-bottom: 0; }
+.faq-answer a { color: var(--coral-ink); font-weight: 700; }
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 1024px) {
+    .blog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 24px;
+    }
+    .blog-card img {
+        height: auto;
+        aspect-ratio: 16/9;
+    }
+    .blog-card-body { padding: 16px; }
+    .blog-card h3 { font-size: 16px; margin-bottom: 12px; }
+    .blog-card-date { font-size: 11px; }
+
+    .blog-filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-left: -16px;
+        margin-right: -16px;
+        padding: 0 16px;
+        scrollbar-width: none;
+    }
+    .blog-filters::-webkit-scrollbar { display: none; }
+    .filter-btn {
+        flex-shrink: 0;
+        padding: 9px 16px;
+        font-size: 13px;
+    }
+
+    .blog-card-skeleton-img { height: auto; aspect-ratio: 16/9; }
+
+    .faq-question { padding: 18px 20px; font-size: 16px; }
+    .faq-answer { padding: 4px 20px 20px; font-size: 15.5px; }
+
+    .article p, .article li { font-size: 16px; }
+    .article h2 { font-size: 22px; }
+    .article h3 { font-size: 17px; }
+}
