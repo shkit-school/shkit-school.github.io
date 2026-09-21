@@ -1,0 +1,52 @@
+[
+  {
+    "id": "statya-5",
+    "title": "Как выбрать театральную студию в Челябинске: 6 красных флагов",
+    "url": "statya-5.html",
+    "date": "2026-09-21",
+    "category": ["parents", "adults"],
+    "image": "/assets/img/acter1.webp",
+    "excerpt": "6 красных флагов, чек-лист и принцип «все роли главные».",
+    "featured": true
+  },
+  {
+    "id": "statya-3",
+    "title": "Можно ли начать заниматься театром в 25, 35, 50 лет",
+    "url": "statya-3.html",
+    "date": "2026-09-17",
+    "category": ["adults"],
+    "image": "/assets/img/gal130.webp",
+    "excerpt": "Почему возраст — не помеха и как взрослые выходят на сцену.",
+    "featured": true
+  },
+  {
+    "id": "statya-4",
+    "title": "Как актёрский курс развивает память",
+    "url": "statya-4.html",
+    "date": "2026-09-16",
+    "category": ["parents"],
+    "image": "/assets/img/gal121.jpg",
+    "excerpt": "Что происходит с памятью, когда ребёнок учит роль.",
+    "featured": true
+  },
+  {
+    "id": "statya-2",
+    "title": "Подросток молчит и закрывается: как театр помогает вернуть голос",
+    "url": "statya-2.html",
+    "date": "2026-09-12",
+    "category": ["teens", "parents"],
+    "image": "/assets/img/gallery-06.jpg",
+    "excerpt": "Почему подросток замолкает и при чём тут театр.",
+    "featured": false
+  },
+  {
+    "id": "statya-1",
+    "title": "Ребёнок стесняется и боится сцены: что делать родителю",
+    "url": "statya-1.html",
+    "date": "2026-09-05",
+    "category": ["parents"],
+    "image": "/assets/img/gallery-05.jpg",
+    "excerpt": "Пошаговый разбор страха сцены — для родителей.",
+    "featured": false
+  }
+]
