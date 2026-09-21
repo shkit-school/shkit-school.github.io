@@ -37,117 +37,9 @@
 
     <!-- ===== Стили ===== -->
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
     <style>
         * { -webkit-tap-highlight-color: transparent; }
-
-        .blog-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 32px;
-            margin-bottom: 8px;
-        }
-        .filter-btn {
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: 600;
-            font-family: inherit;
-            border-radius: 999px;
-            border: 2px solid var(--line);
-            background: #fff;
-            color: var(--ink);
-            cursor: pointer;
-            transition: all .25s ease;
-        }
-        .filter-btn:hover {
-            border-color: var(--coral-ink);
-            color: var(--coral-ink);
-        }
-        .filter-btn.active {
-            background: var(--coral-dark);
-            border-color: var(--coral-dark);
-            color: #fff;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-            margin-top: 40px;
-        }
-        .blog-card {
-            background: #fff;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--line);
-            display: flex;
-            flex-direction: column;
-        }
-        .blog-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-        }
-        .blog-card-body {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-        .blog-card-date {
-            font-size: 12px;
-            color: var(--grey);
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .blog-card h3 {
-            font-size: 18px;
-            margin-bottom: 16px;
-        }
-        .blog-card-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
-            gap: 10px;
-        }
-        .blog-card-actions .read-link {
-            color: var(--coral-ink);
-            font-weight: 700;
-            font-size: 14px;
-        }
-        .blog-more-btn {
-            display: none;
-            margin: 30px auto 0;
-        }
-        .blog-more-btn.visible {
-            display: inline-block;
-        }
-
-        /* CTA внизу блога */
-        .blog-cta {
-            background: var(--ink);
-            color: #fff;
-            border-radius: var(--radius);
-            padding: 40px 30px;
-            text-align: center;
-            margin-top: 50px;
-        }
-        .blog-cta h2 {
-            color: #fff;
-            font-size: clamp(22px, 3vw, 32px);
-            margin-bottom: 10px;
-        }
-        .blog-cta p {
-            color: rgba(255,255,255,.85);
-            margin-bottom: 24px;
-            font-size: 16px;
-        }
-        .blog-cta .btn {
-            box-shadow: 0 14px 34px -12px rgba(209,52,52,.9);
-        }
 
         .visually-hidden {
             position: absolute !important;
@@ -159,35 +51,16 @@
             border: 0;
         }
 
-        @media (max-width: 768px) {
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-            .blog-card img {
-                height: auto;
-                aspect-ratio: 16/9;
-            }
-            .blog-filters {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                margin-left: -16px;
-                margin-right: -16px;
-                padding: 0 16px;
-                scrollbar-width: none;
-            }
-            .blog-filters::-webkit-scrollbar { display: none; }
-            .filter-btn {
-                flex-shrink: 0;
-                padding: 9px 16px;
-                font-size: 13px;
-            }
-            .blog-cta {
-                padding: 32px 20px;
-            }
+        .section.bg-white {
+            padding-top: 5px !important;
         }
 
-            /* ===== Кнопка в бургере (как на главной) ===== */
+        /* ===== «Блог» только на десктопе ===== */
+        @media (max-width: 880px) {
+            .nav .nav-blog { display: none !important; }
+        }
+
+        /* ===== Кнопка в бургере (как на главной) ===== */
         @media (max-width: 880px) {
             .nav.is-open .m-cta {
                 display: inline-block !important;
@@ -219,15 +92,6 @@
             }
         }
 
-        .section.bg-white {
-            padding-top: 5px !important;
-        }
-
-        /* ===== «Блог» только на десктопе ===== */
-        @media (max-width: 880px) {
-            .nav .nav-blog { display: none !important; }
-        }
-
         /* ===== Компактнее шапка блога, чтобы крошки не «улетали» ===== */
         .page-hero {
             padding-top: 20px !important;
@@ -238,7 +102,7 @@
                 padding-top: 12px !important;
                 padding-bottom: 18px !important;
             }
-        }        
+        }
     </style>
 
     <!-- ===== Yandex.Metrika counter ===== -->
@@ -272,6 +136,12 @@
             }
         },
         "blogPost": [
+            {
+                "@type": "BlogPosting",
+                "headline": "Как выбрать театральную студию в Челябинске: 6 красных флагов",
+                "url": "https://shkit-school.github.io/blog/statya-5.html",
+                "datePublished": "2026-09-21"
+            },
             {
                 "@type": "BlogPosting",
                 "headline": "Можно ли начать заниматься театром в 25, 35, 50 лет",
@@ -333,17 +203,17 @@
             <img src="/assets/img/logo-sm.png" alt="Логотип ШКИТ" width="48" height="44">
             <span><b>ШКИТ</b><span>Школа кино и театра</span></span>
         </a>
-       <nav class="nav" aria-label="Основная навигация">
-    <a href="/index.html#about">О нас</a>
-    <a href="/index.html#kursy">Курсы</a>
-    <a href="/index.html#proekty">Проекты</a>
-    <a href="/index.html#otzyvy">Отзывы</a>
-    <a href="/index.html#afisha">Афиша</a>
-    <a class="nav-blog is-active" href="index.html">Блог</a>
-    <a href="/index.html#contacts">Контакты</a>
-    <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
-    <span class="m-cta"><a class="btn btn--sm m-menu-btn" href="/index.html#zapis">Оставить заявку</a></span>
-</nav>
+        <nav class="nav" aria-label="Основная навигация">
+            <a href="/index.html#about">О нас</a>
+            <a href="/index.html#kursy">Курсы</a>
+            <a href="/index.html#proekty">Проекты</a>
+            <a href="/index.html#otzyvy">Отзывы</a>
+            <a href="/index.html#afisha">Афиша</a>
+            <a class="nav-blog is-active" href="/blog/">Блог</a>
+            <a href="/index.html#contacts">Контакты</a>
+            <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
+            <span class="m-cta"><a class="btn btn--sm m-menu-btn" href="/index.html#zapis">Оставить заявку</a></span>
+        </nav>
         <a class="header-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
         <span class="header-cta"><a class="btn btn--sm" href="/index.html#zapis">Оставить заявку</a></span>
         <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -372,61 +242,26 @@
                 <button class="filter-btn" data-filter="adults" type="button">Для взрослых</button>
             </div>
 
-            <div class="blog-grid" id="blog-grid">
+            <!-- Сетка: рендерится из posts.json через blog.js -->
+            <div class="blog-grid" id="blog-grid" aria-live="polite"></div>
 
-                <!-- ===== Статья 3 (17.09.2026) ===== -->
-                <article class="blog-card" data-category="adults" data-date="2026-09-17">
-                    <img src="/assets/img/gal130.webp" alt="Взрослые ученики ШКИТ на сцене, Челябинск" loading="lazy">
-                    <div class="blog-card-body">
-                        <div class="blog-card-date">17.09.2026</div>
-                        <h3>Можно ли начать заниматься театром в 25, 35, 50 лет</h3>
-                        <div class="blog-card-actions">
-                            <a class="read-link" href="statya-3.html">Читать →</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- ===== Статья 4 (16.09.2026) ===== -->
-                <article class="blog-card" data-category="parents" data-date="2026-09-16">
-                    <img src="/assets/img/gal121.jpg" alt="Дети на занятии по актёрскому мастерству в ШКИТ, Челябинск" loading="lazy">
-                    <div class="blog-card-body">
-                        <div class="blog-card-date">16.09.2026</div>
-                        <h3>Как актёрский курс развивает память</h3>
-                        <div class="blog-card-actions">
-                            <a class="read-link" href="statya-4.html">Читать →</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- ===== Статья 2 (12.09.2026) ===== -->
-                <article class="blog-card" data-category="teens" data-date="2026-09-12">
-                    <img src="/assets/img/gallery-06.jpg" alt="Подростки на сцене ШКИТ" loading="lazy">
-                    <div class="blog-card-body">
-                        <div class="blog-card-date">12.09.2026</div>
-                        <h3>Подросток молчит и закрывается: как театр помогает вернуть голос</h3>
-                        <div class="blog-card-actions">
-                            <a class="read-link" href="statya-2.html">Читать →</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- ===== Статья 1 (05.09.2026) ===== -->
-                <article class="blog-card" data-category="parents" data-date="2026-09-05">
-                    <img src="/assets/img/gallery-05.jpg" alt="Ребёнок боится сцены — советы ШКИТ" loading="lazy">
-                    <div class="blog-card-body">
-                        <div class="blog-card-date">05.09.2026</div>
-                        <h3>Ребёнок стесняется и боится сцены: что делать родителю</h3>
-                        <div class="blog-card-actions">
-                            <a class="read-link" href="statya-1.html">Читать →</a>
-                        </div>
-                    </div>
-                </article>
-
+            <!-- Кнопка и счётчик -->
+            <div class="blog-more-wrap">
+                <button class="btn btn--ghost blog-more-btn" id="blog-more-btn" type="button">Показать ещё 9</button>
+                <div class="blog-counter" id="blog-counter" aria-live="polite"></div>
             </div>
 
-            <div style="text-align:center; margin-top:30px;">
-                <button class="btn btn--ghost blog-more-btn" id="blog-more-btn" type="button">Показать ещё</button>
-            </div>
+            <!-- SEO-фолбэк -->
+            <noscript>
+                <h2>Все статьи</h2>
+                <ul class="blog-noscript">
+                    <li><a href="statya-5.html">Как выбрать театральную студию в Челябинске: 6 красных флагов — 21.09.2026</a></li>
+                    <li><a href="statya-3.html">Можно ли начать заниматься театром в 25, 35, 50 лет — 17.09.2026</a></li>
+                    <li><a href="statya-4.html">Как актёрский курс развивает память — 16.09.2026</a></li>
+                    <li><a href="statya-2.html">Подросток молчит и закрывается — 12.09.2026</a></li>
+                    <li><a href="statya-1.html">Ребёнок стесняется и боится сцены — 05.09.2026</a></li>
+                </ul>
+            </noscript>
 
             <!-- ===== CTA внизу ===== -->
             <div class="blog-cta">
@@ -443,61 +278,12 @@
     <div class="wrap">
         <div class="footer-bottom">
             <span>© <span id="year">2026</span> Школа кино и театра «ШКИТ» · </span>
-            <span><a href="/faq.html">Частые вопросы</a> · <a href="/policy.html">Политика конфиденциальности</a></span>
+            <span><a href="/blog/">Блог</a> · <a href="/faq.html">Частые вопросы</a> · <a href="/policy.html">Политика конфиденциальности</a></span>
         </div>
     </div>
 </footer>
 
 <script src="/assets/js/main.js" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var grid = document.getElementById('blog-grid');
-    var btn = document.getElementById('blog-more-btn');
-    var filterBtns = document.querySelectorAll('.filter-btn');
-
-    if (!grid) return;
-
-    var cards = grid.querySelectorAll('.blog-card');
-    var step = 3;
-    var visibleCount = 3;
-    var activeFilter = 'all';
-
-    function getFiltered() {
-        return Array.prototype.filter.call(cards, function(card) {
-            return activeFilter === 'all' || card.dataset.category === activeFilter;
-        });
-    }
-
-    function update() {
-        var filtered = getFiltered();
-        cards.forEach(function(card) {
-            card.style.display = 'none';
-        });
-        filtered.forEach(function(card, i) {
-            card.style.display = (i < visibleCount) ? 'flex' : 'none';
-        });
-        if (btn) btn.classList.toggle('visible', visibleCount < filtered.length);
-    }
-
-    if (btn) {
-        btn.addEventListener('click', function() {
-            visibleCount += step;
-            update();
-        });
-    }
-
-    filterBtns.forEach(function(b) {
-        b.addEventListener('click', function() {
-            filterBtns.forEach(function(x) { x.classList.remove('active'); });
-            b.classList.add('active');
-            activeFilter = b.dataset.filter;
-            visibleCount = step;
-            update();
-        });
-    });
-
-    update();
-});
-</script>
+<script src="/assets/js/blog.js" defer></script>
 </body>
 </html>
