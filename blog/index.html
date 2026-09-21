@@ -187,7 +187,7 @@
             }
         }
 
-        /* ===== Кнопка в бургере (как на главной) ===== */
+            /* ===== Кнопка в бургере (как на главной) ===== */
         @media (max-width: 880px) {
             .nav.is-open .m-cta {
                 display: inline-block !important;
@@ -222,6 +222,23 @@
         .section.bg-white {
             padding-top: 5px !important;
         }
+
+        /* ===== «Блог» только на десктопе ===== */
+        @media (max-width: 880px) {
+            .nav .nav-blog { display: none !important; }
+        }
+
+        /* ===== Компактнее шапка блога, чтобы крошки не «улетали» ===== */
+        .page-hero {
+            padding-top: 20px !important;
+            padding-bottom: 24px !important;
+        }
+        @media (max-width: 768px) {
+            .page-hero {
+                padding-top: 12px !important;
+                padding-bottom: 18px !important;
+            }
+        }        
     </style>
 
     <!-- ===== Yandex.Metrika counter ===== -->
