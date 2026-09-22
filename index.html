@@ -46,6 +46,7 @@
 
     <!-- ===== Стили ===== -->
     <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/blog.css">
     <style>
         * { -webkit-tap-highlight-color: transparent; }
 
@@ -892,7 +893,7 @@
         </div>
     </section>
 
-   <!-- ============ БЛОГ ============ -->
+<!-- ============ БЛОГ ============ -->
 <section class="section bg-paper" id="blog">
     <div class="wrap">
         <span class="kicker anim">Блог</span>
@@ -910,50 +911,11 @@
 
         <div class="afisha-board anim">
             <div class="blog-slider" data-stagger="90">
-                <div class="blog-track">
-
-                    <!-- Статья 3 — Театр в 25, 35, 50 -->
-                    <article class="blog-card">
-                        <img src="/assets/img/gal130.webp" alt="Взрослые ученики ШКИТ на сцене, Челябинск" loading="lazy">
-                        <div class="blog-card-body">
-                            <div class="blog-card-date">17.09.2026</div>
-                            <h3>Можно ли начать заниматься театром в 25, 35, 50 лет</h3>
-                            <div class="blog-card-actions">
-                                <a class="read-link" href="blog/statya-3.html">Читать →</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Статья 4 — Память -->
-                    <article class="blog-card">
-                        <img src="/assets/img/gal121.jpg" alt="Дети на занятии по актёрскому мастерству в ШКИТ" loading="lazy">
-                        <div class="blog-card-body">
-                            <div class="blog-card-date">16.09.2026</div>
-                            <h3>Как актёрский курс развивает память</h3>
-                            <div class="blog-card-actions">
-                                <a class="read-link" href="blog/statya-4.html">Читать →</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Статья 2 — Подросток -->
-                    <article class="blog-card">
-                        <img src="/assets/img/gallery-06.jpg" alt="Подростки на сцене ШКИТ" loading="lazy">
-                        <div class="blog-card-body">
-                            <div class="blog-card-date">12.09.2026</div>
-                            <h3>Подросток молчит и закрывается: как театр помогает вернуть голос</h3>
-                            <div class="blog-card-actions">
-                                <a class="read-link" href="blog/statya-2.html">Читать →</a>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
+                <div class="blog-track" id="blog-track"></div>
             </div>
         </div>
     </div>
-</section>
-                              
+</section>                              
                                                         
     <!-- ============ 14. КОНТАКТЫ ============ -->
     <section class="section bg-white" id="contacts">
@@ -1151,7 +1113,7 @@
 
 <!-- ============ СКРИПТЫ ============ -->
 <script src="assets/js/main.js" defer></script>
-
+<script src="assets/js/blog-featured.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     var slider = document.getElementById('reviews-slider');
