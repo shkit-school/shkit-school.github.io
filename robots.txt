@@ -1,5 +1,5 @@
-text
 User-agent: *
 Allow: /
+Disallow: /blog/_template.html
 
 Sitemap: https://shkit-school.github.io/sitemap.xml
