@@ -1,0 +1,41 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'assets/data/posts.json'
+      - '.github/workflows/sitemap.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate sitemap
+        run: node scripts/generate-sitemap.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          if git diff --staged --quiet; then
+            echo "Sitemap не изменился — пропускаю коммит."
+          else
+            git commit -m "Update sitemap.xml [skip ci]"
+            git push
+          fi
