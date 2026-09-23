@@ -298,80 +298,122 @@
     .article h3 { font-size: 17px; }
 }
 /* ============================================================
-   POPUP «Записаться» — открывается по клику на #zapis
-   - работает на всех страницах
-   - форма: Яндекс.Форма в iframe
-   - закрытие: крестик / фон / Esc
+   POPUP «Записаться» — глобальный попап с формой
+   Открывается по клику на любую ссылку с #zapis
    ============================================================ */
 
-(function () {
-    'use strict';
+.zapis-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity .25s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+.zapis-popup-overlay.is-open {
+    display: flex;
+    opacity: 1;
+}
+.zapis-popup {
+    background: #fff;
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 30px 80px rgba(0,0,0,.35);
+    overflow: hidden;
+    transform: translateY(10px);
+    transition: transform .25s ease;
+}
+.zapis-popup-overlay.is-open .zapis-popup {
+    transform: translateY(0);
+}
+.zapis-popup-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--line);
+    flex-shrink: 0;
+}
+.zapis-popup-head h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+}
+.zapis-popup-head p {
+    margin: 4px 0 0;
+    font-size: 13.5px;
+    color: var(--grey);
+    font-weight: 500;
+}
+.zapis-popup-close {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(232,93,93,.1);
+    color: var(--coral-ink);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s ease, color .2s ease;
+}
+.zapis-popup-close:hover {
+    background: var(--coral-ink);
+    color: #fff;
+}
+.zapis-popup-body {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+}
+.zapis-popup-body iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    border: 0;
+    display: block;
+}
 
-    var FORM_URL = 'https://forms.yandex.ru/u/6a9a626c4936395e001c5ec1?iframe=1';
-    var POPUP_ID = 'zapis-popup-global';
-
-    function createPopup() {
-        if (document.getElementById(POPUP_ID)) return;
-
-        var overlay = document.createElement('div');
-        overlay.className = 'zapis-popup-overlay';
-        overlay.id = POPUP_ID;
-        overlay.setAttribute('aria-hidden', 'true');
-        overlay.setAttribute('role', 'dialog');
-        overlay.setAttribute('aria-modal', 'true');
-        overlay.innerHTML =
-            '<div class="zapis-popup" role="document">' +
-                '<div class="zapis-popup-head">' +
-                    '<div>' +
-                        '<h3>Оставить заявку</h3>' +
-                        '<p>Заполните форму — мы свяжемся с вами</p>' +
-                    '</div>' +
-                    '<button class="zapis-popup-close" type="button" aria-label="Закрыть">✕</button>' +
-                '</div>' +
-                '<div class="zapis-popup-body">' +
-                    '<iframe ' +
-                        'src="' + FORM_URL + '" ' +
-                        'title="Форма заявки" ' +
-                        'loading="lazy" ' +
-                        'allow="clipboard-write">' +
-                    '</iframe>' +
-                '</div>' +
-            '</div>';
-
-        document.body.appendChild(overlay);
-
-        overlay.addEventListener('click', function (e) {
-            if (e.target === overlay) closePopup();
-        });
-
-        overlay.querySelector('.zapis-popup-close')
-            .addEventListener('click', closePopup);
+@media (max-width: 768px) {
+    .zapis-popup-overlay {
+        padding: 0;
+        align-items: flex-end;
     }
-
-    function openPopup() {
-        createPopup();
-        var popup = document.getElementById(POPUP_ID);
-        popup.classList.add('is-open');
-        popup.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
+    .zapis-popup {
+        max-width: 100%;
+        max-height: 95vh;
+        border-radius: 20px 20px 0 0;
+        transform: translateY(30px);
     }
-
-    function closePopup() {
-        var popup = document.getElementById(POPUP_ID);
-        if (!popup) return;
-        popup.classList.remove('is-open');
-        popup.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
+    .zapis-popup-overlay.is-open .zapis-popup {
+        transform: translateY(0);
     }
-
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closePopup();
-    });
-
-    document.addEventListener('click', function (e) {
-        var link = e.target.closest('a[href*="#zapis"]');
-        if (!link) return;
-        e.preventDefault();
-        openPopup();
-    });
-})();
+    .zapis-popup-head {
+        padding: 16px 18px;
+    }
+    .zapis-popup-head h3 {
+        font-size: 16px;
+    }
+    .zapis-popup-body iframe {
+        min-height: 60vh;
+    }
+}
