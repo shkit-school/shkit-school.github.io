@@ -297,6 +297,7 @@
     .article h2 { font-size: 22px; }
     .article h3 { font-size: 17px; }
 }
+
 /* ============================================================
    POPUP «Записаться» — глобальный попап с формой
    Открывается по клику на любую ссылку с #zapis
@@ -324,7 +325,7 @@
     background: #fff;
     border-radius: var(--radius);
     width: 100%;
-    max-width: 560px;
+    max-width: 640px;
     max-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -384,6 +385,8 @@
     overflow: hidden;
     background: #fff;
     display: flex;
+    padding: 0 16px 0 20px;
+    box-sizing: border-box;
 }
 .zapis-popup-body iframe {
     width: 100%;
@@ -412,6 +415,9 @@
     }
     .zapis-popup-head h3 {
         font-size: 16px;
+    }
+    .zapis-popup-body {
+        padding: 0 8px 0 12px;
     }
     .zapis-popup-body iframe {
         min-height: 60vh;
