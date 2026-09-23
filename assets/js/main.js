@@ -460,3 +460,82 @@
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 })();
+
+/* ============================================================
+   POPUP «Записаться» — открывается по клику на #zapis
+   - работает на всех страницах
+   - форма: Яндекс.Форма в iframe
+   - закрытие: крестик / фон / Esc
+   ============================================================ */
+
+(function () {
+    'use strict';
+
+    var FORM_URL = 'https://forms.yandex.ru/u/6a9a626c4936395e001c5ec1?iframe=1';
+    var POPUP_ID = 'zapis-popup-global';
+
+    function createPopup() {
+        if (document.getElementById(POPUP_ID)) return;
+
+        var overlay = document.createElement('div');
+        overlay.className = 'zapis-popup-overlay';
+        overlay.id = POPUP_ID;
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        overlay.innerHTML =
+            '<div class="zapis-popup" role="document">' +
+                '<div class="zapis-popup-head">' +
+                    '<div>' +
+                        '<h3>Оставить заявку</h3>' +
+                        '<p>Заполните форму — мы свяжемся с вами</p>' +
+                    '</div>' +
+                    '<button class="zapis-popup-close" type="button" aria-label="Закрыть">✕</button>' +
+                '</div>' +
+                '<div class="zapis-popup-body">' +
+                    '<iframe ' +
+                        'src="' + FORM_URL + '" ' +
+                        'title="Форма заявки" ' +
+                        'loading="lazy" ' +
+                        'allow="clipboard-write">' +
+                    '</iframe>' +
+                '</div>' +
+            '</div>';
+
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) closePopup();
+        });
+
+        overlay.querySelector('.zapis-popup-close')
+            .addEventListener('click', closePopup);
+    }
+
+    function openPopup() {
+        createPopup();
+        var popup = document.getElementById(POPUP_ID);
+        popup.classList.add('is-open');
+        popup.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+        var popup = document.getElementById(POPUP_ID);
+        if (!popup) return;
+        popup.classList.remove('is-open');
+        popup.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closePopup();
+    });
+
+    document.addEventListener('click', function (e) {
+        var link = e.target.closest('a[href*="#zapis"]');
+        if (!link) return;
+        e.preventDefault();
+        openPopup();
+    });
+})();
