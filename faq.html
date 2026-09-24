@@ -33,63 +33,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap&subset=cyrillic,latin" rel="stylesheet">
 
-    <!-- ===== Progressive enhancement ===== -->
     <script>document.documentElement.className+=" js";</script>
 
     <!-- ===== Стили ===== -->
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
     <style>
         * { -webkit-tap-highlight-color: transparent; }
 
-        .faq-list { max-width: 820px; margin: 0 auto; display: grid; gap: 14px; }
-        .faq-item { background: #fff; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow-sm); overflow: hidden; transition: box-shadow .3s ease; }
-        .faq-item:hover { box-shadow: var(--shadow); }
-        .faq-question { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 26px; cursor: pointer; font-size: 18px; font-weight: 700; color: var(--ink); list-style: none; user-select: none; }
-        .faq-question::-webkit-details-marker { display: none; }
-        .faq-question::after { content: "+"; flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(232,93,93,.12); color: var(--coral-ink); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; line-height: 1; transition: transform .25s ease, background .25s ease, color .25s ease; }
-        .faq-item[open] .faq-question::after { content: "−"; background: var(--coral-ink); color: #fff; }
-
-        /* ===== Читаемость ответов ===== */
-        .faq-answer {
-            padding: 4px 26px 26px;
-            color: #4a4a4a;
-            font-size: 16.5px;
-            line-height: 1.7;
-        }
-        .faq-answer p {
-            margin-bottom: 14px;
-        }
-        .faq-answer p:last-child {
-            margin-bottom: 0;
-        }
-        .faq-answer strong {
-            color: var(--ink);
-        }
-        .faq-answer ul,
-        .faq-answer ol {
-            margin: 0 0 14px 0;
-            padding-left: 22px;
-        }
-        .faq-answer li {
-            margin-bottom: 8px;
-            line-height: 1.6;
-        }
-        .faq-answer li:last-child {
-            margin-bottom: 0;
-        }
-        .faq-answer a {
-            color: var(--coral-ink);
-            font-weight: 700;
-        }
-        @media (max-width: 768px) {
-            .faq-question { padding: 18px 20px; font-size: 16px; }
-            .faq-answer { padding: 4px 20px 20px; font-size: 15.5px; }
-        }
-
         .section.bg-white { padding-top: 5px !important; }
 
-        /* ===== Кнопка в бургере (как на главной) ===== */
+        /* ===== «Блог» только на десктопе ===== */
         @media (max-width: 880px) {
+            .nav .nav-blog { display: none !important; }
             .nav.is-open .m-cta {
                 display: inline-block !important;
                 width: auto !important;
@@ -120,12 +76,7 @@
             }
         }
 
-        /* ===== «Блог» только на десктопе ===== */
-        @media (max-width: 880px) {
-            .nav .nav-blog { display: none !important; }
-        }
-
-        /* ===== Компактнее шапка FAQ, чтобы крошки не «улетали» ===== */
+        /* ===== Компактнее шапка FAQ ===== */
         .page-hero {
             padding-top: 20px !important;
             padding-bottom: 24px !important;
@@ -248,6 +199,8 @@
             <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
             <span class="m-cta"><a class="btn btn--sm m-menu-btn" href="/index.html#zapis">Оставить заявку</a></span>
         </nav>
+        <a class="header-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
+        <span class="header-cta"><a class="btn btn--sm" href="/index.html#zapis">Оставить заявку</a></span>
         <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
 </header>
@@ -410,37 +363,4 @@
                             <li><strong>2 раза в неделю</strong> — 5 600 ₽ в месяц.</li>
                         </ul>
                         <p>Разница — в скорости: чем чаще занятия, тем быстрее результат. Оба варианта рабочие.</p>
-                        <p><strong>Скидка для многодетных семей</strong> — потому что когда в семье несколько детей, каждая сумма важна.</p>
-                        <p><strong>Пробное занятие — 500 ₽.</strong> Это полноценное занятие: группа, педагог, упражнения. Честная цена за то, чтобы понять: подходит или нет.</p>
-                        <p><strong>Взрослые:</strong></p>
-                        <ul>
-                            <li><strong>«Магия слов»</strong> — 5 600 ₽ в месяц.</li>
-                            <li><strong>«Давай сыграем жизнь»</strong> — 56 000 ₽ за проект.</li>
-                            <li><strong>«Мой бенефис»</strong> — цена после консультации.</li>
-                        </ul>
-                        <p>Больше о том, как выбрать студию и на что смотреть — в статье <a href="/blog/statya-5.html">«Как выбрать театральную студию в Челябинске: 6 красных флагов»</a>.</p>
-                    </div>
-                </details>
-
-            </div>
-
-            <div style="text-align:center; margin-top:40px">
-                <a class="btn" href="/index.html#zapis">Записаться на пробное занятие</a>
-            </div>
-        </div>
-    </section>
-</main>
-
-<!-- ============ ФУТЕР ============ -->
-<footer class="footer">
-    <div class="wrap">
-        <div class="footer-bottom">
-            <span>© <span id="year">2026</span> Школа кино и театра «ШКИТ» · </span>
-            <span><a href="/faq.html">Частые вопросы</a> · <a href="/policy.html">Политика конфиденциальности</a></span>
-        </div>
-    </div>
-</footer>
-
-<script src="/assets/js/main.js" defer></script>
-</body>
-</html>
+                        <p><strong>Скидка для многодетных семей</strong> — потому что
