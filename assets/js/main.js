@@ -494,10 +494,11 @@
                 '</div>' +
                 '<div class="zapis-popup-body">' +
                     '<iframe ' +
-                        'src="' + FORM_URL + '" ' +
-                        'title="Форма заявки" ' +
-                        'loading="lazy" ' +
-                        'allow="clipboard-write">' +
+                         'src="' + FORM_URL + '" ' +
+    'title="Форма заявки" ' +
+    'loading="lazy" ' +
+    'style="width:100%; height:calc(70vh + 40px); min-height:0; border:0; display:block;" ' +
+    'allow="clipboard-write">' +
                     '</iframe>' +
                 '</div>' +
             '</div>';
