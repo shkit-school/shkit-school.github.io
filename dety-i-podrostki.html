@@ -107,9 +107,6 @@
         .group-section--dark li {
             color: rgba(255,255,255,.85);
         }
-        .group-section--dark .group-title .aside {
-            color: rgba(255,255,255,.6);
-        }
 
         .group-inner {
             max-width: 900px;
@@ -199,13 +196,156 @@
             font-size: 17px;
             line-height: 1.7;
         }
-        .group-list {
-            margin: 0 0 24px 0;
-            padding-left: 24px;
+
+        /* ===== Карточки с иконками 2×2 ===== */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 32px 0;
         }
-        .group-list li {
-            margin-bottom: 10px;
+        .feature {
+            background: var(--paper);
+            border-radius: var(--radius);
+            padding: 26px 24px;
+            border: 1px solid var(--line);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .group-section--dark .feature {
+            background: rgba(255,255,255,.06);
+            border-color: rgba(255,255,255,.12);
+        }
+        .feature-ico {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(232,93,93,.12);
+            color: var(--coral-ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .feature-ico svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .feature h4 {
+            font-size: 17px;
+            font-weight: 700;
+            margin: 0;
+            color: var(--ink);
+        }
+        .group-section--dark .feature h4 {
+            color: #fff;
+        }
+        .feature p {
+            font-size: 15px;
             line-height: 1.6;
+            margin: 0;
+            color: var(--grey);
+        }
+        .group-section--dark .feature p {
+            color: rgba(255,255,255,.8);
+        }
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .feature {
+                padding: 22px 20px;
+            }
+        }
+
+        /* ===== Цитата-выноска ===== */
+        .pull-quote {
+            margin: 32px 0;
+            padding: 28px 32px;
+            border-left: 4px solid var(--coral);
+            background: var(--paper);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--ink);
+        }
+        .group-section--dark .pull-quote {
+            background: rgba(255,255,255,.08);
+            color: #fff;
+        }
+        .pull-quote p {
+            margin: 0 0 12px 0;
+        }
+        .pull-quote p:last-child {
+            margin-bottom: 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--grey);
+        }
+        .group-section--dark .pull-quote p:last-child {
+            color: rgba(255,255,255,.7);
+        }
+        @media (max-width: 768px) {
+            .pull-quote {
+                padding: 20px 22px;
+                font-size: 17px;
+            }
+            .pull-quote p:last-child {
+                font-size: 14px;
+            }
+        }
+
+        /* ===== Два пути — карточки 2×1 ===== */
+        .path-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 32px 0;
+        }
+        .path {
+            background: var(--paper);
+            border-radius: var(--radius);
+            padding: 26px 24px;
+            border: 1px solid var(--line);
+        }
+        .group-section--dark .path {
+            background: rgba(255,255,255,.06);
+            border-color: rgba(255,255,255,.12);
+        }
+        .path h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            color: var(--ink);
+        }
+        .group-section--dark .path h4 {
+            color: #fff;
+        }
+        .path p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--grey);
+        }
+        .group-section--dark .path p {
+            color: rgba(255,255,255,.8);
+        }
+        @media (max-width: 768px) {
+            .path-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .path {
+                padding: 22px 20px;
+            }
         }
 
         /* ===== CTA внутри блока ===== */
@@ -378,15 +518,37 @@
                 </figure>
 
                 <h3>Чему учим</h3>
-                <p class="group-text">
-                    Здесь мы не «ставим артистов». Мы помогаем ребёнку:
-                </p>
-                <ul class="group-list">
-                    <li><strong>Говорить громко и внятно.</strong> Через скороговорки в движении, дыхательные упражнения, игры с интонациями.</li>
-                    <li><strong>Запоминать текст без зубрёжки.</strong> Через смысл, образ, движение — а не через повторение.</li>
-                    <li><strong>Не бояться зрителя.</strong> Сначала — маленький круг. Потом — группа. Потом — родители. Потом — сцена.</li>
-                    <li><strong>Работать в команде.</strong> Театр — это всегда вместе: партнёры, сцены, спектакль.</li>
-                </ul>
+
+                <div class="feature-grid">
+                    <div class="feature">
+                        <div class="feature-ico">
+                            <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4"/><path d="M8 23h8"/></svg>
+                        </div>
+                        <h4>Речь</h4>
+                        <p>Говорить громко и внятно. Через скороговорки в движении, дыхательные упражнения, игры с интонациями.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-ico">
+                            <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5 4 7v4h6v-4c2-2 4-4 4-7a7 7 0 0 0-7-7z"/><path d="M9 21h6"/></svg>
+                        </div>
+                        <h4>Память</h4>
+                        <p>Запоминать текст без зубрёжки. Через смысл, образ, движение — а не через повторение.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-ico">
+                            <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M2 18h20"/><path d="M6 6h12"/><circle cx="12" cy="3" r="1"/></svg>
+                        </div>
+                        <h4>Сцена</h4>
+                        <p>Не бояться зрителя. Сначала — маленький круг. Потом — группа. Потом — родители. Потом — сцена.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-ico">
+                            <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
+                        </div>
+                        <h4>Команда</h4>
+                        <p>Работать вместе. Театр — это всегда партнёры, сцены, общий спектакль.</p>
+                    </div>
+                </div>
 
                 <figure class="photo-grid">
                     <img src="/assets/img/gal121.jpg" alt="Дети в костюмах и шляпах на занятии ШКИТ" loading="lazy">
@@ -394,9 +556,11 @@
                 </figure>
 
                 <h3>Что в финале</h3>
-                <p class="group-text">
-                    Раз в год — <strong>отчётный спектакль</strong>. С декорациями, костюмами, светом и настоящим залом. Ребёнок выходит на сцену — и говорит себе: «У меня получилось». Это остаётся с ним надолго.
-                </p>
+
+                <blockquote class="pull-quote">
+                    <p>«У меня получилось»</p>
+                    <p>Эти слова ребёнок скажет себе после первого выхода на сцену. И они останутся с ним надолго.</p>
+                </blockquote>
 
                 <div class="group-cta">
                     <h3>Привести ребёнка на пробное</h3>
@@ -428,13 +592,17 @@
                 </figure>
 
                 <h3>Два пути</h3>
-                <p class="group-text">
-                    Мы не «учим всех одинаково». В группе есть два направления:
-                </p>
-                <ul class="group-list">
-                    <li><strong>Для себя.</strong> Уверенность, публичные выступления, харизма, умение говорить так, чтобы слушали. Без цели стать актёром.</li>
-                    <li><strong>Для поступления.</strong> Серьёзная подготовка к театральному вузу: программа для прослушивания, сценическая речь, актёрское мастерство. С честной оценкой — реально ли поступить.</li>
-                </ul>
+
+                <div class="path-grid">
+                    <div class="path">
+                        <h4>Для себя</h4>
+                        <p>Уверенность, публичные выступления, харизма, умение говорить так, чтобы слушали. Без цели стать актёром.</p>
+                    </div>
+                    <div class="path">
+                        <h4>Для поступления</h4>
+                        <p>Серьёзная подготовка к театральному вузу: программа для прослушивания, сценическая речь, актёрское мастерство. С честной оценкой — реально ли поступить.</p>
+                    </div>
+                </div>
 
                 <figure class="photo-grid">
                     <img src="/assets/img/gallery-06.jpg" alt="Подростковый ансамбль на сцене ШКИТ" loading="lazy">
@@ -442,9 +610,11 @@
                 </figure>
 
                 <h3>Что в финале</h3>
-                <p class="group-text">
-                    <strong>Спектакль на профессиональной сцене.</strong> С современной драматургией, светом, звуком. Для тех, кто идёт в театральный — это ещё и пункт в портфолио, который выделяет среди других абитуриентов.
-                </p>
+
+                <blockquote class="pull-quote">
+                    <p>Спектакль на профессиональной сцене</p>
+                    <p>С современной драматургией, светом, звуком. Для тех, кто идёт в театральный — это ещё и пункт в портфолио, который выделяет среди других абитуриентов.</p>
+                </blockquote>
 
                 <div class="group-cta">
                     <h3>Прийти на пробное</h3>
