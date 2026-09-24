@@ -14,7 +14,6 @@
     <!-- ===== ЗАМЕНИТЬ: URL статьи (statya-N.html) ===== -->
     <link rel="canonical" href="https://shkit-school.github.io/blog/statya-N.html">
 
-    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#BC3636">
 
     <!-- ===== Open Graph ===== -->
@@ -52,13 +51,11 @@
         /* ===== Уникальные стили этой статьи (если нужны) ===== */
         /* Не дублируйте blog.css — только то, чего там нет */
 
+        .section.bg-white { padding-top: 5px !important; }
+
         /* ===== «Блог» только на десктопе ===== */
         @media (max-width: 880px) {
             .nav .nav-blog { display: none !important; }
-        }
-
-        /* ===== Кнопка в бургере (как на главной) ===== */
-        @media (max-width: 880px) {
             .nav.is-open .m-cta {
                 display: inline-block !important;
                 width: auto !important;
@@ -86,20 +83,6 @@
             .nav.is-open .m-cta .btn:hover {
                 background: #fff;
                 color: var(--coral-ink, #BC3636) !important;
-            }
-        }
-
-        .section.bg-white { padding-top: 5px !important; }
-
-        /* ===== Компактнее шапка статьи, чтобы крошки не «улетали» ===== */
-        .page-hero {
-            padding-top: 20px !important;
-            padding-bottom: 24px !important;
-        }
-        @media (max-width: 768px) {
-            .page-hero {
-                padding-top: 12px !important;
-                padding-bottom: 18px !important;
             }
         }
     </style>
@@ -176,12 +159,13 @@
             <a href="/index.html#proekty">Проекты</a>
             <a href="/index.html#otzyvy">Отзывы</a>
             <a href="/index.html#afisha">Афиша</a>
-            <a href="/index.html#abajur">Театр</a>
             <a class="nav-blog" href="/blog/">Блог</a>
             <a href="/index.html#contacts">Контакты</a>
             <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
             <span class="m-cta"><a class="btn btn--sm m-menu-btn" href="/index.html#zapis">Оставить заявку</a></span>
         </nav>
+        <a class="header-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
+        <span class="header-cta"><a class="btn btn--sm" href="/index.html#zapis">Оставить заявку</a></span>
         <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
 </header>
