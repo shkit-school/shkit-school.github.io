@@ -383,11 +383,11 @@
 
 /* ===== ТЕЛО ПОПАПА — обрезка подписи Яндекса ===== */
 .zapis-popup-body {
-    flex: 1 1 auto;
+   flex: 1 1 auto;
     min-height: 0;
     overflow: hidden !important;
     background: #fff;
-    display: flex;
+    display: block !important;
     padding: 0 16px 0 20px;
     box-sizing: border-box;
     max-height: 70vh !important;
