@@ -303,6 +303,39 @@
    POPUP «Записаться» — глобальный попап с формой
    ============================================================ */
 
+/* ===== ПЛАШКА С БРЕНДИНГОМ — только десктоп ===== */
+@media (min-width: 769px) {
+    .zapis-popup-body {
+        position: relative;
+    }
+    .zapis-popup-body::after {
+        content: '♥ ШКИТ';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 40px;
+        background: #fff;
+        color: var(--coral-ink, #BC3636);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: .04em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        z-index: 2;
+        border-top: 1px solid var(--line, rgba(45,45,45,.12));
+    }
+}
+
+.zapis-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    ...
 .zapis-popup-overlay {
     position: fixed;
     inset: 0;
