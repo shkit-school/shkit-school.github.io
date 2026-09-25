@@ -308,6 +308,10 @@
     .zapis-popup-body {
         position: relative;
     }
+    .zapis-popup-body iframe {
+        height: calc(100% + 60px) !important;
+        min-height: 560px;
+    }
     .zapis-popup-body::after {
         content: '♥ ШКИТ';
         position: absolute;
