@@ -136,6 +136,31 @@
             line-height: 1.6;
         }
 
+        /* ===== Мини-галерея 2×1 — сверху ===== */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 24px 0 32px;
+        }
+        .photo-grid img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .photo-grid img {
+                height: auto;
+                aspect-ratio: 16/9;
+            }
+        }
+
         /* ===== Большое фото с коралловой подписью ===== */
         .photo-hero {
             position: relative;
@@ -168,31 +193,6 @@
         @media (max-width: 768px) {
             .photo-hero img { height: 240px; }
             .photo-hero figcaption { padding: 14px 18px; font-size: 13px; }
-        }
-
-        /* ===== Мини-галерея 2×1 ===== */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 32px 0;
-        }
-        .photo-grid img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: var(--radius);
-            display: block;
-        }
-        @media (max-width: 768px) {
-            .photo-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            .photo-grid img {
-                height: auto;
-                aspect-ratio: 16/9;
-            }
         }
 
         /* ===== Текст под карточками ===== */
@@ -483,9 +483,9 @@
                     В этом возрасте ребёнок учится быть в группе, говорить вслух, не бояться ошибок. Театр — самый мягкий способ этому научиться.
                 </p>
 
-                <figure class="photo-hero">
-                    <img src="/assets/img/gallery-15.jpg" alt="Дети на отчётном спектакле ШКИТ" loading="lazy">
-                    <figcaption>Отчётный спектакль — с декорациями, костюмами и аплодисментами</figcaption>
+                <figure class="photo-grid">
+                    <img src="/assets/img/gal121.jpg" alt="Дети на занятии по сценической речи в ШКИТ" loading="lazy">
+                    <img src="/assets/img/gallery-07.jpg" alt="Кукольная сцена на занятии ШКИТ" loading="lazy">
                 </figure>
 
                 <h3>Чему учим</h3>
@@ -521,9 +521,9 @@
                     <li><strong>Работать в команде.</strong> Театр — это всегда партнёры, сцены, общий спектакль.</li>
                 </ul>
 
-                <figure class="photo-grid">
-                    <img src="/assets/img/gal121.jpg" alt="Дети в костюмах и шляпах на занятии ШКИТ" loading="lazy">
-                    <img src="/assets/img/gallery-07.jpg" alt="Кукольная сцена в спектакле ШКИТ" loading="lazy">
+                <figure class="photo-hero">
+                    <img src="/assets/img/gallery-15.jpg" alt="Дети на отчётном спектакле ШКИТ" loading="lazy">
+                    <figcaption>Отчётный спектакль — с декорациями, костюмами и аплодисментами</figcaption>
                 </figure>
 
                 <h3>Что в финале</h3>
@@ -557,9 +557,9 @@
                     В этом возрасте важно не «развлекать», а говорить честно. Подросток приходит за своим: кто-то — за уверенностью, кто-то — за поступлением.
                 </p>
 
-                <figure class="photo-hero">
-                    <img src="/assets/img/gal124.jpg" alt="Подростковый спектакль учеников ШКИТ" loading="lazy">
-                    <figcaption>Спектакль на профессиональной сцене — итог двух лет занятий</figcaption>
+                <figure class="photo-grid">
+                    <img src="/assets/img/gallery-06.jpg" alt="Подростковый ансамбль на занятии ШКИТ" loading="lazy">
+                    <img src="/assets/img/gal123.jpg" alt="Историческая постановка на занятии ШКИТ" loading="lazy">
                 </figure>
 
                 <h3>Чему учим</h3>
@@ -594,9 +594,9 @@
                     <li><strong>Театральной режиссурой.</strong> Системное видение спектакля, работа с командой, лидерские качества.</li>
                 </ul>
 
-                <figure class="photo-grid">
-                    <img src="/assets/img/gallery-06.jpg" alt="Подростковый ансамбль на сцене ШКИТ" loading="lazy">
-                    <img src="/assets/img/gal123.jpg" alt="Историческая постановка учеников ШКИТ" loading="lazy">
+                <figure class="photo-hero">
+                    <img src="/assets/img/gal124.jpg" alt="Подростковый спектакль учеников ШКИТ" loading="lazy">
+                    <figcaption>Спектакль на профессиональной сцене — итог двух лет занятий</figcaption>
                 </figure>
 
                 <h3>Что в финале</h3>
