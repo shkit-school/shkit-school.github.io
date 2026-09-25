@@ -303,43 +303,6 @@
    POPUP «Записаться» — глобальный попап с формой
    ============================================================ */
 
-/* ===== ПЛАШКА С БРЕНДИНГОМ — только десктоп ===== */
-@media (min-width: 769px) {
-    .zapis-popup-body {
-        position: relative;
-    }
-    .zapis-popup-body iframe {
-        height: calc(100% + 60px) !important;
-        min-height: 560px;
-    }
-    .zapis-popup-body::after {
-        content: '♥ ШКИТ';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 40px;
-        background: #fff;
-        color: var(--coral-ink, #BC3636);
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        font-size: 14px;
-        letter-spacing: .04em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        pointer-events: none;
-        z-index: 2;
-        border-top: 1px solid var(--line, rgba(45,45,45,.12));
-    }
-}
-
-.zapis-popup-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 9999;
-    ...
 .zapis-popup-overlay {
     position: fixed;
     inset: 0;
@@ -458,39 +421,5 @@
     }
     .zapis-popup-body iframe {
         min-height: 60vh;
-    }
-}
-
-/* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
-@media (max-width: 768px) {
-    .zapis-popup-overlay {
-        padding: 0;
-        align-items: flex-end;
-    }
-    .zapis-popup {
-        max-width: 100%;
-        max-height: 95vh;
-        border-radius: 20px 20px 0 0;
-        transform: translateY(30px);
-    }
-    .zapis-popup-overlay.is-open .zapis-popup {
-        transform: translateY(0);
-    }
-    .zapis-popup-head {
-        padding: 16px 18px;
-    }
-    .zapis-popup-head h3 {
-        font-size: 16px;
-    }
-    .zapis-popup-body {
-        padding: 0 8px 0 12px;
-        max-height: 70vh !important;
-    }
-    .zapis-popup-body iframe {
-        left: 8px;
-        right: 8px;
-        width: calc(100% - 16px) !important;
-        height: calc(70vh + 40px) !important;
-        min-height: 0 !important;
     }
 }
