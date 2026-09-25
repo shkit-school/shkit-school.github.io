@@ -150,16 +150,18 @@
             display: block;
         }
         .photo-hero figcaption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 24px 26px;
-            background: linear-gradient(to top, rgba(0,0,0,.8), transparent);
-            color: #fff;
-            font-size: 15px;
-            font-weight: 600;
-        }
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 26px;
+    background: rgba(232, 93, 93, 0.5);   /* ← корал 50% прозрачности */
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    backdrop-filter: blur(2px);            /* ← лёгкое размытие под текстом */
+    -webkit-backdrop-filter: blur(2px);
+}
         @media (max-width: 768px) {
             .photo-hero img { height: 240px; }
             .photo-hero figcaption { padding: 16px 18px; font-size: 14px; }
