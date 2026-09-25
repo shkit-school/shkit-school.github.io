@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Театральная студия для детей и подростков в Челябинске — ШКИТ</title>
-    <meta name="description" content="Театральная студия для детей 5–11 лет и подростков 12–17 лет в Челябинске. Развиваем речь, память, уверенность. Спектакли на профессиональной сцене. Пробное занятие — 500 ₽.">
+    <meta name="description" content="Театральная студия для детей 5–11 лет и подростков 12–17 лет в Челябинске. Сценическая речь, актёрское мастерство, вокал, режиссура. Спектакли на профессиональной сцене. Пробное занятие — 500 ₽.">
     <link rel="canonical" href="https://shkit-school.github.io/dety-i-podrostki.html">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#BC3636">
@@ -12,7 +12,7 @@
     <!-- ===== Open Graph ===== -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Театральная студия для детей и подростков в Челябинске — ШКИТ">
-    <meta property="og:description" content="Дети 5–11 лет: игра, речь, уверенность. Подростки 12–17 лет: актёрское мастерство, подготовка к поступлению. Пробное занятие — 500 ₽.">
+    <meta property="og:description" content="Дети 5–11 лет: сценическая речь, актёрское мастерство, вокал. Подростки 12–17 лет: сценическая речь, мастерство, режиссура. Пробное занятие — 500 ₽.">
     <meta property="og:url" content="https://shkit-school.github.io/dety-i-podrostki.html">
     <meta property="og:image" content="https://shkit-school.github.io/assets/img/og.jpg">
     <meta property="og:image:width" content="1200">
@@ -22,7 +22,7 @@
     <!-- ===== Twitter ===== -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Театральная студия для детей и подростков в Челябинске — ШКИТ">
-    <meta name="twitter:description" content="Дети 5–11 лет и подростки 12–17 лет. Развитие речи, уверенности, подготовка к поступлению.">
+    <meta name="twitter:description" content="Дети 5–11 лет и подростки 12–17 лет. Сценическая речь, мастерство, вокал, режиссура.">
     <meta name="twitter:image" content="https://shkit-school.github.io/assets/img/og.jpg">
 
     <!-- ===== Иконки ===== -->
@@ -136,7 +136,7 @@
             line-height: 1.6;
         }
 
-        /* ===== Большое фото с подписью ===== */
+        /* ===== Большое фото с коралловой подписью ===== */
         .photo-hero {
             position: relative;
             margin: 32px 0;
@@ -150,21 +150,24 @@
             display: block;
         }
         .photo-hero figcaption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px 26px;
-    background: rgba(232, 93, 93, 0.5);   /* ← корал 50% прозрачности */
-    color: #fff;
-    font-size: 15px;
-    font-weight: 600;
-    backdrop-filter: blur(2px);            /* ← лёгкое размытие под текстом */
-    -webkit-backdrop-filter: blur(2px);
-}
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 26px;
+            background: rgba(232, 93, 93, 0.5);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            text-align: center;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        }
         @media (max-width: 768px) {
             .photo-hero img { height: 240px; }
-            .photo-hero figcaption { padding: 16px 18px; font-size: 14px; }
+            .photo-hero figcaption { padding: 14px 18px; font-size: 13px; }
         }
 
         /* ===== Мини-галерея 2×1 ===== */
@@ -192,37 +195,49 @@
             }
         }
 
-        /* ===== Текстовые блоки ===== */
+        /* ===== Текст под карточками ===== */
         .group-text {
             margin-bottom: 24px;
             font-size: 17px;
             line-height: 1.7;
         }
+        .group-list {
+            margin: 0 0 24px 0;
+            padding-left: 24px;
+        }
+        .group-list li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
 
-        /* ===== Карточки с иконками 2×2 ===== */
+        /* ===== Компактные карточки с иконками — 3 в ряд ===== */
         .feature-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
             margin: 32px 0;
         }
         .feature {
             background: var(--paper);
             border-radius: var(--radius);
-            padding: 26px 24px;
+            padding: 22px 16px;
             border: 1px solid var(--line);
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            min-height: 130px;
+            justify-content: center;
         }
         .group-section--dark .feature {
             background: rgba(255,255,255,.06);
             border-color: rgba(255,255,255,.12);
         }
         .feature-ico {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
             background: rgba(232,93,93,.12);
             color: var(--coral-ink);
             display: flex;
@@ -231,8 +246,8 @@
             flex-shrink: 0;
         }
         .feature-ico svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             stroke: currentColor;
             fill: none;
             stroke-width: 2;
@@ -240,30 +255,29 @@
             stroke-linejoin: round;
         }
         .feature h4 {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 700;
             margin: 0;
             color: var(--ink);
+            line-height: 1.2;
         }
         .group-section--dark .feature h4 {
             color: #fff;
         }
-        .feature p {
-            font-size: 15px;
-            line-height: 1.6;
-            margin: 0;
-            color: var(--grey);
-        }
-        .group-section--dark .feature p {
-            color: rgba(255,255,255,.8);
-        }
         @media (max-width: 768px) {
             .feature-grid {
                 grid-template-columns: 1fr;
-                gap: 14px;
+                gap: 12px;
             }
             .feature {
-                padding: 22px 20px;
+                flex-direction: row;
+                text-align: left;
+                padding: 18px 20px;
+                min-height: auto;
+                justify-content: flex-start;
+            }
+            .feature h4 {
+                font-size: 15px;
             }
         }
 
@@ -302,51 +316,6 @@
             }
             .pull-quote p:last-child {
                 font-size: 14px;
-            }
-        }
-
-        /* ===== Два пути — карточки 2×1 ===== */
-        .path-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 32px 0;
-        }
-        .path {
-            background: var(--paper);
-            border-radius: var(--radius);
-            padding: 26px 24px;
-            border: 1px solid var(--line);
-        }
-        .group-section--dark .path {
-            background: rgba(255,255,255,.06);
-            border-color: rgba(255,255,255,.12);
-        }
-        .path h4 {
-            font-size: 18px;
-            font-weight: 700;
-            margin: 0 0 10px 0;
-            color: var(--ink);
-        }
-        .group-section--dark .path h4 {
-            color: #fff;
-        }
-        .path p {
-            font-size: 15px;
-            line-height: 1.6;
-            margin: 0;
-            color: var(--grey);
-        }
-        .group-section--dark .path p {
-            color: rgba(255,255,255,.8);
-        }
-        @media (max-width: 768px) {
-            .path-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-            .path {
-                padding: 22px 20px;
             }
         }
 
@@ -427,7 +396,7 @@
             "@context": "https://schema.org",
             "@type": "Course",
             "name": "Актёрское мастерство для детей 5–11 лет",
-            "description": "Театральная студия для детей в Челябинске. Развитие речи, памяти, уверенности. Итог — отчётный спектакль.",
+            "description": "Театральная студия для детей в Челябинске. Сценическая речь, актёрское мастерство, вокал, пластика. Итог — отчётный спектакль.",
             "provider": {
                 "@type": "Organization",
                 "name": "Школа кино и театра «ШКИТ»",
@@ -438,7 +407,7 @@
             "@context": "https://schema.org",
             "@type": "Course",
             "name": "Актёрское мастерство для подростков 12–17 лет",
-            "description": "Актёрские курсы для подростков в Челябинске: подготовка к поступлению, режиссура, публичные выступления. Спектакль на профессиональной сцене.",
+            "description": "Актёрские курсы для подростков в Челябинске: сценическая речь, актёрское мастерство, театральная режиссура, подготовка к поступлению. Спектакль на профессиональной сцене.",
             "provider": {
                 "@type": "Organization",
                 "name": "Школа кино и театра «ШКИТ»",
@@ -526,31 +495,31 @@
                         <div class="feature-ico">
                             <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4"/><path d="M8 23h8"/></svg>
                         </div>
-                        <h4>Речь</h4>
-                        <p>Говорить громко и внятно. Через скороговорки в движении, дыхательные упражнения, игры с интонациями.</p>
+                        <h4>Сценическая речь</h4>
                     </div>
                     <div class="feature">
                         <div class="feature-ico">
-                            <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5 4 7v4h6v-4c2-2 4-4 4-7a7 7 0 0 0-7-7z"/><path d="M9 21h6"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M2 12c0-5 4-8 10-8s10 3 10 8-4 8-10 8S2 17 2 12z"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></svg>
                         </div>
-                        <h4>Память</h4>
-                        <p>Запоминать текст без зубрёжки. Через смысл, образ, движение — а не через повторение.</p>
+                        <h4>Актёрское мастерство</h4>
                     </div>
                     <div class="feature">
                         <div class="feature-ico">
-                            <svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M2 18h20"/><path d="M6 6h12"/><circle cx="12" cy="3" r="1"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
                         </div>
-                        <h4>Сцена</h4>
-                        <p>Не бояться зрителя. Сначала — маленький круг. Потом — группа. Потом — родители. Потом — сцена.</p>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-ico">
-                            <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
-                        </div>
-                        <h4>Команда</h4>
-                        <p>Работать вместе. Театр — это всегда партнёры, сцены, общий спектакль.</p>
+                        <h4>Вокал, пластика</h4>
                     </div>
                 </div>
+
+                <p class="group-text">
+                    В этом возрасте мы помогаем ребёнку:
+                </p>
+                <ul class="group-list">
+                    <li><strong>Говорить громко и внятно.</strong> Через скороговорки в движении, дыхательные упражнения, игры с интонациями.</li>
+                    <li><strong>Запоминать текст без зубрёжки.</strong> Через смысл, образ, движение — а не через повторение.</li>
+                    <li><strong>Не бояться зрителя.</strong> Сначала — маленький круг. Потом — группа. Потом — родители. Потом — сцена.</li>
+                    <li><strong>Работать в команде.</strong> Театр — это всегда партнёры, сцены, общий спектакль.</li>
+                </ul>
 
                 <figure class="photo-grid">
                     <img src="/assets/img/gal121.jpg" alt="Дети в костюмах и шляпах на занятии ШКИТ" loading="lazy">
@@ -593,18 +562,37 @@
                     <figcaption>Спектакль на профессиональной сцене — итог двух лет занятий</figcaption>
                 </figure>
 
-                <h3>Два пути</h3>
+                <h3>Чему учим</h3>
 
-                <div class="path-grid">
-                    <div class="path">
-                        <h4>Для себя</h4>
-                        <p>Уверенность, публичные выступления, харизма, умение говорить так, чтобы слушали. Без цели стать актёром.</p>
+                <div class="feature-grid">
+                    <div class="feature">
+                        <div class="feature-ico">
+                            <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4"/><path d="M8 23h8"/></svg>
+                        </div>
+                        <h4>Сценическая речь</h4>
                     </div>
-                    <div class="path">
-                        <h4>Для поступления</h4>
-                        <p>Серьёзная подготовка к театральному вузу: программа для прослушивания, сценическая речь, актёрское мастерство. С честной оценкой — реально ли поступить.</p>
+                    <div class="feature">
+                        <div class="feature-ico">
+                            <svg viewBox="0 0 24 24"><path d="M2 12c0-5 4-8 10-8s10 3 10 8-4 8-10 8S2 17 2 12z"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></svg>
+                        </div>
+                        <h4>Актёрское мастерство</h4>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-ico">
+                            <svg viewBox="0 0 24 24"><path d="M3 4h18v14H3z"/><path d="M3 8l9 5 9-5"/><path d="M8 22h8"/><path d="M12 18v4"/></svg>
+                        </div>
+                        <h4>Театральная режиссура</h4>
                     </div>
                 </div>
+
+                <p class="group-text">
+                    В этом возрасте мы работаем над:
+                </p>
+                <ul class="group-list">
+                    <li><strong>Сценической речью.</strong> Дикция, дыхание, голос, интонационная гибкость — чтобы говорить так, чтобы слушали.</li>
+                    <li><strong>Актёрским мастерством.</strong> Анализ текста, работа с ролью, проживание эмоции — не «показывать», а быть.</li>
+                    <li><strong>Театральной режиссурой.</strong> Системное видение спектакля, работа с командой, лидерские качества.</li>
+                </ul>
 
                 <figure class="photo-grid">
                     <img src="/assets/img/gallery-06.jpg" alt="Подростковый ансамбль на сцене ШКИТ" loading="lazy">
