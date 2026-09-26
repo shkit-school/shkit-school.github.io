@@ -917,16 +917,22 @@
     </div>
 </section>                              
                                                         
-    <!-- ============ 14. КОНТАКТЫ ============ -->
+       <!-- ============ 14. КОНТАКТЫ ============ -->
     <section class="section bg-white" id="contacts">
         <div class="wrap">
-            <span class="kicker anim">Контакты</span>
-            <h2 class="sec-title anim">Как к нам попасть?</h2>
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:36px">
+                <div>
+                    <span class="kicker anim">Контакты</span>
+                    <h2 class="sec-title anim" style="margin-bottom:0">Как к нам попасть?</h2>
+                </div>
+                <a class="btn anim" href="#zapis">Оставить заявку</a>
+            </div>
+
             <div class="contacts-grid">
                 <div class="contact-info anim">
                     <div class="contact-rows">
                         <div class="row"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 22s8-5.5 8-12a8 8 0 10-16 0c0 6.5 8 12 8 12z"/><circle cx="12" cy="10" r="3"/></svg></div>
-                            <div class="rt"><small>Адрес</small><b>Челябинск, проспект Ленина, 83, офис 509</b><span style="display:block;font-size:13.5px;color:var(--grey);font-weight:600;margin-top:2px">Вход со стороны ул. Тернопольской</span></div></div>
+                            <div class="rt"><small>Адрес</small><b>Челябинск, проспект Ленина, 83, офис 509</b><span style="display:block;font-size:13.5px;color:var(--grey);font-weight:600;margin-top:2px">Вход со стороны ул. Тернопольской, 5 этаж</span></div></div>
                         <div class="row"><div class="ci"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg></div>
                             <div class="rt"><small>Телефон</small><b><a href="tel:+79194040123">+7 (919) 404-01-23</a></b></div></div>
                         <div class="row"><div class="ci"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
@@ -938,29 +944,21 @@
                         <a class="social" href="https://max.ru/join/wwVKZRo3fOoAb85xAT8HO9Vy_4fCZkXA1MDKTJIJ_RQ" target="_blank" rel="noopener" aria-label="MAX">
                             <svg viewBox="0 0 24 24"><path d="M3 20V4h3.2l5 8 5-8H21v16h-3V9.5l-4.8 7.5h-.4L8 9.5V20z"/></svg>MAX</a>
                     </div>
-                    <div class="map-wrap" id="map-wrap" style="margin-top:22px; position:relative; overflow:hidden; border-radius:12px;">
-                        <iframe
-                            id="map-iframe"
-                            title="Карта: Школа кино и театра ШКИТ, вход с ул. Тернопольской"
-                            loading="lazy"
-                            src="https://yandex.ru/map-widget/v1/?ll=61.371311%2C55.158862&z=17&pt=61.371311%2C55.158862&scroll=false"
-                            style="width:100%; height:350px; border:0; border-radius:12px; pointer-events:auto;"
-                            allow="fullscreen; autoplay; encrypted-media; clipboard-write; picture-in-picture; payment">
-                        </iframe>
-                        <button id="map-activator" style="display:none; position:absolute; inset:0; background:transparent; border:none; cursor:pointer; z-index:2;" aria-label="Активировать карту"></button>
-                    </div>
+                    <p style="margin-top:22px;font-size:14.5px;color:var(--grey);line-height:1.6">
+                        <strong style="color:var(--ink)">Как добраться:</strong> район ЮУрГУ. Прямой транспорт со всех районов города. Вход с ул. Тернопольской, 5 этаж, оф. 509.
+                    </p>
                 </div>
 
-                <div class="form-card form-card--webask anim" id="zapis" style="background:transparent !important; box-shadow:none !important; padding:0 !important;">
-                    <h3 style="margin-bottom:6px;">Остались вопросы?</h3>
-                    <p style="color:var(--grey); font-size:14.5px; margin-bottom:16px;">Напишите или позвоните. Подскажем, с чего начать, и подберём удобный формат. Или посмотрите <a href="/faq.html" style="color:var(--coral-ink);font-weight:700">частые вопросы →</a></p>
-                    <script src="https://forms.yandex.ru/_static/embed.js"></script>
+                <div class="map-wrap anim" id="map-wrap" style="margin-top:0; position:relative; overflow:hidden; border-radius:12px; min-height:340px; height:100%;">
                     <iframe
-                        src="https://forms.yandex.ru/u/6a9a626c4936395e001c5ec1?iframe=1"
-                        name="ya-form-6a9a626c4936395e001c5ec1"
-                        height="550"
-                        style="width:100%; border:none; display:block; background:transparent; border-radius:12px;">
+                        id="map-iframe"
+                        title="Карта: Школа кино и театра ШКИТ, вход с ул. Тернопольской"
+                        loading="lazy"
+                        src="https://yandex.ru/map-widget/v1/?ll=61.371311%2C55.158862&z=17&pt=61.371311%2C55.158862&scroll=false"
+                        style="width:100%; height:100%; min-height:340px; border:0; border-radius:12px; pointer-events:auto; display:block;"
+                        allow="fullscreen; autoplay; encrypted-media; clipboard-write; picture-in-picture; payment">
                     </iframe>
+                    <button id="map-activator" style="display:none; position:absolute; inset:0; background:transparent; border:none; cursor:pointer; z-index:2;" aria-label="Активировать карту"></button>
                 </div>
             </div>
         </div>
