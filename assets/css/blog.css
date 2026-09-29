@@ -403,7 +403,7 @@
     }
     .zapis-popup {
         max-width: 100%;
-        max-height: 92vh;
+        max-height: 95vh;
         border-radius: 20px 20px 0 0;
         transform: translateY(30px);
     }
@@ -411,19 +411,15 @@
         transform: translateY(0);
     }
     .zapis-popup-head {
-        padding: 14px 18px;
-        flex-shrink: 0;
+        padding: 16px 18px;
     }
     .zapis-popup-head h3 {
         font-size: 16px;
     }
     .zapis-popup-body {
-        padding: 0 8px 8px 12px;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
+        padding: 0 8px 0 12px;
     }
     .zapis-popup-body iframe {
-        height: 620px;
-        min-height: 620px;
+        min-height: 60vh;
     }
 }
