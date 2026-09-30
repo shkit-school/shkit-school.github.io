@@ -392,7 +392,7 @@
     display: block;
 }
 .zapis-field {
-    margin-bottom: 16px;
+    margin-bottom: 14px;
 }
 .zapis-field label {
     display: block;
@@ -417,4 +417,124 @@
 .zapis-field input:focus,
 .zapis-field textarea:focus {
     outline: none;
-    border-color: var(--coral
+    border-color: var(--coral);
+}
+.zapis-field textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+.zapis-field.has-error input,
+.zapis-field.has-error textarea {
+    border-color: var(--coral-dark);
+}
+.zapis-err {
+    display: none;
+    font-size: 12px;
+    color: var(--coral-ink);
+    margin-top: 4px;
+    font-weight: 600;
+}
+.zapis-field.has-error .zapis-err {
+    display: block;
+}
+
+/* ===== Согласие ===== */
+.zapis-consent {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    margin: 4px 0 14px;
+    font-size: 11px;
+    color: var(--grey);
+    line-height: 1.35;
+    cursor: pointer;
+}
+.zapis-consent input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+    accent-color: var(--coral-dark);
+}
+.zapis-form.consent-missing .zapis-consent {
+    color: var(--coral-ink);
+    font-weight: 700;
+}
+
+/* ===== Кнопка отправки ===== */
+.zapis-submit {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+}
+
+/* ===== Ошибка отправки ===== */
+.zapis-fail {
+    display: none;
+    margin-top: 12px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--coral-ink);
+    text-align: center;
+}
+.zapis-fail:not(:empty) {
+    display: block;
+}
+
+/* ===== Успех ===== */
+.zapis-success {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+}
+.zapis-success-ico {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--coral-dark);
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+}
+.zapis-success h4 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 8px;
+}
+.zapis-success p {
+    font-size: 15px;
+    color: var(--grey);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ===== Мобильный ===== */
+@media (max-width: 768px) {
+    .zapis-popup-overlay {
+        padding: 0;
+        align-items: flex-end;
+    }
+    .zapis-popup {
+        max-width: 100%;
+        max-height: 95vh;
+        border-radius: 20px 20px 0 0;
+        transform: translateY(30px);
+    }
+    .zapis-popup-overlay.is-open .zapis-popup {
+        transform: translateY(0);
+    }
+    .zapis-popup-head {
+        padding: 16px 18px;
+    }
+    .zapis-popup-head h3 {
+        font-size: 16px;
+    }
+    .zapis-popup-body {
+        padding: 20px 18px 24px;
+    }
+}
