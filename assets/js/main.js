@@ -464,14 +464,16 @@
 /* ============================================================
    POPUP «Записаться» — открывается по клику на #zapis
    - работает на всех страницах
-   - форма: Яндекс.Форма в iframe
+   - десктоп: Яндекс.Форма в iframe
+   - мобильный: кнопка «Заполнить форму» → новая вкладка
    - закрытие: крестик / фон / Esc
    ============================================================ */
 
 (function () {
     'use strict';
 
-    var FORM_URL = 'https://forms.yandex.ru/u/6a9a626c4936395e001c5ec1?iframe=1';
+    var FORM_URL_IFRAME = 'https://forms.yandex.ru/u/6a9a626c4936395e001c5ec1?iframe=1';
+    var FORM_URL_DIRECT = 'https://forms.yandex.ru/u/6a9a626c4936395e001c5ec1/';
     var POPUP_ID = 'zapis-popup-global';
 
     function createPopup() {
@@ -483,6 +485,7 @@
         overlay.setAttribute('aria-hidden', 'true');
         overlay.setAttribute('role', 'dialog');
         overlay.setAttribute('aria-modal', 'true');
+
         overlay.innerHTML =
             '<div class="zapis-popup" role="document">' +
                 '<div class="zapis-popup-head">' +
@@ -494,11 +497,16 @@
                 '</div>' +
                 '<div class="zapis-popup-body">' +
                     '<iframe ' +
-                        'src="' + FORM_URL + '" ' +
+                        'class="zapis-popup-iframe" ' +
+                        'src="' + FORM_URL_IFRAME + '" ' +
                         'title="Форма заявки" ' +
                         'loading="lazy" ' +
                         'allow="clipboard-write">' +
                     '</iframe>' +
+                    '<div class="zapis-popup-mobile">' +
+                        '<p>Заполните форму — мы свяжемся с вами.</p>' +
+                        '<a class="btn" href="' + FORM_URL_DIRECT + '" target="_blank" rel="noopener">Заполнить форму →</a>' +
+                    '</div>' +
                 '</div>' +
             '</div>';
 
