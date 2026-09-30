@@ -487,28 +487,11 @@
     text-align: center;
     padding: 20px 0;
 }
-.zapis-success-top {
-    display: block;
-    width: 100%;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink);
-    text-align: center;
-    line-height: 1.4;
-    margin: 0 auto 20px;
-}
-.zapis-success-heart {
-    display: inline-block;
-    font-size: 18px;
-    line-height: 1;
-    vertical-align: middle;
-    margin-left: 4px;
-}
 .zapis-success-ico {
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: var(--coral-dark);
+    background: #2E9E5B;
     color: #fff;
     font-size: 32px;
     font-weight: 700;
@@ -521,13 +504,28 @@
     font-size: 22px;
     font-weight: 700;
     color: var(--ink);
-    margin: 0 0 8px;
+    margin: 0 0 12px;
+    text-align: center;
 }
 .zapis-success p {
     font-size: 15px;
     color: var(--grey);
     line-height: 1.5;
-    margin: 0;
+    margin: 0 0 8px;
+    text-align: center;
+    max-width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.zapis-success p:last-child {
+    margin-bottom: 0;
+}
+.zapis-success-heart {
+    display: inline-block;
+    font-size: 18px;
+    line-height: 1;
+    vertical-align: middle;
+    margin-left: 2px;
 }
 
 /* ===== Мобильный ===== */
