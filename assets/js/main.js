@@ -326,7 +326,6 @@
                             '<input type="checkbox" name="consent" required>' +
                             '<span>Согласен на обработку персональных данных</span>' +
                         '</label>' +
-                        '<span class="zapis-consent-err">Нужно согласие</span>' +
                         '<button type="submit" class="btn zapis-submit">Отправить</button>' +
                         '<div class="zapis-fail"></div>' +
                     '</form>' +
