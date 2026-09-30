@@ -271,16 +271,16 @@
 })();
 
 /* ============================================================
-   POPUP «Записаться» — простой попап с кнопкой
-   - без iframe
-   - кнопка ведёт на Яндекс.Форму в новой вкладке
-   - работает одинаково на десктопе и мобильном
+   POPUP «Записаться» — своя форма с отправкой через Web3Forms
+   - форма внутри попапа, клиент не уходит с сайта
+   - заявка идёт на почту
+   - маска телефона, валидация, «Спасибо»
    ============================================================ */
 
 (function () {
     'use strict';
 
-    var FORM_URL = 'https://forms.yandex.ru/u/6a9a626c4936395e001c5ec1/';
+    var ACCESS_KEY = '6ea50c59-bafc-42c5-aedd-4bc1ca88f6c4';
     var POPUP_ID = 'zapis-popup-global';
 
     function createPopup() {
@@ -303,9 +303,38 @@
                     '<button class="zapis-popup-close" type="button" aria-label="Закрыть">✕</button>' +
                 '</div>' +
                 '<div class="zapis-popup-body">' +
-                    '<p class="zapis-popup-text">Форма откроется в новой вкладке. Заполните её — и мы свяжемся с вами.</p>' +
-                    '<a class="btn zapis-popup-btn" href="' + FORM_URL + '" target="_blank" rel="noopener">Заполнить форму →</a>' +
-                    '<p class="zapis-popup-note">Или позвоните: <a href="tel:+79194040123">+7 (919) 404-01-23</a></p>' +
+                    '<form class="zapis-form" novalidate>' +
+                        '<input type="hidden" name="access_key" value="' + ACCESS_KEY + '">' +
+                        '<input type="hidden" name="subject" value="Заявка с сайта ШКИТ">' +
+                        '<input type="hidden" name="from_name" value="ШКИТ — сайт">' +
+                        '<input type="checkbox" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off">' +
+                        '<div class="zapis-field">' +
+                            '<label for="zapis-name">Имя *</label>' +
+                            '<input type="text" id="zapis-name" name="name" required autocomplete="name" placeholder="Как к вам обращаться">' +
+                            '<span class="zapis-err">Укажите имя</span>' +
+                        '</div>' +
+                        '<div class="zapis-field">' +
+                            '<label for="zapis-phone">Телефон *</label>' +
+                            '<input type="tel" id="zapis-phone" name="phone" required autocomplete="tel" placeholder="+7 (___) ___-__-__">' +
+                            '<span class="zapis-err">Укажите телефон</span>' +
+                        '</div>' +
+                        '<div class="zapis-field">' +
+                            '<label for="zapis-question">Вопрос или комментарий</label>' +
+                            '<textarea id="zapis-question" name="question" rows="3" placeholder="Необязательно"></textarea>' +
+                        '</div>' +
+                        '<label class="zapis-consent">' +
+                            '<input type="checkbox" name="consent" required>' +
+                            '<span>Согласен на обработку персональных данных</span>' +
+                        '</label>' +
+                        '<span class="zapis-consent-err">Нужно согласие</span>' +
+                        '<button type="submit" class="btn zapis-submit">Отправить</button>' +
+                        '<div class="zapis-fail"></div>' +
+                    '</form>' +
+                    '<div class="zapis-success">' +
+                        '<div class="zapis-success-ico">✓</div>' +
+                        '<h4>Спасибо!</h4>' +
+                        '<p>Заявка отправлена. Мы свяжемся с вами в ближайшее время.</p>' +
+                    '</div>' +
                 '</div>' +
             '</div>';
 
@@ -317,6 +346,95 @@
 
         overlay.querySelector('.zapis-popup-close')
             .addEventListener('click', closePopup);
+
+        /* Маска телефона */
+        var phoneInput = overlay.querySelector('#zapis-phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function () {
+                var caret = phoneInput.selectionStart;
+                var digitsBefore = phoneInput.value.slice(0, caret).replace(/\D/g, '').length;
+                var digits = phoneInput.value.replace(/\D/g, '');
+                if (digits.startsWith('8')) digits = '7' + digits.slice(1);
+                if (!digits.startsWith('7')) digits = '7' + digits;
+                digits = digits.slice(0, 11);
+                var d = digits.slice(1);
+                var out = '+7';
+                if (d.length > 0) out += ' (' + d.slice(0, 3);
+                if (d.length > 3) out += ') ' + d.slice(3, 6);
+                if (d.length > 6) out += '-' + d.slice(6, 8);
+                if (d.length > 8) out += '-' + d.slice(8, 10);
+                phoneInput.value = out;
+                var seen = 0, pos = phoneInput.value.length;
+                for (var i = 0; i < phoneInput.value.length; i++) {
+                    if (/\d/.test(phoneInput.value[i])) {
+                        seen++;
+                        if (seen === digitsBefore) { pos = i + 1; break; }
+                    }
+                }
+                if (digitsBefore === 0) pos = phoneInput.value.length;
+                phoneInput.setSelectionRange(pos, pos);
+            });
+            phoneInput.addEventListener('focus', function () {
+                if (!phoneInput.value) phoneInput.value = '+7 ';
+            });
+            phoneInput.addEventListener('blur', function () {
+                if (phoneInput.value === '+7 ' || phoneInput.value === '+7') phoneInput.value = '';
+            });
+        }
+
+        /* Отправка формы */
+        var form = overlay.querySelector('.zapis-form');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var ok = true;
+
+                /* Валидация */
+                form.querySelectorAll('.zapis-field').forEach(function (field) {
+                    var inp = field.querySelector('input,textarea');
+                    if (!inp) return;
+                    var bad = false;
+                    if (inp.required && !inp.value.trim()) bad = true;
+                    if (inp.type === 'tel' && inp.value && inp.value.replace(/\D/g, '').length < 11) bad = true;
+                    field.classList.toggle('has-error', bad);
+                    if (bad) ok = false;
+                });
+
+                var consent = form.querySelector('input[name="consent"]');
+                var consentBad = consent && !consent.checked;
+                form.classList.toggle('consent-missing', consentBad);
+                if (consentBad) ok = false;
+
+                if (!ok) return;
+
+                var btn = form.querySelector('.zapis-submit');
+                var btnLabel = btn ? btn.textContent : '';
+                if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
+
+                var fail = form.querySelector('.zapis-fail');
+                if (fail) fail.textContent = '';
+
+                var data = new FormData(form);
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: data
+                })
+                    .then(function (r) { return r.json(); })
+                    .then(function (res) {
+                        if (!res || !res.success) throw new Error('Web3Forms error');
+                        /* Успех */
+                        form.style.display = 'none';
+                        var success = overlay.querySelector('.zapis-success');
+                        if (success) success.style.display = 'block';
+                    })
+                    .catch(function (err) {
+                        if (btn) { btn.disabled = false; btn.textContent = btnLabel; }
+                        if (fail) fail.textContent = 'Не удалось отправить. Позвоните: +7 (919) 404-01-23';
+                        console.error('ШКИТ: ошибка отправки —', err);
+                    });
+            });
+        }
     }
 
     function openPopup() {
