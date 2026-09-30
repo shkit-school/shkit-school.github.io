@@ -395,7 +395,6 @@
     border: 0;
     display: block;
 }
-
 @media (max-width: 768px) {
     .zapis-popup-overlay {
         padding: 0;
@@ -412,14 +411,22 @@
     }
     .zapis-popup-head {
         padding: 16px 18px;
+        flex-shrink: 0;
     }
     .zapis-popup-head h3 {
         font-size: 16px;
     }
     .zapis-popup-body {
-        padding: 0 8px 0 12px;
+        padding: 0 8px 24px 12px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        flex: 1;
+        min-height: 0;
     }
     .zapis-popup-body iframe {
         min-height: 60vh;
+        height: auto;
+    }
+}
     }
 }
