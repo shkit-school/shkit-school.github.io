@@ -89,54 +89,26 @@
         }
 
         /* ===== Блоки детей и подростков ===== */
-        .group-section {
-            padding: 60px 0;
-        }
-        .group-section--light {
-            background: #fff;
-        }
-        .group-section--dark {
-            background: var(--ink);
-            color: #fff;
-        }
+        .group-section { padding: 60px 0; }
+        .group-section--light { background: #fff; }
+        .group-section--dark { background: var(--ink); color: #fff; }
         .group-section--dark h2,
-        .group-section--dark h3 {
-            color: #fff;
-        }
+        .group-section--dark h3 { color: #fff; }
         .group-section--dark p,
-        .group-section--dark li {
-            color: rgba(255,255,255,.85);
-        }
+        .group-section--dark li { color: rgba(255,255,255,.85); }
 
-        .group-inner {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
+        .group-inner { max-width: 900px; margin: 0 auto; }
         .group-title {
             font-size: clamp(24px, 4vw, 36px);
             margin-bottom: 12px;
             line-height: 1.15;
         }
-        .group-title .aside {
-            display: block;
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--grey);
-            margin-top: 8px;
-            line-height: 1.5;
-        }
-        .group-section--dark .group-title .aside {
-            color: rgba(255,255,255,.7);
-        }
-
         .group-sub {
             font-size: 18px;
             margin-bottom: 28px;
             line-height: 1.6;
         }
 
-        /* ===== Мини-галерея 2×1 — сверху ===== */
         .photo-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -151,17 +123,10 @@
             display: block;
         }
         @media (max-width: 768px) {
-            .photo-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            .photo-grid img {
-                height: auto;
-                aspect-ratio: 16/9;
-            }
+            .photo-grid { grid-template-columns: 1fr; gap: 12px; }
+            .photo-grid img { height: auto; aspect-ratio: 16/9; }
         }
 
-        /* ===== Большое фото с тёмно-серой подписью ===== */
         .photo-hero {
             position: relative;
             margin: 32px 0;
@@ -176,9 +141,7 @@
         }
         .photo-hero figcaption {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             padding: 20px 26px;
             background: rgba(45, 45, 45, 0.5);
             color: #fff;
@@ -195,22 +158,10 @@
             .photo-hero figcaption { padding: 14px 18px; font-size: 13px; }
         }
 
-        /* ===== Текст под карточками ===== */
-        .group-text {
-            margin-bottom: 24px;
-            font-size: 17px;
-            line-height: 1.7;
-        }
-        .group-list {
-            margin: 0 0 24px 0;
-            padding-left: 24px;
-        }
-        .group-list li {
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
+        .group-text { margin-bottom: 24px; font-size: 17px; line-height: 1.7; }
+        .group-list { margin: 0 0 24px 0; padding-left: 24px; }
+        .group-list li { margin-bottom: 10px; line-height: 1.6; }
 
-        /* ===== Заметная подпись-выделение с коралловой подложкой ===== */
         .lead-label {
             display: inline-block;
             font-size: 20px;
@@ -226,19 +177,14 @@
             background: var(--coral-dark, #D13434);
             color: #fff;
         }
-        /* Подзаголовок после H2 — с отступом сверху */
         h2.group-title + .lead-label {
             margin-top: 4px;
             margin-bottom: 28px;
         }
         @media (max-width: 768px) {
-            .lead-label {
-                font-size: 17px;
-                padding: 8px 16px;
-            }
+            .lead-label { font-size: 17px; padding: 8px 16px; }
         }
 
-        /* ===== Компактные карточки с иконками — 3 в ряд ===== */
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -289,14 +235,9 @@
             color: var(--ink);
             line-height: 1.2;
         }
-        .group-section--dark .feature h4 {
-            color: #fff;
-        }
+        .group-section--dark .feature h4 { color: #fff; }
         @media (max-width: 768px) {
-            .feature-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
+            .feature-grid { grid-template-columns: 1fr; gap: 12px; }
             .feature {
                 flex-direction: row;
                 text-align: left;
@@ -304,12 +245,9 @@
                 min-height: auto;
                 justify-content: flex-start;
             }
-            .feature h4 {
-                font-size: 15px;
-            }
+            .feature h4 { font-size: 15px; }
         }
 
-        /* ===== Цитата-выноска ===== */
         .pull-quote {
             margin: 32px 0;
             padding: 28px 32px;
@@ -325,9 +263,7 @@
             background: rgba(255,255,255,.08);
             color: #fff;
         }
-        .pull-quote p {
-            margin: 0 0 12px 0;
-        }
+        .pull-quote p { margin: 0 0 12px 0; }
         .pull-quote p:last-child {
             margin-bottom: 0;
             font-size: 16px;
@@ -338,16 +274,10 @@
             color: rgba(255,255,255,.7);
         }
         @media (max-width: 768px) {
-            .pull-quote {
-                padding: 20px 22px;
-                font-size: 17px;
-            }
-            .pull-quote p:last-child {
-                font-size: 14px;
-            }
+            .pull-quote { padding: 20px 22px; font-size: 17px; }
+            .pull-quote p:last-child { font-size: 14px; }
         }
 
-        /* ===== CTA внутри блока ===== */
         .group-cta {
             margin-top: 32px;
             padding: 28px;
@@ -358,23 +288,11 @@
         .group-section--dark .group-cta {
             background: rgba(255,255,255,.08);
         }
-        .group-cta h3 {
-            margin-bottom: 8px;
-            font-size: 20px;
-        }
-        .group-section--dark .group-cta h3 {
-            color: #fff;
-        }
-        .group-cta p {
-            margin-bottom: 18px;
-            font-size: 15px;
-            color: var(--grey);
-        }
-        .group-section--dark .group-cta p {
-            color: rgba(255,255,255,.8);
-        }
+        .group-cta h3 { margin-bottom: 8px; font-size: 20px; }
+        .group-section--dark .group-cta h3 { color: #fff; }
+        .group-cta p { margin-bottom: 18px; font-size: 15px; color: var(--grey); }
+        .group-section--dark .group-cta p { color: rgba(255,255,255,.8); }
 
-        /* ===== Инфо-блок с расписанием ===== */
         .schedule-box {
             margin: 24px 0;
             padding: 20px 24px;
@@ -392,30 +310,18 @@
             margin: 0 0 12px 0;
             color: var(--ink);
         }
-        .group-section--dark .schedule-box h4 {
-            color: #fff;
-        }
+        .group-section--dark .schedule-box h4 { color: #fff; }
         .schedule-box p {
             margin: 0 0 8px 0;
             font-size: 15.5px;
             color: var(--grey);
             line-height: 1.5;
         }
-        .schedule-box p:last-child {
-            margin-bottom: 0;
-        }
-        .group-section--dark .schedule-box p {
-            color: rgba(255,255,255,.85);
-        }
-        .schedule-box strong {
-            color: var(--ink);
-            font-weight: 700;
-        }
-        .group-section--dark .schedule-box strong {
-            color: #fff;
-        }
+        .schedule-box p:last-child { margin-bottom: 0; }
+        .group-section--dark .schedule-box p { color: rgba(255,255,255,.85); }
+        .schedule-box strong { color: var(--ink); font-weight: 700; }
+        .group-section--dark .schedule-box strong { color: #fff; }
 
-        /* ===== Общий CTA внизу ===== */
         .page-cta {
             background: var(--ink);
             color: #fff;
@@ -438,10 +344,239 @@
             .page-cta { padding: 32px 20px; }
         }
 
-        /* ===== FAQ ===== */
-        .faq-section {
-            max-width: 900px;
-            margin: 0 auto;
+        .faq-section { max-width: 900px; margin: 0 auto; }
+
+        /* ============================================================
+           POPUP «Записаться» — своя форма с отправкой
+           ============================================================ */
+
+        .zapis-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity .25s ease;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        .zapis-popup-overlay.is-open {
+            display: flex;
+            opacity: 1;
+        }
+        .zapis-popup {
+            background: #fff;
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 480px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 30px 80px rgba(0,0,0,.35);
+            overflow: hidden;
+            transform: translateY(10px);
+            transition: transform .25s ease;
+        }
+        .zapis-popup-overlay.is-open .zapis-popup {
+            transform: translateY(0);
+        }
+        .zapis-popup-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--line);
+            flex-shrink: 0;
+        }
+        .zapis-popup-head h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+        .zapis-popup-head p {
+            margin: 4px 0 0;
+            font-size: 13.5px;
+            color: var(--grey);
+            font-weight: 500;
+        }
+        .zapis-popup-close {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(232,93,93,.1);
+            color: var(--coral-ink);
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .2s ease, color .2s ease;
+        }
+        .zapis-popup-close:hover {
+            background: var(--coral-ink);
+            color: #fff;
+        }
+        .zapis-popup-body {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 24px;
+        }
+
+        .zapis-form { display: block; }
+        .zapis-field { margin-bottom: 14px; }
+        .zapis-field label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+        .zapis-field input,
+        .zapis-field textarea {
+            width: 100%;
+            font-family: inherit;
+            font-size: 16px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 2px solid var(--line);
+            background: #fff;
+            color: var(--ink);
+            transition: border-color .2s ease;
+            box-sizing: border-box;
+        }
+        .zapis-field input:focus,
+        .zapis-field textarea:focus {
+            outline: none;
+            border-color: var(--coral);
+        }
+        .zapis-field textarea {
+            resize: vertical;
+            min-height: 70px;
+        }
+        .zapis-field.has-error input,
+        .zapis-field.has-error textarea {
+            border-color: var(--coral-dark);
+        }
+        .zapis-err {
+            display: none;
+            font-size: 12px;
+            color: var(--coral-ink);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        .zapis-field.has-error .zapis-err { display: block; }
+
+        .zapis-consent {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            margin: 4px 0 14px;
+            font-size: 11px;
+            color: var(--grey);
+            line-height: 1.35;
+            cursor: pointer;
+        }
+        .zapis-consent input[type="checkbox"] {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            margin-top: 1px;
+            accent-color: var(--coral-dark);
+        }
+        .zapis-form.consent-missing .zapis-consent {
+            color: var(--coral-ink);
+            font-weight: 700;
+        }
+
+        .zapis-submit {
+            display: block;
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        .zapis-fail {
+            display: none;
+            margin-top: 12px;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--coral-ink);
+            text-align: center;
+        }
+        .zapis-fail:not(:empty) { display: block; }
+
+        .zapis-success {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .zapis-success-ico {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #2E9E5B;
+            color: #fff;
+            font-size: 32px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+        }
+        .zapis-success h4 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ink);
+            margin: 0 0 12px;
+            text-align: center;
+        }
+        .zapis-success p {
+            font-size: 15px;
+            color: var(--grey);
+            line-height: 1.5;
+            margin: 0 0 8px;
+            text-align: center;
+            max-width: 260px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .zapis-success p:last-child { margin-bottom: 0; }
+        .zapis-success-heart {
+            display: inline-block;
+            font-size: 18px;
+            line-height: 1;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .zapis-popup-overlay {
+                padding: 0;
+                align-items: flex-end;
+            }
+            .zapis-popup {
+                max-width: 100%;
+                max-height: 95vh;
+                border-radius: 20px 20px 0 0;
+                transform: translateY(30px);
+            }
+            .zapis-popup-overlay.is-open .zapis-popup {
+                transform: translateY(0);
+            }
+            .zapis-popup-head { padding: 16px 18px; }
+            .zapis-popup-head h3 { font-size: 16px; }
+            .zapis-popup-body { padding: 20px 18px 24px; }
         }
     </style>
 
@@ -456,7 +591,6 @@
 
         ym(112359274, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
     </script>
-    <!-- ===== /Yandex.Metrika counter ===== -->
 
     <!-- ===== Schema.org: Courses ===== -->
     <script type="application/ld+json">
@@ -478,7 +612,7 @@
             "@context": "https://schema.org",
             "@type": "Course",
             "name": "Актёрские курсы для подростков 12–17 лет",
-            "description": "Актёрские курсы для подростков в Челябинске: сценическая речь, актёрское мастерство, театральная режиссура, подготовка к поступлению в театральный вуз. 2 раза в неделю по 3 часа. Спектакль на профессиональной сцене.",
+            "description": "Актёрские курсы для подростков в Челябинске: сценическая речь, актёрское мастерство, театральная режиссура, подготовка к поступлению в театральный вуз. Спектакль на профессиональной сцене.",
             "courseMode": "Onsite",
             "educationalLevel": "Beginner",
             "provider": {
@@ -553,7 +687,7 @@
                 "name": "Где и когда проходят занятия театральной студии в Челябинске?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Занятия проходят в Челябинске. Расписание для детей: понедельник 18:00–20:00, суббота 14:00–16:00 — 2 раза в неделю. Есть группа 1 раз в неделю — по субботам 12:00–14:00, для тех, кто учится во вторую смену. Расписание для подростков: вторник и суббота 17:00–20:00 — 2 раза в неделю по 3 часа. Точный адрес вы получите после записи на пробное занятие."
+                    "text": "Занятия проходят в Челябинске. Расписание для детей: понедельник 18:00–20:00, суббота 14:00–16:00 — 2 раза в неделю. Есть возможность заниматься 1 раз в неделю — для тех, кто учится во вторую смену, по субботам 12:00–14:00. Расписание для подростков: вторник и суббота 17:00–20:00. Точный адрес вы получите после записи на пробное занятие."
                 }
             }
         ]
@@ -580,10 +714,10 @@
             <a class="nav-blog" href="/blog/">Блог</a>
             <a href="/index.html#contacts">Контакты</a>
             <a class="m-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
-            <span class="m-cta"><a class="btn btn--sm m-menu-btn" href="/index.html#zapis">Оставить заявку</a></span>
+            <span class="m-cta"><a class="btn btn--sm m-menu-btn" href="#zapis">Оставить заявку</a></span>
         </nav>
         <a class="header-phone" href="tel:+79194040123">+7 (919) 404-01-23</a>
-        <span class="header-cta"><a class="btn btn--sm" href="/index.html#zapis">Оставить заявку</a></span>
+        <span class="header-cta"><a class="btn btn--sm" href="#zapis">Оставить заявку</a></span>
         <button class="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
 </header>
@@ -591,7 +725,7 @@
 <!-- ============ КОНТЕНТ ============ -->
 <main id="main" tabindex="-1">
 
-    <!-- ===== HERO / ЗАГОЛОВОК ===== -->
+    <!-- ===== HERO ===== -->
     <section class="page-hero">
         <div class="wrap">
             <div class="crumbs"><a href="/index.html">Главная</a> / Дети и подростки</div>
@@ -682,7 +816,7 @@
                 <div class="group-cta">
                     <h3>Привести ребёнка на пробное</h3>
                     <p>2 раза в неделю по 2 часа · 5 600 ₽ в месяц · Пробное занятие — 500 ₽</p>
-                    <a class="btn" href="/index.html#zapis">Записаться на пробное</a>
+                    <a class="btn" href="#zapis">Записаться на пробное</a>
                 </div>
 
             </div>
@@ -751,13 +885,13 @@
 
                 <blockquote class="pull-quote">
                     <p>Спектакль на профессиональной сцене</p>
-                    <p>С драматургией, сценографией, светом, звуком. Для тех, кто идёт в театральный — это ещё и пункт в портфолио, который выделяет среди других абитуриентов.</p>
+                    <p>С современной драматургией, светом, звуком. Для тех, кто идёт в театральный — это ещё и пункт в портфолио, который выделяет среди других абитуриентов.</p>
                 </blockquote>
 
                 <span class="lead-label">Для тех, кто идёт в театральный вуз</span>
 
                 <p class="group-text">
-                    Подготовка к поступлению в театральный вуз — отдельная задача. Наши выпускники поступают в театральные учебные заведения.
+                    Подготовка к поступлению в театральный вуз — отдельная задача. Наши выпускники поступают в театральные учебные заведения. Один из них — студент Екатеринбургского государственного театрального института, учится на режиссёра, на бюджете.
                 </p>
                 <p class="group-text">
                     Что даёт ШКИТ для подготовки: работу над сценической речью, актёрским мастерством, психологическую подготовку к прослушиваниям, честную оценку уровня и понимание, куда двигаться дальше. Спектакль на профессиональной сцене — это пункт в портфолио, который выделяет среди абитуриентов.
@@ -771,7 +905,7 @@
                 <div class="group-cta">
                     <h3>Прийти на пробное</h3>
                     <p>2 раза в неделю по 3 часа · 5 600 ₽ в месяц · Пробное занятие — 500 ₽</p>
-                    <a class="btn" href="/index.html#zapis">Записаться на пробное</a>
+                    <a class="btn" href="#zapis">Записаться на пробное</a>
                 </div>
 
             </div>
@@ -834,18 +968,17 @@
                             <p><strong>Дети:</strong> понедельник 18:00–20:00, суббота 14:00–16:00 — 2 раза в неделю по 2 часа.</p>
                             <p>Для тех, кто учится во вторую смену: 1 раз в неделю, суббота 12:00–14:00.</p>
                             <p><strong>Подростки:</strong> вторник и суббота 17:00–20:00 — 2 раза в неделю по 3 часа.</p>
-                            <p>Занятия проходят в Челябинске, пр. Ленина, 83. Мы подбираем группу по возрасту и уровню, чтобы ребёнку было комфортно.</p>
+                            <p>Занятия проходят в Челябинске. Точный адрес вы получите после записи на пробное занятие. Мы подбираем группу по возрасту и уровню, чтобы ребёнку было комфортно.</p>
                         </div>
                     </details>
 
                 </div>
             </div>
 
-            <!-- ===== ФИНАЛЬНЫЙ CTA ===== -->
             <div class="page-cta">
                 <h2>Не уверены, подойдёт ли?</h2>
                 <p>Приходите на пробное — увидите всё сами. После — никаких обязательств.</p>
-                <a class="btn btn--lg" href="/index.html#zapis">Записаться на пробное</a>
+                <a class="btn btn--lg" href="#zapis">Записаться на пробное</a>
             </div>
 
         </div>
@@ -862,6 +995,195 @@
         </div>
     </div>
 </footer>
+
+<!-- ============ POPUP «Записаться» ============ -->
+<script>
+(function () {
+    'use strict';
+
+    var ACCESS_KEY = '6ea50c59-bafc-42c5-aedd-4bc1ca88f6c4';
+    var POPUP_ID = 'zapis-popup-global';
+
+    function createPopup() {
+        if (document.getElementById(POPUP_ID)) return;
+
+        var overlay = document.createElement('div');
+        overlay.className = 'zapis-popup-overlay';
+        overlay.id = POPUP_ID;
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+
+        overlay.innerHTML =
+            '<div class="zapis-popup" role="document">' +
+                '<div class="zapis-popup-head">' +
+                    '<div>' +
+                        '<h3>Оставить заявку</h3>' +
+                        '<p>Заполните форму — мы свяжемся с вами</p>' +
+                    '</div>' +
+                    '<button class="zapis-popup-close" type="button" aria-label="Закрыть">✕</button>' +
+                '</div>' +
+                '<div class="zapis-popup-body">' +
+                    '<form class="zapis-form" novalidate>' +
+                        '<input type="hidden" name="access_key" value="' + ACCESS_KEY + '">' +
+                        '<input type="hidden" name="subject" value="Заявка с сайта ШКИТ">' +
+                        '<input type="hidden" name="from_name" value="ШКИТ — сайт">' +
+                        '<input type="checkbox" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off">' +
+                        '<div class="zapis-field">' +
+                            '<label for="zapis-name">Имя *</label>' +
+                            '<input type="text" id="zapis-name" name="name" required autocomplete="name" placeholder="Как к вам обращаться">' +
+                            '<span class="zapis-err">Укажите имя</span>' +
+                        '</div>' +
+                        '<div class="zapis-field">' +
+                            '<label for="zapis-phone">Телефон *</label>' +
+                            '<input type="tel" id="zapis-phone" name="phone" required autocomplete="tel" placeholder="+7 (___) ___-__-__">' +
+                            '<span class="zapis-err">Укажите телефон</span>' +
+                        '</div>' +
+                        '<div class="zapis-field">' +
+                            '<label for="zapis-question">Вопрос или комментарий</label>' +
+                            '<textarea id="zapis-question" name="question" rows="3" placeholder="Необязательно"></textarea>' +
+                        '</div>' +
+                        '<label class="zapis-consent">' +
+                            '<input type="checkbox" name="consent" required>' +
+                            '<span>Согласен на обработку персональных данных</span>' +
+                        '</label>' +
+                        '<button type="submit" class="btn zapis-submit">Отправить</button>' +
+                        '<div class="zapis-fail"></div>' +
+                    '</form>' +
+                    '<div class="zapis-success">' +
+                        '<div class="zapis-success-ico">✓</div>' +
+                        '<h4>Спасибо!</h4>' +
+                        '<p>Заявка отправлена в ШКИТ <span class="zapis-success-heart">❤️</span></p>' +
+                        '<p>Мы свяжемся с вами в ближайшее время.</p>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) closePopup();
+        });
+
+        overlay.querySelector('.zapis-popup-close')
+            .addEventListener('click', closePopup);
+
+        /* Маска телефона */
+        var phoneInput = overlay.querySelector('#zapis-phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function () {
+                var caret = phoneInput.selectionStart;
+                var digitsBefore = phoneInput.value.slice(0, caret).replace(/\D/g, '').length;
+                var digits = phoneInput.value.replace(/\D/g, '');
+                if (digits.startsWith('8')) digits = '7' + digits.slice(1);
+                if (!digits.startsWith('7')) digits = '7' + digits;
+                digits = digits.slice(0, 11);
+                var d = digits.slice(1);
+                var out = '+7';
+                if (d.length > 0) out += ' (' + d.slice(0, 3);
+                if (d.length > 3) out += ') ' + d.slice(3, 6);
+                if (d.length > 6) out += '-' + d.slice(6, 8);
+                if (d.length > 8) out += '-' + d.slice(8, 10);
+                phoneInput.value = out;
+                var seen = 0, pos = phoneInput.value.length;
+                for (var i = 0; i < phoneInput.value.length; i++) {
+                    if (/\d/.test(phoneInput.value[i])) {
+                        seen++;
+                        if (seen === digitsBefore) { pos = i + 1; break; }
+                    }
+                }
+                if (digitsBefore === 0) pos = phoneInput.value.length;
+                phoneInput.setSelectionRange(pos, pos);
+            });
+            phoneInput.addEventListener('focus', function () {
+                if (!phoneInput.value) phoneInput.value = '+7 ';
+            });
+            phoneInput.addEventListener('blur', function () {
+                if (phoneInput.value === '+7 ' || phoneInput.value === '+7') phoneInput.value = '';
+            });
+        }
+
+        /* Отправка формы */
+        var form = overlay.querySelector('.zapis-form');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var ok = true;
+
+                form.querySelectorAll('.zapis-field').forEach(function (field) {
+                    var inp = field.querySelector('input,textarea');
+                    if (!inp) return;
+                    var bad = false;
+                    if (inp.required && !inp.value.trim()) bad = true;
+                    if (inp.type === 'tel' && inp.value && inp.value.replace(/\D/g, '').length < 11) bad = true;
+                    field.classList.toggle('has-error', bad);
+                    if (bad) ok = false;
+                });
+
+                var consent = form.querySelector('input[name="consent"]');
+                var consentBad = consent && !consent.checked;
+                form.classList.toggle('consent-missing', consentBad);
+                if (consentBad) ok = false;
+
+                if (!ok) return;
+
+                var btn = form.querySelector('.zapis-submit');
+                var btnLabel = btn ? btn.textContent : '';
+                if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
+
+                var fail = form.querySelector('.zapis-fail');
+                if (fail) fail.textContent = '';
+
+                var data = new FormData(form);
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: data
+                })
+                    .then(function (r) { return r.json(); })
+                    .then(function (res) {
+                        if (!res || !res.success) throw new Error('Web3Forms error');
+                        form.style.display = 'none';
+                        var success = overlay.querySelector('.zapis-success');
+                        if (success) success.style.display = 'block';
+                    })
+                    .catch(function (err) {
+                        if (btn) { btn.disabled = false; btn.textContent = btnLabel; }
+                        if (fail) fail.textContent = 'Не удалось отправить. Позвоните: +7 (919) 404-01-23';
+                        console.error('ШКИТ: ошибка отправки —', err);
+                    });
+            });
+        }
+    }
+
+    function openPopup() {
+        createPopup();
+        var popup = document.getElementById(POPUP_ID);
+        popup.classList.add('is-open');
+        popup.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+        var popup = document.getElementById(POPUP_ID);
+        if (!popup) return;
+        popup.classList.remove('is-open');
+        popup.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closePopup();
+    });
+
+    document.addEventListener('click', function (e) {
+        var link = e.target.closest('a[href*="#zapis"]');
+        if (!link) return;
+        e.preventDefault();
+        openPopup();
+    });
+})();
+</script>
 
 <script src="/assets/js/main.js" defer></script>
 </body>
