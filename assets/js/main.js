@@ -517,6 +517,12 @@
         var popup = document.getElementById(POPUP_ID);
         popup.classList.add('is-open');
         popup.setAttribute('aria-hidden', 'false');
+        /* Блокируем скролл фона через position: fixed — не ломает
+           внутренний скролл попапа на мобильных */
+        var scrollY = window.scrollY || window.pageYOffset || 0;
+        document.body.style.position = 'fixed';
+        document.body.style.top = '-' + scrollY + 'px';
+        document.body.style.width = '100%';
         document.body.style.overflow = 'hidden';
     }
 
@@ -525,7 +531,13 @@
         if (!popup) return;
         popup.classList.remove('is-open');
         popup.setAttribute('aria-hidden', 'true');
+        /* Возвращаем страницу на прежнее место скролла */
+        var scrollY = Math.abs(parseInt(document.body.style.top || '0', 10)) || 0;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
         document.body.style.overflow = '';
+        window.scrollTo(0, scrollY);
     }
 
     document.addEventListener('keydown', function (e) {
