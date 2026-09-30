@@ -301,6 +301,8 @@
 
 /* ============================================================
    POPUP «Записаться» — глобальный попап с формой
+   - десктоп: iframe с Яндекс.Формой
+   - мобильный: кнопка «Заполнить форму» → новая вкладка
    ============================================================ */
 
 .zapis-popup-overlay {
@@ -388,7 +390,7 @@
     padding: 0 16px 0 20px;
     box-sizing: border-box;
 }
-.zapis-popup-body iframe {
+.zapis-popup-iframe {
     width: 100%;
     height: 100%;
     min-height: 500px;
@@ -396,6 +398,14 @@
     display: block;
 }
 
+/* ===== Мобильная альтернатива: кнопка вместо iframe ===== */
+
+/* На десктопе мобильный блок скрыт */
+.zapis-popup-mobile {
+    display: none;
+}
+
+/* На мобильном: iframe скрыт, показан блок с кнопкой */
 @media (max-width: 768px) {
     .zapis-popup-overlay {
         padding: 0;
@@ -417,9 +427,28 @@
         font-size: 16px;
     }
     .zapis-popup-body {
-        padding: 0 8px 0 12px;
+        padding: 0 16px 16px 16px;
+        display: block;
     }
-    .zapis-popup-body iframe {
-        min-height: 60vh;
+    /* Скрываем iframe на мобильном */
+    .zapis-popup-iframe {
+        display: none;
+    }
+    /* Показываем блок с кнопкой */
+    .zapis-popup-mobile {
+        display: block;
+        text-align: center;
+        padding: 24px 8px 8px;
+    }
+    .zapis-popup-mobile p {
+        font-size: 15px;
+        color: var(--grey);
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+    .zapis-popup-mobile .btn {
+        display: inline-block;
+        width: 100%;
+        max-width: 320px;
     }
 }
