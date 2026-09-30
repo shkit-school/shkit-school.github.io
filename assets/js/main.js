@@ -332,7 +332,8 @@
                     '<div class="zapis-success">' +
                         '<div class="zapis-success-ico">✓</div>' +
                         '<h4>Спасибо!</h4>' +
-                        '<p>Заявка отправлена. Мы свяжемся с вами в ближайшее время.</p>' +
+                        '<p>Заявка отправлена в ШКИТ <span class="zapis-success-heart">❤️</span></p>' +
+                        '<p>Мы свяжемся с вами в ближайшее время.</p>' +
                     '</div>' +
                 '</div>' +
             '</div>';
@@ -388,7 +389,6 @@
                 e.preventDefault();
                 var ok = true;
 
-                /* Валидация */
                 form.querySelectorAll('.zapis-field').forEach(function (field) {
                     var inp = field.querySelector('input,textarea');
                     if (!inp) return;
@@ -422,7 +422,6 @@
                     .then(function (r) { return r.json(); })
                     .then(function (res) {
                         if (!res || !res.success) throw new Error('Web3Forms error');
-                        /* Успех */
                         form.style.display = 'none';
                         var success = overlay.querySelector('.zapis-success');
                         if (success) success.style.display = 'block';
