@@ -85,14 +85,15 @@
       el.classList.add('anim', 'is-in');
     });
   }
-
   var revealGuard = function () {
+  if (document.hidden) return;
+  setTimeout(function () {
     if (document.hidden) return;
-    setTimeout(function () {
-      if (document.hidden || document.querySelector('.anim.is-in')) return;
-      document.querySelectorAll('.anim').forEach(function (el) { el.classList.add('is-in'); });
-    }, 3000);
-  };
+    document.querySelectorAll('.anim:not(.is-in)').forEach(function (el) {
+      el.classList.add('is-in');
+    });
+  }, 3000);
+};
   window.addEventListener('load', revealGuard);
   document.addEventListener('visibilitychange', revealGuard);
 
