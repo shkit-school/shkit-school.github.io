@@ -164,10 +164,10 @@
         }
 
         .group-text { margin-bottom: 24px; font-size: 17px; line-height: 1.7; }
-        .group-list { margin: 0 0 24px 0; padding-left: 24px; }
-        .group-list li { margin-bottom: 10px; line-height: 1.6; }
+        .group-text strong { color: var(--ink); font-weight: 700; }
+        .group-section--dark .group-text strong { color: #fff; }
 
-        /* ===== Подложки — на всю ширину, без скругления ===== */
+        /* ===== Заметная подпись-выделение ===== */
         .lead-label {
             display: block;
             width: 100%;
@@ -193,7 +193,7 @@
             .lead-label { font-size: 17px; padding: 10px 16px; }
         }
 
-        /* ===== Карточки с иконками — крупнее ===== */
+        /* ===== Карточки с иконками — в стиле главной ===== */
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -217,18 +217,27 @@
             background: rgba(255,255,255,.06);
             border-color: var(--coral);
         }
+
+        /* Иконка как на главной — тонкий контур, currentColor */
         .feature-ico {
-            width: 56px;
-            height: 56px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(232,93,93,.12);
+            color: var(--coral-ink);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
         .feature-ico svg {
-            width: 56px;
-            height: 56px;
-            display: block;
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
         .feature h4 {
             font-size: 16px;
@@ -247,8 +256,6 @@
                 min-height: auto;
                 justify-content: flex-start;
             }
-            .feature-ico { width: 48px; height: 48px; }
-            .feature-ico svg { width: 48px; height: 48px; }
             .feature h4 { font-size: 15px; }
         }
 
@@ -326,6 +333,44 @@
         .schedule-box strong { color: var(--ink); font-weight: 700; }
         .group-section--dark .schedule-box strong { color: #fff; }
 
+        /* ===== СПИСКИ С КВАДРАТОМ И ГАЛОЧКОЙ ===== */
+        .group-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0 0 24px 0;
+        }
+        .group-list li {
+            position: relative;
+            padding-left: 34px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            font-size: 17px;
+        }
+        /* Тёмно-серый квадрат с белой галочкой */
+        .group-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 3px;
+            width: 22px;
+            height: 22px;
+            border-radius: 5px;
+            background-color: var(--ink, #2D2D2D);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+            background-size: 14px 14px;
+            background-repeat: no-repeat;
+            background-position: center;
+            flex-shrink: 0;
+        }
+        /* На тёмном фоне — коралловый квадрат */
+        .group-section--dark .group-list li::before {
+            background-color: var(--coral, #E85D5D);
+        }
+        @media (max-width: 768px) {
+            .group-list li { font-size: 16px; padding-left: 30px; }
+            .group-list li::before { width: 20px; height: 20px; top: 2px; }
+        }
+
         .page-cta {
             background: var(--ink);
             color: #fff;
@@ -351,9 +396,8 @@
         .faq-section { max-width: 900px; margin: 0 auto; }
 
         /* ============================================================
-           POPUP «Записаться» — своя форма с отправкой
+           POPUP «Записаться»
            ============================================================ */
-
         .zapis-popup-overlay {
             position: fixed;
             inset: 0;
@@ -385,9 +429,7 @@
             transform: translateY(10px);
             transition: transform .25s ease;
         }
-        .zapis-popup-overlay.is-open .zapis-popup {
-            transform: translateY(0);
-        }
+        .zapis-popup-overlay.is-open .zapis-popup { transform: translateY(0); }
         .zapis-popup-head {
             display: flex;
             align-items: center;
@@ -426,10 +468,7 @@
             justify-content: center;
             transition: background .2s ease, color .2s ease;
         }
-        .zapis-popup-close:hover {
-            background: var(--coral-ink);
-            color: #fff;
-        }
+        .zapis-popup-close:hover { background: var(--coral-ink); color: #fff; }
         .zapis-popup-body {
             flex: 1;
             min-height: 0;
@@ -437,7 +476,6 @@
             -webkit-overflow-scrolling: touch;
             padding: 24px;
         }
-
         .zapis-form { display: block; }
         .zapis-field { margin-bottom: 14px; }
         .zapis-field label {
@@ -465,14 +503,9 @@
             outline: none;
             border-color: var(--coral);
         }
-        .zapis-field textarea {
-            resize: vertical;
-            min-height: 70px;
-        }
+        .zapis-field textarea { resize: vertical; min-height: 70px; }
         .zapis-field.has-error input,
-        .zapis-field.has-error textarea {
-            border-color: var(--coral-dark);
-        }
+        .zapis-field.has-error textarea { border-color: var(--coral-dark); }
         .zapis-err {
             display: none;
             font-size: 12px;
@@ -481,7 +514,6 @@
             font-weight: 600;
         }
         .zapis-field.has-error .zapis-err { display: block; }
-
         .zapis-consent {
             display: flex;
             gap: 8px;
@@ -503,13 +535,7 @@
             color: var(--coral-ink);
             font-weight: 700;
         }
-
-        .zapis-submit {
-            display: block;
-            width: 100%;
-            margin-top: 4px;
-        }
-
+        .zapis-submit { display: block; width: 100%; margin-top: 4px; }
         .zapis-fail {
             display: none;
             margin-top: 12px;
@@ -519,12 +545,7 @@
             text-align: center;
         }
         .zapis-fail:not(:empty) { display: block; }
-
-        .zapis-success {
-            display: none;
-            text-align: center;
-            padding: 20px 0;
-        }
+        .zapis-success { display: none; text-align: center; padding: 20px 0; }
         .zapis-success-ico {
             width: 64px;
             height: 64px;
@@ -563,21 +584,15 @@
             vertical-align: middle;
             margin-left: 2px;
         }
-
         @media (max-width: 768px) {
-            .zapis-popup-overlay {
-                padding: 0;
-                align-items: flex-end;
-            }
+            .zapis-popup-overlay { padding: 0; align-items: flex-end; }
             .zapis-popup {
                 max-width: 100%;
                 max-height: 95vh;
                 border-radius: 20px 20px 0 0;
                 transform: translateY(30px);
             }
-            .zapis-popup-overlay.is-open .zapis-popup {
-                transform: translateY(0);
-            }
+            .zapis-popup-overlay.is-open .zapis-popup { transform: translateY(0); }
             .zapis-popup-head { padding: 16px 18px; }
             .zapis-popup-head h3 { font-size: 16px; }
             .zapis-popup-body { padding: 20px 18px 24px; }
@@ -734,7 +749,7 @@
         <div class="wrap">
             <div class="crumbs"><a href="/index.html">Главная</a> / Дети и подростки</div>
             <h1><span class="h1-accent">Театральная студия</span> для детей 5–11 лет и подростков 12–17 лет в Челябинске</h1>
-            <p>В ШКИТ занимаются дети с 5 до 17 лет. За 17 лет через школу прошли более 5000 учеников, мы выпустили 500+ учебных работ и театральных постановок. Малыши — через игру. Подростки — через честный разговор и работу с текстом. И у тех, и у других в финале — спектакль на сцене.</p>
+            <p>В ШКИТ занимаются дети с 5 до 17 лет. За 17 лет через школу прошли более 5000 учеников, мы выпустили 500+ учебных работ и театральных постановок. <strong>Малыши</strong> — через игру. <strong>Подростки</strong> — через честный разговор и работу с текстом. И у тех, и у других в финале — спектакль на сцене.</p>
         </div>
     </section>
 
@@ -760,50 +775,19 @@
                 <div class="feature-grid">
                     <div class="feature">
                         <div class="feature-ico">
-                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="14" y="8" width="36" height="48" rx="2" fill="#2D2D2D"/>
-                                <rect x="18" y="12" width="28" height="40" fill="#F6F4F2"/>
-                                <rect x="22" y="18" width="20" height="2" fill="#2D2D2D"/>
-                                <rect x="22" y="24" width="20" height="2" fill="#2D2D2D"/>
-                                <rect x="22" y="30" width="14" height="2" fill="#2D2D2D"/>
-                                <rect x="22" y="36" width="18" height="2" fill="#2D2D2D"/>
-                                <path d="M40 40 L52 28 L56 32 L44 44 L38 46 Z" fill="#E85D5D"/>
-                                <rect x="8" y="14" width="4" height="8" fill="#E85D5D"/>
-                                <rect x="8" y="26" width="4" height="8" fill="#E85D5D"/>
-                                <rect x="8" y="38" width="4" height="8" fill="#E85D5D"/>
-                                <rect x="52" y="14" width="4" height="8" fill="#E85D5D"/>
-                                <rect x="52" y="26" width="4" height="8" fill="#E85D5D"/>
-                                <rect x="52" y="38" width="4" height="8" fill="#E85D5D"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4"/><path d="M8 23h8"/></svg>
                         </div>
                         <h4>Сценическая речь</h4>
                     </div>
                     <div class="feature">
                         <div class="feature-ico">
-                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8 20 C8 14 12 10 18 10 L30 10 L30 44 C26 40 20 38 14 40 C10 42 8 44 8 44 Z" fill="#2D2D2D"/>
-                                <circle cx="18" cy="26" r="3" fill="#F6F4F2"/>
-                                <circle cx="22" cy="32" r="3" fill="#F6F4F2"/>
-                                <path d="M32 12 C40 8 50 12 54 20 C58 28 56 38 48 42 C42 44 36 42 32 40 Z" fill="#E85D5D"/>
-                                <circle cx="44" cy="24" r="3" fill="#F6F4F2"/>
-                                <circle cx="42" cy="32" r="3" fill="#F6F4F2"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24"><path d="M2 12c0-5 4-8 10-8s10 3 10 8-4 8-10 8S2 17 2 12z"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></svg>
                         </div>
                         <h4>Актёрское мастерство</h4>
                     </div>
                     <div class="feature">
                         <div class="feature-ico">
-                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14 12 L14 48 C14 50 16 52 18 52 L46 52 C48 52 50 50 50 48 L50 12 Z" fill="#2D2D2D"/>
-                                <path d="M14 12 L50 12 L50 20 L14 20 Z" fill="#E85D5D"/>
-                                <path d="M22 30 L22 46 M42 30 L42 46" stroke="#F6F4F2" stroke-width="2"/>
-                                <path d="M22 30 C26 26 30 26 34 30 C38 34 42 34 42 30" stroke="#F6F4F2" stroke-width="2" fill="none"/>
-                                <path d="M22 38 C26 34 30 34 34 38 C38 42 42 42 42 38" stroke="#F6F4F2" stroke-width="2" fill="none"/>
-                                <circle cx="26" cy="30" r="2" fill="#E85D5D"/>
-                                <circle cx="38" cy="30" r="2" fill="#E85D5D"/>
-                                <circle cx="26" cy="38" r="2" fill="#E85D5D"/>
-                                <circle cx="38" cy="38" r="2" fill="#E85D5D"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
                         </div>
                         <h4>Вокал, пластика</h4>
                     </div>
@@ -867,7 +851,7 @@
                 <span class="lead-label">От «просто попробовать» до «я поступил»</span>
 
                 <p class="group-sub">
-                <strong>Актёрские курсы для подростков в Челябинске</strong> — это театральная студия, где не «развлекают», а говорят честно. Подросток приходит за своим: кто-то — за уверенностью, кто-то — за поступлением. Видим потенциал — готовим к поступлению в театральный вуз всерьёз. Пришёл для себя — прокачаем уверенность, харизму и публичные выступления. Договоримся на берегу и пойдём к твоей цели.
+                    В этом возрасте важно не «развлекать», а говорить честно. Подросток приходит за своим: кто-то — за уверенностью, кто-то — за поступлением. Видим потенциал — готовим к поступлению в театральный вуз всерьёз. Пришёл для себя — прокачаем уверенность, харизму и публичные выступления. Договоримся на берегу и пойдём к твоей цели.
                 </p>
 
                 <figure class="photo-grid">
@@ -880,46 +864,19 @@
                 <div class="feature-grid">
                     <div class="feature">
                         <div class="feature-ico">
-                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="14" y="8" width="36" height="48" rx="2" fill="#F6F4F2"/>
-                                <rect x="18" y="12" width="28" height="40" fill="#fff"/>
-                                <rect x="22" y="18" width="20" height="2" fill="#2D2D2D"/>
-                                <rect x="22" y="24" width="20" height="2" fill="#2D2D2D"/>
-                                <rect x="22" y="30" width="14" height="2" fill="#2D2D2D"/>
-                                <rect x="22" y="36" width="18" height="2" fill="#2D2D2D"/>
-                                <path d="M40 40 L52 28 L56 32 L44 44 L38 46 Z" fill="#E85D5D"/>
-                                <rect x="8" y="14" width="4" height="8" fill="#E85D5D"/>
-                                <rect x="8" y="26" width="4" height="8" fill="#E85D5D"/>
-                                <rect x="8" y="38" width="4" height="8" fill="#E85D5D"/>
-                                <rect x="52" y="14" width="4" height="8" fill="#E85D5D"/>
-                                <rect x="52" y="26" width="4" height="8" fill="#E85D5D"/>
-                                <rect x="52" y="38" width="4" height="8" fill="#E85D5D"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4"/><path d="M8 23h8"/></svg>
                         </div>
                         <h4>Сценическая речь</h4>
                     </div>
                     <div class="feature">
                         <div class="feature-ico">
-                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M32 8 C20 8 12 18 12 30 C12 44 22 56 32 56 C42 56 52 44 52 30 C52 18 44 8 32 8 Z" fill="#E85D5D"/>
-                                <circle cx="24" cy="26" r="3" fill="#2D2D2D"/>
-                                <circle cx="40" cy="26" r="3" fill="#2D2D2D"/>
-                                <path d="M22 40 C26 44 38 44 42 40" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24"><path d="M2 12c0-5 4-8 10-8s10 3 10 8-4 8-10 8S2 17 2 12z"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></svg>
                         </div>
                         <h4>Актёрское мастерство</h4>
                     </div>
                     <div class="feature">
                         <div class="feature-ico">
-                            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="12" y="44" width="40" height="6" fill="#2D2D2D"/>
-                                <path d="M18 44 L18 38 L46 38 L46 44 Z" fill="#2D2D2D"/>
-                                <rect x="14" y="36" width="36" height="2" fill="#E85D5D"/>
-                                <path d="M20 36 L20 14 L44 14 L44 36 Z" fill="#2D2D2D"/>
-                                <path d="M20 14 L44 14 L44 18 L20 18 Z" fill="#E85D5D"/>
-                                <path d="M26 26 L32 20 L38 26 L38 30 L26 30 Z" fill="#E85D5D"/>
-                                <rect x="30" y="30" width="4" height="6" fill="#E85D5D"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24"><path d="M3 4h18v14H3z"/><path d="M3 8l9 5 9-5"/><path d="M8 22h8"/><path d="M12 18v4"/></svg>
                         </div>
                         <h4>Театральная режиссура</h4>
                     </div>
@@ -1130,7 +1087,6 @@
         overlay.querySelector('.zapis-popup-close')
             .addEventListener('click', closePopup);
 
-        /* Маска телефона */
         var phoneInput = overlay.querySelector('#zapis-phone');
         if (phoneInput) {
             phoneInput.addEventListener('input', function () {
@@ -1165,7 +1121,6 @@
             });
         }
 
-        /* Отправка формы */
         var form = overlay.querySelector('.zapis-form');
         if (form) {
             form.addEventListener('submit', function (e) {
