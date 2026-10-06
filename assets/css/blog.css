@@ -595,3 +595,13 @@
     .article-related { padding: 20px 22px; }
     .article-related a { font-size: 15.5px; }
 }
+/* ===== H3 внутри вопросов FAQ — сброс стилей ===== */
+.faq-question h3 {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+    letter-spacing: inherit;
+    display: inline;
+}
