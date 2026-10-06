@@ -553,3 +553,45 @@
         padding: 20px 18px 24px;
     }
 }
+/* ===== «Читайте также» в конце статьи ===== */
+.article-related {
+    margin: 40px 0 8px;
+    padding: 24px 28px;
+    background: var(--paper);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--coral);
+}
+.article-related h3 {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 14px;
+}
+.article-related ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+}
+.article-related li {
+    margin: 0;
+    padding: 0;
+}
+.article-related a {
+    color: var(--coral-ink);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.4;
+    transition: color .2s ease;
+}
+.article-related a:hover {
+    color: var(--coral-dark);
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+    .article-related { padding: 20px 22px; }
+    .article-related a { font-size: 15.5px; }
+}
