@@ -265,37 +265,56 @@
     <!-- ===== Schema.org: PerformingArtsTheater ===== -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "PerformingArtsTheater",
-        "name": "Школа кино и театра «ШКИТ»",
-        "alternateName": "Театральная студия ШКИТ",
-        "description": "Актёрские курсы и театральная студия в Челябинске для детей, подростков и взрослых. 17+ лет опыта, спектакли на профессиональной сцене.",
-        "url": "https://shkit-school.github.io/",
-        "logo": "https://shkit-school.github.io/assets/img/logo.png",
-        "image": "https://shkit-school.github.io/assets/img/og.jpg",
-        "telephone": "+7-919-404-01-23",
-        "email": "art-pashnin@yandex.ru",
-        "foundingDate": "2009",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "проспект Ленина, 83, офис 509",
-            "addressLocality": "Челябинск",
-            "addressCountry": "RU"
+    "@context": "https://schema.org",
+    "@type": ["PerformingArtsTheater", "LocalBusiness", "EducationalOrganization"],
+    "name": "Школа кино и театра «ШКИТ»",
+    "alternateName": "Театральная студия ШКИТ",
+    "description": "Актёрские курсы и театральная студия в Челябинске для детей, подростков и взрослых. Работаем с 2009 года. Спектакли на профессиональной сцене.",
+    "url": "https://shkit-school.github.io/",
+    "logo": "https://shkit-school.github.io/assets/img/logo.png",
+    "image": "https://shkit-school.github.io/assets/img/og.jpg",
+    "telephone": "+7-919-404-01-23",
+    "email": "art-pashnin@yandex.ru",
+    "foundingDate": "2009",
+    "priceRange": "500–56000 ₽",
+    "paymentAccepted": "Наличные, банковская карта, перевод",
+    "currenciesAccepted": "RUB",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "проспект Ленина, 83, офис 509",
+        "addressLocality": "Челябинск",
+        "postalCode": "454080",
+        "addressRegion": "Челябинская область",
+        "addressCountry": "RU"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 55.158637,
+        "longitude": 61.371382
+    },
+    "areaServed": {
+        "@type": "City",
+        "name": "Челябинск"
+    },
+    "openingHoursSpecification": [
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "10:00",
+            "closes": "21:00"
         },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 55.158637,
-            "longitude": 61.371382
-        },
-        "areaServed": {
-            "@type": "City",
-            "name": "Челябинск"
-        },
-        "sameAs": [
-            "https://vk.com/shkit74",
-            "https://abajur.timepad.ru/events/"
-        ]
-    }
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "12:00",
+            "closes": "21:00"
+        }
+    ],
+    "sameAs": [
+        "https://vk.com/shkit74",
+        "https://abajur.timepad.ru/events/"
+    ]
+}
     </script>
 
     <!-- ===== Schema.org: Courses ===== -->
