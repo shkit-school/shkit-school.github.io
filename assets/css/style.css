@@ -450,3 +450,24 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
 }
 .m-phone,.m-cta{display:none}
 @media (max-width:880px){.m-phone,.m-cta{display:block}}
+/* ===== H1 на главной: слоган + ключ ===== */
+.hero h1 .h1-slogan {
+    display: block;
+    font-size: inherit;
+    line-height: .98;
+}
+.hero h1 .h1-key {
+    display: block;
+    font-size: .42em;
+    font-weight: 600;
+    color: rgba(255,255,255,.88);
+    margin-top: 16px;
+    letter-spacing: -.005em;
+    line-height: 1.15;
+}
+@media (max-width: 768px) {
+    .hero h1 .h1-key {
+        font-size: .48em;
+        margin-top: 12px;
+    }
+}
