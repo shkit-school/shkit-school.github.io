@@ -3,77 +3,84 @@
 
   <url>
     <loc>https://shkit-school.github.io/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://shkit-school.github.io/blog/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://shkit-school.github.io/dety-i-podrostki.html</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://shkit-school.github.io/contacts.html</loc>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://shkit-school.github.io/faq.html</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://shkit-school.github.io/policy.html</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://shkit-school.github.io/blog/statya-6.html</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://shkit-school.github.io/blog/statya-5.html</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://shkit-school.github.io/blog/statya-3.html</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://shkit-school.github.io/blog/statya-4.html</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://shkit-school.github.io/blog/statya-2.html</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://shkit-school.github.io/blog/statya-1.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
