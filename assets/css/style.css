@@ -480,12 +480,18 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 28px;
+    max-width: 720px;
+    margin: 0 auto;
 }
 
 .video-item {
     margin: 0;
     display: flex;
     flex-direction: column;
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 
 .video-wrap {
@@ -554,6 +560,8 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
         display: flex;
         gap: 14px;
         width: max-content;
+        max-width: none;
+        margin: 0;
     }
     .video-item {
         flex: 0 0 75%;
