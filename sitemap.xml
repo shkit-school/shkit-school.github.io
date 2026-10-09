@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
     <loc>https://shkit-school.github.io/</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://shkit-school.github.io/assets/img/shapka1.webp</image:loc>
+      <image:title>Актёрские курсы и театральная студия ШКИТ в Челябинске</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://shkit-school.github.io/assets/img/boss1.webp</image:loc>
+      <image:title>Пашнин Глеб Анатольевич — руководитель ШКИТ</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://shkit-school.github.io/assets/img/og.jpg</image:loc>
+      <image:title>Школа кино и театра ШКИТ — логотип</image:title>
+    </image:image>
   </url>
 
   <url>
@@ -20,6 +33,14 @@
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://shkit-school.github.io/assets/img/deti-scena3.webp</image:loc>
+      <image:title>Дети 5–11 лет на сцене — театральная студия ШКИТ</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://shkit-school.github.io/assets/img/deti-scena8.webp</image:loc>
+      <image:title>Спектакль «Муха-Цокотуха» на сцене НХТ — ШКИТ</image:title>
+    </image:image>
   </url>
 
   <url>
@@ -48,6 +69,10 @@
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://shkit-school.github.io/assets/img/acter3.jpeg</image:loc>
+      <image:title>Любительский театр: почему взрослые снова играют — ШКИТ</image:title>
+    </image:image>
   </url>
 
   <url>
@@ -55,6 +80,10 @@
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://shkit-school.github.io/assets/img/acter1.webp</image:loc>
+      <image:title>Как выбрать театральную студию в Челябинске: 6 красных флагов — ШКИТ</image:title>
+    </image:image>
   </url>
 
   <url>
@@ -62,6 +91,10 @@
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://shkit-school.github.io/assets/img/gal130.webp</image:loc>
+      <image:title>Можно ли начать заниматься театром в 25, 35, 50 лет — ШКИТ</image:title>
+    </image:image>
   </url>
 
   <url>
@@ -69,6 +102,10 @@
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://shkit-school.github.io/assets/img/gal121.jpg</image:loc>
+      <image:title>Как театр развивает память и речь у детей — ШКИТ</image:title>
+    </image:image>
   </url>
 
   <url>
@@ -76,6 +113,10 @@
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://shkit-school.github.io/assets/img/gal132.webp</image:loc>
+      <image:title>Подросток молчит и закрывается: как театр помогает вернуть голос — ШКИТ</image:title>
+    </image:image>
   </url>
 
   <url>
@@ -83,6 +124,10 @@
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://shkit-school.github.io/assets/img/gal131.webp</image:loc>
+      <image:title>Ребёнок стесняется и боится сцены: что делать родителю — ШКИТ</image:title>
+    </image:image>
   </url>
 
 </urlset>
