@@ -263,6 +263,44 @@
         }
     </style>
 
+    <!-- ===== Schema.org: Organization ===== -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Школа кино и театра «ШКИТ»",
+    "alternateName": "ШКИТ",
+    "url": "https://shkit-school.github.io/",
+    "logo": {
+        "@type": "ImageObject",
+        "url": "https://shkit-school.github.io/assets/img/logo.png",
+        "width": 1122,
+        "height": 1024
+    },
+    "image": "https://shkit-school.github.io/assets/img/og.jpg",
+    "description": "Школа кино и театра «ШКИТ» в Челябинске. Актёрские курсы для детей, подростков и взрослых. Работаем с 2009 года.",
+    "foundingDate": "2009",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "проспект Ленина, 83, офис 509",
+        "addressLocality": "Челябинск",
+        "postalCode": "454080",
+        "addressRegion": "Челябинская область",
+        "addressCountry": "RU"
+    },
+    "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-919-404-01-23",
+        "contactType": "customer service",
+        "areaServed": "RU",
+        "availableLanguage": ["Russian"]
+    },
+    "sameAs": [
+        "https://vk.com/shkit74",
+        "https://abajur.timepad.ru/events/"
+    ]
+}
+</script>
     <!-- ===== Schema.org: PerformingArtsTheater ===== -->
     <script type="application/ld+json">
     {
@@ -319,43 +357,163 @@
     </script>
 
     <!-- ===== Schema.org: Courses ===== -->
-    <script type="application/ld+json">
-    [
-        {
-            "@context": "https://schema.org",
-            "@type": "Course",
-            "name": "Актёрское мастерство для детей 5-11 лет",
-            "description": "Театральная студия для детей в Челябинске. Развитие речи, памяти, уверенности. Итог — отчётный спектакль.",
-            "provider": {
-                "@type": "Organization",
-                "name": "Школа кино и театра «ШКИТ»",
-                "url": "https://shkit-school.github.io/"
+<script type="application/ld+json">
+[
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Актёрское мастерство для детей 5–11 лет",
+        "description": "Театральная студия для детей в Челябинске. Развитие речи, памяти, уверенности. Сценическая речь, актёрское мастерство, вокал, пластика. Итог — отчётный спектакль на профессиональной сцене.",
+        "inLanguage": "ru-RU",
+        "educationalLevel": "Beginner",
+        "teaches": [
+            "Сценическая речь",
+            "Актёрское мастерство",
+            "Вокал и пластика",
+            "Работа в команде",
+            "Публичные выступления"
+        ],
+        "provider": {
+            "@type": "EducationalOrganization",
+            "name": "Школа кино и театра «ШКИТ»",
+            "url": "https://shkit-school.github.io/",
+            "telephone": "+7-919-404-01-23",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "проспект Ленина, 83, офис 509",
+                "addressLocality": "Челябинск",
+                "postalCode": "454080",
+                "addressCountry": "RU"
             }
         },
-        {
-            "@context": "https://schema.org",
-            "@type": "Course",
-            "name": "Актёрское мастерство для подростков 12-17 лет",
-            "description": "Актёрские курсы для подростков в Челябинске: подготовка к поступлению, режиссура, публичные выступления. Спектакль на профессиональной сцене.",
-            "provider": {
-                "@type": "Organization",
-                "name": "Школа кино и театра «ШКИТ»",
-                "url": "https://shkit-school.github.io/"
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "onsite",
+            "courseWorkload": "PT4H",
+            "location": {
+                "@type": "Place",
+                "name": "ШКИТ",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "проспект Ленина, 83, офис 509",
+                    "addressLocality": "Челябинск",
+                    "addressCountry": "RU"
+                }
             }
         },
-        {
-            "@context": "https://schema.org",
-            "@type": "Course",
-            "name": "Театральные проекты для взрослых",
-            "description": "Театр для взрослых в Челябинске: «Давай сыграем жизнь», «Магия слов», «Мой бенефис». Роль в спектакле на профессиональной сцене.",
-            "provider": {
-                "@type": "Organization",
-                "name": "Школа кино и театра «ШКИТ»",
-                "url": "https://shkit-school.github.io/"
-            }
+        "offers": {
+            "@type": "Offer",
+            "price": "5600",
+            "priceCurrency": "RUB",
+            "category": "Месячное обучение",
+            "availability": "https://schema.org/InStock",
+            "url": "https://shkit-school.github.io/dety-i-podrostki.html#dety"
         }
-    ]
-    </script>
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Актёрские курсы для подростков 12–17 лет",
+        "description": "Актёрские курсы для подростков в Челябинске: сценическая речь, актёрское мастерство, театральная режиссура, подготовка к поступлению в театральный вуз. Спектакль на профессиональной сцене.",
+        "inLanguage": "ru-RU",
+        "educationalLevel": "Beginner",
+        "teaches": [
+            "Сценическая речь",
+            "Актёрское мастерство",
+            "Театральная режиссура",
+            "Подготовка к поступлению в театральный вуз",
+            "Публичные выступления"
+        ],
+        "provider": {
+            "@type": "EducationalOrganization",
+            "name": "Школа кино и театра «ШКИТ»",
+            "url": "https://shkit-school.github.io/",
+            "telephone": "+7-919-404-01-23",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "проспект Ленина, 83, офис 509",
+                "addressLocality": "Челябинск",
+                "postalCode": "454080",
+                "addressCountry": "RU"
+            }
+        },
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "onsite",
+            "courseWorkload": "PT6H",
+            "location": {
+                "@type": "Place",
+                "name": "ШКИТ",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "проспект Ленина, 83, офис 509",
+                    "addressLocality": "Челябинск",
+                    "addressCountry": "RU"
+                }
+            }
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "5600",
+            "priceCurrency": "RUB",
+            "category": "Месячное обучение",
+            "availability": "https://schema.org/InStock",
+            "url": "https://shkit-school.github.io/dety-i-podrostki.html#podrostki"
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Театральные проекты для взрослых",
+        "description": "Театр для взрослых в Челябинске: «Давай сыграем жизнь», «Магия слов», «Мой бенефис». Роль в спектакле на профессиональной сцене.",
+        "inLanguage": "ru-RU",
+        "educationalLevel": "Beginner",
+        "teaches": [
+            "Актёрское мастерство",
+            "Сценическая речь",
+            "Импровизация",
+            "Публичные выступления",
+            "Работа с текстом"
+        ],
+        "provider": {
+            "@type": "EducationalOrganization",
+            "name": "Школа кино и театра «ШКИТ»",
+            "url": "https://shkit-school.github.io/",
+            "telephone": "+7-919-404-01-23",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "проспект Ленина, 83, офис 509",
+                "addressLocality": "Челябинск",
+                "postalCode": "454080",
+                "addressCountry": "RU"
+            }
+        },
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "onsite",
+            "courseWorkload": "PT6H",
+            "location": {
+                "@type": "Place",
+                "name": "ШКИТ",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "проспект Ленина, 83, офис 509",
+                    "addressLocality": "Челябинск",
+                    "addressCountry": "RU"
+                }
+            }
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "5600",
+            "priceCurrency": "RUB",
+            "category": "Месячное обучение",
+            "availability": "https://schema.org/InStock",
+            "url": "https://shkit-school.github.io/#proekty"
+        }
+    }
+]
+</script>
 
     <!-- ===== Schema.org: Events ===== -->
     <script type="application/ld+json">
