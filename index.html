@@ -516,84 +516,120 @@
 </script>
 
     <!-- ===== Schema.org: Events ===== -->
-    <script type="application/ld+json">
-    [
-        {
-            "@context": "https://schema.org",
-            "@type": "Event",
-            "name": "Спектакль «ИДИОТКИ»",
-            "startDate": "2026-11-11T19:00:00+05:00",
-            "location": {
-                "@type": "Place",
-                "name": "Сцена Театра кукол",
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Челябинск",
-                    "addressCountry": "RU"
-                }
-            },
-            "image": "https://shkit-school.github.io/assets/img/idiotki.webp",
-            "description": "Психологическая драма. Итоговая работа театрального проекта «Мой бенефис».",
-            "organizer": {
-                "@type": "Organization",
-                "name": "Школа кино и театра «ШКИТ»",
-                "url": "https://shkit-school.github.io/"
+<script type="application/ld+json">
+[
+    {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Спектакль «ИДИОТКИ»",
+        "startDate": "2026-11-11T19:00:00+05:00",
+        "endDate": "2026-11-11T21:30:00+05:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+            "@type": "Place",
+            "name": "Сцена Театра кукол",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "ул. Кирова, 116",
+                "addressLocality": "Челябинск",
+                "addressCountry": "RU"
             }
         },
-        {
-            "@context": "https://schema.org",
-            "@type": "Event",
-            "name": "Перформанс «ОТКРЫТАЯ ТЕМА»",
-            "startDate": "2026-10-19T19:00:00+05:00",
-            "location": {
-                "@type": "Place",
-                "name": "Театр «Многогранник»",
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Челябинск",
-                    "addressCountry": "RU"
-                }
-            },
-            "image": "https://shkit-school.github.io/assets/img/bilet2.webp",
-            "description": "Плейбэк-театр «АБАЖУР». Открытая тема — разговор без сценария: ваша история превращается в спектакль.",
-            "performer": {
-                "@type": "PerformingGroup",
-                "name": "Плейбэк-театр «Абажур»"
-            },
-            "organizer": {
-                "@type": "Organization",
-                "name": "Школа кино и театра «ШКИТ»",
-                "url": "https://shkit-school.github.io/"
-            }
+        "image": "https://shkit-school.github.io/assets/img/idiotki.webp",
+        "description": "Психологическая драма. Итоговая работа театрального проекта «Мой бенефис». Три женщины приходят к одному мужчине, чтобы спросить: ты живёшь? И каждая получает один и тот же ответ — тишину.",
+        "organizer": {
+            "@type": "Organization",
+            "name": "Школа кино и театра «ШКИТ»",
+            "url": "https://shkit-school.github.io/"
         },
-        {
-            "@context": "https://schema.org",
-            "@type": "Event",
-            "name": "Перформанс «ИСТОРИИ ПОД АБАЖУРОМ»",
-            "startDate": "2026-12-07T19:00:00+05:00",
-            "location": {
-                "@type": "Place",
-                "name": "Театр «Многогранник»",
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Челябинск",
-                    "addressCountry": "RU"
-                }
-            },
-            "image": "https://shkit-school.github.io/assets/img/gal108.jpg",
-            "description": "Плейбэк-театр «АБАЖУР». Тёплый свет под абажуром и истории, которые оживают прямо у вас на глазах.",
-            "performer": {
-                "@type": "PerformingGroup",
-                "name": "Плейбэк-театр «Абажур»"
-            },
-            "organizer": {
-                "@type": "Organization",
-                "name": "Школа кино и театра «ШКИТ»",
-                "url": "https://shkit-school.github.io/"
-            }
+        "performer": {
+            "@type": "PerformingGroup",
+            "name": "Театральный проект «Мой бенефис»"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": "https://shkit-school.github.io/#afisha",
+            "price": "0",
+            "priceCurrency": "RUB",
+            "availability": "https://schema.org/PreOrder",
+            "validFrom": "2026-10-01T00:00:00+05:00"
         }
-    ]
-    </script>
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Перформанс «ОТКРЫТАЯ ТЕМА»",
+        "startDate": "2026-10-19T19:00:00+05:00",
+        "endDate": "2026-10-19T21:00:00+05:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+            "@type": "Place",
+            "name": "Театр «Многогранник»",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Челябинск",
+                "addressCountry": "RU"
+            }
+        },
+        "image": "https://shkit-school.github.io/assets/img/bilet2.webp",
+        "description": "Плейбэк-театр «АБАЖУР». Открытая тема — разговор без сценария: ваша история превращается в спектакль.",
+        "performer": {
+            "@type": "PerformingGroup",
+            "name": "Плейбэк-театр «Абажур»"
+        },
+        "organizer": {
+            "@type": "Organization",
+            "name": "Школа кино и театра «ШКИТ»",
+            "url": "https://shkit-school.github.io/"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": "https://chel.kassy.ru/events/teatr/2-55862/",
+            "priceCurrency": "RUB",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2026-09-01T00:00:00+05:00"
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Перформанс «ИСТОРИИ ПОД АБАЖУРОМ»",
+        "startDate": "2026-12-07T19:00:00+05:00",
+        "endDate": "2026-12-07T21:00:00+05:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+            "@type": "Place",
+            "name": "Театр «Многогранник»",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Челябинск",
+                "addressCountry": "RU"
+            }
+        },
+        "image": "https://shkit-school.github.io/assets/img/gal108.jpg",
+        "description": "Плейбэк-театр «АБАЖУР». Тёплый свет под абажуром и истории, которые оживают прямо у вас на глазах.",
+        "performer": {
+            "@type": "PerformingGroup",
+            "name": "Плейбэк-театр «Абажур»"
+        },
+        "organizer": {
+            "@type": "Organization",
+            "name": "Школа кино и театра «ШКИТ»",
+            "url": "https://shkit-school.github.io/"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": "https://chel.kassy.ru/events/teatr/2-55861/",
+            "priceCurrency": "RUB",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2026-09-01T00:00:00+05:00"
+        }
+    }
+]
+</script>
 
     <!-- ===== Schema.org: Person (руководитель) ===== -->
     <script type="application/ld+json">
