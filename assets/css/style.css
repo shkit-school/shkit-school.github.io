@@ -559,9 +559,9 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
         overflow-y: hidden !important;
         scroll-snap-type: x mandatory !important;
         -webkit-overflow-scrolling: touch !important;
-        margin: 28px -16px 0 !important;
-        padding: 0 16px 12px !important;
-        width: calc(100% + 32px) !important;
+        margin: 28px 0 0 !important;
+        padding: 0 0 12px !important;
+        width: 100% !important;
         scrollbar-width: none;
     }
     .video-slider::-webkit-scrollbar { display: none; }
@@ -569,19 +569,20 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     .video-track {
         display: flex !important;
         grid-template-columns: none !important;
-        gap: 16px !important;
+        gap: 12px !important;
         width: max-content !important;
         min-width: 100% !important;
         max-width: none !important;
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 0 16px !important;
+        box-sizing: border-box !important;
     }
 
     .video-item {
-        flex: 0 0 auto !important;
-        min-width: 0 !important;
-        max-width: none !important;
-        width: 85vw !important;
+        flex: 0 0 calc(100vw - 48px) !important;
+        min-width: calc(100vw - 48px) !important;
+        max-width: calc(100vw - 48px) !important;
+        width: calc(100vw - 48px) !important;
         margin: 0 !important;
         padding: 0 !important;
         scroll-snap-align: center !important;
@@ -592,7 +593,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     .video-wrap {
         width: 100% !important;
         max-width: 100% !important;
-        margin: 0 !important;
+        margin: 0 auto !important;
         aspect-ratio: 9 / 16 !important;
     }
 
@@ -606,4 +607,3 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
         display: block !important;
     }
 }
-
