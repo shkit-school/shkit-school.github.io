@@ -475,7 +475,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
    ВИДЕО-БЛОК
    ============================================================ */
 
-/* ===== Обёртка ===== */
+/* ===== Контейнер ===== */
 .video-slider {
     margin-top: 44px;
 }
@@ -550,7 +550,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
 }
 
 /* ============================================================
-   МОБИЛЬНАЯ ВЕРСИЯ — свайп, как карточки отзывов
+   МОБИЛЬНАЯ ВЕРСИЯ — свайп
    ============================================================ */
 @media (max-width: 768px) {
 
@@ -560,8 +560,9 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
         scroll-snap-type: x mandatory !important;
         -webkit-overflow-scrolling: touch !important;
         margin: 28px 0 0 !important;
-        padding: 0 0 12px !important;
+        padding: 0 16px 12px !important;
         width: 100% !important;
+        box-sizing: border-box !important;
         scrollbar-width: none;
     }
     .video-slider::-webkit-scrollbar { display: none; }
@@ -574,15 +575,15 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
         min-width: 100% !important;
         max-width: none !important;
         margin: 0 !important;
-        padding: 0 16px !important;
+        padding: 0 !important;
         box-sizing: border-box !important;
     }
 
     .video-item {
-        flex: 0 0 calc(100vw - 48px) !important;
-        min-width: calc(100vw - 48px) !important;
-        max-width: calc(100vw - 48px) !important;
-        width: calc(100vw - 48px) !important;
+        flex: 0 0 85vw !important;
+        min-width: 85vw !important;
+        max-width: 85vw !important;
+        width: 85vw !important;
         margin: 0 !important;
         padding: 0 !important;
         scroll-snap-align: center !important;
