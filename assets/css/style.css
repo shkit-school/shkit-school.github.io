@@ -5,16 +5,16 @@
    ============================================================ */
 
 :root{
-  --ink:#2D2D2D;          /* тёмно-серый */
-  --ink-2:#242424;        /* глубже */
-  --coral:#E85D5D;        /* светло-красный — заливки, кнопки, крупные акценты */
-  --coral-dark:#D13434;   /* коралловые плашки под белым текстом (WCAG AA 4.9:1) */
-  --coral-ink:#BC3636;    /* тёмный коралл — мелкий текст/ссылки на светлом (WCAG AA) */
-  --coral-soft:#F28B87;   /* светлый коралл — мелкий текст на тёмном (WCAG AA) */
+  --ink:#2D2D2D;
+  --ink-2:#242424;
+  --coral:#E85D5D;
+  --coral-dark:#D13434;
+  --coral-ink:#BC3636;
+  --coral-soft:#F28B87;
   --white:#FFFFFF;
-  --paper:#F6F4F2;        /* очень светло-серый фон */
+  --paper:#F6F4F2;
   --paper-2:#EEEBE8;
-  --grey:#6E6A67;         /* вторичный текст */
+  --grey:#6E6A67;
   --line:rgba(45,45,45,.12);
   --shadow:0 14px 40px -18px rgba(45,45,45,.35);
   --shadow-sm:0 8px 24px -14px rgba(45,45,45,.4);
@@ -39,22 +39,17 @@ img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--coral-dark);color:#fff}
 
-/* видимый фокус с клавиатуры (мышью не мешает) */
 :focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:4px}
 .bg-dark :focus-visible,.footer :focus-visible,.hero :focus-visible,
 .review :focus-visible,.form-card :focus-visible,.lightbox :focus-visible,
 .popup-head :focus-visible{outline-color:#fff}
 
-/* ссылка «к содержимому» для клавиатуры и скринридеров */
 .skip-link{position:absolute;left:-9999px;top:0;z-index:1200;background:var(--ink);color:#fff;
   padding:12px 20px;border-radius:0 0 10px 0;font-weight:700;font-size:15px}
 .skip-link:focus{left:0}
 
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 
-/* ===== ЯКОРЯ (scroll-margin-top) =====
-   Правка: значения вынесены сюда из index.html, чтобы не было конфликта.
-   #abajur — вложенный блок внутри #afisha, ему нужен больший отступ. */
 section[id],#zapis{scroll-margin-top:calc(var(--header-h) + 10px)}
 #abajur{scroll-margin-top:calc(var(--header-h) + 80px)}
 
@@ -62,16 +57,13 @@ h1,h2,h3,h4{font-weight:800;line-height:1.08;letter-spacing:-.01em}
 h2{font-size:clamp(28px,4.6vw,50px)}
 h3{font-size:clamp(20px,2.6vw,28px);font-weight:700}
 
-/* маленький «шёпот» под заголовком секции */
 .kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;color:var(--coral-ink);margin-bottom:14px}
 
 .section{padding:clamp(64px,9vw,120px) 0}
-/* фоны секций */
 .bg-dark{background:var(--ink);color:var(--white)}
 .bg-dark h2,.bg-dark h3{color:#fff}
 .bg-dark .kicker{color:var(--coral-soft)}
-/* светлые карточки внутри тёмной секции не наследуют белый текст */
 .bg-dark .card,.bg-dark .card h3{color:var(--ink)}
 .bg-white{background:var(--white)}
 .bg-paper{background:var(--paper)}
@@ -146,6 +138,28 @@ h3{font-size:clamp(20px,2.6vw,28px);font-weight:700}
   animation:scrollpulse 1.8s var(--ease) infinite}
 @keyframes scrollpulse{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
 
+/* ============ H1 НА ГЛАВНОЙ ============ */
+.hero h1 .h1-slogan {
+    display: block;
+    font-size: inherit;
+    line-height: .98;
+}
+.hero h1 .h1-key {
+    display: block;
+    font-size: .42em;
+    font-weight: 600;
+    color: rgba(255,255,255,.88);
+    margin-top: 16px;
+    letter-spacing: -.005em;
+    line-height: 1.15;
+}
+@media (max-width: 768px) {
+    .hero h1 .h1-key {
+        font-size: .48em;
+        margin-top: 12px;
+    }
+}
+
 /* ============ ПРЕИМУЩЕСТВА ============ */
 .adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
 .adv{background:var(--white);border-radius:var(--radius);padding:32px 28px;box-shadow:var(--shadow-sm);
@@ -157,7 +171,7 @@ h3{font-size:clamp(20px,2.6vw,28px);font-weight:700}
 .adv h3{font-size:20px;margin-bottom:8px}
 .adv p{font-size:15.5px;color:var(--grey)}
 
-/* ============ КАРТОЧКИ КУРСОВ/ПРОЕКТОВ ============ */
+/* ============ КАРТОЧКИ ============ */
 .cards{display:grid;gap:26px;margin-top:48px}
 .cards--2{grid-template-columns:repeat(2,1fr)}
 .cards--3{grid-template-columns:repeat(3,1fr)}
@@ -188,8 +202,6 @@ h3{font-size:clamp(20px,2.6vw,28px);font-weight:700}
 .card-price--accent{color:var(--coral-ink)}
 .card-price small{display:block;font-size:12px;font-weight:600;color:var(--grey)}
 .card-actions{margin-top:20px}
-
-/* компактный вид для 3-в-ряд (проекты) */
 .cards--3 .card-media{aspect-ratio:4/3}
 .cards--3 .card-body{padding:22px}
 
@@ -252,7 +264,8 @@ h3{font-size:clamp(20px,2.6vw,28px);font-weight:700}
 
 /* ============ ГАЛЕРЕЯ ============ */
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:44px}
-.gallery figure{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;aspect-ratio:1/1;background:var(--ink)}
+.gallery figure{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;aspect-ratio:1/1;background:var(--ink);
+  margin:0;padding:0}
 .gallery img{width:100%;height:100%;object-fit:cover;filter:var(--photo);transition:transform .5s var(--ease)}
 .gallery figure:hover img{transform:scale(1.07)}
 .gallery figure:after{content:"";position:absolute;inset:0;background:rgba(45,45,45,0);transition:background .3s}
@@ -290,7 +303,6 @@ form.consent-missing .consent{opacity:1}
 form.is-sent .form-body{display:none}
 form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
 @keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
-/* кнопка внутри тёмной/коралловой формы — белая с инверсией */
 .form-card .btn{background:#fff;color:var(--ink);border-color:#fff;box-shadow:none}
 .form-card--coral .btn{color:var(--coral-ink)}
 .form-card .btn:hover{background:transparent;color:#fff}
@@ -386,9 +398,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
 .doc .updated{font-size:13px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em;
   border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:28px}
 
-/* ============ АНИМАЦИИ ПОЯВЛЕНИЯ ============ */
-/* Без JS (или если скрипт не загрузился) контент виден сразу —
-   прячем элементы только когда скрипт успел поставить .js на <html>. */
+/* ============ АНИМАЦИИ ============ */
 .anim{opacity:1;transform:none}
 .js .anim{opacity:0;transform:translateY(26px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .js .anim.is-in{opacity:1;transform:none}
@@ -398,7 +408,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
   *{animation:none!important}
 }
 
-/* ============ PAGE HERO (policy) ============ */
+/* ============ PAGE HERO ============ */
 .page-hero{background:var(--ink);color:#fff;padding:clamp(56px,9vw,100px) 0 clamp(44px,7vw,72px)}
 .page-hero .crumbs{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:18px}
 .page-hero .crumbs a:hover{color:var(--coral-soft)}
@@ -408,8 +418,6 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
 /* ============ АДАПТИВ ============ */
 @media (max-width:1040px){
   .adv-grid{grid-template-columns:repeat(2,1fr)}
-  /* Правка: .cards--3 теперь в одну колонку на планшетах,
-     чтобы третья карточка не оставалась одна в ряду. */
   .cards--3{grid-template-columns:1fr}
   .afisha-grid{grid-template-columns:1fr 1fr}
   .contacts-grid{grid-template-columns:1fr}
@@ -441,7 +449,6 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
   .hero-cta,.doubt-cta .btn,.card-actions .btn,.popup-foot .btn{width:100%}
   .popup-foot{flex-direction:column;align-items:stretch}
   .js .anim:not(.is-in){transform:translateY(16px)}
-  /* отзывы — свайп на мобилке */
   .reviews{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;
     margin-left:-16px;margin-right:-16px;padding:4px 16px 12px;-webkit-overflow-scrolling:touch}
   .reviews::-webkit-scrollbar{display:none}
@@ -450,32 +457,11 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
 }
 .m-phone,.m-cta{display:none}
 @media (max-width:880px){.m-phone,.m-cta{display:block}}
-/* ===== H1 на главной: слоган + ключ ===== */
-.hero h1 .h1-slogan {
-    display: block;
-    font-size: inherit;
-    line-height: .98;
-}
-.hero h1 .h1-key {
-    display: block;
-    font-size: .42em;
-    font-weight: 600;
-    color: rgba(255,255,255,.88);
-    margin-top: 16px;
-    letter-spacing: -.005em;
-    line-height: 1.15;
-}
-@media (max-width: 768px) {
-    .hero h1 .h1-key {
-        font-size: .48em;
-        margin-top: 12px;
-    }
-}
+
 /* ============================================================
    ВИДЕО-БЛОК
    ============================================================ */
 
-/* ===== Обёртка ===== */
 .video-slider {
     margin-top: 44px;
 }
@@ -489,6 +475,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     overflow: hidden;
     background: #000;
     box-shadow: 0 20px 60px -20px rgba(0,0,0,.7);
+    cursor: pointer;
 }
 
 .video-wrap video {
@@ -497,6 +484,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     object-fit: cover;
     display: block;
     border: 0;
+    pointer-events: none;
 }
 
 /* ===== Подпись ===== */
@@ -527,6 +515,87 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     height: 2px;
     background: var(--coral);
     margin: 8px auto 0;
+}
+
+/* ===== Кастомный плеер ===== */
+
+/* Кнопка Play — большая, по центру */
+.video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .92);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .4);
+    transition: transform .25s ease, opacity .25s ease;
+    z-index: 2;
+    padding: 0;
+}
+.video-play:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+}
+.video-play svg {
+    width: 32px;
+    height: 32px;
+    fill: var(--ink, #2D2D2D);
+    margin-left: 4px;
+}
+
+/* Кнопка Pause — в левом нижнем углу */
+.video-pause {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .55);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .25s ease, background .25s ease;
+    z-index: 2;
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+.video-pause:hover {
+    background: rgba(0, 0, 0, .75);
+}
+.video-pause svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+}
+
+/* Состояние «играет» */
+.video-wrap.is-playing .video-play {
+    opacity: 0;
+    pointer-events: none;
+}
+.video-wrap.is-playing .video-pause {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Состояние «на паузе» */
+.video-wrap.is-paused .video-play {
+    opacity: 1;
+    pointer-events: auto;
+}
+.video-wrap.is-paused .video-pause {
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* ============================================================
@@ -583,7 +652,6 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
         box-sizing: border-box !important;
     }
 
-    /* ===== ГЛАВНОЕ: сброс дефолтных margin для figure ===== */
     .video-item {
         flex: 0 0 calc(100vw - 64px) !important;
         width: calc(100vw - 64px) !important;
@@ -614,4 +682,10 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     .video-scroll-hint {
         display: block !important;
     }
+
+    /* Кастомный плеер — на мобильном меньше */
+    .video-play { width: 60px; height: 60px; }
+    .video-play svg { width: 26px; height: 26px; }
+    .video-pause { width: 38px; height: 38px; bottom: 10px; left: 10px; }
+    .video-pause svg { width: 16px; height: 16px; }
 }
