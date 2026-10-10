@@ -602,7 +602,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     position: absolute;
     left: 24px;
     right: 24px;
-    bottom: 24px;
+    bottom: 12px;
     height: 24px;                 /* зона для клика — 24px */
     cursor: pointer;
     z-index: 3;
