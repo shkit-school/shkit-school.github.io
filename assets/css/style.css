@@ -552,7 +552,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
 /* Кнопка Pause — над прогресс-баром, слева */
 .video-pause {
     position: absolute;
-    bottom: 56px;
+    bottom: 80px;
     left: 16px;
     width: 44px;
     height: 44px;
