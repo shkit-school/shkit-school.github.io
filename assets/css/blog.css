@@ -605,3 +605,98 @@
     letter-spacing: inherit;
     display: inline;
 }
+/* ===== Кастомный плеер ===== */
+.video-wrap {
+    cursor: pointer;
+}
+
+.video-wrap video {
+    pointer-events: none;   /* клики только через обёртку */
+}
+
+/* Кнопка Play — большая, по центру */
+.video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .92);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .4);
+    transition: transform .25s ease, opacity .25s ease;
+    z-index: 2;
+    padding: 0;
+}
+.video-play:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+}
+.video-play svg {
+    width: 32px;
+    height: 32px;
+    fill: var(--ink, #2D2D2D);
+    margin-left: 4px;   /* оптический сдвиг для треугольника */
+}
+
+/* Кнопка Pause — маленькая, в углу */
+.video-pause {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .55);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .25s ease, background .25s ease;
+    z-index: 2;
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+.video-pause:hover {
+    background: rgba(0, 0, 0, .75);
+}
+.video-pause svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+}
+
+/* Состояние «играет» */
+.video-wrap.is-playing .video-play {
+    opacity: 0;
+    pointer-events: none;
+}
+.video-wrap.is-playing .video-pause {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Состояние «на паузе» (после play) */
+.video-wrap.is-paused .video-play {
+    opacity: 1;
+    pointer-events: auto;
+}
+.video-wrap.is-paused .video-pause {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Адаптив — на мобильном кнопки чуть меньше */
+@media (max-width: 560px) {
+    .video-play { width: 60px; height: 60px; }
+    .video-play svg { width: 26px; height: 26px; }
+    .video-pause { width: 38px; height: 38px; bottom: 10px; left: 10px; }
+    .video-pause svg { width: 16px; height: 16px; }
+}
