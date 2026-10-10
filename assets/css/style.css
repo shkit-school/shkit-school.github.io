@@ -600,7 +600,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
 /* ===== Прогресс-бар ===== */
 .video-progress {
     position: absolute;
-    left: 24px;
+    left: 48px;
     right: 24px;
     bottom: 24px;
     height: 24px;                 /* зона для клика — 24px */
