@@ -552,7 +552,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
 /* Кнопка Pause — в левом нижнем углу */
 .video-pause {
     position: absolute;
-    bottom: 48px;
+    bottom: 96px;
     left: 14px;
     width: 44px;
     height: 44px;
