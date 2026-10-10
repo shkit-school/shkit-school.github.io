@@ -554,30 +554,33 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
    ============================================================ */
 @media (max-width: 768px) {
 
+    /* Скролл-контейнер — без бокового padding */
     .video-slider {
         overflow-x: auto !important;
         overflow-y: hidden !important;
         scroll-snap-type: x mandatory !important;
         -webkit-overflow-scrolling: touch !important;
         margin: 28px 0 0 !important;
-        padding: 0 16px 12px !important;
+        padding: 0 0 12px !important;
         width: 100% !important;
         box-sizing: border-box !important;
         scrollbar-width: none;
     }
     .video-slider::-webkit-scrollbar { display: none; }
 
+    /* Трек — ширина по контенту, боковой padding здесь */
     .video-track {
         display: flex !important;
         grid-template-columns: none !important;
         gap: 12px !important;
-        min-width: 100% !important;
+        width: max-content !important;
         max-width: none !important;
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 0 16px !important;
         box-sizing: border-box !important;
     }
 
+    /* Одна карточка = 85% ширины экрана */
     .video-item {
         flex: 0 0 85vw !important;
         min-width: 85vw !important;
