@@ -463,3 +463,64 @@
         openPopup();
     });
 })();
+/* ============ Кастомный плеер видео ============ */
+(function () {
+  'use strict';
+
+  var wraps = document.querySelectorAll('[data-video-wrap]');
+
+  wraps.forEach(function (wrap) {
+    var video = wrap.querySelector('video');
+    var playBtn = wrap.querySelector('.video-play');
+    var pauseBtn = wrap.querySelector('.video-pause');
+
+    if (!video || !playBtn || !pauseBtn) return;
+
+    function play() {
+      video.play();
+    }
+
+    function pause() {
+      video.pause();
+    }
+
+    // Клик по большой кнопке Play
+    playBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      play();
+    });
+
+    // Клик по кнопке Pause
+    pauseBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      pause();
+    });
+
+    // Клик по самому видео — пауза (или play, если стоит)
+    wrap.addEventListener('click', function (e) {
+      // если клик по кнопке — игнорируем
+      if (e.target.closest('.video-play') || e.target.closest('.video-pause')) return;
+      if (video.paused) play();
+      else pause();
+    });
+
+    // Состояния
+    video.addEventListener('play', function () {
+      wrap.classList.add('is-playing');
+      wrap.classList.remove('is-paused');
+    });
+
+    video.addEventListener('pause', function () {
+      if (video.currentTime > 0 && !video.ended) {
+        wrap.classList.add('is-paused');
+      }
+      wrap.classList.remove('is-playing');
+    });
+
+    video.addEventListener('ended', function () {
+      wrap.classList.remove('is-playing');
+      wrap.classList.remove('is-paused');
+      video.currentTime = 0;
+    });
+  });
+})();
