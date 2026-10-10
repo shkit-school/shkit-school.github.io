@@ -488,12 +488,16 @@
     });
 
     wrap.addEventListener('pointerdown', function (e) {
-      if (e.target.closest('.video-play') || e.target.closest('.video-pause')) return;
-      if (e.target.closest('.video-progress')) return;
-      e.preventDefault();
-      if (video.paused) play();
-      else pause();
-    });
+    // На мобильном — тап по видео не запускает
+    if (window.matchMedia('(max-width: 768px)').matches) return;
+
+    // На десктопе — клик по видео работает как раньше
+    if (e.target.closest('.video-play') || e.target.closest('.video-pause')) return;
+    if (e.target.closest('.video-progress')) return;
+    e.preventDefault();
+    if (video.paused) play();
+    else pause();
+});
 
     /* ===== Прогресс-бар ===== */
     var progress = wrap.querySelector('[data-progress]');
