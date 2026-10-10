@@ -571,7 +571,6 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
         display: flex !important;
         grid-template-columns: none !important;
         gap: 12px !important;
-        width: max-content !important;
         min-width: 100% !important;
         max-width: none !important;
         margin: 0 !important;
@@ -586,7 +585,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
         width: 85vw !important;
         margin: 0 !important;
         padding: 0 !important;
-        scroll-snap-align: center !important;
+        scroll-snap-align: start !important;
         display: flex !important;
         flex-direction: column !important;
     }
