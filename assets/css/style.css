@@ -475,29 +475,9 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
    ВИДЕО-БЛОК
    ============================================================ */
 
-/* ===== Контейнер ===== */
+/* ===== Обёртка ===== */
 .video-slider {
     margin-top: 44px;
-}
-
-/* ===== Сетка (десктоп) ===== */
-.video-track {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-    max-width: 720px;
-    margin: 0 auto;
-}
-
-/* ===== Карточка видео ===== */
-.video-item {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    max-width: 340px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
 }
 
 /* ===== Контейнер видео ===== */
@@ -550,11 +530,33 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
 }
 
 /* ============================================================
-   МОБИЛЬНАЯ ВЕРСИЯ — свайп
+   ДЕСКТОП — сетка 2 колонки (только от 769px)
+   ============================================================ */
+@media (min-width: 769px) {
+    .video-track {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    .video-item {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        max-width: 340px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+}
+
+/* ============================================================
+   МОБИЛЬНЫЙ — свайп (до 768px)
    ============================================================ */
 @media (max-width: 768px) {
 
-    /* Скролл-контейнер — без бокового padding */
     .video-slider {
         overflow-x: auto !important;
         overflow-y: hidden !important;
@@ -568,10 +570,11 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     }
     .video-slider::-webkit-scrollbar { display: none; }
 
-    /* Трек — ширина по контенту, боковой padding здесь */
     .video-track {
         display: flex !important;
-        grid-template-columns: none !important;
+        grid-template-columns: unset !important;
+        grid-template-rows: unset !important;
+        grid-auto-flow: unset !important;
         gap: 12px !important;
         width: max-content !important;
         max-width: none !important;
@@ -580,7 +583,6 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
         box-sizing: border-box !important;
     }
 
-    /* Одна карточка = 85% ширины экрана */
     .video-item {
         flex: 0 0 85vw !important;
         min-width: 85vw !important;
