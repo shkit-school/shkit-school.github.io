@@ -549,11 +549,11 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     margin-left: 4px;
 }
 
-/* Кнопка Pause — в левом нижнем углу */
+/* Кнопка Pause — в левом нижнем углу, над прогресс-баром */
 .video-pause {
     position: absolute;
-    bottom: 96px;
-    left: 14px;
+    bottom: 56px;             /* над прогресс-баром */
+    left: 16px;               /* отступ слева */
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -563,8 +563,8 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity .25s ease, background .25s ease;
-    z-index: 2;
+    transition: opacity .25s ease, background .25s ease, bottom .25s ease;
+    z-index: 4;               /* ВЫШЕ прогресс-бара (у него z-index: 3) */
     padding: 0;
     opacity: 0;
     pointer-events: none;
@@ -766,6 +766,12 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     /* Кастомный плеер — на мобильном меньше */
     .video-play { width: 60px; height: 60px; }
     .video-play svg { width: 26px; height: 26px; }
-    .video-pause { width: 38px; height: 38px; bottom: 10px; left: 10px; }
+    .video-pause {
+    width: 38px;
+    height: 38px;
+    bottom: 48px;
+    left: 12px;
+    z-index: 4;
+}
     .video-pause svg { width: 16px; height: 16px; }
 }
