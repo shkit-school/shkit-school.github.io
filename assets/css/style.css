@@ -517,7 +517,9 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     margin: 8px auto 0;
 }
 
-/* ===== Кастомный плеер ===== */
+/* ============================================================
+   КАСТОМНЫЙ ПЛЕЕР
+   ============================================================ */
 
 /* Кнопка Play — большая, по центру */
 .video-play {
@@ -549,11 +551,11 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     margin-left: 4px;
 }
 
-/* Кнопка Pause — в левом нижнем углу, над прогресс-баром */
+/* Кнопка Pause — над прогресс-баром, слева */
 .video-pause {
     position: absolute;
-    bottom: 56px;             /* над прогресс-баром */
-    left: 16px;               /* отступ слева */
+    bottom: 56px;                /* над прогресс-баром */
+    left: 16px;
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -563,8 +565,8 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity .25s ease, background .25s ease, bottom .25s ease;
-    z-index: 4;               /* ВЫШЕ прогресс-бара (у него z-index: 3) */
+    transition: opacity .25s ease, background .25s ease;
+    z-index: 4;                  /* выше прогресс-бара */
     padding: 0;
     opacity: 0;
     pointer-events: none;
@@ -597,18 +599,22 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     opacity: 0;
     pointer-events: none;
 }
-/* ===== Прогресс-бар ===== */
+
+/* ============================================================
+   ПРОГРЕСС-БАР
+   ============================================================ */
+
 .video-progress {
     position: absolute;
     left: 24px;
     right: 24px;
     bottom: 12px;
-    height: 24px;                 /* зона для клика — 24px */
+    height: 24px;
     cursor: pointer;
     z-index: 3;
     display: flex;
     align-items: flex-end;
-    padding: 0 0 0 0;
+    padding: 0;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
 }
@@ -620,10 +626,10 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     border-radius: 0;
     transition: height .2s ease;
     position: relative;
-    pointer-events: none;          /* клик идёт на .video-progress */
+    pointer-events: none;
 }
 
-/* Тонкая полоска-«фон» — серая, во всю ширину */
+/* Тонкая полоска-«фон» — серая */
 .video-progress::before {
     content: "";
     position: absolute;
@@ -635,13 +641,13 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     pointer-events: none;
 }
 
-/* При наведении — полоска становится толще */
+/* При наведении — толще */
 .video-progress:hover .video-progress-bar,
 .video-progress:hover::before {
     height: 6px;
 }
 
-/* Точка-«ползунок» на конце заливки */
+/* Точка-ползунок */
 .video-progress-bar::after {
     content: "";
     position: absolute;
@@ -657,25 +663,9 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     transition: opacity .2s ease;
 }
 
-/* Показывать точку при наведении или когда видео играет */
 .video-progress:hover .video-progress-bar::after,
 .video-wrap.is-playing .video-progress-bar::after {
     opacity: 1;
-}
-
-/* Мобильный — зона клика шире, полоска чуть толще */
-@media (max-width: 768px) {
-    .video-progress {
-        height: 32px;
-    }
-    .video-progress-bar,
-    .video-progress::before {
-        height: 5px;
-    }
-    .video-progress:hover .video-progress-bar,
-    .video-progress:hover::before {
-        height: 5px;
-    }
 }
 
 /* ============================================================
@@ -763,15 +753,40 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
         display: block !important;
     }
 
-    /* Кастомный плеер — на мобильном меньше */
-    .video-play { width: 60px; height: 60px; }
-    .video-play svg { width: 26px; height: 26px; }
+    /* Кастомный плеер на мобильном — меньше */
+    .video-play {
+        width: 60px;
+        height: 60px;
+    }
+    .video-play svg {
+        width: 26px;
+        height: 26px;
+    }
     .video-pause {
-    width: 38px;
-    height: 38px;
-    bottom: 48px;
-    left: 12px;
-    z-index: 4;
-}
-    .video-pause svg { width: 16px; height: 16px; }
+        width: 38px;
+        height: 38px;
+        bottom: 44px;            /* над прогресс-баром на мобильном */
+        left: 12px;
+        z-index: 4;
+    }
+    .video-pause svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Прогресс-бар на мобильном */
+    .video-progress {
+        height: 32px;
+        bottom: 10px;
+        left: 12px;
+        right: 12px;
+    }
+    .video-progress-bar,
+    .video-progress::before {
+        height: 5px;
+    }
+    .video-progress:hover .video-progress-bar,
+    .video-progress:hover::before {
+        height: 5px;
+    }
 }
