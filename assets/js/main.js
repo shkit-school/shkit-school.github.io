@@ -85,15 +85,16 @@
       el.classList.add('anim', 'is-in');
     });
   }
+
   var revealGuard = function () {
-  if (document.hidden) return;
-  setTimeout(function () {
     if (document.hidden) return;
-    document.querySelectorAll('.anim:not(.is-in)').forEach(function (el) {
-      el.classList.add('is-in');
-    });
-  }, 3000);
-};
+    setTimeout(function () {
+      if (document.hidden) return;
+      document.querySelectorAll('.anim:not(.is-in)').forEach(function (el) {
+        el.classList.add('is-in');
+      });
+    }, 3000);
+  };
   window.addEventListener('load', revealGuard);
   document.addEventListener('visibilitychange', revealGuard);
 
@@ -112,7 +113,7 @@
     });
   }
 
-  /* ---------- Попапы «Подробнее» (проекты для взрослых) ---------- */
+  /* ---------- Попапы «Подробнее» ---------- */
   var lastFocused = null;
   function openPopup(id) {
     var pop = document.getElementById(id);
@@ -272,12 +273,8 @@
 })();
 
 /* ============================================================
-   POPUP «Записаться» — своя форма с отправкой через Web3Forms
-   - форма внутри попапа, клиент не уходит с сайта
-   - заявка идёт на почту
-   - маска телефона, валидация, «Спасибо»
+   POPUP «Записаться» — форма с отправкой через Web3Forms
    ============================================================ */
-
 (function () {
     'use strict';
 
@@ -348,7 +345,6 @@
         overlay.querySelector('.zapis-popup-close')
             .addEventListener('click', closePopup);
 
-        /* Маска телефона */
         var phoneInput = overlay.querySelector('#zapis-phone');
         if (phoneInput) {
             phoneInput.addEventListener('input', function () {
@@ -383,7 +379,6 @@
             });
         }
 
-        /* Отправка формы */
         var form = overlay.querySelector('.zapis-form');
         if (form) {
             form.addEventListener('submit', function (e) {
@@ -463,7 +458,10 @@
         openPopup();
     });
 })();
-/* ============ Кастомный плеер видео ============ */
+
+/* ============================================================
+   КАСТОМНЫЙ ПЛЕЕР ВИДЕО
+   ============================================================ */
 (function () {
   'use strict';
 
@@ -476,35 +474,75 @@
 
     if (!video || !playBtn || !pauseBtn) return;
 
-    function play() {
-      video.play();
-    }
+    function play() { video.play(); }
+    function pause() { video.pause(); }
 
-    function pause() {
-      video.pause();
-    }
-
-    // Клик по большой кнопке Play
     playBtn.addEventListener('click', function (e) {
       e.stopPropagation();
       play();
     });
 
-    // Клик по кнопке Pause
     pauseBtn.addEventListener('click', function (e) {
       e.stopPropagation();
       pause();
     });
 
-    // Клик по самому видео — пауза (или play, если стоит)
-    wrap.addEventListener('click', function (e) {
-      // если клик по кнопке — игнорируем
+    wrap.addEventListener('pointerdown', function (e) {
       if (e.target.closest('.video-play') || e.target.closest('.video-pause')) return;
+      if (e.target.closest('.video-progress')) return;
+      e.preventDefault();
       if (video.paused) play();
       else pause();
     });
 
-    // Состояния
+    /* ===== Прогресс-бар ===== */
+    var progress = wrap.querySelector('[data-progress]');
+    var progressBar = wrap.querySelector('.video-progress-bar');
+
+    if (progress && progressBar) {
+
+      video.addEventListener('timeupdate', function () {
+        if (!video.duration) return;
+        var percent = (video.currentTime / video.duration) * 100;
+        progressBar.style.width = percent + '%';
+      });
+
+      function seek(e) {
+        e.preventDefault();
+        var rect = progress.getBoundingClientRect();
+        var x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+        var percent = Math.max(0, Math.min(1, x / rect.width));
+        if (video.duration) {
+          video.currentTime = percent * video.duration;
+        }
+      }
+
+      progress.addEventListener('click', seek);
+
+      var isDragging = false;
+      progress.addEventListener('pointerdown', function (e) {
+        isDragging = true;
+        try { progress.setPointerCapture(e.pointerId); } catch (err) {}
+        seek(e);
+      });
+      progress.addEventListener('pointermove', function (e) {
+        if (!isDragging) return;
+        seek(e);
+      });
+      progress.addEventListener('pointerup', function (e) {
+        isDragging = false;
+        try { progress.releasePointerCapture(e.pointerId); } catch (err) {}
+      });
+      progress.addEventListener('pointercancel', function () {
+        isDragging = false;
+      });
+
+      video.addEventListener('ended', function () {
+        progressBar.style.width = '0%';
+      });
+    }
+
+    /* ===== Состояния ===== */
     video.addEventListener('play', function () {
       wrap.classList.add('is-playing');
       wrap.classList.remove('is-paused');
