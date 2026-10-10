@@ -760,7 +760,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     .video-pause {
         width: 38px !important;
         height: 38px !important;
-        bottom: 52px !important;
+        bottom: 38px !important;
         left: 12px !important;
         z-index: 4 !important;
     }
