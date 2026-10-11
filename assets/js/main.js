@@ -557,6 +557,7 @@
       wrap.classList.remove('is-playing');
       wrap.classList.remove('is-paused');
       video.currentTime = 0;
+      try { video.load(); } catch (e) {}
     });
   });
 })();
