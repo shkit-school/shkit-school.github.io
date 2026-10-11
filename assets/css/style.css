@@ -709,7 +709,7 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
         grid-template-columns: unset !important;
         grid-template-rows: unset !important;
         grid-auto-flow: unset !important;
-        gap: 12px !important;
+        gap: 24px !important;
         width: max-content !important;
         max-width: none !important;
         margin: 0 !important;
