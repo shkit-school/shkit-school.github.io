@@ -561,3 +561,44 @@
     });
   });
 })();
+/* ============================================================
+   ОСТАНОВКА ВИДЕО ПРИ СВАЙПЕ
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var slider = document.querySelector('.video-slider');
+  if (!slider) return;
+
+  var pauseOffscreen = function () {
+    var sliderRect = slider.getBoundingClientRect();
+    var sliderCenter = sliderRect.left + sliderRect.width / 2;
+
+    document.querySelectorAll('.video-item').forEach(function (item) {
+      var itemRect = item.getBoundingClientRect();
+      var itemCenter = itemRect.left + itemRect.width / 2;
+      var distance = Math.abs(sliderCenter - itemCenter);
+
+      // Если элемент не в центре — он ушёл с экрана
+      if (distance > itemRect.width * 0.5) {
+        var video = item.querySelector('video');
+        var wrap = item.querySelector('.video-wrap');
+        if (video && !video.paused) {
+          video.pause();
+          if (wrap) {
+            wrap.classList.remove('is-playing');
+            wrap.classList.remove('is-paused');
+            wrap.classList.add('is-ended');
+          }
+        }
+      }
+    });
+  };
+
+  var timer = null;
+  slider.addEventListener('scroll', function () {
+    clearTimeout(timer);
+    timer = setTimeout(pauseOffscreen, 150);
+  }, { passive: true });
+
+})();
