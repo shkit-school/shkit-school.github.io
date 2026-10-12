@@ -156,10 +156,43 @@
     {
         "@context": "https://schema.org",
         "@type": "ContactPage",
-        "name": "Контакты — ШКИТ",
-        "description": "Контакты школы кино и театра ШКИТ в Челябинске: адрес, телефон, схема проезда.",
-        "url": "https://shkit-school.github.io/contacts.html",
-        "inLanguage": "ru-RU"
+    "name": "Контакты — ШКИТ",
+    "description": "Контакты школы кино и театра ШКИТ в Челябинске: адрес, телефон, схема проезда.",
+    "url": "https://shkit-school.github.io/contacts.html",
+    "inLanguage": "ru-RU",
+    "mainEntity": {
+        "@type": "Organization",
+        "name": "Школа кино и театра «ШКИТ»",
+        "telephone": "+7-919-404-01-23",
+        "email": "art-pashnin@yandex.ru",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "проспект Ленина, 83, офис 509",
+            "addressLocality": "Челябинск",
+            "postalCode": "454080",
+            "addressCountry": "RU"
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "12:00",
+                "closes": "21:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "10:00",
+                "closes": "21:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Sunday",
+                "opens": "10:00",
+                "closes": "14:00"
+            }
+        ]
+    }
     }
     </script>
 
@@ -244,10 +277,9 @@
                         <div class="row">
                             <div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
                             <div class="rt">
-                                <small>Часы работы</small>
-                                <b>Пн–Пт 12:00–21:00 · Сб 10:00–21:00 · Вс 10:00–14:00</b>
-                                <span style="display:block;font-size:13.5px;color:var(--grey);font-weight:600;margin-top:2px">Вс — выходной</span>
-                            </div>
+                                    <small>Часы работы</small>
+                        <b>Пн–Пт 12:00–21:00 · Сб 10:00–21:00 · Вс 10:00–14:00</b>
+                           </div>
                         </div>
                     </div>
 
