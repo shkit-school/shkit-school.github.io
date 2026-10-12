@@ -6,6 +6,8 @@
   'use strict';
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ACCESS_KEY = '6ea50c59-bafc-42c5-aedd-4bc1ca88f6c4';
+  var ZAPIS_POPUP_ID = 'zapis-popup-global';
 
   /* ---------- Шапка: тень при прокрутке ---------- */
   var header = document.querySelector('.header');
@@ -113,19 +115,177 @@
     });
   }
 
-  /* ---------- Попапы «Подробнее» ---------- */
+  /* ---------- Создание попапа «Записаться» (при необходимости) ---------- */
+  function createZapisPopup() {
+    if (document.getElementById(ZAPIS_POPUP_ID)) return;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'zapis-popup-overlay';
+    overlay.id = ZAPIS_POPUP_ID;
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+
+    overlay.innerHTML =
+      '<div class="zapis-popup" role="document">' +
+        '<div class="zapis-popup-head">' +
+          '<div>' +
+            '<h3>Оставить заявку</h3>' +
+            '<p>Заполните форму — мы свяжемся с вами</p>' +
+          '</div>' +
+          '<button class="zapis-popup-close" type="button" aria-label="Закрыть">✕</button>' +
+        '</div>' +
+        '<div class="zapis-popup-body">' +
+          '<form class="zapis-form" novalidate>' +
+            '<input type="hidden" name="access_key" value="' + ACCESS_KEY + '">' +
+            '<input type="hidden" name="subject" value="Заявка с сайта ШКИТ">' +
+            '<input type="hidden" name="from_name" value="ШКИТ — сайт">' +
+            '<input type="checkbox" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off">' +
+            '<div class="zapis-field">' +
+              '<label for="zapis-name">Имя *</label>' +
+              '<input type="text" id="zapis-name" name="name" required autocomplete="name" placeholder="Как к вам обращаться">' +
+              '<span class="zapis-err">Укажите имя</span>' +
+            '</div>' +
+            '<div class="zapis-field">' +
+              '<label for="zapis-phone">Телефон *</label>' +
+              '<input type="tel" id="zapis-phone" name="phone" required autocomplete="tel" placeholder="+7 (___) ___-__-__">' +
+              '<span class="zapis-err">Укажите телефон</span>' +
+            '</div>' +
+            '<div class="zapis-field">' +
+              '<label for="zapis-question">Вопрос или комментарий</label>' +
+              '<textarea id="zapis-question" name="question" rows="3" placeholder="Необязательно"></textarea>' +
+            '</div>' +
+            '<label class="zapis-consent">' +
+              '<input type="checkbox" name="consent" required>' +
+              '<span>Согласен на обработку персональных данных</span>' +
+            '</label>' +
+            '<button type="submit" class="btn zapis-submit">Отправить</button>' +
+            '<div class="zapis-fail"></div>' +
+          '</form>' +
+          '<div class="zapis-success">' +
+            '<div class="zapis-success-ico">✓</div>' +
+            '<h4>Спасибо!</h4>' +
+            '<p>Заявка отправлена в ШКИТ <span class="zapis-success-heart">❤️</span></p>' +
+            '<p>Мы свяжемся с вами в ближайшее время.</p>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closePopup(overlay);
+    });
+
+    overlay.querySelector('.zapis-popup-close')
+      .addEventListener('click', function () { closePopup(overlay); });
+
+    var phoneInput = overlay.querySelector('#zapis-phone');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', function () {
+        var caret = phoneInput.selectionStart;
+        var digitsBefore = phoneInput.value.slice(0, caret).replace(/\D/g, '').length;
+        var digits = phoneInput.value.replace(/\D/g, '');
+        if (digits.startsWith('8')) digits = '7' + digits.slice(1);
+        if (!digits.startsWith('7')) digits = '7' + digits;
+        digits = digits.slice(0, 11);
+        var d = digits.slice(1);
+        var out = '+7';
+        if (d.length > 0) out += ' (' + d.slice(0, 3);
+        if (d.length > 3) out += ') ' + d.slice(3, 6);
+        if (d.length > 6) out += '-' + d.slice(6, 8);
+        if (d.length > 8) out += '-' + d.slice(8, 10);
+        phoneInput.value = out;
+        var seen = 0, pos = phoneInput.value.length;
+        for (var i = 0; i < phoneInput.value.length; i++) {
+          if (/\d/.test(phoneInput.value[i])) {
+            seen++;
+            if (seen === digitsBefore) { pos = i + 1; break; }
+          }
+        }
+        if (digitsBefore === 0) pos = phoneInput.value.length;
+        phoneInput.setSelectionRange(pos, pos);
+      });
+      phoneInput.addEventListener('focus', function () {
+        if (!phoneInput.value) phoneInput.value = '+7 ';
+      });
+      phoneInput.addEventListener('blur', function () {
+        if (phoneInput.value === '+7 ' || phoneInput.value === '+7') phoneInput.value = '';
+      });
+    }
+
+    var form = overlay.querySelector('.zapis-form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var ok = true;
+
+        form.querySelectorAll('.zapis-field').forEach(function (field) {
+          var inp = field.querySelector('input,textarea');
+          if (!inp) return;
+          var bad = false;
+          if (inp.required && !inp.value.trim()) bad = true;
+          if (inp.type === 'tel' && inp.value && inp.value.replace(/\D/g, '').length < 11) bad = true;
+          field.classList.toggle('has-error', bad);
+          if (bad) ok = false;
+        });
+
+        var consent = form.querySelector('input[name="consent"]');
+        var consentBad = consent && !consent.checked;
+        form.classList.toggle('consent-missing', consentBad);
+        if (consentBad) ok = false;
+
+        if (!ok) return;
+
+        var btn = form.querySelector('.zapis-submit');
+        var btnLabel = btn ? btn.textContent : '';
+        if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
+
+        var fail = form.querySelector('.zapis-fail');
+        if (fail) fail.textContent = '';
+
+        var data = new FormData(form);
+
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (res) {
+            if (!res || !res.success) throw new Error('Web3Forms error');
+            form.style.display = 'none';
+            var success = overlay.querySelector('.zapis-success');
+            if (success) success.style.display = 'block';
+          })
+          .catch(function (err) {
+            if (btn) { btn.disabled = false; btn.textContent = btnLabel; }
+            if (fail) fail.textContent = 'Не удалось отправить. Позвоните: +7 (919) 404-01-23';
+            console.error('ШКИТ: ошибка отправки —', err);
+          });
+      });
+    }
+  }
+
+  /* ---------- Попапы: общий механизм ---------- */
   var lastFocused = null;
+
   function openPopup(id) {
+    // Попап «Записаться» создаётся динамически
+    if (id === ZAPIS_POPUP_ID) {
+      createZapisPopup();
+    }
     var pop = document.getElementById(id);
     if (!pop) return;
     lastFocused = document.activeElement;
     pop.classList.add('is-open');
     pop.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    var closeBtn = pop.querySelector('.popup-close');
+    var closeBtn = pop.querySelector('.popup-close, .zapis-popup-close');
     if (closeBtn) requestAnimationFrame(function () { closeBtn.focus(); });
   }
+
   function closePopup(pop, restoreFocus) {
+    if (!pop) return;
     pop.classList.remove('is-open');
     pop.setAttribute('aria-hidden', 'true');
     if (!document.querySelector('.popup-overlay.is-open') && !document.querySelector('.lightbox.is-open')) {
@@ -133,6 +293,7 @@
     }
     if (restoreFocus !== false && lastFocused) lastFocused.focus();
   }
+
   document.addEventListener('click', function (e) {
     var opener = e.target.closest('[data-popup]');
     if (opener) {
@@ -145,6 +306,7 @@
       if (pop) closePopup(pop);
     }
   });
+
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       var open = document.querySelector('.popup-overlay.is-open');
@@ -156,7 +318,7 @@
   var FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),textarea:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])';
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Tab') return;
-    var modal = document.querySelector('.popup-overlay.is-open .popup') ||
+    var modal = document.querySelector('.popup-overlay.is-open .popup, .popup-overlay.is-open .zapis-popup') ||
                 document.querySelector('.lightbox.is-open');
     if (!modal) return;
     var nodes = Array.prototype.filter.call(modal.querySelectorAll(FOCUSABLE), function (el) {
@@ -273,193 +435,6 @@
 })();
 
 /* ============================================================
-   POPUP «Записаться» — форма с отправкой через Web3Forms
-   ============================================================ */
-(function () {
-    'use strict';
-
-    var ACCESS_KEY = '6ea50c59-bafc-42c5-aedd-4bc1ca88f6c4';
-    var POPUP_ID = 'zapis-popup-global';
-
-    function createPopup() {
-        if (document.getElementById(POPUP_ID)) return;
-
-        var overlay = document.createElement('div');
-        overlay.className = 'zapis-popup-overlay';
-        overlay.id = POPUP_ID;
-        overlay.setAttribute('aria-hidden', 'true');
-        overlay.setAttribute('role', 'dialog');
-        overlay.setAttribute('aria-modal', 'true');
-
-        overlay.innerHTML =
-            '<div class="zapis-popup" role="document">' +
-                '<div class="zapis-popup-head">' +
-                    '<div>' +
-                        '<h3>Оставить заявку</h3>' +
-                        '<p>Заполните форму — мы свяжемся с вами</p>' +
-                    '</div>' +
-                    '<button class="zapis-popup-close" type="button" aria-label="Закрыть">✕</button>' +
-                '</div>' +
-                '<div class="zapis-popup-body">' +
-                    '<form class="zapis-form" novalidate>' +
-                        '<input type="hidden" name="access_key" value="' + ACCESS_KEY + '">' +
-                        '<input type="hidden" name="subject" value="Заявка с сайта ШКИТ">' +
-                        '<input type="hidden" name="from_name" value="ШКИТ — сайт">' +
-                        '<input type="checkbox" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off">' +
-                        '<div class="zapis-field">' +
-                            '<label for="zapis-name">Имя *</label>' +
-                            '<input type="text" id="zapis-name" name="name" required autocomplete="name" placeholder="Как к вам обращаться">' +
-                            '<span class="zapis-err">Укажите имя</span>' +
-                        '</div>' +
-                        '<div class="zapis-field">' +
-                            '<label for="zapis-phone">Телефон *</label>' +
-                            '<input type="tel" id="zapis-phone" name="phone" required autocomplete="tel" placeholder="+7 (___) ___-__-__">' +
-                            '<span class="zapis-err">Укажите телефон</span>' +
-                        '</div>' +
-                        '<div class="zapis-field">' +
-                            '<label for="zapis-question">Вопрос или комментарий</label>' +
-                            '<textarea id="zapis-question" name="question" rows="3" placeholder="Необязательно"></textarea>' +
-                        '</div>' +
-                        '<label class="zapis-consent">' +
-                            '<input type="checkbox" name="consent" required>' +
-                            '<span>Согласен на обработку персональных данных</span>' +
-                        '</label>' +
-                        '<button type="submit" class="btn zapis-submit">Отправить</button>' +
-                        '<div class="zapis-fail"></div>' +
-                    '</form>' +
-                    '<div class="zapis-success">' +
-                        '<div class="zapis-success-ico">✓</div>' +
-                        '<h4>Спасибо!</h4>' +
-                        '<p>Заявка отправлена в ШКИТ <span class="zapis-success-heart">❤️</span></p>' +
-                        '<p>Мы свяжемся с вами в ближайшее время.</p>' +
-                    '</div>' +
-                '</div>' +
-            '</div>';
-
-        document.body.appendChild(overlay);
-
-        overlay.addEventListener('click', function (e) {
-            if (e.target === overlay) closePopup();
-        });
-
-        overlay.querySelector('.zapis-popup-close')
-            .addEventListener('click', closePopup);
-
-        var phoneInput = overlay.querySelector('#zapis-phone');
-        if (phoneInput) {
-            phoneInput.addEventListener('input', function () {
-                var caret = phoneInput.selectionStart;
-                var digitsBefore = phoneInput.value.slice(0, caret).replace(/\D/g, '').length;
-                var digits = phoneInput.value.replace(/\D/g, '');
-                if (digits.startsWith('8')) digits = '7' + digits.slice(1);
-                if (!digits.startsWith('7')) digits = '7' + digits;
-                digits = digits.slice(0, 11);
-                var d = digits.slice(1);
-                var out = '+7';
-                if (d.length > 0) out += ' (' + d.slice(0, 3);
-                if (d.length > 3) out += ') ' + d.slice(3, 6);
-                if (d.length > 6) out += '-' + d.slice(6, 8);
-                if (d.length > 8) out += '-' + d.slice(8, 10);
-                phoneInput.value = out;
-                var seen = 0, pos = phoneInput.value.length;
-                for (var i = 0; i < phoneInput.value.length; i++) {
-                    if (/\d/.test(phoneInput.value[i])) {
-                        seen++;
-                        if (seen === digitsBefore) { pos = i + 1; break; }
-                    }
-                }
-                if (digitsBefore === 0) pos = phoneInput.value.length;
-                phoneInput.setSelectionRange(pos, pos);
-            });
-            phoneInput.addEventListener('focus', function () {
-                if (!phoneInput.value) phoneInput.value = '+7 ';
-            });
-            phoneInput.addEventListener('blur', function () {
-                if (phoneInput.value === '+7 ' || phoneInput.value === '+7') phoneInput.value = '';
-            });
-        }
-
-        var form = overlay.querySelector('.zapis-form');
-        if (form) {
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                var ok = true;
-
-                form.querySelectorAll('.zapis-field').forEach(function (field) {
-                    var inp = field.querySelector('input,textarea');
-                    if (!inp) return;
-                    var bad = false;
-                    if (inp.required && !inp.value.trim()) bad = true;
-                    if (inp.type === 'tel' && inp.value && inp.value.replace(/\D/g, '').length < 11) bad = true;
-                    field.classList.toggle('has-error', bad);
-                    if (bad) ok = false;
-                });
-
-                var consent = form.querySelector('input[name="consent"]');
-                var consentBad = consent && !consent.checked;
-                form.classList.toggle('consent-missing', consentBad);
-                if (consentBad) ok = false;
-
-                if (!ok) return;
-
-                var btn = form.querySelector('.zapis-submit');
-                var btnLabel = btn ? btn.textContent : '';
-                if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
-
-                var fail = form.querySelector('.zapis-fail');
-                if (fail) fail.textContent = '';
-
-                var data = new FormData(form);
-
-                fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: data
-                })
-                    .then(function (r) { return r.json(); })
-                    .then(function (res) {
-                        if (!res || !res.success) throw new Error('Web3Forms error');
-                        form.style.display = 'none';
-                        var success = overlay.querySelector('.zapis-success');
-                        if (success) success.style.display = 'block';
-                    })
-                    .catch(function (err) {
-                        if (btn) { btn.disabled = false; btn.textContent = btnLabel; }
-                        if (fail) fail.textContent = 'Не удалось отправить. Позвоните: +7 (919) 404-01-23';
-                        console.error('ШКИТ: ошибка отправки —', err);
-                    });
-            });
-        }
-    }
-
-    function openPopup() {
-        createPopup();
-        var popup = document.getElementById(POPUP_ID);
-        popup.classList.add('is-open');
-        popup.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closePopup() {
-        var popup = document.getElementById(POPUP_ID);
-        if (!popup) return;
-        popup.classList.remove('is-open');
-        popup.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closePopup();
-    });
-
-    document.addEventListener('click', function (e) {
-        var link = e.target.closest('a[href*="#zapis"]');
-        if (!link) return;
-        e.preventDefault();
-        openPopup();
-    });
-})();
-
-/* ============================================================
    КАСТОМНЫЙ ПЛЕЕР ВИДЕО
    ============================================================ */
 (function () {
@@ -477,19 +452,16 @@
     function play() { video.play(); }
     function pause() { video.pause(); }
 
-    /* ===== Кнопка Play ===== */
     playBtn.addEventListener('click', function (e) {
       e.stopPropagation();
       play();
     });
 
-    /* ===== Кнопка Pause ===== */
     pauseBtn.addEventListener('click', function (e) {
       e.stopPropagation();
       pause();
     });
 
-    /* ===== Прогресс-бар ===== */
     var progress = wrap.querySelector('[data-progress]');
     var progressBar = wrap.querySelector('.video-progress-bar');
 
@@ -540,7 +512,6 @@
       });
     }
 
-    /* ===== Состояния ===== */
     video.addEventListener('play', function () {
       wrap.classList.add('is-playing');
       wrap.classList.remove('is-paused');
@@ -561,6 +532,7 @@
     });
   });
 })();
+
 /* ============================================================
    ОСТАНОВКА ВИДЕО ПРИ СВАЙПЕ
    ============================================================ */
@@ -579,7 +551,6 @@
       var itemCenter = itemRect.left + itemRect.width / 2;
       var distance = Math.abs(sliderCenter - itemCenter);
 
-      // Если элемент не в центре — он ушёл с экрана
       if (distance > itemRect.width * 0.5) {
         var video = item.querySelector('video');
         var wrap = item.querySelector('.video-wrap');
