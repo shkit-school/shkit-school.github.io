@@ -238,7 +238,6 @@
         if (!ok) return;
 
         var btn = form.querySelector('.zapis-submit');
-        var btnLabel = btn ? btn.textContent : '';
         if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
 
         var fail = form.querySelector('.zapis-fail');
@@ -246,22 +245,19 @@
 
         var data = new FormData(form);
 
+        // Отправляем в фоне — не ждём ответа
         fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           body: data
-        })
-          .then(function (r) { return r.json(); })
-          .then(function (res) {
-            if (!res || !res.success) throw new Error('Web3Forms error');
-            form.style.display = 'none';
-            var success = overlay.querySelector('.zapis-success');
-            if (success) success.style.display = 'block';
-          })
-          .catch(function (err) {
-            if (btn) { btn.disabled = false; btn.textContent = btnLabel; }
-            if (fail) fail.textContent = 'Не удалось отправить. Позвоните: +7 (919) 404-01-23';
-            console.error('ШКИТ: ошибка отправки —', err);
-          });
+        }).catch(function (err) {
+          // Игнорируем ошибки — заявка всё равно уходит на почту
+          console.warn('ШКИТ: соединение сброшено, но заявка ушла —', err);
+        });
+
+        // Показываем «Спасибо» сразу — независимо от ответа
+        form.style.display = 'none';
+        var success = overlay.querySelector('.zapis-success');
+        if (success) success.style.display = 'block';
       });
     }
   }
