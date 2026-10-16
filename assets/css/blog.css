@@ -161,7 +161,7 @@
 /* ===== СТАТЬЯ ===== */
 .article { max-width: 780px; margin: 0 auto; }
 .article h1 { font-size: clamp(28px, 5vw, 44px); margin-bottom: 12px; line-height: 1.1; }
-.article .article-date { color: var(--grey); font-weight: 600; margin-bottom: 28px; }
+.article .article-date { color: var(--grey); font-weight: 600; margin-bottom: 28px; display: block; }
 .article p { margin-bottom: 18px; color: #4a4a4a; font-size: 17px; line-height: 1.7; }
 .article h2 { font-size: 24px; margin: 40px 0 16px; }
 .article h3 { font-size: 19px; margin: 28px 0 12px; }
@@ -181,6 +181,27 @@
     font-weight: 500;
 }
 .article blockquote p:last-child { margin-bottom: 0; }
+
+/* ===== Хлебные крошки в статье ===== */
+.article .crumbs {
+    font-size: 13px;
+    color: var(--grey);
+    margin-bottom: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+.article .crumbs a {
+    color: var(--coral-ink);
+    font-weight: 700;
+    transition: color .2s ease;
+}
+.article .crumbs a:hover {
+    color: var(--coral-dark);
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+    .article .crumbs { font-size: 12px; margin-bottom: 16px; }
+}
 
 .article-cta {
     background: var(--ink);
