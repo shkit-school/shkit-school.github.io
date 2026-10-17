@@ -785,3 +785,60 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
         height: 5px !important;
     }
 }
+/* ============================================================
+   Страница «Контакты» — уникальные стили
+   ============================================================ */
+.page-hero {
+    padding-top: 20px !important;
+    padding-bottom: 24px !important;
+}
+@media (max-width: 768px) {
+    .page-hero {
+        padding-top: 12px !important;
+        padding-bottom: 18px !important;
+    }
+}
+.route-info {
+    margin-top: 24px;
+    padding: 24px 28px;
+    background: var(--paper);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--coral);
+}
+.route-info h3 {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 14px;
+}
+.route-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+}
+.route-info li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+}
+.route-info li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--coral);
+}
+.route-info strong { color: var(--ink); font-weight: 700; }
+@media (max-width: 768px) {
+    .route-info { padding: 20px 22px; }
+    .route-info li { font-size: 15px; padding-left: 22px; }
+}
