@@ -1,0 +1,8 @@
+{
+  "name": "shkit-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  }
+}
