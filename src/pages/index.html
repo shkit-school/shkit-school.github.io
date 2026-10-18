@@ -1,27 +1,867 @@
 ---
-title: "Актёрские курсы и театральная студия в Челябинске - ШКИТ"
-description: "Актёрские курсы и театральная студия «ШКИТ» в Челябинске. Дети, подростки, взрослые."
+title: "Актёрские курсы и театральная студия в Челябинске — ШКИТ"
+description: "Актёрские курсы и театральная студия «ШКИТ» в Челябинске. Дети, подростки, взрослые. 17 лет, 5000+ учеников. Пробное занятие — 500 ₽."
 ---
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-{{HEAD}}
+    {{HEAD}}
+    <style>
+        * { -webkit-tap-highlight-color: transparent; }
+
+        /* ===== ШАПКА: ПЛАШКА ВЫШЕ ===== */
+        .hero-tag { margin-top: -30px; }
+        @media (max-width: 768px) {
+            .hero-tag { transform: translateY(-40px) !important; }
+        }
+
+        /* ===== ЯКОРЯ ===== */
+        section[id] { scroll-margin-top: 15px; }
+        #zapis { scroll-margin-top: calc(var(--header-h) + 20px); }
+        #abajur { scroll-margin-top: 160px; }
+
+        @media (max-width: 768px) {
+            section[id] { scroll-margin-top: 20px; }
+            #abajur { scroll-margin-top: 100px; }
+            #zapis { scroll-margin-top: 100px; }
+            .hero-scroll { display: none !important; }
+        }
+
+        /* ===== КНОПКА "ЗАПИСАТЬСЯ" В ШАПКЕ ===== */
+        .header .header-cta > .btn {
+            padding: 9px 18px !important;
+            font-size: 13.5px !important;
+            font-weight: 600 !important;
+            line-height: 1.2 !important;
+            border-radius: 10px !important;
+            min-height: 0 !important;
+            height: auto !important;
+            background: transparent !important;
+            color: var(--coral-ink, #BC3636) !important;
+            border: 2px solid var(--coral-ink, #BC3636) !important;
+            transition: background .25s ease, color .25s ease !important;
+        }
+        .header .header-cta > .btn:hover {
+            background: var(--coral-ink, #BC3636) !important;
+            color: #fff !important;
+        }
+
+        /* ===== КНОПКА "ЗАПИСАТЬСЯ" В HERO ===== */
+        .hero .hero-btn-wrapper { text-align: center !important; }
+        .hero .hero-btn-wrapper .btn {
+            display: inline-block !important;
+            width: auto !important;
+            min-width: 0 !important;
+            max-width: none !important;
+            padding: 12px 32px !important;
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            border-radius: 11px !important;
+        }
+
+        /* ===== КАРУСЕЛЬ ОТЗЫВОВ — ДЕСКТОП ===== */
+        .reviews-slider { position: relative; overflow: hidden; padding: 0; margin: 40px 0; width: 100%; }
+        .reviews-track { display: flex; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: grab; width: 100%; }
+        .review-slide { flex: 0 0 100%; min-width: 100%; max-width: 100%; padding: 0; box-sizing: border-box; display: flex; width: 100%; }
+        .review-slide .review { display: flex; flex-direction: column; width: 100%; height: 100%; min-height: 384px; box-sizing: border-box; }
+        .review-slide .review p { flex-grow: 1; font-style: italic; }
+        .slider-nav { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 25px; }
+        .slider-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--coral-ink, #BC3636); color: #fff; border: none; cursor: pointer; font-size: 24px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.15); flex-shrink: 0; font-family: inherit; font-weight: 400; padding: 0; text-align: center; -webkit-appearance: none; appearance: none; }
+        .slider-btn:hover { background: var(--coral-dark, #D13434); transform: scale(1.1); }
+        .slider-btn:active { transform: scale(0.95); }
+        .slider-dots { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .slider-dots .dot { width: 10px; height: 10px; border-radius: 50%; background: #ddd; cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; -webkit-appearance: none; appearance: none; }
+        .slider-dots .dot.active { background: var(--coral-ink, #BC3636); transform: scale(1.3); }
+        @media (min-width: 769px) {
+            .review-slide { flex: 0 0 50%; min-width: 50%; max-width: 50%; padding: 0 15px; }
+            .review-slide .review { min-height: 336px; }
+            .slider-nav { margin-top: 30px; }
+        }
+        @media (max-width: 768px) {
+            .reviews-slider { overflow-x: auto !important; overflow-y: hidden !important; scroll-snap-type: x mandatory !important; -webkit-overflow-scrolling: touch !important; margin: 30px 0; padding: 0; width: 100%; }
+            .reviews-track { overflow: visible !important; transform: none !important; transition: none !important; cursor: default !important; width: auto !important; min-width: 100% !important; }
+            .review-slide { flex: 0 0 100% !important; min-width: 100% !important; max-width: 100% !important; width: 100% !important; padding: 0 5px; }
+            .review-slide .review { flex: 0 0 100% !important; min-height: 336px; padding: 25px 20px; width: 100% !important; max-width: 100% !important; border-radius: 12px; margin: 0; }
+            .review-slide .review p { font-size: 14px; line-height: 1.5; margin-bottom: 15px; font-style: italic; }
+            .slider-nav { display: none !important; }
+            .slider-dots { gap: 8px; margin-top: 20px; }
+            .slider-dots .dot { width: 8px; height: 8px; }
+        }
+        .reviews-scroll-hint { text-align: center; margin: 24px 0 0; color: var(--grey); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; display: none; }
+        .reviews-scroll-hint span { display: block; width: 40px; height: 2px; background: var(--coral); margin: 8px auto 0; }
+        @media (max-width: 768px) { .reviews-scroll-hint { display: block !important; } }
+
+        .blog-scroll-hint { text-align: center; margin: 12px 0 20px; color: var(--grey); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; display: none; }
+        .blog-scroll-hint span { display: block; width: 40px; height: 2px; background: var(--coral); margin: 8px auto 0; }
+        @media (max-width: 768px) { .blog-scroll-hint { display: block !important; } }
+
+        .btn--disabled { pointer-events: none !important; cursor: default !important; opacity: 0.6 !important; }
+
+        /* ===== РУКОВОДИТЕЛЬ ===== */
+        .founder { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; align-items: start; margin-top: 24px; }
+        .founder-media { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/5; box-shadow: var(--shadow-sm); border: 1px solid var(--line); }
+        .founder-media img { width: 100%; height: 100%; object-fit: cover; filter: var(--photo); }
+        .founder-body p { margin-bottom: 10px; color: var(--grey); font-size: 17px; line-height: 1.6; }
+        .founder-body p strong { color: var(--ink); font-weight: 700; }
+        .founder-quote { margin-top: 24px; padding: 20px 24px; border-left: 4px solid var(--coral); background: var(--paper); border-radius: 0 var(--radius) var(--radius) 0; font-size: 18px; font-weight: 600; color: var(--ink); line-height: 1.5; font-style: italic; }
+        @media (max-width: 768px) {
+            .founder { grid-template-columns: 1fr; gap: 24px; }
+            .founder-media { aspect-ratio: 4/5 !important; width: 85%; margin: 0 auto; }
+            .founder-quote { font-size: 16px; padding: 16px 18px; }
+        }
+        #founder { padding-top: 20px !important; }
+        @media (max-width: 768px) { #founder { padding-top: 0 !important; } .founder-media { width: 100% !important; margin: 0 !important; } }
+        .founder-body p:first-of-type { margin-top: 0px !important; }
+
+        /* ===== СЕКЦИИ ===== */
+        .section { padding-top: clamp(40px, 6vw, 80px) !important; padding-bottom: clamp(40px, 6vw, 80px) !important; }
+        #blog { padding-bottom: 10px !important; }
+        #contacts { padding-top: 20px !important; scroll-margin-top: 70px !important; }
+        @media (max-width: 768px) { #contacts { padding-top: 10px !important; scroll-margin-top: 70px !important; } }
+        .afisha-board { margin-top: 24px !important; }
+        .event-body { padding: 16px !important; }
+        .event-body .e-short { margin-bottom: 12px !important; }
+        @media (max-width: 768px) { #blog { scroll-margin-top: 40px !important; padding-top: 30px !important; } }
+        @media (max-width: 768px) { section[id]:not(#contacts):not(#blog) { scroll-margin-top: 40px !important; } }
+        @media (min-width: 769px) { #zapis { scroll-margin-top: 120px; } }
+        .section-inner { margin-top: 80px; }
+        @media (max-width: 768px) { .section-inner { margin-top: 50px; } }
+        #abajur { scroll-margin-top: 90px; }
+        @media (max-width: 768px) { #abajur { scroll-margin-top: 80px; } }
+
+        .doubt-cta .btn { padding: 11px 20px; font-size: 14px; font-weight: 700; border-radius: var(--radius-btn); display: inline-block; width: auto; }
+
+        /* ===== БЛОГ НА ГЛАВНОЙ ===== */
+        .blog-slider { margin-top: 40px; }
+        .blog-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .blog-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--line); display: flex; flex-direction: column; }
+        .blog-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; filter: var(--photo); }
+        .blog-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+        .blog-card-date { font-size: 12px; color: var(--grey); font-weight: 600; margin-bottom: 8px; }
+        .blog-card h3 { font-size: 18px; margin-bottom: 16px; }
+        .blog-card-actions { display: flex; justify-content: space-between; align-items: center; margin-top: auto; gap: 10px; }
+        .blog-card-actions .read-link { color: var(--coral-ink); font-weight: 700; font-size: 14px; }
+
+        @media (max-width: 768px) {
+            .blog-slider { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 0; margin: 0; }
+            .blog-track { display: flex; gap: 0; width: 100%; }
+            .blog-card { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: normal; padding: 0; box-sizing: border-box; }
+            .blog-card:not(:last-child) { margin-right: 10px; }
+        }
+    </style>
 </head>
 <body id="top">
-{{METRIKA}}
-<a class="skip-link" href="#main">К основному содержимому</a>
+    {{METRIKA}}
+    <a class="skip-link" href="#main">К основному содержимому</a>
 
-{{HEADER}}
+    {{HEADER}}
 
-<main id="main" tabindex="-1">
-    <section class="page-hero">
-        <div class="wrap">
-            <h1>Привет, это тестовая страница!</h1>
-            <p>Если вы это видите, значит сборка работает.</p>
-        </div>
-    </section>
-</main>
+    <main id="main" tabindex="-1">
 
-{{FOOTER}}
+        <!-- ============ 1. ПЕРВЫЙ ЭКРАН ============ -->
+        <section class="hero" id="hero">
+            <div class="hero-bg">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="assets/img/shapka2.webp" width="702" height="935">
+                    <img src="assets/img/shapka1.webp" alt="Ученики школы ШКИТ на сцене" width="1365" height="767" fetchpriority="high">
+                </picture>
+            </div>
+            <div class="wrap">
+                <span class="hero-tag anim">Челябинск · с 2009 года</span>
+                <h1 class="anim" data-delay="120">
+                    <span class="h1-slogan">Актёрское мастерство для жизни</span>
+                    <span class="h1-key">Курсы и театральная студия в Челябинске</span>
+                </h1>
+                <p class="hero-sub anim" data-delay="240">Для детей, подростков и взрослых. 17 лет раскрываем таланты.</p>
+                <div class="hero-btn-wrapper anim" data-delay="360">
+                    <button type="button" class="btn btn--lg" data-popup="zapis-popup-global">Записаться</button>
+                    <noscript>
+                        <p style="margin-top:16px;font-size:15px;color:rgba(255,255,255,.85)">
+                            Позвоните: <a href="tel:+79194040123" style="color:#fff;font-weight:700;text-decoration:underline">+7 (919) 404-01-23</a>
+                        </p>
+                    </noscript>
+                </div>
+            </div>
+            <a class="hero-scroll" href="#about" aria-label="Листай вниз">Листай</a>
+        </section>
+
+        <!-- ============ 2. ПОЧЕМУ НАМ ДОВЕРЯЮТ ============ -->
+        <section class="section bg-white" id="about">
+            <div class="wrap">
+                <span class="kicker anim">О нас</span>
+                <h2 class="sec-title anim">Почему нам доверяют<span class="aside">А могли бы просто поверить на слово — но мы собрали факты.</span></h2>
+                <div class="adv-grid" data-stagger="90">
+                    <div class="adv">
+                        <div class="adv-ico"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 6H21l-5 4 2 7-6-4-6 4 2-7-5-4h6.5z"/></svg></div>
+                        <h3>17+ лет репутации</h3>
+                        <p>Мы не вчерашний стартап. ШКИТ строится больше полутора десятилетий — на сцене и в жизни.</p>
+                    </div>
+                    <div class="adv">
+                        <div class="adv-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 3.5-7 8-7s8 2.5 8 7"/></svg></div>
+                        <h3>Педагоги-практики</h3>
+                        <p>Никаких теоретиков из учебников. Наши преподают вечером, а днём сами выходят на сцену. Живут театром прямо сейчас.</p>
+                    </div>
+                    <div class="adv">
+                        <div class="adv-ico"><svg viewBox="0 0 24 24"><path d="M12 3L2 8l10 5 10-5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg></div>
+                        <h3>Цели достигнуты</h3>
+                        <p>Ежегодно наши выпускники поступают в театральные колледжи и вузы. На бюджет, между прочим.</p>
+                    </div>
+                    <div class="adv">
+                        <div class="adv-ico"><svg viewBox="0 0 24 24"><path d="M3 20V9l9-6 9 6v11"/><path d="M3 20h18M9 20v-6h6v6"/></svg></div>
+                        <h3>Сцена, а не класс</h3>
+                        <p>Спектакли — на профессиональных площадках города. Никаких «показов в зале для хореографии». Настоящий свет, звук и зритель.</p>
+                    </div>
+                    <div class="adv">
+                        <div class="adv-ico"><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M6 5H4v2a4 4 0 004 4M18 5h2v2a4 4 0 01-4 4M10 15h4v4h-4zM8 21h8"/></svg></div>
+                        <h3>Призы и признание</h3>
+                        <p>Конкурсы? Участвуем. Призовые места? Занимаем. Скромно, но факт.</p>
+                    </div>
+                    <div class="adv">
+                        <div class="adv-ico"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-9-9C1.5 7.5 4 4 7.5 4 9.5 4 11 5.2 12 6.5 13 5.2 14.5 4 16.5 4 20 4 22.5 7.5 21 11c-2 4.5-9 9-9 9z"/></svg></div>
+                        <h3>Творческая семья</h3>
+                        <p>К нам приходят и возвращаются. Выпускники забегают поделиться, помочь советом, позвать в проект. Это не просто школа — это свои.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ РУКОВОДИТЕЛЬ ============ -->
+        <section class="section bg-white" id="founder">
+            <div class="wrap">
+                <span class="kicker anim">Руководитель</span>
+                <h2 class="sec-title anim">Пашнин Глеб Анатольевич<span class="aside">Больше 20 лет помогает детям и взрослым раскрывать свои таланты.</span></h2>
+                <div class="founder">
+                    <div class="founder-media">
+                        <img src="assets/img/boss1.webp" alt="Пашнин Глеб Анатольевич — руководитель Школы кино и театра ШКИТ" loading="lazy">
+                    </div>
+                    <div class="founder-body">
+                        <p>Создатель Школы кино и театра ШКИТ. Руководит школой с 2009 года. Создатель плейбэк-театра «Абажур». В 2019 году окончил обучение по сертифицированной программе «Актёр плейбэк-театра».</p>
+                        <p>Под его началом ученики ШКИТ выпустили <strong>более 500 учебных киноработ и театральных постановок</strong>, становились лауреатами и обладателями Гран-при.</p>
+                        <p>Глеб Анатольевич — режиссёр проектов <strong>«Давай сыграем жизнь»</strong>, <strong>«Магия слов»</strong> и <strong>«Мой бенефис»</strong>, где многие взрослые люди впервые в жизни играют на профессиональной сцене.</p>
+                        <blockquote class="founder-quote">
+                            «Я создавал ШКИТ не ради сцены и аплодисментов. А ради момента, когда человек — ребёнок или взрослый — впервые говорит себе: „У меня получилось“. Сцена здесь не цель. Сцена — инструмент, через который человек встречается с собой. И главный результат — не роль и не приз, а человек, который поверил в себя. Вот здесь мои рукоплескания.
+                            <br><br>
+                            А ещё ШКИТ — это про атмосферу. Здесь на одной волне и дети, и взрослые. И каждый — учится говорить, чувствовать, не бояться. И просто быть собой».
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 3. КУРСЫ ДЛЯ ДЕТЕЙ И ПОДРОСТКОВ ============ -->
+        <section class="section bg-dark" id="kursy">
+            <div class="wrap">
+                <span class="kicker anim">Курсы</span>
+                <h2 class="sec-title anim">Курсы актерского мастерства<span class="aside">Выход на сцену - начало больших перемен, ключ к смелости, поступлению и новым победам.</span></h2>
+                <div class="cards cards--2" data-stagger="110">
+                    <article class="card">
+                        <div class="card-media"><span class="card-tag">Дети · 5–11 лет</span>
+                            <img src="assets/img/gallery-15.webp" alt="Дети на отчётном спектакле школы ШКИТ" loading="lazy"></div>
+                        <div class="card-body">
+                            <h3>Дети 5 - 11 лет</h3>
+                            <div class="card-sub">Игра, которая превращает стеснение в суперсилу</div>
+                            <p class="card-text">Через игру — к речи, памяти и уверенности. Учим говорить громко и внятно, не бояться зрителя и работать в команде. Страх сцены уберём. Не сразу, но уберём.</p>
+                            <ul class="card-feat">
+                                <li><span class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Актёрское мастерство.</b> Внимание, память, воображение, команда.</span></li>
+                                <li><span class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Сценическая речь.</b> Дикция, голос, интонации.</span></li>
+                                <li><span class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Итог.</b> Отчётный спектакль — с декорациями, костюмами и аплодисментами.</span></li>
+                            </ul>
+                            <div class="card-meta">
+                                <div class="card-format">2 раза в неделю<br>по 2 часа · курс от 2 лет</div>
+                                <div class="card-price">5 600 ₽<small>в месяц</small></div>
+                            </div>
+                            <div class="card-actions"><a class="btn btn--block" href="/dety-i-podrostki.html#dety">Подробнее о курсе для детей →</a></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media"><span class="card-tag">Подростки · 12–17 лет</span>
+                            <img src="assets/img/gal124.webp" alt="Подростковый спектакль учеников школы ШКИТ" loading="lazy"></div>
+                        <div class="card-body">
+                            <h3>Подростки 12 - 17 лет</h3>
+                            <div class="card-sub">От «просто попробовать» до «я поступил»</div>
+                            <p class="card-text">Видим потенциал — готовим к поступлению в театральный вуз всерьёз. Пришёл для себя — прокачаем уверенность, харизму и публичные выступления. Договоримся на берегу и пойдём к твоей цели.</p>
+                            <ul class="card-feat">
+                                <li><span class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Актёрское мастерство.</b> Глубокие эмоции, анализ текста, проживание роли.</span></li>
+                                <li><span class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Режиссура.</b> Системное мышление и работа с командой.</span></li>
+                                <li><span class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Итог.</b> Спектакль на профессиональной сцене — пункт в портфолио.</span></li>
+                            </ul>
+                            <div class="card-meta">
+                                <div class="card-format">2 раза в неделю<br>по 3 часа · курс от 2 лет</div>
+                                <div class="card-price card-price--accent">5 600 ₽<small>в месяц</small></div>
+                            </div>
+                            <div class="card-actions"><a class="btn btn--block" href="/dety-i-podrostki.html#podrostki">Подробнее о курсе для подростков →</a></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 6. ПРОЕКТЫ ДЛЯ ВЗРОСЛЫХ ============ -->
+        <section class="section bg-paper" id="proekty">
+            <div class="wrap">
+                <span class="kicker anim">Проекты</span>
+                <h2 class="sec-title anim">Театральные проекты для взрослых<span class="aside">Вспомнить, каково это — выходить на сцену. Исполнить детскую мечту.</span></h2>
+                <div class="cards cards--3" data-stagger="100">
+                    <article class="card">
+                        <div class="card-media"><span class="card-tag">Взрослые</span>
+                            <img src="assets/img/gal104.webp" alt="Взрослый спектакль-проект школы ШКИТ" loading="lazy"></div>
+                        <div class="card-body">
+                            <h3>«Давай сыграем жизнь»</h3>
+                            <div class="card-sub">Роль в спектакле на профессиональной сцене</div>
+                            <p class="card-text">Театр для взрослых в Челябинске: забудьте «работа-дом-заботы». Публичные выступления, импровизация, раскрепощение тела и голоса — и в финале настоящий спектакль. Плюс профессиональная фотосессия для промо.</p>
+                            <div class="card-meta">
+                                <div class="card-format">2 раза в неделю по 3 ч<br>проект 3–4 месяца</div>
+                                <div class="card-price">56 000 ₽<small>за проект</small></div>
+                            </div>
+                            <div class="card-actions"><a class="btn btn--block" href="/vzroslye.html#davay-sygraem-zhizn">Подробнее</a></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media"><span class="card-tag">Поэзия</span>
+                            <img src="assets/img/gal105.webp" alt="Поэтический спектакль мастерской «Магия слов»" loading="lazy"></div>
+                        <div class="card-body">
+                            <h3>«Магия слов»</h3>
+                            <div class="card-sub">Твой голос, живые стихи и камерная сцена</div>
+                            <p class="card-text">Для тех, кто чувствует поэзию кожей. Не читаем с листа — создаём миры. Разбираем текст до атомов, ищем личный отклик, превращаем слово в образ и действие.</p>
+                            <div class="card-meta">
+                                <div class="card-format">1 раз в неделю по 3 ч<br>проект 5–6 месяцев</div>
+                                <div class="card-price">5 600 ₽<small>в месяц</small></div>
+                            </div>
+                            <div class="card-actions"><a class="btn btn--block" href="/vzroslye.html#magiya-slov">Подробнее</a></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media"><span class="card-tag card-tag--excl">Эксклюзив</span>
+                            <img src="assets/img/adults.jpg" alt="Индивидуальный спектакль-бенефис в школе ШКИТ" loading="lazy"></div>
+                        <div class="card-body">
+                            <h3>«Мой бенефис»</h3>
+                            <div class="card-sub">Вы — главный герой, автор и легенда одного вечера</div>
+                            <p class="card-text">Мы пишем пьесу лично под вас: под вашу пластику, голос, манеру. И выходите с ней не в учебный класс, а на подмостки профессионального театра. Бонус — фотосессия и афиша с вашим лицом.</p>
+                            <div class="card-meta">
+                                <div class="card-format">2 раза в неделю по 3 ч<br>проект 2–3 месяца</div>
+                                <div class="card-price card-price--accent" style="font-size:16px">₽ После<small>консультации</small></div>
+                            </div>
+                            <div class="card-actions"><a class="btn btn--block" href="/vzroslye.html#moy-benefis">Подробнее</a></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ВИДЕО ============ -->
+        <section class="section bg-dark" id="video">
+            <div class="wrap">
+                <span class="kicker anim">Видео</span>
+                <h2 class="sec-title anim">Как это выглядит<span class="aside">Работа над образом, фотосессия для спектакля «Идиотки», по мотивам Ф. М. Достоевского. Проект «Мой бенефис».</span></h2>
+
+                <div class="video-scroll-hint">
+                    Листай
+                    <span></span>
+                </div>
+
+                <div class="video-slider">
+                    <div class="video-track">
+                        <figure class="video-item">
+                            <div class="video-wrap" data-video-wrap>
+                                <video
+                                    src="/assets/img/promo_1.mp4"
+                                    poster="/assets/img/Theatre1.webp"
+                                    preload="metadata"
+                                    playsinline>
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                                <button class="video-play" type="button" aria-label="Воспроизвести">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                                </button>
+                                <button class="video-pause" type="button" aria-label="Пауза">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+                                </button>
+                                <div class="video-progress" data-progress>
+                                    <div class="video-progress-bar"></div>
+                                </div>
+                            </div>
+                            <figcaption class="video-caption">Фотосессия для афиши</figcaption>
+                        </figure>
+
+                        <figure class="video-item">
+                            <div class="video-wrap" data-video-wrap>
+                                <video
+                                    src="/assets/img/1promo_2.mp4"
+                                    poster="/assets/img/theatre2.webp"
+                                    preload="metadata"
+                                    playsinline>
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                                <button class="video-play" type="button" aria-label="Воспроизвести">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                                </button>
+                                <button class="video-pause" type="button" aria-label="Пауза">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+                                </button>
+                                <div class="video-progress" data-progress>
+                                    <div class="video-progress-bar"></div>
+                                </div>
+                            </div>
+                            <figcaption class="video-caption">Примерка сценического костюма</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 9. ОТЗЫВЫ ============ -->
+        <section class="section bg-white" id="otzyvy">
+            <div class="wrap">
+                <span class="kicker anim">Отзывы</span>
+                <h2 class="sec-title anim">Что о нас говорят<span class="aside">Честно, без цензуры и причёсывания.</span></h2>
+                <div class="reviews-scroll-hint">
+                    Листай
+                    <span></span>
+                </div>
+                <div class="reviews-slider anim" data-stagger="90" id="reviews-slider">
+                    <div class="reviews-track" id="reviews-track">
+
+                        <div class="review-slide">
+                            <div class="review review--dark">
+                                <span class="quote-mark" aria-hidden="true">”</span>
+                                <p>Дочь удивила всех — на сцене с полным залом пришлось импровизировать, когда партнёр не успел переодеться. Зал был в восторге! Педагоги сказали: «Растёт настоящая артистка». Это уже третья большая сцена города — и она справляется всё увереннее. ШКИТ даёт ей возможность проявляться, доверяет сложные роли, учит не бояться и находить выход из любой ситуации. Горжусь и бесконечно благодарна!</p>
+                                <div class="review-author"><div class="review-ava">И</div><div class="review-who"><b>Ирина П</b><span>мама Веи, 10 лет</span></div></div>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review review--coral">
+                                <span class="quote-mark" aria-hidden="true">”</span>
+                                <p>Сын стеснялся даже в магазине спросить, где хлеб. Через полгода сам вызвался читать стихи на школьном конкурсе. Я чуть не упала. Спасибо, ШКИТ, вы делаете магию.</p>
+                                <div class="review-author"><div class="review-ava">О</div><div class="review-who"><b>Ольга А</b><span>мама Артёма, 7 лет</span></div></div>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review review--dark">
+                                <span class="quote-mark" aria-hidden="true">”</span>
+                                <p>Готовился к поступлению в театральный. Боялся — не то слово. Здесь меня не просто натаскали по программе, а реально вложили в голову, что я смогу. Поступил на бюджет. До сих пор не верю, но факт.</p>
+                                <div class="review-author"><div class="review-ava">В</div><div class="review-who"><b>Василий К</b><span>выпускник ШКИТ</span></div></div>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review review--coral">
+                                <span class="quote-mark" aria-hidden="true">”</span>
+                                <p>ШКИТ дал мне базу, которую я использую до сих пор: грамотную речь, уверенность в общении и умение проявлять эмоции. Здесь я нашла вторую семью — людей, которые всегда поддержат. Каждое занятие — новые эмоции и опыт. Я пришла в ШКИТ, когда моя личность только формировалась, и школа стала для меня домом. До сих пор я применяю всё, чему научилась — в жизни, в общении, в профессии. Я люблю ШКИТ и счастлива, что он был в моей жизни!</p>
+                                <div class="review-author"><div class="review-ava">Д</div><div class="review-who"><b>Дарья М</b><span>выпускница ШКИТ</span></div></div>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review review--dark">
+                                <span class="quote-mark" aria-hidden="true">”</span>
+                                <p>Участие в проекте — это гигантский шаг! Через три месяца друзья сказали: «Это просто АХ!» Я ждала каждую репетицию. Атмосфера, коллектив, люди, которые хотят показать себя на сцене, — это бесценно. Проект помогает даже в работе: появились «театральные» паузы в переговорах!</p>
+                                <div class="review-author"><div class="review-ava">А</div><div class="review-who"><b>Анна В, 28 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review review--coral">
+                                <span class="quote-mark" aria-hidden="true">”</span>
+                                <p>Участие в проекте — как открыть новую мышцу внутри. Учишься не играть, а быть. Исследуешь себя, примеряешь роль — и вдруг понимаешь боль героя, она звучит в тебе. Это настоящая терапия Души.</p>
+                                <div class="review-author"><div class="review-ava">О</div><div class="review-who"><b>Ольга З, 39 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review review--dark">
+                                <span class="quote-mark" aria-hidden="true">”</span>
+                                <p>Премьера — это не про «всё должно быть идеально». Это про «всё идёт как идёт, а мы держимся и играем». А тем, кто всё ещё думает: «Я точно не смогу», спешу обрадовать: сможете! Мы ведь это сделали!</p>
+                                <div class="review-author"><div class="review-ava">Т</div><div class="review-who"><b>Татьяна В, 53 года</b><span>проект «Давай сыграем жизнь»</span></div></div>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review review--coral">
+                                <span class="quote-mark" aria-hidden="true">”</span>
+                                <p>Мы не играем — мы проживаем свои роли. Проект помог мне раскрыться и позволить себе больше, чем я думала. Доверьтесь, откройтесь, не бойтесь быть собой — это про настоящую жизнь!</p>
+                                <div class="review-author"><div class="review-ava">С</div><div class="review-who"><b>Светлана Б, 48 лет</b><span>проект «Давай сыграем жизнь»</span></div></div>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review review--dark">
+                                <span class="quote-mark" aria-hidden="true">”</span>
+                                <p>Это был волнительный финал, который превзошёл все ожидания: Гран-при! Роль была сложной, но пара фраз режиссёра перед выходом изменили всё. Самая большая магия театра — проживать чужую жизнь как свою. Перестать контролировать, забыть о себе. Спектакль получился сложным, насыщенным, поэтичным.</p>
+                                <div class="review-author"><div class="review-ava">А</div><div class="review-who"><b>Алена И, 44 года</b><span>проект «Магия слов»</span></div></div>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review review--coral">
+                                <span class="quote-mark" aria-hidden="true">”</span>
+                                <p>Сначала ты не понимаешь, но именно путь — самое ценное. А результат превзошёл все ожидания: ГРАН-ПРИ — наше! Лучшее случается, когда совсем не ждёшь. Магия слов — это действительно волшебство!</p>
+                                <div class="review-author"><div class="review-ava">Е</div><div class="review-who"><b>Елена П, 35 лет</b><span>проект «Магия слов»</span></div></div>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review review--dark">
+                                <span class="quote-mark" aria-hidden="true">”</span>
+                                <p>Театр плейбэк «Абажур» — это не классический вечер за просмотром спектакля, а живое и непосредственное участие, где зритель — главный герой. Актеры разыгрывают истории так, как они им представляются, без подготовки. Удивительно, но получается ансамбль. Все зрители остались очень довольны и получили новое понимание происходящего.</p>
+                                <div class="review-author"><div class="review-ava">С</div><div class="review-who"><b>Светлана М</b><span>зритель перформанса</span></div></div>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review review--coral">
+                                <span class="quote-mark" aria-hidden="true">”</span>
+                                <p>Четыре года назад я впервые попала на перформанс «Абажура» — и поняла: это моё. Каждый спектакль уникален, рождается из историй зрителей. После каждой встречи выходишь обновлённой, с лёгкостью внутри. Огромная благодарность актёрам за это волшебство!</p>
+                                <div class="review-author"><div class="review-ava">С</div><div class="review-who"><b>Светлана К</b><span>зритель перформанса</span></div></div>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review review--dark">
+                                <span class="quote-mark" aria-hidden="true">”</span>
+                                <p>Пришла на репетицию с дрожащими руками — и сыграла премьеру. Думала, это будет красивый эпизод. А это стала эпоха. История растёт вместе с нами: спустя год — новый партнёр, обновлённый сценарий, снова аншлаг. Счастлива пригласить вас на новые главы.</p>
+                                <div class="review-author"><div class="review-ava">Т</div><div class="review-who"><b>Татьяна М</b><span>проект «Мой бенефис»</span></div></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="slider-nav" id="slider-nav">
+                        <button class="slider-btn" data-direction="prev" aria-label="Предыдущие отзывы">‹</button>
+                        <div class="slider-dots" aria-hidden="true"></div>
+                        <button class="slider-btn" data-direction="next" aria-label="Следующие отзывы">›</button>
+                    </div>
+                </div>
+
+                <p class="reviews-foot anim">Это не всё. Мы могли бы заполнить отзывами весь сайт — но лучше вы придёте и напишете свой.</p>
+            </div>
+        </section>
+
+        <!-- ============ 10. СОМНЕНИЯ ============ -->
+        <section class="section bg-dark doubt">
+            <div class="wrap">
+                <span class="kicker anim">Первый шаг</span>
+                <h2 class="anim">Сомневаешься в своих силах?<br><span style="color:rgba(255,255,255,.6);font-weight:600">И зря.</span></h2>
+                <ul class="doubt-list" data-stagger="80">
+                    <li><svg class="bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg><span><b>Боишься сцены?</b> Поможем превратить этот страх в твою суперсилу. Серьёзно.</span></li>
+                    <li><svg class="bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg><span><b>Не веришь в себя?</b> Мы создали среду, где верят в каждого. Даже когда сам не веришь.</span></li>
+                    <li><svg class="bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg><span><b>Думаешь, это для избранных?</b> Нет. Это для смелых, кто решился попробовать. Избранность придёт позже.</span></li>
+                    <li><svg class="bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg><span><b>Бесит свой голос или дикция?</b> Исправим. Полюбишь.</span></li>
+                    <li><svg class="bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg><span><b>Твоя уникальность — не недостаток.</b> Это твоя главная роль. Мы найдём ей применение.</span></li>
+                </ul>
+                <div class="doubt-cta anim">
+                    <p>Первое занятие — самый сложный шаг. Мы поможем сделать его без страха.</p>
+                    <div class="hero-btn-wrapper">
+                        <button type="button" class="btn" data-popup="zapis-popup-global">Записаться</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 11. АФИША ============ -->
+        <section class="section bg-white" id="afisha">
+            <div class="wrap">
+                <span class="kicker anim">Афиша</span>
+                <h2 class="sec-title anim">Что? Где? Когда?<span class="aside">Здесь появляется всё самое горячее — спектакли, перформансы, события.</span></h2>
+
+                <div class="afisha-board anim">
+                    <div class="afisha-grid">
+                        <article class="event">
+                            <div class="event-poster"><span class="event-date"><span class="d">11</span><span class="m">нояб</span></span>
+                                <img src="assets/img/idiotki.webp" alt="Спектакль «Идиотки» школы ШКИТ" loading="lazy"></div>
+                            <div class="event-body">
+                                <h3><span style="font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-ink);display:block;">спектакль</span> «ИДИОТКИ»</h3>
+                                <div class="e-meta">11 ноября, Сцена Театра кукол, 19:00</div>
+                                <div class="e-short">Психологическая драма. Три женщины приходят к одному мужчине, чтобы спросить: ты живёшь? И каждая получает один и тот же ответ — тишину. Итоговая работа театрального проекта "Мой бенефис". Билеты скоро в продаже.</div>
+                                <a class="btn btn--sm btn--block" href="https://chel.kassy.ru/events/teatr/2-56601/" target="_blank" rel="noopener">Купить билет</a>
+                            </div>
+                        </article>
+                        <article class="event">
+                            <div class="event-poster"><span class="event-date"><span class="d">19</span><span class="m">окт</span></span>
+                                <img src="assets/img/bilet2.webp" alt="Постер плейбэк театра Абажур" loading="lazy"></div>
+                            <div class="event-body">
+                                <h3><span style="font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-ink);display:block;">перформанс</span> «ОТКРЫТАЯ ТЕМА»</h3>
+                                <div class="e-meta">19 октября, 19:00 · театр "Многогранник"</div>
+                                <div class="e-short"><strong style="color:var(--coral-ink);">Плейбэк театр "АБАЖУР"</strong><br>Открытая тема — это разговор без сценария: ваша история, рассказанная вслух, превращается в спектакль. Такой вечер не повторить и не отрепетировать. Он рождается из людей и остаётся тёплым воспоминанием.</div>
+                                <a class="btn btn--sm btn--block" href="https://chel.kassy.ru/events/teatr/2-55862/" target="_blank" rel="noopener">Купить билет</a>
+                            </div>
+                        </article>
+                        <article class="event">
+                            <div class="event-poster"><span class="event-date"><span class="d">7</span><span class="m">дек</span></span>
+                                <img src="assets/img/gal108.webp" alt="Постер перформанса «Абажур»" loading="lazy"></div>
+                            <div class="event-body">
+                                <h3><span style="font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-ink);display:block;">перформанс</span> «ИСТОРИИ ПОД АБАЖУРОМ»</h3>
+                                <div class="e-meta">7 декабря, 19:00 · театр «Многогранник»</div>
+                                <div class="e-short"><strong style="color:var(--coral-ink);">Плейбэк театр "АБАЖУР"</strong><br>Холодный декабрьский вечер, тёплый свет под абажуром и истории, которые оживают прямо у вас на глазах. Приходите рассказать, услышать, увидеть — и согреться.</div>
+                                <a class="btn btn--sm btn--block" href="https://chel.kassy.ru/events/teatr/2-55861/" target="_blank" rel="noopener">Купить билет</a>
+                            </div>
+                        </article>
+                    </div>
+                    <p class="afisha-hint">Афиша обновляется. Больше информации в нашей <a href="https://vk.com/shkit74" target="_blank" rel="noopener" style="color:var(--coral-ink);font-weight:700">группе ВКонтакте</a>.</p>
+                </div>
+
+                <div class="section-inner" id="abajur">
+                    <span class="kicker anim">Театр</span>
+                    <h2 class="sec-title anim">Наши друзья — плейбэк-театр «Абажур»<span class="aside">Театр, где ваши истории обретают свет и тепло.</span></h2>
+                </div>
+
+                <div class="abajur anim">
+                    <div class="abajur-media"><img src="assets/img/gal100.webp" alt="Перформанс плейбэк-театра «Абажур»" loading="lazy"></div>
+                    <div class="abajur-body">
+                        <p>Театр импровизации. В «Абажуре» не играют выученных пьес. Здесь играют саму жизнь — ту, что прямо сейчас пульсирует в сердцах зрителей. Вы рассказываете историю, ведущий помогает оформить чувство, а актёры и музыкант тут же, без единой репетиции, воплощают её на сцене.</p>
+                        <p>Под мягким, уютным светом — словно под абажуром старинной лампы — здесь смеялись и плакали, находили ответы и просто грелись душой. Приходите на огонёк. Новые события театра всегда в нашей афише.</p>
+                        <div>
+                            <a class="btn btn--sm" href="https://vk.ru/teatr_abajur" target="_blank" rel="noopener noreferrer">Абажур ВКонтакте</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 13. НАША ЖИЗНЬ ============ -->
+        <section class="section bg-dark" id="life">
+            <div class="wrap">
+                <span class="kicker anim">Галерея</span>
+                <h2 class="sec-title anim">Наша жизнь<span class="aside">Без фильтров и притворства.</span></h2>
+                <div class="gallery" data-stagger="55">
+                    <figure><img src="assets/img/gallery-05.webp" alt="Драматическая сцена спектакля ШКИТ" loading="lazy"></figure>
+                    <figure><img src="assets/img/gallery-03.webp" alt="Сольное выступление на сцене ШКИТ" loading="lazy"></figure>
+                    <figure><img src="assets/img/gallery-16.webp" alt="Крупный план юной актрисы ШКИТ" loading="lazy"></figure>
+                    <figure><img src="assets/img/gallery-07.webp" alt="Кукольная сцена в спектакле ШКИТ" loading="lazy"></figure>
+                    <figure><img src="assets/img/gallery-06.webp" alt="Подростковый ансамбль на сцене ШКИТ" loading="lazy"></figure>
+                    <figure><img src="assets/img/gal120.webp" alt="Яркая сцена с реквизитом, ШКИТ" loading="lazy"></figure>
+                    <figure><img src="assets/img/gal121.webp" alt="Дети в костюмах и шляпах на сцене ШКИТ" loading="lazy"></figure>
+                    <figure><img src="assets/img/gallery-11.webp" alt="Силуэты актёров в луче света, ШКИТ" loading="lazy"></figure>
+                    <figure><img src="assets/img/gal103.webp" alt="Театральная сцена с реквизитом, ШКИТ" loading="lazy"></figure>
+                    <figure><img src="assets/img/gal123.webp" alt="Историческая постановка учеников ШКИТ" loading="lazy"></figure>
+                    <figure><img src="assets/img/gal122.webp" alt="Костюмированный спектакль ШКИТ" loading="lazy"></figure>
+                    <figure><img src="assets/img/gallery-02.webp" alt="Работа с куклой на сцене, ШКИТ" loading="lazy"></figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ БЛОГ ============ -->
+        <section class="section bg-paper" id="blog">
+            <div class="wrap">
+                <span class="kicker anim">Блог</span>
+                <h2 class="sec-title anim">Полезное от ШКИТ<span class="aside">Упражнения, советы и живые истории — в каждой статье. Пробуйте дома и смотрите, как растёт уверенность.</span></h2>
+
+                <p style="margin-top:20px">
+                    <a href="blog/" style="color:var(--coral-ink);font-weight:700;font-size:15px">Все статьи блога →</a>
+                </p>
+
+                <div class="blog-scroll-hint">
+                    Листай
+                    <span></span>
+                </div>
+
+                <div class="afisha-board anim">
+                    <div class="blog-slider" data-stagger="90">
+                        <div class="blog-track" id="blog-track">
+                            <article class="blog-card">
+                                <a class="blog-card-link" href="/blog/statya-6.html" aria-label="Любительский театр: почему взрослые снова играют">
+                                    <img src="/assets/img/acter3.jpeg" alt="Любительский театр: почему взрослые снова играют" width="640" height="360" loading="lazy">
+                                    <div class="blog-card-body">
+                                        <div class="blog-card-date">22.09.2026</div>
+                                        <h3>Любительский театр: почему взрослые снова играют</h3>
+                                        <div class="blog-card-actions"><span class="read-link">Читать →</span></div>
+                                    </div>
+                                </a>
+                            </article>
+
+                            <article class="blog-card">
+                                <a class="blog-card-link" href="/blog/statya-5.html" aria-label="Как выбрать театральную студию в Челябинске: 6 красных флагов">
+                                    <img src="/assets/img/acter1.webp" alt="Как выбрать театральную студию в Челябинске: 6 красных флагов" width="640" height="360" loading="lazy">
+                                    <div class="blog-card-body">
+                                        <div class="blog-card-date">21.09.2026</div>
+                                        <h3>Как выбрать театральную студию в Челябинске: 6 красных флагов</h3>
+                                        <div class="blog-card-actions"><span class="read-link">Читать →</span></div>
+                                    </div>
+                                </a>
+                            </article>
+
+                            <article class="blog-card">
+                                <a class="blog-card-link" href="/blog/statya-3.html" aria-label="Можно ли начать заниматься театром в 25, 35, 50 лет">
+                                    <img src="/assets/img/gal130.webp" alt="Можно ли начать заниматься театром в 25, 35, 50 лет" width="640" height="360" loading="lazy">
+                                    <div class="blog-card-body">
+                                        <div class="blog-card-date">17.09.2026</div>
+                                        <h3>Можно ли начать заниматься театром в 25, 35, 50 лет</h3>
+                                        <div class="blog-card-actions"><span class="read-link">Читать →</span></div>
+                                    </div>
+                                </a>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 14. КОНТАКТЫ ============ -->
+        <section class="section bg-white" id="contacts">
+            <div class="wrap">
+                <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:36px">
+                    <div>
+                        <span class="kicker anim">Контакты</span>
+                        <h2 class="sec-title anim" style="margin-bottom:0">Как к нам попасть?</h2>
+                    </div>
+                    <div style="text-align:right">
+                        <button type="button" class="btn anim" data-popup="zapis-popup-global">Оставить заявку</button>
+                    </div>
+                </div>
+
+                <div class="contacts-grid">
+                    <div class="contact-info anim">
+                        <div class="contact-rows">
+                            <div class="row"><div class="ci"><svg viewBox="0 0 24 24"><path d="M12 22s8-5.5 8-12a8 8 0 10-16 0c0 6.5 8 12 8 12z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                                <div class="rt"><small>Адрес</small><b>Челябинск, проспект Ленина, 83, офис 509</b><span style="display:block;font-size:13.5px;color:var(--grey);font-weight:600;margin-top:2px">Вход со стороны ул. Тернопольской, 5 этаж</span></div></div>
+                            <div class="row"><div class="ci"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg></div>
+                                <div class="rt"><small>Телефон</small><b><a href="tel:+79194040123">+7 (919) 404-01-23</a></b></div></div>
+                            <div class="row"><div class="ci"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+                                <div class="rt"><small>Почта</small><b><a href="mailto:art-pashnin@yandex.ru">art-pashnin@yandex.ru</a></b></div></div>
+                        </div>
+                        <div class="socials">
+                            <a class="social" href="https://vk.com/shkit74" target="_blank" rel="noopener" aria-label="ВКонтакте">
+                                <svg viewBox="0 0 24 24"><path d="M12.8 16.4c-5.4 0-8.8-3.8-8.9-10h2.7c.1 4.6 2.2 6.5 3.7 6.9V6.4h2.6v3.9c1.6-.2 3.2-1.9 3.8-3.9h2.5c-.4 2.4-2.1 4.1-3.3 4.8 1.2.6 3.1 2.1 3.8 5h-2.8c-.5-1.7-2-3-3.9-3.2v3.2z"/></svg>ВКонтакте</a>
+                            <a class="social" href="https://max.ru/join/wwVKZRo3fOoAb85xAT8HO9Vy_4fCZkXA1MDKTJIJ_RQ" target="_blank" rel="noopener" aria-label="MAX">
+                                <svg viewBox="0 0 24 24"><path d="M3 20V4h3.2l5 8 5-8H21v16h-3V9.5l-4.8 7.5h-.4L8 9.5V20z"/></svg>MAX</a>
+                        </div>
+                        <p style="margin-top:22px;font-size:14.5px;color:var(--grey);line-height:1.6">
+                            <strong style="color:var(--ink)">Как добраться:</strong> район ЮУрГУ. Прямой транспорт со всех районов города. Вход с ул. Тернопольской, 5 этаж, оф. 509.
+                        </p>
+                    </div>
+
+                    <div class="map-wrap anim" id="map-wrap" style="margin-top:0; position:relative; overflow:hidden; border-radius:12px; min-height:340px; height:100%;">
+                        <iframe
+                            id="map-iframe"
+                            title="Карта: Школа кино и театра ШКИТ, вход с ул. Тернопольской"
+                            data-src="https://yandex.ru/map-widget/v1/?ll=61.371311%2C55.158862&z=17&pt=61.371311%2C55.158862&scroll=false"
+                            style="width:100%; height:100%; min-height:340px; border:0; border-radius:12px; pointer-events:auto; display:block;"
+                            allow="fullscreen; autoplay; encrypted-media; clipboard-write; picture-in-picture; payment">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    {{FOOTER}}
+
+    <script src="/assets/js/main.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var slider = document.getElementById('reviews-slider');
+            var track = document.getElementById('reviews-track');
+            var prevBtn = document.querySelector('[data-direction="prev"]');
+            var nextBtn = document.querySelector('[data-direction="next"]');
+            var dotsContainer = document.querySelector('.slider-dots');
+            var slides = document.querySelectorAll('.review-slide');
+
+            if (slider && track && prevBtn && nextBtn && dotsContainer && slides.length) {
+                var currentIndex = 0;
+                var slidesPerView = window.innerWidth > 768 ? 2 : 1;
+
+                function createDots() {
+                    dotsContainer.innerHTML = '';
+                    var dotsCount = Math.ceil(slides.length / slidesPerView);
+                    for (var i = 0; i < dotsCount; i++) {
+                        var dot = document.createElement('button');
+                        dot.classList.add('dot');
+                        dot.setAttribute('aria-label', 'Перейти к отзыву ' + (i * slidesPerView + 1));
+                        (function(index) {
+                            dot.addEventListener('click', function() {
+                                currentIndex = index * slidesPerView;
+                                updateSlider();
+                            });
+                        })(i);
+                        dotsContainer.appendChild(dot);
+                    }
+                }
+
+                function updateSlider() {
+                    if (window.innerWidth <= 768) return;
+                    var slideWidth = track.clientWidth / slidesPerView;
+                    track.style.transform = 'translateX(-' + (currentIndex * slideWidth) + 'px)';
+
+                    var dots = dotsContainer.querySelectorAll('.dot');
+                    var activeDotIndex = Math.floor(currentIndex / slidesPerView);
+                    dots.forEach(function(dot, i) {
+                        dot.classList.toggle('active', i === activeDotIndex);
+                    });
+                }
+
+                function prev() {
+                    currentIndex -= slidesPerView;
+                    if (currentIndex < 0) currentIndex = slides.length - slidesPerView;
+                    updateSlider();
+                }
+
+                function next() {
+                    currentIndex += slidesPerView;
+                    if (currentIndex >= slides.length) currentIndex = 0;
+                    updateSlider();
+                }
+
+                prevBtn.addEventListener('click', prev);
+                nextBtn.addEventListener('click', next);
+
+                window.addEventListener('resize', function() {
+                    slidesPerView = window.innerWidth > 768 ? 2 : 1;
+                    createDots();
+                    updateSlider();
+                });
+
+                createDots();
+                updateSlider();
+            }
+        });
+    </script>
+
+    <script>
+        (function () {
+            var wrap = document.getElementById('map-wrap');
+            var iframe = document.getElementById('map-iframe');
+            var activator = document.getElementById('map-activator');
+
+            if (!wrap || !iframe || !activator) return;
+
+            function isMobile() {
+                return window.innerWidth <= 768;
+            }
+
+            function setMapState() {
+                if (isMobile()) {
+                    iframe.style.pointerEvents = 'none';
+                    activator.style.display = 'block';
+                } else {
+                    iframe.style.pointerEvents = 'auto';
+                    activator.style.display = 'none';
+                }
+            }
+
+            var sleepTimer = null;
+
+            function sleepMap() {
+                if (!isMobile()) return;
+                iframe.style.pointerEvents = 'none';
+                activator.style.display = 'block';
+            }
+
+            function wakeMap() {
+                if (!isMobile()) return;
+                iframe.style.pointerEvents = 'auto';
+                activator.style.display = 'none';
+                clearTimeout(sleepTimer);
+                sleepTimer = setTimeout(sleepMap, 5000);
+            }
+
+            activator.addEventListener('click', wakeMap);
+
+            setMapState();
+            window.addEventListener('resize', setMapState);
+        })();
+    </script>
 </body>
 </html>
