@@ -70,48 +70,37 @@ function build() {
         return;
     }
 
+    const files = fs.readdirSync(PAGES_DIR).filter(f => f.endsWith('.html'));
     let count = 0;
 
-    function processDir(dir, outputDir, urlPrefix) {
-        const entries = fs.readdirSync(dir, { withFileTypes: true });
+    files.forEach(file => {
+        const filePath = path.join(PAGES_DIR, file);
+        const raw = readFile(filePath);
+        const { meta, body } = parseFrontMatter(raw);
+        const canonical = SITE_URL + '/' + file;
 
-        entries.forEach(entry => {
-            const fullPath = path.join(dir, entry.name);
-            const relPath = path.join(outputDir, entry.name);
+        const vars = {
+            TITLE: meta.title || 'SHKIT',
+            DESCRIPTION: meta.description || '',
+            CANONICAL: canonical,
+            OG_TYPE: meta.og_type || 'website',
+            OG_TITLE: meta.og_title || meta.title || 'SHKIT',
+            OG_DESCRIPTION: meta.og_description || meta.description || '',
+            EXTRA_HEAD: meta.extra_head || '',
+            HEAD: parts.HEAD,
+            HEADER: parts.HEADER,
+            FOOTER: parts.FOOTER,
+            METRIKA: parts.METRIKA
+        };
 
-            if (entry.isDirectory()) {
-                fs.mkdirSync(relPath, { recursive: true });
-                processDir(fullPath, relPath, urlPrefix + entry.name + '/');
-            } else if (entry.name.endsWith('.html')) {
-                const raw = readFile(fullPath);
-                const { meta, body } = parseFrontMatter(raw);
-                const canonical = SITE_URL + '/' + urlPrefix + entry.name;
+        let html = replacePlaceholders(body, vars);
+        html = replacePlaceholders(html, vars);
 
-                const vars = {
-                    TITLE: meta.title || 'SHKIT',
-                    DESCRIPTION: meta.description || '',
-                    CANONICAL: canonical,
-                    OG_TYPE: meta.og_type || 'website',
-                    OG_TITLE: meta.og_title || meta.title || 'SHKIT',
-                    OG_DESCRIPTION: meta.og_description || meta.description || '',
-                    EXTRA_HEAD: meta.extra_head || '',
-                    HEAD: parts.HEAD,
-                    HEADER: parts.HEADER,
-                    FOOTER: parts.FOOTER,
-                    METRIKA: parts.METRIKA
-                };
-
-                let html = replacePlaceholders(body, vars);
-                html = replacePlaceholders(html, vars);
-
-                fs.writeFileSync(relPath, html, 'utf8');
-                console.log('  Built: ' + urlPrefix + entry.name);
-                count++;
-            }
-        });
-    }
-
-    processDir(PAGES_DIR, PUBLIC_DIR, '');
+        const outputPath = path.join(PUBLIC_DIR, file);
+        fs.writeFileSync(outputPath, html, 'utf8');
+        console.log('  Built: ' + file);
+        count++;
+    });
 
     console.log('\nDone! Built ' + count + ' pages in public/');
 }
