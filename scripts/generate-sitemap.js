@@ -18,10 +18,13 @@ const SITEMAP_PATH = path.join(__dirname, '..', 'sitemap.xml');
 
 // Основные страницы (не статьи)
 const STATIC_PAGES = [
-    { loc: '/',           changefreq: 'weekly',  priority: '1.0' },
-    { loc: '/blog/',      changefreq: 'weekly',  priority: '0.8' },
-    { loc: '/faq.html',   changefreq: 'monthly', priority: '0.7' },
-    { loc: '/policy.html', changefreq: 'yearly',  priority: '0.3' }
+    { loc: '/',                     changefreq: 'weekly',  priority: '1.0' },
+    { loc: '/blog/',                changefreq: 'weekly',  priority: '0.8' },
+    { loc: '/dety-i-podrostki.html', changefreq: 'monthly', priority: '0.8' },
+    { loc: '/vzroslye.html',        changefreq: 'monthly', priority: '0.8' },
+    { loc: '/contacts.html',        changefreq: 'monthly', priority: '0.8' },
+    { loc: '/faq.html',             changefreq: 'monthly', priority: '0.7' },
+    { loc: '/policy.html',          changefreq: 'yearly',  priority: '0.3' }
 ];
 
 // Настройки для статей
