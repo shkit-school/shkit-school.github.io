@@ -948,7 +948,10 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
         padding-top: 20px;
     }
 }
-/* Одинаковый отступ под page-hero на всех страницах */
-.page-hero + .section.bg-white .wrap > :first-child {
+/* Выравниваем верхний отступ под page-hero на блоге и контактах */
+.page-hero + .section.bg-white .wrap > .visually-hidden + * {
+    margin-top: 0 !important;
+}
+.page-hero + .section.bg-white .contacts-grid {
     margin-top: 0 !important;
 }
