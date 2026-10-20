@@ -939,3 +939,12 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
     .zapis-popup-head h3 { font-size: 16px; }
     .zapis-popup-body { padding: 20px 18px 24px; }
 }
+/* Уменьшаем отступ между тёмным hero и белым контентом */
+.page-hero + .section.bg-white {
+    padding-top: 32px;
+}
+@media (max-width: 768px) {
+    .page-hero + .section.bg-white {
+        padding-top: 20px;
+    }
+}
