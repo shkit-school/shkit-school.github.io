@@ -50,6 +50,12 @@ function copyDir(src, dest) {
     });
 }
 
+function copyFileIfExists(src, dest) {
+    if (!fs.existsSync(src)) return;
+    fs.copyFileSync(src, dest);
+    console.log('  Copied: ' + path.basename(src));
+}
+
 function build() {
     console.log('Building SHKIT site...\n');
 
@@ -64,6 +70,11 @@ function build() {
 
     console.log('Copying assets/...');
     copyDir(path.join(__dirname, 'assets'), path.join(PUBLIC_DIR, 'assets'));
+
+    console.log('Copying root files (sitemap, robots, .nojekyll)...');
+    copyFileIfExists(path.join(__dirname, 'sitemap.xml'), path.join(PUBLIC_DIR, 'sitemap.xml'));
+    copyFileIfExists(path.join(__dirname, 'robots.txt'), path.join(PUBLIC_DIR, 'robots.txt'));
+    copyFileIfExists(path.join(__dirname, '.nojekyll'), path.join(PUBLIC_DIR, '.nojekyll'));
 
     if (!fs.existsSync(PAGES_DIR)) {
         console.log('Folder src/pages/ is empty. Nothing to build.');
