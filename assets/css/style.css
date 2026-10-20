@@ -955,3 +955,12 @@ form.is-sent .form-success{display:block;animation:pop .3s var(--ease)}
 .page-hero + .section.bg-white .contacts-grid {
     margin-top: 0 !important;
 }
+/* Статьи блога: убираем гигантский отступ сверху */
+.section.bg-white:has(.article) {
+    padding-top: 32px;
+}
+@media (max-width: 768px) {
+    .section.bg-white:has(.article) {
+        padding-top: 20px;
+    }
+}
