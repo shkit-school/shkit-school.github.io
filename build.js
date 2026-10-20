@@ -96,7 +96,12 @@ function build() {
             } else if (entry.name.endsWith('.html')) {
                 const raw = readFile(fullPath);
                 const { meta, body } = parseFrontMatter(raw);
-                const canonical = SITE_URL + '/' + urlPrefix + entry.name;
+                let canonical;
+          if (urlPrefix === '' && entry.name === 'index.html') {
+          canonical = SITE_URL + '/';
+          } else {
+        canonical = SITE_URL + '/' + urlPrefix + entry.name;
+       }
 
                 const vars = {
                     TITLE: meta.title || 'SHKIT',
