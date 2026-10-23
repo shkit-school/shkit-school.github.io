@@ -45,6 +45,22 @@ description: "Театральная студия для детей 5–11 ле�
             .group-nav-btn { padding: 10px 20px; font-size: 15px; }
         }
 
+        /* ===== Карточка-тизер перед блоком ===== */
+        .group-teaser {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 0 0;
+        }
+        .group-teaser .card {
+            margin: 0;
+        }
+        .group-teaser .card-body {
+            padding: 20px 24px 24px;
+        }
+        @media (max-width: 768px) {
+            .group-teaser { padding: 24px 0 0; }
+        }
+
         /* ===== Блоки детей и подростков ===== */
         .group-section { padding: 60px 0; }
         .group-section--light { background: #fff; }
@@ -476,20 +492,32 @@ description: "Театральная студия для детей 5–11 ле�
                 <p>В ШКИТ занимаются дети с 5 до 17 лет. За 17 лет через школу прошли более 5000 учеников, мы выпустили 500+ учебных работ и театральных постановок. <strong>Малыши</strong> — через игру. <strong>Подростки</strong> — через честный разговор и работу с текстом. И у тех, и у других в финале — спектакль на сцене.</p>
 
                 <!-- ===== НАВИГАЦИЯ ПО БЛОКАМ ===== -->
-                <div class="group-nav" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:32px 0 0">
-    <a href="#dety" class="group-nav-btn active" style="min-width:200px;text-align:center">Дети 5–11</a>
-    <a href="#podrostki" class="group-nav-btn" style="min-width:200px;text-align:center">Подростки 12–17</a>
-</div>
+                <div class="group-nav">
+                    <a href="#dety" class="group-nav-btn active">Дети 5–11</a>
+                    <a href="#podrostki" class="group-nav-btn">Подростки 12–17</a>
+                </div>
             </div>
         </section>
+
+        <!-- ===== КАРТОЧКА-ТИЗЕР: ДЕТИ ===== -->
+        <div class="wrap group-teaser">
+            <article class="card">
+                <div class="card-media"><span class="card-tag">Дети · 5–11 лет</span>
+                    <img src="/assets/img/gallery-15.webp" alt="Дети на отчётном спектакле школы ШКИТ" loading="lazy"></div>
+                <div class="card-body">
+                    <h3>Дети 5–11 лет</h3>
+                    <div class="card-sub">Игра, которая превращает стеснение в суперсилу</div>
+                </div>
+            </article>
+        </div>
 
         <!-- ===== БЛОК ДЕТЕЙ ===== -->
         <section class="group-section group-section--light" id="dety">
             <div class="wrap">
                 <div class="group-inner">
 
-                    <h2 class="group-title">Дети 5–11 лет: игра, которая превращает стеснение в суперсилу</h2>
-                    <span class="lead-label">Театральная студия для детей в Челябинске</span>
+                    <h2 class="group-title">Театральная студия для детей 5–11 лет в Челябинске</h2>
+                    <span class="lead-label">Игра, которая превращает стеснение в суперсилу</span>
 
                     <p class="group-sub">
                         Театральная студия для детей в Челябинске — это место, где ребёнок учится быть в группе, говорить вслух, не бояться ошибок. Театр — самый мягкий способ этому научиться. Развиваем эмоциональный интеллект, учим говорить — громко и внятно, общаться легко и дружить с удовольствием. Развиваем речь, память, уверенность. Страх сцены уберём. Не сразу, но уберём.
@@ -572,13 +600,25 @@ description: "Театральная студия для детей 5–11 ле�
             </div>
         </section>
 
+        <!-- ===== КАРТОЧКА-ТИЗЕР: ПОДРОСТКИ ===== -->
+        <div class="wrap group-teaser">
+            <article class="card">
+                <div class="card-media"><span class="card-tag">Подростки · 12–17 лет</span>
+                    <img src="/assets/img/gal124.webp" alt="Подростковый спектакль учеников школы ШКИТ" loading="lazy"></div>
+                <div class="card-body">
+                    <h3>Подростки 12–17 лет</h3>
+                    <div class="card-sub">От «просто попробовать» до «я поступил»</div>
+                </div>
+            </article>
+        </div>
+
         <!-- ===== БЛОК ПОДРОСТКОВ ===== -->
         <section class="group-section group-section--dark" id="podrostki">
             <div class="wrap">
                 <div class="group-inner">
 
-                    <h2 class="group-title">Подростки 12–17 лет: от «просто попробовать» до «я поступил»</h2>
-                    <span class="lead-label">Актёрские курсы для подростков в Челябинске</span>
+                    <h2 class="group-title">Актёрские курсы для подростков 12–17 лет в Челябинске</h2>
+                    <span class="lead-label">От «просто попробовать» до «я поступил»</span>
 
                     <p class="group-sub">
                         Актёрские курсы для подростков в Челябинске — это не «развлечение», а честный разговор. Подросток приходит за своим: кто-то — за уверенностью, кто-то — за поступлением. Видим потенциал — готовим к поступлению в театральный вуз всерьёз. Пришёл для себя — прокачаем уверенность, харизму и публичные выступления. Договоримся на берегу и пойдём к твоей цели.
