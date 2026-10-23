@@ -67,6 +67,16 @@ description: "Театральная студия для детей 5–11 ле�
         .group-teaser .card-body {
             padding: 24px 28px 28px;
         }
+        .group-teaser .card--dark {
+            background: var(--ink);
+        }
+        .group-teaser .card--dark h2,
+        .group-teaser .card--dark h3 {
+            color: #fff;
+        }
+        .group-teaser .card--dark .card-sub {
+            color: rgba(255,255,255,.8);
+        }
         @media (max-width: 768px) {
             .group-teaser { padding: 24px 16px 0; }
         }
@@ -156,48 +166,27 @@ description: "Театральная студия для детей 5–11 ле�
             .lead-label { font-size: 17px; padding: 10px 16px; }
         }
 
+        /* ===== Дисциплины: узкие окошечки без иконок ===== */
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin: 32px 0;
+            gap: 12px;
+            margin: 24px 0;
         }
         .feature {
             background: var(--paper);
             border-radius: var(--radius);
-            padding: 26px 16px;
+            padding: 14px 16px;
             border: 1px solid var(--coral);
             display: flex;
-            flex-direction: column;
             align-items: center;
-            text-align: center;
-            gap: 12px;
-            min-height: 150px;
             justify-content: center;
+            text-align: center;
+            min-height: auto;
         }
         .group-section--dark .feature {
             background: rgba(255,255,255,.06);
             border-color: var(--coral);
-        }
-        .feature-ico {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(232,93,93,.12);
-            color: var(--coral-ink);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .feature-ico svg {
-            width: 22px;
-            height: 22px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
         }
         .feature h4 {
             font-size: 16px;
@@ -208,14 +197,8 @@ description: "Театральная студия для детей 5–11 ле�
         }
         .group-section--dark .feature h4 { color: #fff; }
         @media (max-width: 768px) {
-            .feature-grid { grid-template-columns: 1fr; gap: 12px; }
-            .feature {
-                flex-direction: row;
-                text-align: left;
-                padding: 18px 20px;
-                min-height: auto;
-                justify-content: flex-start;
-            }
+            .feature-grid { grid-template-columns: 1fr; gap: 8px; }
+            .feature { padding: 12px 16px; }
             .feature h4 { font-size: 15px; }
         }
 
@@ -512,13 +495,13 @@ description: "Театральная студия для детей 5–11 ле�
         <!-- ===== КАРТОЧКА-ТИЗЕР: ДЕТИ (якорь #dety) ===== -->
         <div class="wrap group-teaser" id="dety" style="padding-top:40px;padding-bottom:40px">
             <article class="card">
-    <div class="card-media" style="aspect-ratio:auto;height:500px"><span class="card-tag">Дети · 5–11 лет</span>
-        <img src="/assets/img/acter6.webp" alt="Дети на отчётном спектакле школы ШКИТ" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
-    <div class="card-body">
-        <h3>Дети 5–11 лет</h3>
-        <div class="card-sub">Игра, которая превращает стеснение в суперсилу</div>
-    </div>
-</article>
+                <div class="card-media" style="aspect-ratio:auto;height:clamp(300px, 40vw, 500px)"><span class="card-tag">Дети · 5–11 лет</span>
+                    <img src="/assets/img/gallery-15.webp" alt="Дети на отчётном спектакле школы ШКИТ" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+                <div class="card-body">
+                    <h2 class="group-title" style="margin-bottom:8px">Дети 5–11 лет</h2>
+                    <div class="card-sub">Игра, которая превращает стеснение в суперсилу</div>
+                </div>
+            </article>
         </div>
 
         <!-- ===== БЛОК ДЕТЕЙ ===== -->
@@ -537,25 +520,16 @@ description: "Театральная студия для детей 5–11 ле�
                         <img src="/assets/img/gallery-07.webp" alt="Кукольный спектакль на занятии детской театральной студии в Челябинске" loading="lazy">
                     </figure>
 
-                    <h3>Чему учим на занятиях</h3>
+                    <h2 class="group-title">Чему учим на занятиях</h2>
 
                     <div class="feature-grid">
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4"/><path d="M8 23h8"/></svg>
-                            </div>
                             <h4>Сценическая речь</h4>
                         </div>
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><path d="M2 12c0-5 4-8 10-8s10 3 10 8-4 8-10 8S2 17 2 12z"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></svg>
-                            </div>
                             <h4>Актёрское мастерство</h4>
                         </div>
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-                            </div>
                             <h4>Вокал, пластика</h4>
                         </div>
                     </div>
@@ -569,12 +543,9 @@ description: "Театральная студия для детей 5–11 ле�
                     </ul>
 
                     <span class="lead-label">Что меняется уже в первые месяцы:</span>
-                    <ul class="group-list">
-                        <li>Ребёнок начинает говорить громче и внятнее — так, чтобы слышали в последнем ряду.</li>
-                        <li>Запоминает текст через смысл и образ — без зубрёжки.</li>
-                        <li>Выходит на сцену спокойнее — сначала перед группой, потом перед родителями.</li>
-                        <li>Учится слышать партнёра и поддерживать его.</li>
-                    </ul>
+                    <p class="group-text">
+                        Ребёнок начинает говорить громче и внятнее — так, чтобы слышали в последнем ряду. Запоминает текст через смысл и образ — без зубрёжки. Выходит на сцену спокойнее — сначала перед группой, потом перед родителями.
+                    </p>
 
                     <div class="schedule-box">
                         <h4>Расписание занятий в Челябинске</h4>
@@ -587,7 +558,7 @@ description: "Театральная студия для детей 5–11 ле�
                         <figcaption>Спектакль «Муха-Цокотуха» на сцене НХТ</figcaption>
                     </figure>
 
-                    <h3>Что в финале театральной студии для детей</h3>
+                    <h2 class="group-title">Что в финале театральной студии для детей</h2>
 
                     <blockquote class="pull-quote">
                         <p>«У меня получилось»</p>
@@ -611,14 +582,14 @@ description: "Театральная студия для детей 5–11 ле�
 
         <!-- ===== КАРТОЧКА-ТИЗЕР: ПОДРОСТКИ (якорь #podrostki) ===== -->
         <div class="wrap group-teaser" id="podrostki" style="padding-top:40px;padding-bottom:40px">
-            <article class="card">
-    <div class="card-media" style="aspect-ratio:auto;height:500px"><span class="card-tag">Подростки · 12–17 лет</span>
-        <img src="/assets/img/acter7.webp" alt="Подростковый спектакль учеников школы ШКИТ" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
-    <div class="card-body">
-        <h3>Подростки 12–17 лет</h3>
-        <div class="card-sub">От «просто попробовать» до «я поступил»</div>
-    </div>
-</article>
+            <article class="card card--dark">
+                <div class="card-media" style="aspect-ratio:auto;height:clamp(300px, 40vw, 500px)"><span class="card-tag">Подростки · 12–17 лет</span>
+                    <img src="/assets/img/gal124.webp" alt="Подростковый спектакль учеников школы ШКИТ" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+                <div class="card-body">
+                    <h2 class="group-title" style="margin-bottom:8px">Подростки 12–17 лет</h2>
+                    <div class="card-sub">От «просто попробовать» до «я поступил»</div>
+                </div>
+            </article>
         </div>
 
         <!-- ===== БЛОК ПОДРОСТКОВ ===== -->
@@ -637,25 +608,16 @@ description: "Театральная студия для детей 5–11 ле�
                         <img src="/assets/img/deti-scena5.webp" alt="Театральная режиссура для подростков — сцена из спектакля «Василий Тёркин» на сцене НХТ, ШКИТ" loading="lazy">
                     </figure>
 
-                    <h3>Чему учим на актёрских курсах для подростков</h3>
+                    <h2 class="group-title">Чему учим на актёрских курсах для подростков</h2>
 
                     <div class="feature-grid">
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4"/><path d="M8 23h8"/></svg>
-                            </div>
                             <h4>Сценическая речь</h4>
                         </div>
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><path d="M2 12c0-5 4-8 10-8s10 3 10 8-4 8-10 8S2 17 2 12z"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></svg>
-                            </div>
                             <h4>Актёрское мастерство</h4>
                         </div>
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><path d="M3 4h18v14H3z"/><path d="M3 8l9 5 9-5"/><path d="M8 22h8"/><path d="M12 18v4"/></svg>
-                            </div>
                             <h4>Театральная режиссура</h4>
                         </div>
                     </div>
@@ -678,7 +640,7 @@ description: "Театральная студия для детей 5–11 ле�
                         <figcaption>Спектакль «Василий Тёркин» на сцене НХТ</figcaption>
                     </figure>
 
-                    <h3>Что в финале актёрских курсов для подростков</h3>
+                    <h2 class="group-title">Что в финале актёрских курсов для подростков</h2>
 
                     <blockquote class="pull-quote">
                         <p>Спектакль на профессиональной сцене</p>
