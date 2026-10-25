@@ -1,18 +1,87 @@
 ---
-title: "Театральные проекты для взрослых в Челябинске — ШКИТ"
-description: "Три театральных проекта для взрослых в Челябинске: роль в спектакле, поэтический спектакль, моноспектакль. Профессиональная сцена, фотосессия, премьера. Пробное — 500 ₽."
+title: "Театральная студия для взрослых в Челябинске — ШКИТ"
+description: "Театральные проекты для взрослых в Челябинске: роль в спектакле, поэтический спектакль, моноспектакль. Профессиональная сцена, фотосессия, премьера. Пробное — 500 ₽."
 ---
 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-     {{HEAD}}
+    {{HEAD}}
     <link rel="stylesheet" href="/assets/css/blog.css">
     <style>
         * { -webkit-tap-highlight-color: transparent; }
 
         .h1-accent { color: var(--coral, #E85D5D); }
 
+        /* ===== Навигация по блокам ===== */
+        .group-nav {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 32px 0 0;
+            flex-wrap: wrap;
+        }
+        .group-nav-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: var(--radius-btn);
+            border: 2px solid var(--coral);
+            color: var(--coral-ink);
+            background: #fff;
+            transition: all .25s ease;
+            font-family: inherit;
+            cursor: pointer;
+            min-width: 160px;
+            text-align: center;
+        }
+        .group-nav-btn:hover,
+        .group-nav-btn.active {
+            background: var(--coral-dark);
+            border-color: var(--coral-dark);
+            color: #fff;
+        }
+        @media (max-width: 768px) {
+            .group-nav { margin: 24px 0 0; }
+            .group-nav-btn { padding: 10px 16px; font-size: 14px; min-width: 0; flex: 1; }
+        }
+
+        /* ===== Карточка-тизер перед блоком ===== */
+        .group-teaser {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px 0;
+            scroll-margin-top: 90px;
+        }
+        .group-teaser .card {
+            margin: 0;
+            animation: none !important;
+            transition: none !important;
+            box-shadow: var(--shadow-sm);
+        }
+        .group-teaser .card:hover {
+            transform: none !important;
+            box-shadow: var(--shadow-sm) !important;
+        }
+        .group-teaser .card-body {
+            padding: 24px 28px 28px;
+        }
+        .group-teaser .card--dark {
+            background: var(--ink);
+        }
+        .group-teaser .card--dark h2,
+        .group-teaser .card--dark h3 {
+            color: #fff;
+        }
+        .group-teaser .card--dark .card-sub {
+            color: rgba(255,255,255,.8);
+        }
+        @media (max-width: 768px) {
+            .group-teaser { padding: 24px 16px 0; }
+        }
+
+        /* ===== Блоки ===== */
         .group-section { padding: 60px 0; }
         .group-section--light { background: #fff; }
         .group-section--dark { background: var(--ink); color: #fff; }
@@ -21,7 +90,7 @@ description: "Три театральных проекта для взрослы
         .group-section--dark p,
         .group-section--dark li { color: rgba(255,255,255,.85); }
 
-        .group-inner { max-width: 900px; margin: 0 auto; }
+        .group-inner { max-width: 1200px; margin: 0 auto; }
         .group-title { font-size: clamp(24px, 4vw, 36px); margin-bottom: 12px; line-height: 1.15; }
         .group-sub { font-size: 18px; margin-bottom: 28px; line-height: 1.6; }
 
@@ -97,48 +166,27 @@ description: "Три театральных проекта для взрослы
             .lead-label { font-size: 17px; padding: 10px 16px; }
         }
 
+        /* ===== Дисциплины: узкие окошечки без иконок ===== */
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin: 32px 0;
+            gap: 12px;
+            margin: 24px 0;
         }
         .feature {
             background: var(--paper);
             border-radius: var(--radius);
-            padding: 26px 16px;
+            padding: 14px 16px;
             border: 1px solid var(--coral);
             display: flex;
-            flex-direction: column;
             align-items: center;
-            text-align: center;
-            gap: 12px;
-            min-height: 150px;
             justify-content: center;
+            text-align: center;
+            min-height: auto;
         }
         .group-section--dark .feature {
             background: rgba(255,255,255,.06);
             border-color: var(--coral);
-        }
-        .feature-ico {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(232,93,93,.12);
-            color: var(--coral-ink);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .feature-ico svg {
-            width: 22px;
-            height: 22px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
         }
         .feature h4 {
             font-size: 16px;
@@ -149,14 +197,8 @@ description: "Три театральных проекта для взрослы
         }
         .group-section--dark .feature h4 { color: #fff; }
         @media (max-width: 768px) {
-            .feature-grid { grid-template-columns: 1fr; gap: 12px; }
-            .feature {
-                flex-direction: row;
-                text-align: left;
-                padding: 18px 20px;
-                min-height: auto;
-                justify-content: flex-start;
-            }
+            .feature-grid { grid-template-columns: 1fr; gap: 8px; }
+            .feature { padding: 12px 16px; }
             .feature h4 { font-size: 15px; }
         }
 
@@ -201,29 +243,34 @@ description: "Три театральных проекта для взрослы
         .group-cta p { margin-bottom: 18px; font-size: 15px; color: var(--grey); }
         .group-section--dark .group-cta p { color: rgba(255,255,255,.8); }
 
-        .page-cta {
-            background: var(--ink);
-            color: #fff;
+        .schedule-box {
+            margin: 24px 0;
+            padding: 20px 24px;
+            background: var(--paper);
             border-radius: var(--radius);
-            padding: 40px 30px;
-            text-align: center;
-            margin-top: 50px;
+            border-left: 4px solid var(--coral);
         }
-        .page-cta h2 {
-            color: #fff;
-            font-size: clamp(22px, 3vw, 30px);
-            margin-bottom: 10px;
+        .group-section--dark .schedule-box {
+            background: rgba(255,255,255,.06);
+            border-left-color: var(--coral);
         }
-        .page-cta p {
-            color: rgba(255,255,255,.85);
-            margin-bottom: 24px;
+        .schedule-box h4 {
             font-size: 16px;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            color: var(--ink);
         }
-        @media (max-width: 768px) {
-            .page-cta { padding: 32px 20px; }
+        .group-section--dark .schedule-box h4 { color: #fff; }
+        .schedule-box p {
+            margin: 0 0 8px 0;
+            font-size: 15.5px;
+            color: var(--grey);
+            line-height: 1.5;
         }
-
-        .faq-section { max-width: 900px; margin: 0 auto; }
+        .schedule-box p:last-child { margin-bottom: 0; }
+        .group-section--dark .schedule-box p { color: rgba(255,255,255,.85); }
+        .schedule-box strong { color: var(--ink); font-weight: 700; }
+        .group-section--dark .schedule-box strong { color: #fff; }
 
         .group-list {
             list-style: none;
@@ -259,14 +306,186 @@ description: "Три театральных проекта для взрослы
             .group-list li { font-size: 16px; padding-left: 30px; }
             .group-list li::before { width: 20px; height: 20px; top: 2px; }
         }
+
+        .page-cta {
+            background: var(--ink);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .page-cta h2 {
+            color: #fff;
+            font-size: clamp(22px, 3vw, 30px);
+            margin-bottom: 10px;
+        }
+        .page-cta p {
+            color: rgba(255,255,255,.85);
+            margin-bottom: 24px;
+            font-size: 16px;
+        }
+        @media (max-width: 768px) {
+            .page-cta { padding: 32px 20px; }
+        }
+
+        .faq-section { max-width: 900px; margin: 0 auto; }
     </style>
-         <script type="application/ld+json">
+    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://shkit-school.github.io/" },
-        { "@type": "ListItem", "position": 2, "name": "Проекты для взрослых", "item": "https://shkit-school.github.io/vzroslye.html" }
+        { "@type": "ListItem", "position": 2, "name": "Взрослым", "item": "https://shkit-school.github.io/vzroslye.html" }
+      ]
+    }
+    </script>
+    <!-- Course: Давай сыграем жизнь -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Давай сыграем жизнь — роль в спектакле на профессиональной сцене",
+      "description": "Актёрское мастерство, сценическая речь, импровизация. В финале — премьера на сцене театра, профессиональная фотосессия.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Школа кино и театра ШКИТ",
+        "sameAs": "https://shkit-school.github.io/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "56000",
+        "priceCurrency": "RUB",
+        "category": "Project"
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "onsite",
+        "location": {
+          "@type": "Place",
+          "name": "ШКИТ",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "проспект Ленина, 83, офис 509",
+            "addressLocality": "Челябинск",
+            "addressCountry": "RU"
+          }
+        }
+      }
+    }
+    </script>
+
+    <!-- Course: Магия слов -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Магия слов — камерный поэтический спектакль",
+      "description": "Работа с поэзией: разбор текста, поиск личного отклика, превращение слова в образ и действие. В финале — камерный поэтический спектакль.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Школа кино и театра ШКИТ",
+        "sameAs": "https://shkit-school.github.io/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "5600",
+        "priceCurrency": "RUB",
+        "category": "Monthly"
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "onsite",
+        "location": {
+          "@type": "Place",
+          "name": "ШКИТ",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "проспект Ленина, 83, офис 509",
+            "addressLocality": "Челябинск",
+            "addressCountry": "RU"
+          }
+        }
+      }
+    }
+    </script>
+
+    <!-- Course: Мой бенефис -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Мой бенефис — моноспектакль под ключ",
+      "description": "Драматургия под ключ: пьеса пишется лично под вас. В финале — премьера на сцене театра, фотосессия, афиша с вашим лицом.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Школа кино и театра ШКИТ",
+        "sameAs": "https://shkit-school.github.io/"
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "onsite",
+        "location": {
+          "@type": "Place",
+          "name": "ШКИТ",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "проспект Ленина, 83, офис 509",
+            "addressLocality": "Челябинск",
+            "addressCountry": "RU"
+          }
+        }
+      }
+    }
+    </script>
+
+    <!-- FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Я боюсь выглядеть глупо. А если надо мной будут смеяться?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Этот страх — у каждого, кто приходит впервые. Первые занятия — не про сцену. Работаем в кругу: разогрев, внимание, раскрепощение. Ошибки — часть упражнения, а не провал. Педагог не критикует — задаёт вопросы. Роль как защита: вы говорите не от себя, а от имени героя. Через 2–3 занятия страх уходит на второй план."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Мне 45+. Я уже не в том возрасте, чтобы выходить на сцену. Или всё-таки можно?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Можно — и нужно. В наших взрослых проектах средний возраст участников — 35–55 лет. Театр — не спорт, здесь не нужна физическая форма. С возрастом приходит то, чего нет у молодых: прожитый опыт, глубина, понимание жизни. Это — главный инструмент актёра."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "У меня работа, семья. Когда я буду успевать на репетиции?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "У всех наших участников — работа и семья. «Давай сыграем жизнь» — 2 раза в неделю по 3 часа. «Магия слов» — 1 раз в неделю по 3 часа. «Мой бенефис» — индивидуально. Репетиции вечером и по выходным. 6 часов в неделю — меньше, чем вы тратите на сериалы."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Зачем мне это? Что я получу в итоге?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Конкретно — три вещи: спектакль на профессиональной сцене Челябинска (не показ в зале для хореографии, а настоящая премьера), профессиональная фотосессия в образе (ваш портрет может стать афишей), запись спектакля (останется навсегда). Плюс — свобода голоса, уверенность на переговорах, умение говорить о чувствах, новые друзья."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Три проекта — чем они отличаются? Какой подойдёт именно мне?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "«Давай сыграем жизнь» — если хотите сыграть роль в командном спектакле. Партнёрство, сцены с другими актёрами, большая сцена. «Магия слов» — если близка поэзия и камерность. Один на один со зрителем, тишина, интонация, слово. «Мой бенефис» — если хотите моноспектакль про себя. Пьеса написана лично под вас."
+          }
+        }
       ]
     }
     </script>
@@ -282,22 +501,40 @@ description: "Три театральных проекта для взрослы
         <!-- ===== HERO ===== -->
         <section class="page-hero">
             <div class="wrap">
-                <div class="crumbs"><a href="/index.html">Главная</a> / Проекты для взрослых</div>
-                <h1><span class="h1-accent">Театральные проекты</span> для взрослых в Челябинске</h1>
+                <div class="crumbs"><a href="/index.html">Главная</a> / Взрослым</div>
+                <h1><span class="h1-accent">Театральная студия</span> для взрослых в Челябинске</h1>
                 <p>Три проекта — три разных пути к сцене. Для тех, кто хочет сыграть роль, выйти со стихами или создать моноспектакль про себя. Опыт не нужен. Профессиональная сцена, фотосессия, премьера — в каждом проекте.</p>
+
+                <!-- ===== НАВИГАЦИЯ ПО БЛОКАМ ===== -->
+                <div class="group-nav">
+                    <a href="#davay-sygraem-zhizn" class="group-nav-btn active">Спектакль</a>
+                    <a href="#magiya-slov" class="group-nav-btn">Поэзия</a>
+                    <a href="#moy-benefis" class="group-nav-btn">Моноспектакль</a>
+                </div>
             </div>
         </section>
 
-        <!-- ===== ПРОЕКТ 1 ===== -->
-        <section class="group-section group-section--light" id="davay-sygraem-zhizn">
+        <!-- ===== КАРТОЧКА-ТИЗЕР: ДАВАЙ СЫГРАЕМ ЖИЗНЬ (якорь #davay-sygraem-zhizn) ===== -->
+        <div class="wrap group-teaser" id="davay-sygraem-zhizn" style="padding-top:40px;padding-bottom:40px">
+            <article class="card">
+                <div class="card-media" style="aspect-ratio:auto;height:clamp(300px, 40vw, 500px)"><span class="card-tag">Спектакль</span>
+                    <img src="/assets/img/gal104.webp" alt="Взрослые ученики ШКИТ на сцене — спектакль проекта «Давай сыграем жизнь», Челябинск" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+                <div class="card-body">
+                    <h2 class="group-title" style="margin-bottom:8px">«Давай сыграем жизнь»</h2>
+                    <div class="card-sub">Роль в спектакле на профессиональной сцене</div>
+                </div>
+            </article>
+        </div>
+
+        <!-- ===== БЛОК: ДАВАЙ СЫГРАЕМ ЖИЗНЬ ===== -->
+        <section class="group-section group-section--light">
             <div class="wrap">
                 <div class="group-inner">
 
-                    <h2 class="group-title">Театральный проект «Давай сыграем жизнь»</h2>
-                    <span class="lead-label">Роль в спектакле на профессиональной сцене</span>
+                    <h2 class="group-title">Занятия в проекте «Давай сыграем жизнь»: мастерство, речь, импровизация</h2>
 
                     <p class="group-sub">
-                        Исполнить детскую мечту. Выйти на сцену и почувствовать свет софитов, аплодисменты и волнение перед выходом — это реально в любом возрасте. Найти творческий побег из рутины, вырваться из круга «работа-дом-заботы» и дать волю эмоциям. Открыть в себе новые грани, сбросить привычную социальную маску и найти того человека, которым вы всегда хотели быть — более раскрепощённого, харизматичного и свободного.
+                        Театральная студия для взрослых в Челябинске — это место, где можно исполнить детскую мечту. Выйти на сцену и почувствовать свет софитов, аплодисменты и волнение перед выходом — это реально в любом возрасте. Найти творческий побег из рутины, вырваться из круга «работа-дом-заботы» и дать волю эмоциям. Открыть в себе новые грани, сбросить привычную социальную маску и найти того человека, которым вы всегда хотели быть — более раскрепощённого, харизматичного и свободного.
                     </p>
 
                     <figure class="photo-grid">
@@ -305,25 +542,16 @@ description: "Три театральных проекта для взрослы
                         <img src="/assets/img/gal105.webp" alt="Репетиция театрального проекта для взрослых «Давай сыграем жизнь» в ШКИТ" loading="lazy">
                     </figure>
 
-                    <h3>Как проходят занятия</h3>
+                    <h2 class="group-title">Чему учим на занятиях</h2>
 
                     <div class="feature-grid">
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><path d="M2 12c0-5 4-8 10-8s10 3 10 8-4 8-10 8S2 17 2 12z"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></svg>
-                            </div>
                             <h4>Актёрское мастерство</h4>
                         </div>
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4"/><path d="M8 23h8"/></svg>
-                            </div>
                             <h4>Сценическая речь</h4>
                         </div>
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><path d="M3 4h18v14H3z"/><path d="M3 8l9 5 9-5"/><path d="M8 22h8"/><path d="M12 18v4"/></svg>
-                            </div>
                             <h4>Импровизация</h4>
                         </div>
                     </div>
@@ -335,12 +563,17 @@ description: "Три театральных проекта для взрослы
                         <li><strong>Подготовка настоящего спектакля.</strong> Репетиции, сцены, свет, звук — и премьера на профессиональной сцене города.</li>
                     </ul>
 
+                    <div class="schedule-box">
+                        <h4>Расписание занятий в Челябинске</h4>
+                        <p><strong>2 раза в неделю по 3 часа</strong> · проект 3–4 месяца · 56 000 ₽ за проект</p>
+                    </div>
+
                     <figure class="photo-hero">
                         <img src="/assets/img/gal104.webp" alt="Спектакль взрослой группы ШКИТ на профессиональной сцене Челябинска" loading="lazy">
                         <figcaption>Премьера на профессиональной сцене</figcaption>
                     </figure>
 
-                    <h3>Что в финале</h3>
+                    <h2 class="group-title">Что в финале проекта «Давай сыграем жизнь»</h2>
 
                     <blockquote class="pull-quote">
                         <p>«У меня получилось»</p>
@@ -349,33 +582,42 @@ description: "Три театральных проекта для взрослы
 
                     <p class="group-text">
                         Подарите себе не просто хобби, а пространство для вдохновения и личной трансформации. Занятия ведут действующие актёры и режиссёры — выпускники театральных вузов и участники профессиональных трупп.
+                        <a href="/faq.html#prepodavateli">Подробнее о педагогах ШКИТ →</a>
                     </p>
 
                     <div class="group-cta">
                         <h3>Прийти на пробное</h3>
                         <p>2 раза в неделю по 3 часа · проект 3–4 месяца · 56 000 ₽</p>
-                        <button type="button" class="btn" data-popup="zapis-popup-global">Записаться на пробное</button>
+                        <button type="button" class="btn" data-popup="zapis-popup-global">Записаться</button>
                     </div>
 
                 </div>
             </div>
         </section>
 
-        <!-- ===== ПРОЕКТ 2 ===== -->
-        <section class="group-section group-section--dark" id="magiya-slov">
+        <!-- ===== КАРТОЧКА-ТИЗЕР: МАГИЯ СЛОВ (якорь #magiya-slov) ===== -->
+        <div style="background:var(--ink);padding:40px 0">
+            <div class="wrap group-teaser" id="magiya-slov" style="padding-top:0;padding-bottom:0">
+                <article class="card card--dark" style="background:#3a3a3a;border:2px solid rgba(255,255,255,.15)">
+                    <div class="card-media" style="aspect-ratio:auto;height:clamp(300px, 40vw, 500px)"><span class="card-tag">Поэзия</span>
+                        <img src="/assets/img/gal105.webp" alt="Поэтический спектакль мастерской «Магия слов» ШКИТ, Челябинск" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+                    <div class="card-body">
+                        <h2 class="group-title" style="margin-bottom:8px">«Магия слов»</h2>
+                        <div class="card-sub">Твой голос, живые стихи и камерная сцена</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- ===== БЛОК: МАГИЯ СЛОВ ===== -->
+        <section class="group-section group-section--dark">
             <div class="wrap">
                 <div class="group-inner">
 
-                    <h2 class="group-title">Театрально-поэтическая мастерская «Магия слов»</h2>
-                    <span class="lead-label">Камерный поэтический спектакль — один на один со зрителем</span>
-
-                    <blockquote class="pull-quote">
-                        <p>«Настоящее волшебство рождается не на больших подмостках, а в диалоге с небольшим числом зрителей»</p>
-                        <p>Наша философия — камерность и глубина. Здесь важна каждая интонация и каждый жест.</p>
-                    </blockquote>
+                    <h2 class="group-title">Занятия в мастерской «Магия слов»: разбор, действие, постановка</h2>
 
                     <p class="group-sub">
-                        Если близка поэзия и хочется не «прочитать», а прожить её на сцене — этот проект для вас. Мы не декламируем стихи. Мы превращаем слово в образ, а образ — в действие. В финале — камерный поэтический спектакль, где главным героем является Слово.
+                        Театральная студия для взрослых в Челябинске — это не только про сцену, но и про глубину. Если близка поэзия и хочется не «прочитать», а прожить её на сцене — этот проект для вас. Мы не декламируем стихи. Мы превращаем слово в образ, а образ — в действие. В финале — камерный поэтический спектакль, где главным героем является Слово.
                     </p>
 
                     <figure class="photo-grid">
@@ -383,25 +625,16 @@ description: "Три театральных проекта для взрослы
                         <img src="/assets/img/gal130.webp" alt="Репетиция поэтической мастерской для взрослых в ШКИТ" loading="lazy">
                     </figure>
 
-                    <h3>Как мы работаем с поэзией</h3>
+                    <h2 class="group-title">Чему учим на занятиях</h2>
 
                     <div class="feature-grid">
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-                            </div>
                             <h4>Глубокий разбор</h4>
                         </div>
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
-                            </div>
                             <h4>От слова к действию</h4>
                         </div>
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><path d="M3 20V9l9-6 9 6v11"/><path d="M9 20v-6h6v6"/></svg>
-                            </div>
                             <h4>Постановка</h4>
                         </div>
                     </div>
@@ -413,7 +646,17 @@ description: "Три театральных проекта для взрослы
                         <li><strong>Постановка.</strong> Ищем точные, выразительные мизансцены для каждого стихотворения. Камерная площадка становится нашим холстом, где мы рисуем не красками, а тишиной, движением и эмоциями.</li>
                     </ul>
 
-                    <h3>Что ждёт вас в финале</h3>
+                    <div class="schedule-box">
+                        <h4>Расписание занятий в Челябинске</h4>
+                        <p><strong>1 раз в неделю по 3 часа</strong> · проект 5–6 месяцев · 5 600 ₽/мес</p>
+                    </div>
+
+                    <figure class="photo-hero">
+                        <img src="/assets/img/gal105.webp" alt="Камерный поэтический спектакль мастерской «Магия слов» на сцене, ШКИТ" loading="lazy">
+                        <figcaption>Камерный поэтический спектакль</figcaption>
+                    </figure>
+
+                    <h2 class="group-title">Что в финале мастерской «Магия слов»</h2>
 
                     <blockquote class="pull-quote">
                         <p>Камерный поэтический спектакль</p>
@@ -422,28 +665,40 @@ description: "Три театральных проекта для взрослы
 
                     <p class="group-text">
                         Занятия ведут действующие актёры и режиссёры — выпускники театральных вузов и участники профессиональных трупп.
+                        <a href="/faq.html#prepodavateli">Подробнее о педагогах ШКИТ →</a>
                     </p>
 
                     <div class="group-cta">
                         <h3>Прийти на пробное</h3>
                         <p>1 раз в неделю по 3 часа · проект 5–6 месяцев · 5 600 ₽/мес</p>
-                        <button type="button" class="btn" data-popup="zapis-popup-global">Записаться на пробное</button>
+                        <button type="button" class="btn" data-popup="zapis-popup-global">Записаться</button>
                     </div>
 
                 </div>
             </div>
         </section>
 
-        <!-- ===== ПРОЕКТ 3 ===== -->
-        <section class="group-section group-section--light" id="moy-benefis">
+        <!-- ===== КАРТОЧКА-ТИЗЕР: МОЙ БЕНЕФИС (якорь #moy-benefis) ===== -->
+        <div class="wrap group-teaser" id="moy-benefis" style="padding-top:40px;padding-bottom:40px">
+            <article class="card">
+                <div class="card-media" style="aspect-ratio:auto;height:clamp(300px, 40vw, 500px)"><span class="card-tag">Моноспектакль</span>
+                    <img src="/assets/img/adults.jpg" alt="Моноспектакль «Мой бенефис» — индивидуальный театральный проект ШКИТ, Челябинск" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+                <div class="card-body">
+                    <h2 class="group-title" style="margin-bottom:8px">«Мой бенефис»</h2>
+                    <div class="card-sub">Вы — главный герой, автор и легенда одного вечера</div>
+                </div>
+            </article>
+        </div>
+
+        <!-- ===== БЛОК: МОЙ БЕНЕФИС ===== -->
+        <section class="group-section group-section--light">
             <div class="wrap">
                 <div class="group-inner">
 
-                    <h2 class="group-title">Театральный проект «Мой бенефис»</h2>
-                    <span class="lead-label">Моноспектакль, где вы — главный герой</span>
+                    <h2 class="group-title">Занятия в проекте «Мой бенефис»: драматургия, сцена, афиша</h2>
 
                     <p class="group-sub">
-                        Мы пишем пьесу, которую не сыграет никто, кроме вас. Это моноспектакль, созданный лично под вас — под вашу пластику, тембр голоса, манеру говорить. Не отчётный показ в подвале, а премьера на площадке одного из ведущих театров города — с профессиональным светом, звуком и полным зрительным залом.
+                        Театральная студия для взрослых в Челябинске — это ещё и возможность создать моноспектакль про себя. Мы пишем пьесу, которую не сыграет никто, кроме вас. Это моноспектакль, созданный лично под вас — под вашу пластику, тембр голоса, манеру говорить. Не отчётный показ в подвале, а премьера на площадке одного из ведущих театров города — с профессиональным светом, звуком и полным зрительным залом.
                     </p>
 
                     <figure class="photo-grid">
@@ -451,26 +706,17 @@ description: "Три театральных проекта для взрослы
                         <img src="/assets/img/gal104.webp" alt="Премьера моноспектакля на профессиональной сцене — проект «Мой бенефис» ШКИТ" loading="lazy">
                     </figure>
 
-                    <h3>Что делает проект уникальным</h3>
+                    <h2 class="group-title">Чему учим на занятиях</h2>
 
                     <div class="feature-grid">
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-                            </div>
                             <h4>Драматургия под ключ</h4>
                         </div>
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><path d="M12 2l2.5 6H21l-5 4 2 7-6-4-6 4 2-7-5-4h6.5z"/></svg>
-                            </div>
                             <h4>Час славы на сцене</h4>
                         </div>
                         <div class="feature">
-                            <div class="feature-ico">
-                                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 3.5-7 8-7s8 2.5 8 7"/></svg>
-                            </div>
-                            <h4>Ваш портрет — на афишу</h4>
+                            <h4>Портрет на афишу</h4>
                         </div>
                     </div>
 
@@ -481,7 +727,17 @@ description: "Три театральных проекта для взрослы
                         <li><strong>Ваш портрет — на афишу города.</strong> Эксклюзивная фотосессия в образе. Ваше лицо станет символом будущего спектакля и украсит городские афиши.</li>
                     </ul>
 
-                    <h3>Как мы придём к премьере</h3>
+                    <div class="schedule-box">
+                        <h4>Расписание занятий в Челябинске</h4>
+                        <p><strong>2 раза в неделю по 3 часа</strong> · проект 2–3 месяца · цена после консультации</p>
+                    </div>
+
+                    <figure class="photo-hero">
+                        <img src="/assets/img/adults.jpg" alt="Моноспектакль «Мой бенефис» на профессиональной сцене, ШКИТ" loading="lazy">
+                        <figcaption>Премьера моноспектакля</figcaption>
+                    </figure>
+
+                    <h2 class="group-title">Что в финале проекта «Мой бенефис»</h2>
 
                     <blockquote class="pull-quote">
                         <p>В пространстве абсолютного принятия</p>
@@ -493,14 +749,19 @@ description: "Три театральных проекта для взрослы
                     </p>
 
                     <p class="group-text">
-                        Подарите себе пространство, где вы — главный герой, автор и легенда одного вечера.
+                        Занятия ведут действующие актёры и режиссёры — выпускники театральных вузов и участники профессиональных трупп.
+                        <a href="/faq.html#prepodavateli">Подробнее о педагогах ШКИТ →</a>
                     </p>
 
                     <div class="group-cta">
                         <h3>Записаться на консультацию</h3>
                         <p>2 раза в неделю по 3 часа · проект 2–3 месяца · цена после консультации</p>
-                        <button type="button" class="btn" data-popup="zapis-popup-global">Записаться на консультацию</button>
+                        <button type="button" class="btn" data-popup="zapis-popup-global">Записаться</button>
                     </div>
+
+                    <p class="group-text" style="text-align:center;margin-top:24px">
+                        Смотрите также: <a href="/dety-i-podrostki.html" style="color:var(--coral-ink);font-weight:700">театральная студия для детей и подростков в Челябинске</a>.
+                    </p>
 
                 </div>
             </div>
@@ -558,7 +819,6 @@ description: "Три театральных проекта для взрослы
                                     <li><strong>1–2 репетиции</strong> — не страшно. Педагог поможет догнать.</li>
                                     <li><strong>Заболели, командировка, завал</strong> — предупредите заранее, мы подстроимся. Партнёры поддержат, не осудят.</li>
                                     <li><strong>Единственное правило — честность.</strong> Скажите заранее. Не пропадайте. Тогда всё решаемо.</li>
-                                    <li><strong>Пропускать половину репетиций</strong> — роль не сложится. Но 1–2 пропуска — не трагедия.</li>
                                 </ul>
                             </div>
                         </details>
