@@ -26,7 +26,7 @@
     "time": "19:00",
     "place": "театр «Многогранник»",
     "short": "Плейбэк театр «АБАЖУР». Холодный декабрьский вечер, тёплый свет под абажуром и истории, которые оживают прямо у вас на глазах. Приходите рассказать, услышать, увидеть — и согреться.",
-    "image": "/assets/img/gal108.webp",
+    "image": "/assets/img/playback01.webp",
     "link": "https://chel.kassy.ru/events/teatr/2-55861/",
     "buttonText": "Купить билет",
     "disabled": false
@@ -42,7 +42,7 @@
     "time": "",
     "place": "театр «Многогранник»",
     "short": "11:00–12:30 — младший ШКИТ\n15:00–16:30 — средний ШКИТ\n19:00–21:00 — старший ШКИТ",
-    "image": "/assets/img/bilet2.webp",
+    "image": "/assets/img/acter10.webp",
     "link": "",
     "buttonText": "Скоро в продаже",
     "disabled": true
