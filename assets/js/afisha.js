@@ -2,6 +2,8 @@
    afisha.js — рендер афиши из /assets/data/afisha.json
    - сортировка по дате (ближайшая слева)
    - прошедшие события скрываются
+   - disabled: true → серая кнопка (не кликается)
+   - \n в short → перенос строки
    ============================================================ */
 
 (function () {
@@ -23,10 +25,25 @@
   }
 
   function cardHtml(event) {
-    var shortHtml = escapeHtml(event.short).replace(
-      /&laquo;([^&]+)&raquo;/g,
-      '<strong style="color:var(--coral-ink);">«$1»</strong>'
-    );
+    var shortHtml = escapeHtml(event.short)
+      .replace(/&laquo;([^&]+)&raquo;/g, '<strong style="color:var(--coral-ink);">«$1»</strong>')
+      .replace(/\n/g, '<br>');
+
+    var metaHtml = [
+      escapeHtml(event.dateLabel || ''),
+      escapeHtml(event.place || ''),
+      escapeHtml(event.time || '')
+    ].filter(Boolean).join(', ');
+
+    var buttonHtml;
+    if (event.link && event.link.trim() && !event.disabled) {
+      buttonHtml = '<a class="btn btn--sm btn--block" href="' + escapeHtml(event.link) + '" target="_blank" rel="noopener">' +
+        escapeHtml(event.buttonText || 'Купить билет') + '</a>';
+    } else {
+      buttonHtml = '<span class="btn btn--sm btn--block" aria-disabled="true" ' +
+        'style="pointer-events:none;opacity:0.55;cursor:default;filter:grayscale(0.3)">' +
+        escapeHtml(event.buttonText || 'Скоро в продаже') + '</span>';
+    }
 
     return (
       '<article class="event">' +
@@ -44,13 +61,9 @@
             '</span> ' +
             escapeHtml(event.title) +
           '</h3>' +
-          '<div class="e-meta">' + escapeHtml(event.dateLabel || '') + ', ' +
-            escapeHtml(event.place) + ', ' + escapeHtml(event.time) + '</div>' +
+          '<div class="e-meta">' + metaHtml + '</div>' +
           '<div class="e-short">' + shortHtml + '</div>' +
-          (event.link && event.link.trim()
-  ? '<a class="btn btn--sm btn--block" href="' + escapeHtml(event.link) + '" target="_blank" rel="noopener">' + escapeHtml(event.buttonText || 'Купить билет') + '</a>'
-  : '<span class="btn btn--sm btn--block btn--disabled" aria-disabled="true">' + escapeHtml(event.buttonText || 'Скоро в продаже') + '</span>'
-) +
+          buttonHtml +
         '</div>' +
       '</article>'
     );
