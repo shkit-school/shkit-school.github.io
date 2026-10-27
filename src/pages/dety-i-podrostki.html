@@ -13,6 +13,24 @@ description: "Театральная студия для детей 5–11 ле�
 
         .h1-accent { color: var(--coral, #E85D5D); }
 
+        /* ===== Hero: выделенный подзаголовок ===== */
+        .hero-projects {
+            display: inline-block;
+            max-width: 720px;
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: var(--radius);
+            padding: 16px 22px;
+            margin: 16px auto 0;
+            font-size: 16px;
+            line-height: 1.55;
+            color: rgba(255,255,255,.92);
+            text-align: left;
+        }
+        @media (max-width: 768px) {
+            .hero-projects { padding: 12px 16px; font-size: 15px; }
+        }
+
         /* ===== Навигация по блокам ===== */
         .group-nav {
             display: flex;
@@ -84,11 +102,14 @@ description: "Театральная студия для детей 5–11 ле�
         /* ===== Блоки детей и подростков ===== */
         .group-section { padding: 60px 0; }
         .group-section--light { background: #fff; }
-        .group-section--dark { background: var(--ink); color: #fff; }
+        .group-section--dark { background: var(--ink); color: #fff; padding-top: 32px; }
         .group-section--dark h2,
         .group-section--dark h3 { color: #fff; }
         .group-section--dark p,
         .group-section--dark li { color: rgba(255,255,255,.85); }
+        @media (max-width: 768px) {
+            .group-section--dark { padding-top: 24px; }
+        }
 
         .group-inner { max-width: 1200px; margin: 0 auto; }
         .group-title { font-size: clamp(24px, 4vw, 36px); margin-bottom: 12px; line-height: 1.15; }
@@ -495,7 +516,10 @@ description: "Театральная студия для детей 5–11 ле�
             <div class="wrap">
                 <div class="crumbs"><a href="/index.html">Главная</a> / Дети и подростки</div>
                 <h1><span class="h1-accent">Театральная студия</span> для детей 5–11 лет и подростков 12–17 лет в Челябинске</h1>
-                <p>В ШКИТ занимаются дети с 5 до 17 лет. За 17 лет через школу прошли более 5000 учеников, мы выпустили 500+ учебных работ и театральных постановок. <strong>Малыши</strong> — через игру. <strong>Подростки</strong> — через честный разговор и работу с текстом. И у тех, и у других в финале — спектакль на сцене.</p>
+
+                <p class="hero-projects">
+                    <strong>В ШКИТ занимаются дети с 5 до 17 лет.</strong> За 17 лет через школу прошли более 5000 учеников, мы выпустили 500+ учебных работ и театральных постановок. Малыши — через игру. Подростки — через честный разговор и работу с текстом. И у тех, и у других в финале — спектакль на сцене.
+                </p>
 
                 <!-- ===== НАВИГАЦИЯ ПО БЛОКАМ ===== -->
                 <div class="group-nav">
