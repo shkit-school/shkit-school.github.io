@@ -47,9 +47,10 @@
           '<div class="e-meta">' + escapeHtml(event.dateLabel || '') + ', ' +
             escapeHtml(event.place) + ', ' + escapeHtml(event.time) + '</div>' +
           '<div class="e-short">' + shortHtml + '</div>' +
-          '<a class="btn btn--sm btn--block" href="' + escapeHtml(event.link) + '" target="_blank" rel="noopener">' +
-            escapeHtml(event.buttonText || 'Купить билет') +
-          '</a>' +
+          (event.link && event.link.trim()
+  ? '<a class="btn btn--sm btn--block" href="' + escapeHtml(event.link) + '" target="_blank" rel="noopener">' + escapeHtml(event.buttonText || 'Купить билет') + '</a>'
+  : '<span class="btn btn--sm btn--block btn--disabled" aria-disabled="true">' + escapeHtml(event.buttonText || 'Скоро в продаже') + '</span>'
+) +
         '</div>' +
       '</article>'
     );
