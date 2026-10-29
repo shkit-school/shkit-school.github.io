@@ -1,0 +1,61 @@
+---
+title: "Записаться на пробное занятие — ШКИТ"
+description: "Записаться на пробное занятие в школу кино и театра ШКИТ в Челябинске. Пробное занятие — 500 ₽. После — никаких обязательств."
+---
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {{HEAD}}
+</head>
+<body id="top">
+    {{METRIKA}}
+    <a class="skip-link" href="#main">К основному содержимому</a>
+
+    {{HEADER}}
+
+    <main id="main" tabindex="-1">
+        <section class="page-hero">
+            <div class="wrap">
+                <div class="crumbs"><a href="/index.html">Главная</a> / Записаться</div>
+                <h1>Записаться на пробное занятие</h1>
+                <p>Заполните короткую форму — мы свяжемся, ответим на вопросы и подберём группу. Пробное занятие — 500 ₽. После — никаких обязательств.</p>
+            </div>
+        </section>
+
+        <section class="section bg-white">
+            <div class="wrap">
+                <div style="text-align:center;max-width:600px;margin:0 auto">
+                    <h2 class="sec-title" style="text-align:center;margin-bottom:16px">Оставьте заявку</h2>
+                    <p style="color:var(--grey);margin-bottom:32px">
+                        Нажмите кнопку — откроется форма. Заполните имя, телефон и комментарий (по желанию).
+                    </p>
+                    <button type="button" class="btn btn--lg" data-popup="zapis-popup-global">
+                        Открыть форму
+                    </button>
+                    <noscript>
+                        <p style="margin-top:16px;font-size:15px">
+                            Позвоните: <a href="tel:+79194040123" style="color:var(--coral-ink);font-weight:700">+7 (919) 404-01-23</a>
+                        </p>
+                    </noscript>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {{FOOTER}}
+
+    <script src="/assets/js/main.js" defer></script>
+    <script>
+        // Автооткрытие формы через 0.5 сек после загрузки
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                if (typeof createZapisPopup === 'function' || document.querySelector('[data-popup="zapis-popup-global"]')) {
+                    var btn = document.querySelector('[data-popup="zapis-popup-global"]');
+                    if (btn) btn.click();
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>
